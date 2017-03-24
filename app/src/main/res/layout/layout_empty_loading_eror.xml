@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/activity_horizontal_margin"
+        android:drawableTop="@drawable/ic_not_network"
+        android:gravity="center"
+        android:text="点击重试"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/activity_horizontal_margin"
+        android:drawableTop="@drawable/ic_not_network"
+        android:gravity="center"
+        android:text="空空如也"
+        android:visibility="gone" />
+</RelativeLayout>

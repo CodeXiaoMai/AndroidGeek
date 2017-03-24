@@ -19,7 +19,7 @@ import com.xiaomai.geek.module.base.BaseActivity;
 import butterknife.BindView;
 
 /**
- *
+ * Create by XiaoMai on 2017/3/24 18:15.
  */
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,11 +50,13 @@ public class MainActivity extends BaseActivity
             case R.id.nav_git:
                 return GitContainerFragment.class.getName();
             case R.id.nav_news:
+                return GitContainerFragment.class.getName();
             case R.id.nav_photos:
+                return GitContainerFragment.class.getName();
             case R.id.nav_videos:
-                return "";
+                return GitContainerFragment.class.getName();
             default:
-                return "";
+                return GitContainerFragment.class.getName();
         }
     }
 
@@ -62,8 +64,8 @@ public class MainActivity extends BaseActivity
      * 根据Fragment的name，显示或者添加</br>
      * 如果找到的fragment不为null，判断是否为当前的fragment，如果是直接返回，否则显示fragment，并把
      * 上一个fragment隐藏，将这个fragment设置为当前的fragment。
-     *
      * 如果找到的fragment为null，则初始化一个fragment，并显示。
+     * 
      * @param fragmentName
      */
     private void switchTab(String fragmentName) {

@@ -80,4 +80,12 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    // BaseRecyclerViewAdapterHelper 第二步
+    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.8.5'
+
+    // FlycoLabelView
+    // https://github.com/H07000223/FlycoLabelView
+    compile 'com.flyco.labelview:FlycoLabelView_Lib:1.0.2@aar'
 }

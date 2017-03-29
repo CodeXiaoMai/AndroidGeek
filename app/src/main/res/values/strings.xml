@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">安卓Geek</string>
+    <string name="github">GitHub</string>
+    <string name="news">新闻</string>
+    <string name="photo">图片</string>
+    <string name="video">视频</string>
 </resources>

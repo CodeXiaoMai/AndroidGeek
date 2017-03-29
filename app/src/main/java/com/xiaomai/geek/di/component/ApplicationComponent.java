@@ -1,8 +1,11 @@
 
 package com.xiaomai.geek.di.component;
 
+import android.app.Application;
 import android.content.Context;
 
+import com.xiaomai.geek.api.INewsApi;
+import com.xiaomai.geek.api.NewsService;
 import com.xiaomai.geek.di.modules.ApplicationModule;
 
 import javax.inject.Singleton;
@@ -18,4 +21,10 @@ import dagger.Component;
 public interface ApplicationComponent {
 
     Context getContext();
+
+    Application application();
+
+    NewsService newsService();
+
+    INewsApi I_NEWS_API();
 }

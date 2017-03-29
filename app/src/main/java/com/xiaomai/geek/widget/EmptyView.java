@@ -1,5 +1,5 @@
 
-package com.xiaomai.geek.wedget;
+package com.xiaomai.geek.widget;
 
 import android.content.Context;
 import android.support.annotation.IntDef;

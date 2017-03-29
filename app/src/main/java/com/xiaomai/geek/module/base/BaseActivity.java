@@ -11,9 +11,9 @@ import android.view.MenuItem;
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.xiaomai.geek.R;
-import com.xiaomai.geek.presenter.IBasePresenter;
+import com.xiaomai.geek.presenter.BasePresenter;
 import com.xiaomai.geek.view.IBaseView;
-import com.xiaomai.geek.wedget.EmptyView;
+import com.xiaomai.geek.widget.EmptyView;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
  * @param <T>
  */
 
-public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompatActivity
+public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatActivity
         implements IBaseView {
 
     @Override
@@ -59,7 +59,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
     protected T mPresenter;
 
     @Nullable
-    // @BindView(R.id.swip_refresh)
+    @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
 
     /**
@@ -135,7 +135,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends RxAppCompat
     }
 
     @Override
-    public <T> LifecycleTransformer<T> bindToLife() {
+    public LifecycleTransformer<T> bindToLife() {
         return this.bindToLifecycle();
     }
 }

@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.module.base.BaseActivity;
+import com.xiaomai.geek.module.news.NewsContainerFragment;
 
 import butterknife.BindView;
 
@@ -50,7 +51,7 @@ public class MainActivity extends BaseActivity
             case R.id.nav_git:
                 return GitContainerFragment.class.getName();
             case R.id.nav_news:
-                return GitContainerFragment.class.getName();
+                return NewsContainerFragment.class.getName();
             case R.id.nav_photos:
                 return GitContainerFragment.class.getName();
             case R.id.nav_videos:
@@ -141,5 +142,10 @@ public class MainActivity extends BaseActivity
         else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void showContent(Object data) {
+
     }
 }

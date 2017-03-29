@@ -21,6 +21,10 @@ public class GeekApplication extends Application {
         InitializeService.startActionInit(this);
     }
 
+    public static GeekApplication get(Context context) {
+        return (GeekApplication) context.getApplicationContext();
+    }
+
     ApplicationComponent mApplicationComponent;
 
     public ApplicationComponent getApplicationComponent() {

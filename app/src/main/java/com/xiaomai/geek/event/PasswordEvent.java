@@ -11,11 +11,13 @@ import com.xiaomai.geek.data.module.Password;
 
 public class PasswordEvent {
 
-    public static final int TYPE_UPDATE = 1;
+    public static final int TYPE_ADD = 1;
 
-    public static final int TYPE_DELETE = 2;
+    public static final int TYPE_UPDATE = 2;
 
-    public static final int TYPE_ADD = 3;
+    public static final int TYPE_DELETE = 3;
+
+    public static final int TYPE_CLEAR = 4;
 
     private int type;
 
@@ -43,7 +45,7 @@ public class PasswordEvent {
     }
 
     @IntDef({
-            TYPE_UPDATE, TYPE_DELETE, TYPE_ADD
+            TYPE_UPDATE, TYPE_DELETE, TYPE_ADD, TYPE_CLEAR
     })
     @interface PasswordEventType {
 

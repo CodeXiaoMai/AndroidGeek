@@ -133,6 +133,7 @@ public class PasswordListFragment extends BaseFragment implements ILceView<List<
                                 mPresenter.getPasswords(mContext);
                             }
                         }).show();
+            case PasswordEvent.TYPE_CLEAR:
             case PasswordEvent.TYPE_ADD:
                 mPresenter.getPasswords(mContext);
                 break;

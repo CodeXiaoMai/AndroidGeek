@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -93,4 +94,15 @@ public class MainActivity extends BaseActivity
         mCurrentFragment = fragment;
     }
 
+    private long mLastBackTime = 0L;
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - mLastBackTime < 1000) {
+            finish();
+        } else {
+            mLastBackTime = System.currentTimeMillis();
+            Snackbar.make(flContainer, "再按一次退出应用", Snackbar.LENGTH_LONG).show();
+        }
+    }
 }

@@ -171,4 +171,8 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
         };
         return getWritableDatabase().delete(TABLE_NAME, where, args);
     }
+
+    public int deleteAllPasswords() {
+        return getWritableDatabase().delete(TABLE_NAME, null, null);
+    }
 }

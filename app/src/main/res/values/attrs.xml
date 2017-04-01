@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="border_width" format="dimension" />
+    <attr name="border_color" format="color" />
+    <attr name="border_overlay" format="boolean" />
+    <attr name="fill_color" format="color" />
+    <attr name="text" format="string" />
+    <attr name="textSize" format="dimension" />
+    <attr name="textColor" format="color" />
+    <attr name="isCircle" format="boolean" />
+
+    <declare-styleable name="CircleView">
+        <attr name="border_width" />
+        <attr name="border_color" />
+        <attr name="border_overlay" />
+        <attr name="fill_color" />
+        <attr name="text" />
+        <attr name="textSize" />
+        <attr name="textColor" />
+        <attr name="isCircle" />
+    </declare-styleable>
+</resources>

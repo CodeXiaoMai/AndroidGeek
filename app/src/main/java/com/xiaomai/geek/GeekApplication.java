@@ -4,13 +4,13 @@ package com.xiaomai.geek;
 import android.app.Application;
 import android.content.Context;
 
+import com.xiaomai.geek.common.wrapper.AppLog;
 import com.xiaomai.geek.di.component.ApplicationComponent;
 import com.xiaomai.geek.di.component.DaggerApplicationComponent;
-import com.xiaomai.geek.di.modules.ApplicationModule;
-import com.xiaomai.geek.service.InitializeService;
+import com.xiaomai.geek.di.module.ApplicationModule;
 
 /**
- * Created by XiaoMai on 2017/3/24 18:16.
+ * Created by XiaoMai on 2017/3/29 17:30.
  */
 
 public class GeekApplication extends Application {
@@ -18,7 +18,7 @@ public class GeekApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        InitializeService.startActionInit(this);
+        AppLog.init();
     }
 
     public static GeekApplication get(Context context) {
@@ -27,7 +27,7 @@ public class GeekApplication extends Application {
 
     ApplicationComponent mApplicationComponent;
 
-    public ApplicationComponent getApplicationComponent() {
+    public ApplicationComponent getComponent() {
         if (mApplicationComponent == null) {
             mApplicationComponent = DaggerApplicationComponent.builder()
                     .applicationModule(new ApplicationModule(this)).build();

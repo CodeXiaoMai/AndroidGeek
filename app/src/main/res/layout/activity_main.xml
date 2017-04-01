@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xiaomai.geek.module.home.MainActivity"
+    tools:context="com.xiaomai.geek.ui.MainActivity"
     tools:openDrawer="start">
 
     <FrameLayout
@@ -18,6 +18,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_drawer" />
+        app:headerLayout="@layout/nav_header_view"
+        app:menu="@menu/nav_menu" />
 </android.support.v4.widget.DrawerLayout>

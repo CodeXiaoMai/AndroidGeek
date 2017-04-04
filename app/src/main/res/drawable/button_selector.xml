@@ -13,4 +13,15 @@
         </shape>
     </item>
 
+    <item android:state_pressed="false">
+        <shape>
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+
+    <item android:state_selected="false">
+        <shape>
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
 </selector>

@@ -1,6 +1,11 @@
 
 package com.xiaomai.geek.ui.module.password;
 
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -17,14 +22,44 @@ import java.util.List;
  */
 
 public class PasswordListAdapter extends BaseQuickAdapter<Password> {
+
+    private String keyWords;
+
+    private SpannableString spannablePlatform;
+
+    private SpannableString spannableUsername;
+
+    private ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.parseColor("#009ad6"));;
+
     public PasswordListAdapter(List<Password> data) {
         super(R.layout.item_password, data);
     }
 
     @Override
     protected void convert(final BaseViewHolder holder, final Password password) {
-        holder.setText(R.id.tv_platform, password.getPlatform());
-        holder.setText(R.id.tv_userName, password.getUserName());
+        String platform = password.getPlatform();
+        if (!TextUtils.isEmpty(keyWords) && platform.contains(keyWords)) {
+            spannablePlatform = new SpannableString(platform);
+            int start = platform.indexOf(keyWords);
+            int end = start + keyWords.length();
+            spannablePlatform.setSpan(foregroundColorSpan, start, end,
+                    Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+            holder.setText(R.id.tv_platform, spannablePlatform);
+        } else {
+            holder.setText(R.id.tv_platform, platform);
+        }
+
+        String userName = password.getUserName();
+        if (!TextUtils.isEmpty(keyWords) && userName.contains(keyWords)) {
+            spannableUsername = new SpannableString(userName);
+            int start = userName.indexOf(keyWords);
+            int end = start + keyWords.length();
+            spannableUsername.setSpan(foregroundColorSpan, start, end,
+                    Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+            holder.setText(R.id.tv_userName, spannableUsername);
+        } else {
+            holder.setText(R.id.tv_userName, userName);
+        }
         CircleView icon = holder.getView(R.id.circle_view_icon);
         icon.setText(password.getPlatform().substring(0, 1));
         holder.getView(R.id.iv_eye).setOnTouchListener(new View.OnTouchListener() {
@@ -38,5 +73,9 @@ public class PasswordListAdapter extends BaseQuickAdapter<Password> {
                 return true;
             }
         });
+    }
+
+    public void setKeyWords(String keyWords) {
+        this.keyWords = keyWords;
     }
 }

@@ -129,6 +129,9 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, null, null, null, null,
                 ORDER_BY);
         List<Password> passwords = new ArrayList<>();
+        if (cursor == null){
+            return passwords;
+        }
         while (cursor.moveToNext()) {
             Password password = getPasswordByCurse(cursor);
             if (password != null)
@@ -151,6 +154,26 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         return password;
+    }
+
+    public List<Password> getPasswordByKeywords(String keywords) {
+        final String selection = COLUMN_PLATFORM + " LIKE ? OR " + COLUMN_USERNAME + " LIKE ?";
+        final String[] selectionArgs = new String[]{
+                "%" + keywords + "%",
+                "%" + keywords + "%"
+        };
+        Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        List<Password> passwords = new ArrayList<>();
+        if (cursor == null) {
+            return passwords;
+        }
+        while (cursor.moveToNext()) {
+            Password password = getPasswordByCurse(cursor);
+            if (password != null)
+                passwords.add(password);
+        }
+        cursor.close();
+        return passwords;
     }
 
     public int updatePasswordById(int id, ContentValues contentValues) {

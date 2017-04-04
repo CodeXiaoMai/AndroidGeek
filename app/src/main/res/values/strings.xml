@@ -4,4 +4,7 @@
     <string name="gitHub">GitHub</string>
     <string name="article">干货</string>
     <string name="video">视频</string>
+
+    <!-- Behavior -->
+    <string name="behavior_bottom">com.xiaomai.geek.ui.behavior.BottomBehavior</string>
 </resources>

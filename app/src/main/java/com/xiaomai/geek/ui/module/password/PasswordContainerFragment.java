@@ -7,6 +7,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,9 @@ public class PasswordContainerFragment extends BaseFragment {
     @BindView(R.id.fab_add)
     FloatingActionButton fabAdd;
 
+    @BindView(R.id.tool_bar)
+    Toolbar toolBar;
+
     private PasswordContainerAdapter mAdapter;
 
     @Nullable
@@ -49,6 +54,7 @@ public class PasswordContainerFragment extends BaseFragment {
     }
 
     private void initViews() {
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolBar);
         mAdapter = new PasswordContainerAdapter(getChildFragmentManager());
         viewPager.setAdapter(mAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -73,6 +79,7 @@ public class PasswordContainerFragment extends BaseFragment {
                     fabAdd.setVisibility(View.GONE);
                 } else if (fragment instanceof PasswordListFragment) {
                     fabAdd.setVisibility(View.VISIBLE);
+                    fabAdd.setTranslationY(0);
                 }
             }
 

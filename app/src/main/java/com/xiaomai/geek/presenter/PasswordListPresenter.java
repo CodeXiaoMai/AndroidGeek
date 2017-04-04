@@ -5,22 +5,23 @@ import android.content.Context;
 
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
-import com.xiaomai.mvp.lce.ILceView;
+import com.xiaomai.geek.view.IPasswordSearchView;
 
 import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
  * Created by XiaoMai on 2017/3/30 17:18.
  */
 
-public class PasswordListPresenter extends BaseRxPresenter<ILceView<List<Password>>> {
+public class PasswordListPresenter extends BaseRxPresenter<IPasswordSearchView> {
 
-    public void getPasswords(final Context context) {
+    public void getAllPasswords(final Context context) {
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<List<Password>>() {
             @Override
             public void call(Subscriber<? super List<Password>> subscriber) {
@@ -50,5 +51,28 @@ public class PasswordListPresenter extends BaseRxPresenter<ILceView<List<Passwor
                 }
             }
         }));
+    }
+
+    public void getPasswordsByKeywords(final Context context, final String keywords) {
+        mCompositeSubscription.add(
+                Observable.create(new Observable.OnSubscribe<List<Password>>() {
+                    @Override
+                    public void call(Subscriber<? super List<Password>> subscriber) {
+                        List<Password> passwords = PasswordDBHelper.getInstance(context).getPasswordByKeywords(keywords);
+                        subscriber.onNext(passwords);
+                    }
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<List<Password>>() {
+                    @Override
+                    public void call(List<Password> passwords) {
+                        if (passwords.size() > 0) {
+                            getMvpView().showContent(passwords);
+                        } else {
+                            getMvpView().onSearchEmpty();
+                        }
+                    }
+                })
+        );
     }
 }

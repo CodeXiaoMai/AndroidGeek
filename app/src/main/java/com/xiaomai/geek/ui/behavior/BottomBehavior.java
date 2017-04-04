@@ -1,7 +1,6 @@
 
 package com.xiaomai.geek.ui.behavior;
 
-import android.animation.Animator;
 import android.content.Context;
 import android.os.Build;
 import android.support.design.widget.CoordinatorLayout;
@@ -11,7 +10,6 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
 import android.view.animation.Interpolator;
 
 /**
@@ -101,60 +99,4 @@ public class BottomBehavior extends CoordinatorLayout.Behavior {
         return marginBottom;
     }
 
-    // 隐藏时的动画
-    private void hide(final View view) {
-        ViewPropertyAnimator animator = view.animate().translationY(viewY)
-                .setInterpolator(INTERPOLATOR).setDuration(200);
-
-        animator.setListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animator) {
-                isAnimate = true;
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                view.setVisibility(View.GONE);
-                isAnimate = false;
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {
-                show(view);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-            }
-        });
-        animator.start();
-    }
-
-    // 显示时的动画
-    private void show(final View view) {
-        ViewPropertyAnimator animator = view.animate().translationY(0).setInterpolator(INTERPOLATOR)
-                .setDuration(200);
-        animator.setListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animator) {
-                view.setVisibility(View.VISIBLE);
-                isAnimate = true;
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                isAnimate = false;
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {
-                hide(view);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-            }
-        });
-        animator.start();
-    }
 }

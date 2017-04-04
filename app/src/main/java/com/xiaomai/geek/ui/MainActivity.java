@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     @BindView(R.id.fl_container)
     FrameLayout flContainer;
@@ -98,11 +98,19 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return;
+        }
         if (System.currentTimeMillis() - mLastBackTime < 1000) {
             finish();
         } else {
             mLastBackTime = System.currentTimeMillis();
             Snackbar.make(flContainer, "再按一次退出应用", Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    public void openDrawer() {
+        drawerLayout.openDrawer(GravityCompat.START);
     }
 }

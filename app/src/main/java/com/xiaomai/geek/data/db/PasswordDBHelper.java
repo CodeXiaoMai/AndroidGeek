@@ -67,7 +67,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
     private void createTables(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
                 + "_ID INTEGER NOT NULL PRIMARY KEY, " + "PLATFORM TEXT NOT NULL, "
-                + "USERNAME TEXT NOT NULL, " + "PASSWORD TEXT NOT NULL, " + "CATEGORY TEXT, "
+                + "USERNAME TEXT NOT NULL, " + "PASSWORD TEXT NOT NULL, " + "CATEGORY  TEXT NOT NULL DEFAULT 默认, "
                 + "NOTE TEXT, " + "STAR BOOLEAN, " + "TIME INTEGER NOT NULL);");
     }
 
@@ -125,7 +125,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
      * 
      * @return
      */
-    public List<Password> queryAllPasswords() {
+    public List<Password> getAllPasswords() {
         Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, null, null, null, null,
                 ORDER_BY);
         List<Password> passwords = new ArrayList<>();

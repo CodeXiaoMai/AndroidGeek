@@ -2,6 +2,7 @@
 package com.xiaomai.geek.ui.module.password;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -38,9 +39,10 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
 
     private PasswordSettingPresenter mPresenter = new PasswordSettingPresenter();
 
+    private AlertDialog mDialog;
+
     public static PasswordSettingFragment newInstance() {
-        PasswordSettingFragment fragment = new PasswordSettingFragment();
-        return fragment;
+        return new PasswordSettingFragment();
     }
 
     @Override
@@ -67,21 +69,19 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
                 clearData();
                 break;
             case R.id.layout_backup:
+                mPresenter.backupPasswords(mContext);
                 break;
         }
     }
 
     private void clearData() {
-        new AlertDialog.Builder(mContext)
-                .setMessage("您确定要清空所有数据吗？")
-                .setNegativeButton("取消", null)
+        new AlertDialog.Builder(mContext).setMessage("您确定要清空所有数据吗？").setNegativeButton("取消", null)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mPresenter.deleteAllPasswords(mContext);
                     }
-                })
-                .create().show();
+                }).create().show();
     }
 
     @Override
@@ -102,6 +102,15 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
 
     @Override
     public void onBackupComplete(int count) {
-
+        if (mDialog != null && mDialog.isShowing())
+            mDialog.dismiss();
+        Snackbar.make(layoutBackup, "成功备份" + count + "条数据", Snackbar.LENGTH_LONG).show();
     }
+
+    @Override
+    public void showBackupIng() {
+        mDialog = new ProgressDialog.Builder(mContext).setMessage("正在备份中").create();
+        mDialog.show();
+    }
+
 }

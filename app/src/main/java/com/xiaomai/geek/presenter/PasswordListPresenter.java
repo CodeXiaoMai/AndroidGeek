@@ -25,7 +25,7 @@ public class PasswordListPresenter extends BaseRxPresenter<IPasswordSearchView> 
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<List<Password>>() {
             @Override
             public void call(Subscriber<? super List<Password>> subscriber) {
-                List<Password> passwords = PasswordDBHelper.getInstance(context).queryAllPasswords();
+                List<Password> passwords = PasswordDBHelper.getInstance(context).getAllPasswords();
                 subscriber.onNext(passwords);
             }
         })

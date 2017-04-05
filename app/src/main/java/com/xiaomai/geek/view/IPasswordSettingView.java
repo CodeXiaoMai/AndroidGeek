@@ -15,4 +15,7 @@ public interface IPasswordSettingView extends MvpView {
     void onDeleteAllPasswords(int count);
 
     void onBackupComplete(int count);
+
+    void showBackupIng();
+
 }

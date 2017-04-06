@@ -83,6 +83,8 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
 
     private Password mPassword;
 
+    private PasswordDetailPresenter mPresenter;
+
     public static void launch(Context context, Password password) {
         Intent intent = new Intent(context, PasswordDetailActivity.class);
         intent.putExtra(EXTRA_PASSWORD, password);
@@ -109,7 +111,7 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
         if (null != intent) {
             mPassword = intent.getParcelableExtra(EXTRA_PASSWORD);
         }
-        ((PasswordDetailPresenter) mPresenter).getPasswordDetail(mContext, mPassword.getId());
+        mPresenter.getPasswordDetail(mContext, mPassword.getId());
     }
 
     @Override
@@ -139,7 +141,7 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ((PasswordDetailPresenter) mPresenter).deletePassword(mContext,
+                        mPresenter.deletePassword(mContext,
                                 mPassword.getId());
                     }
                 }).create().show();
@@ -149,7 +151,7 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
         boolean isStar = mPassword.isStar();
         ContentValues contentValues = new ContentValues();
         contentValues.put(PasswordDBHelper.COLUMN_STAR, !isStar);
-        ((PasswordDetailPresenter) mPresenter).startPassword(
+        mPresenter.startPassword(
                 isStar ? PasswordDetailPresenter.TYPE_UN_STAR : PasswordDetailPresenter.TYPE_STAR,
                 mContext, mPassword.getId(), contentValues);
     }

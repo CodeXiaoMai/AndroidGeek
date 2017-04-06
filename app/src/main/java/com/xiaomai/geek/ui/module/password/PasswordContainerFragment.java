@@ -10,10 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -42,6 +44,12 @@ public class PasswordContainerFragment extends BaseFragment {
     Toolbar toolBar;
 
     private PasswordContainerAdapter mAdapter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Nullable
     @Override
@@ -102,4 +110,13 @@ public class PasswordContainerFragment extends BaseFragment {
         EditAccountActivity.launch(mContext);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                ((MainActivity)getActivity()).openDrawer();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

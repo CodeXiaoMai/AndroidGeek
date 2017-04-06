@@ -85,6 +85,7 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <ImageView
+                    android:id="@+id/iv_generate_pwd"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center_vertical"

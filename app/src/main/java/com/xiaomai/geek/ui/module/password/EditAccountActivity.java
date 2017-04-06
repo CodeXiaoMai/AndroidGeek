@@ -8,15 +8,23 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.InputMethodUtils;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.ActivityComponent;
@@ -32,6 +40,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by XiaoMai on 2017/3/30 14:01.
@@ -45,6 +54,9 @@ public class EditAccountActivity extends BaseActivity
     public static final int MODE_UPDATE = 2;
 
     private static final String EXTRA_PASSWORD = "EXTRA_PASSWORD";
+
+    @BindView(R.id.iv_generate_pwd)
+    ImageView ivGeneratePwd;
 
     private int mCurrentMode = MODE_CREATE;
 
@@ -84,6 +96,8 @@ public class EditAccountActivity extends BaseActivity
     private String mNote;
 
     private int mPasswordId;
+
+    private EditAccountPresenter mPresenter;
 
     public static void launch(Context context) {
         context.startActivity(new Intent(context, EditAccountActivity.class));
@@ -198,11 +212,10 @@ public class EditAccountActivity extends BaseActivity
         mPassword = editPassword.getText().toString().trim();
         mNote = editNote.getText().toString().trim();
         if (mCurrentMode == MODE_CREATE) {
-            ((EditAccountPresenter) mPresenter).savePassword(mContext, mPlatform, mUserName,
-                    mPassword, mNote);
+            mPresenter.savePassword(mContext, mPlatform, mUserName, mPassword, mNote);
         } else if (mCurrentMode == MODE_UPDATE) {
-            ((EditAccountPresenter) mPresenter).updatePassword(mContext, mPasswordId, mPlatform,
-                    mUserName, mPassword, mNote);
+            mPresenter.updatePassword(mContext, mPasswordId, mPlatform, mUserName, mPassword,
+                    mNote);
         }
     }
 
@@ -253,5 +266,100 @@ public class EditAccountActivity extends BaseActivity
         return DaggerActivityComponent.builder()
                 .applicationComponent(GeekApplication.get(mContext).getComponent())
                 .activityModule(new ActivityModule(this)).build();
+    }
+
+    private int mLength = 6;
+
+    private int mPasswordType = EditAccountPresenter.TYPE_ALL;
+
+    private AlertDialog mDialog = null;
+
+    @OnClick(R.id.iv_generate_pwd)
+    public void onClick() {
+        InputMethodUtils.hideSoftInput(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_generate_pwd, null);
+        final TextView tvPassword = (TextView) view.findViewById(R.id.tv_password);
+        SeekBar seekBar = (SeekBar) view.findViewById(R.id.seek_bar);
+        final TextView tvLength = (TextView) view.findViewById(R.id.tv_length);
+        Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
+        View refresh = view.findViewById(R.id.refresh);
+        final View cancel = view.findViewById(R.id.bt_cancel);
+        View ok = view.findViewById(R.id.bt_ok);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                mLength = progress + 6;
+                tvLength.setText("密码长度：" + mLength);
+                tvPassword.setText(getPassword());
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        mPasswordType = EditAccountPresenter.TYPE_ALL;
+                        break;
+                    case 1:
+                        mPasswordType = EditAccountPresenter.TYPE_NUM_LETTER;
+                        break;
+                    case 2:
+                        mPasswordType = EditAccountPresenter.TYPE_NUM;
+                        break;
+                    case 3:
+                        mPasswordType = EditAccountPresenter.TYPE_LETTER;
+                        break;
+                }
+                tvPassword.setText(getPassword());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvPassword.setText(getPassword());
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
+                }
+                mLength = 6;
+                mPasswordType = EditAccountPresenter.TYPE_ALL;
+            }
+        });
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
+                }
+                editPassword.setText(mPassword);
+            }
+        });
+        mDialog = new AlertDialog.Builder(mContext).setView(view).create();
+        mDialog.show();
+    }
+    
+    private String getPassword() {
+        mPassword = mPresenter.generatePassword(mPasswordType, mLength);
+        return mPassword;
     }
 }

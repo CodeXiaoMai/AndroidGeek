@@ -26,7 +26,6 @@ import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.PasswordListPresenter;
-import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.base.BaseFragment;
 import com.xiaomai.geek.view.IPasswordSearchView;
 
@@ -165,10 +164,10 @@ public class PasswordListFragment extends BaseFragment implements IPasswordSearc
         inflater.inflate(R.menu.password_container_menu, menu);
         MenuItem item = menu.findItem(R.id.search_view);
         mSearchView = (SearchView) MenuItemCompat.getActionView(item);
-        mSearchView.setQueryHint("输入平台的名字...");
+        mSearchView.setQueryHint("搜索...");
         final SearchView.SearchAutoComplete completeText = (SearchView.SearchAutoComplete) mSearchView
                 .findViewById(R.id.search_src_text);
-        completeText.setAdapter(new ArrayAdapter<>(mContext, R.layout.search_item,
+        completeText.setAdapter(new ArrayAdapter<>(mContext, R.layout.list_item_textview,
                 R.id.text, new String[] {
                         "小米", "百度", "QQ", "微信"
                 }));
@@ -203,9 +202,6 @@ public class PasswordListFragment extends BaseFragment implements IPasswordSearc
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                ((MainActivity) getActivity()).openDrawer();
-                return true;
             case R.id.search_view:
                 return true;
         }

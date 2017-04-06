@@ -7,4 +7,11 @@
 
     <!-- Behavior -->
     <string name="behavior_bottom">com.xiaomai.geek.ui.behavior.BottomBehavior</string>
+    
+    <string-array name="password_types">
+        <item>全部随机</item>
+        <item>数字字母组合</item>
+        <item>仅数字</item>
+        <item>仅字母</item>
+    </string-array>
 </resources>

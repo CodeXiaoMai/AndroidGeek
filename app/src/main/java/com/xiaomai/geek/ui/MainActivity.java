@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity
             }
         } else {
             fragment = Fragment.instantiate(mContext, fragmentName);
-            mFragmentManager.beginTransaction().add(R.id.fl_container, fragment).commit();
+            mFragmentManager.beginTransaction().add(R.id.fl_container, fragment, fragmentName).commit();
         }
 
         if (mCurrentFragment != null) {

@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="密码长度：12" />
+        android:text="密码长度：6" />
 
     <Spinner
         android:id="@+id/spinner"

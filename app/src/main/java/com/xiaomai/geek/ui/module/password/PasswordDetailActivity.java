@@ -2,6 +2,8 @@
 package com.xiaomai.geek.ui.module.password;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -72,14 +74,20 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
     @BindView(R.id.tv_note)
     TextView tvNote;
 
-    @BindView(R.id.layout_password)
-    RelativeLayout layoutPassword;
-
     @BindView(R.id.layout_category)
     RelativeLayout layoutCategory;
 
     @BindView(R.id.layout_note)
     CardView layoutNote;
+
+    @BindView(R.id.ic_category)
+    ImageView icCategory;
+
+    @BindView(R.id.layout_userName)
+    RelativeLayout layoutUserName;
+
+    @BindView(R.id.layout_password)
+    RelativeLayout layoutPassword;
 
     private Password mPassword;
 
@@ -141,8 +149,7 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mPresenter.deletePassword(mContext,
-                                mPassword.getId());
+                        mPresenter.deletePassword(mContext, mPassword.getId());
                     }
                 }).create().show();
     }
@@ -237,8 +244,27 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
         }
     }
 
-    @OnClick(R.id.flb_edit)
-    public void onClick() {
-        EditAccountActivity.launch(mContext, mPassword);
+    @OnClick({
+            R.id.layout_userName, R.id.layout_password, R.id.flb_edit
+    })
+    public void onClick(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+
+        switch (view.getId()) {
+            case R.id.flb_edit:
+                EditAccountActivity.launch(mContext, mPassword);
+                break;
+            case R.id.layout_userName:
+                clipboardManager.setPrimaryClip(
+                        ClipData.newPlainText("userName", tvUserName.getText().toString()));
+                Snackbar.make(layoutCategory, "账号已复制到剪切板", Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.layout_password:
+                clipboardManager.setPrimaryClip(
+                        ClipData.newPlainText("password", tvPassword.getText().toString()));
+                Snackbar.make(layoutCategory, "密码已复制到剪切板", Snackbar.LENGTH_LONG).show();
+                break;
+        }
     }
+
 }

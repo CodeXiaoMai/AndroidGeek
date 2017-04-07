@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,11 @@ import android.widget.LinearLayout;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.module.Password;
+import com.xiaomai.geek.data.pref.PasswordPref;
 import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.PasswordSettingPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
+import com.xiaomai.geek.ui.widget.EditTextDialog;
 import com.xiaomai.geek.view.IPasswordSettingView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -37,9 +40,10 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
     @BindView(R.id.layout_backup)
     LinearLayout layoutBackup;
 
-    private PasswordSettingPresenter mPresenter = new PasswordSettingPresenter();
+    @BindView(R.id.layout_modify_password)
+    LinearLayout layoutModifyPassword;
 
-    private AlertDialog mDialog;
+    private PasswordSettingPresenter mPresenter = new PasswordSettingPresenter();
 
     public static PasswordSettingFragment newInstance() {
         return new PasswordSettingFragment();
@@ -61,7 +65,7 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
     }
 
     @OnClick({
-            R.id.layout_clear_data, R.id.layout_backup
+            R.id.layout_clear_data, R.id.layout_backup, R.id.layout_modify_password
     })
     public void onClick(View view) {
         switch (view.getId()) {
@@ -71,7 +75,33 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
             case R.id.layout_backup:
                 mPresenter.backupPasswords(mContext);
                 break;
+            case R.id.layout_modify_password:
+                showModifyDialog();
+                break;
         }
+    }
+
+    private EditTextDialog mDialog;
+
+    private void showModifyDialog() {
+        mDialog = new EditTextDialog.Builder(mContext).setTitle("修改密码")
+                .setHint("请输入新密码")
+                .setOnPositiveButtonClickListener(
+                        new EditTextDialog.Builder.OnPositiveButtonClickListener() {
+                            @Override
+                            public void onClick(TextInputLayout textInputLayout, String password) {
+                                if (password.length() < 6) {
+                                    textInputLayout.setError("密码长度不能小于6");
+                                } else {
+                                    PasswordPref.savePassword(mContext, password);
+                                    mDialog.dismiss();
+                                    Snackbar.make(layoutBackup, "密码修改成功！", Snackbar.LENGTH_LONG)
+                                            .show();
+                                }
+                            }
+                        })
+                .create();
+        mDialog.show();
     }
 
     private void clearData() {
@@ -102,15 +132,17 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
 
     @Override
     public void onBackupComplete(int count) {
-        if (mDialog != null && mDialog.isShowing())
-            mDialog.dismiss();
+        if (mProgressDialog != null && mProgressDialog.isShowing())
+            mProgressDialog.dismiss();
         Snackbar.make(layoutBackup, "成功备份" + count + "条数据", Snackbar.LENGTH_LONG).show();
     }
 
+    private AlertDialog mProgressDialog;
+
+
     @Override
     public void showBackupIng() {
-        mDialog = new ProgressDialog.Builder(mContext).setMessage("正在备份中").create();
-        mDialog.show();
+        mProgressDialog = new ProgressDialog.Builder(mContext).setMessage("正在备份中").create();
+        mProgressDialog.show();
     }
-
 }

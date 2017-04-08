@@ -16,6 +16,62 @@
 #   public *;
 #}
 
+#忽略warning
+-ignorewarnings
+#指定代码的压缩级别
+-optimizationpasses 5
+ #包名不混合大小写
+-dontusemixedcaseclassnames
+#优化  不优化输入的类文件
+-dontoptimize
+#预校验
+-dontpreverify
+-verbose
+# 混淆时所采用的算法
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+ #保护注解
+-keepattributes *Annotation*
+#保护泛型
+-keepattributes Signature
+
+#保持 Parcelable 不被混淆
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+#保持 Serializable 不被混淆
+-keepnames class * implements java.io.Serializable
+#保持 native 方法不被混淆
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+#保持自定义控件类不被混淆
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+ #保持自定义控件类不被混淆
+-keepclassmembers class * extends android.app.Activity {
+       public void *(android.view.View);
+}
+#保持 Serializable 不被混淆并且enum 类也不被混淆
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    !private <fields>;
+    !private <methods>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+#枚举类不能去混淆 start
+-keepclassmembers enum * {
+     public static **[] values();
+     public static ** valueOf(java.lang.String);
+ }
+#枚举类不能去混淆 end
+
 #EventBus Start
 -keepattributes *Annotation*
 -keepclassmembers class ** {
@@ -58,3 +114,38 @@
 }
 #RxJava End
 
+# BaseRecyclerViewAdapterHelper Start
+-keep class com.chad.library.adapter.** {
+   *;
+}
+# BaseRecyclerViewAdapterHelper End
+
+-dontwarn javax.annotation.**
+-dontwarn javax.inject.**
+# OkHttp3
+-dontwarn okhttp3.logging.**
+-keep class okhttp3.internal.**{*;}
+-dontwarn okio.**
+
+# Retrofit
+# Platform calls Class.forName on types which do not exist on Android to determine platform.
+-dontnote retrofit2.Platform
+# Platform used when running on Java 8 VMs. Will not be used at runtime.
+-dontwarn retrofit2.Platform$Java8
+# Retain generic type information for use by reflection by converters and adapters.
+-keepattributes Signature
+# Retain declared checked exceptions for use by a Proxy instance.
+-keepattributes Exceptions
+
+# Gson
+-keep class com.google.gson.stream.** { *; }
+-keepattributes EnclosingMethod
+# 这是你定义的实体类
+-keep class com.xiaomai.geek.data.model.**{*;}
+
+# Bugly
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+
+# V7包
+-keep class !android.support.v7.internal.view.menu.**,android.support.** {*;}

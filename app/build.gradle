@@ -4,7 +4,7 @@ apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "24.0.2"
     defaultConfig {
         applicationId "com.xiaomai.geek"
         minSdkVersion 15
@@ -35,6 +35,19 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
         }
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+            // 在manifest中加入以下配置
+            // <meta-data
+            //android:name="UMENG_CHANNEL"
+            //android:value="${UMENG_CHANNEL_VALUE}" />
+    }
+
+    // 友盟多渠道打包
+    productFlavors {
+        main {}
     }
 }
 
@@ -86,4 +99,13 @@ dependencies {
     // https://github.com/facebook/stetho
     compile 'com.facebook.stetho:stetho:1.4.2'
     compile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
+
+    // Retrofit for rest client
+    // https://github.com/square/retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    // OkHttp logging interceptor
+    // https://github.com/square/okhttp/wiki/Interceptors
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 }

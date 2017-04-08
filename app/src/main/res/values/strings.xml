@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidGeek</string>
+    <string name="app_name">Android极客</string>
     <string name="password_manage">密码管理</string>
     <string name="gitHub">GitHub</string>
     <string name="article">干货</string>

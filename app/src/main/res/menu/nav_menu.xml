@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_password_manage"
-            android:icon="@mipmap/ic_launcher"
             android:checked="true"
-            android:title="@string/password_manage" />
+            android:icon="@drawable/key"
+            android:title="@string/password_manage"
+            app:showAsAction="always" />
 
         <item
             android:id="@+id/menu_gitHub"
-            android:icon="@mipmap/ic_launcher"
-            android:title="@string/gitHub" />
+            android:icon="@drawable/github"
+            android:title="@string/gitHub"
+            app:showAsAction="always" />
 
         <item
             android:id="@+id/menu_article"
-            android:icon="@mipmap/ic_launcher"
-            android:title="@string/article" />
+            android:icon="@drawable/article"
+            android:title="@string/article"
+            app:showAsAction="always" />
 
         <item
             android:id="@+id/menu_video"
-            android:icon="@mipmap/ic_launcher"
-            android:title="@string/video" />
+            android:icon="@drawable/video"
+            android:title="@string/video"
+            app:showAsAction="always" />
     </group>
 </menu>

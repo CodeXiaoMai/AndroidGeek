@@ -88,20 +88,34 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
         }
     }
 
+    private int mode = 0;
+
     private void showModifyDialog() {
-        new EditTextDialog.Builder(mContext).setTitle("修改密码").setHint("请输入新密码")
+
+        new EditTextDialog.Builder(mContext).setTitle("修改密码").setHint("请输入原密码")
                 .setOnPositiveButtonClickListener(
                         new EditTextDialog.Builder.OnPositiveButtonClickListener() {
                             @Override
                             public void onClick(EditTextDialog dialog,
                                     TextInputLayout textInputLayout, String password) {
-                                if (password.length() < 6) {
-                                    textInputLayout.setError("密码长度不能小于6");
+                                if (mode == 0) {
+                                    if (TextUtils.equals(PasswordPref.getPassword(mContext), password)) {
+                                        textInputLayout.setHint("请输入新密码");
+                                        textInputLayout.getEditText().setText("");
+                                        mode = 1;
+                                    } else {
+                                        textInputLayout.setError("密码错误！");
+                                    }
                                 } else {
-                                    PasswordPref.savePassword(mContext, password);
-                                    dialog.dismiss();
-                                    Snackbar.make(layoutBackup, "密码修改成功！", Snackbar.LENGTH_LONG)
-                                            .show();
+                                    if (password.length() < 6) {
+                                        textInputLayout.setError("密码长度不能小于6");
+                                    } else {
+                                        PasswordPref.savePassword(mContext, password);
+                                        dialog.dismiss();
+                                        Snackbar.make(layoutBackup, "密码修改成功！", Snackbar.LENGTH_LONG)
+                                                .show();
+                                        mode = 0;
+                                    }
                                 }
                             }
                         })

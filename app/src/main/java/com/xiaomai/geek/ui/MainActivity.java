@@ -77,18 +77,17 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
-    private EditTextDialog mDialog;
-
     private void openPassword() {
-        mDialog = new EditTextDialog.Builder(mContext)
+        new EditTextDialog.Builder(mContext)
                 .setTitle(PasswordPref.hasPassword(mContext) ? "打开密码箱" : "设置密码")
                 .setCancelable(false).setOnPositiveButtonClickListener(
                         new EditTextDialog.Builder.OnPositiveButtonClickListener() {
                             @Override
-                            public void onClick(TextInputLayout textInputLayout, String password) {
+                            public void onClick(EditTextDialog dialog,
+                                    TextInputLayout textInputLayout, String password) {
                                 if (PasswordPref.hasPassword(mContext)) {
                                     if (password.equals(PasswordPref.getPassword(mContext))) {
-                                        mDialog.dismiss();
+                                        dialog.dismiss();
                                         changeFragment(PasswordContainerFragment.class.getName());
                                     } else {
                                         textInputLayout.setError("密码错误");
@@ -98,15 +97,14 @@ public class MainActivity extends BaseActivity
                                         textInputLayout.setError("密码长度不能小于6");
                                     } else {
                                         PasswordPref.savePassword(mContext, password);
-                                        mDialog.dismiss();
+                                        dialog.dismiss();
                                         Snackbar.make(flContainer, "密码设置成功，请牢记密码",
                                                 Snackbar.LENGTH_LONG).show();
                                     }
                                 }
                             }
                         })
-                .create();
-        mDialog.show();
+                .create().show();
     }
 
     private void changeFragment(String fragmentName) {

@@ -18,4 +18,7 @@ public interface IPasswordSettingView extends MvpView {
 
     void showBackupIng();
 
+    void importComplete(int count);
+
+    void importFail(String message);
 }

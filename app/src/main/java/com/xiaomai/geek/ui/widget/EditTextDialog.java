@@ -20,7 +20,7 @@ import com.xiaomai.geek.R;
 public class EditTextDialog extends Dialog {
 
     private EditTextDialog(Context context) {
-        super(context);
+        super(context, R.style.EditTextDialog);
     }
 
     public static class Builder {
@@ -36,7 +36,7 @@ public class EditTextDialog extends Dialog {
         private OnPositiveButtonClickListener listener;
 
         public interface OnPositiveButtonClickListener {
-            void onClick(TextInputLayout textInputLayout, String password);
+            void onClick(EditTextDialog dialog, TextInputLayout textInputLayout, String password);
         }
 
         public Builder(Context context) {
@@ -66,12 +66,13 @@ public class EditTextDialog extends Dialog {
 
         public EditTextDialog create() {
             final EditTextDialog mDialog = new EditTextDialog(context);
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.dialog_input_password, null);
-            final TextInputLayout textInput = (TextInputLayout) view.findViewById(R.id.layout_password);
+            final TextInputLayout textInput = (TextInputLayout) view
+                    .findViewById(R.id.layout_password);
             textInput.setHint(hint);
-            final EditText editText = (EditText) view
-                    .findViewById(R.id.edit_password);
+            final EditText editText = (EditText) view.findViewById(R.id.edit_password);
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -103,7 +104,7 @@ public class EditTextDialog extends Dialog {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
-                        listener.onClick(textInput, editText.getText().toString().trim());
+                        listener.onClick(mDialog, textInput, editText.getText().toString().trim());
                     }
                 }
             });
@@ -112,4 +113,5 @@ public class EditTextDialog extends Dialog {
             return mDialog;
         }
     }
+
 }

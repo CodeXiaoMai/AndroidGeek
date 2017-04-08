@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.xiaomai.geek.data.module.Password;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,16 +77,14 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
 
     }
 
-    public long insert(String platform, String userName, String password, String note, int isStar,
-            long time) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_PLATFORM, platform);
-        contentValues.put(COLUMN_USERNAME, userName);
-        contentValues.put(COLUMN_PASSWORD, password);
-        contentValues.put(COLUMN_NOTE, note);
-        contentValues.put(COLUMN_STAR, isStar);
-        contentValues.put(COLUMN_TIME, time);
-        return getReadableDatabase().insert(TABLE_NAME, null, contentValues);
+    public long insert(String platform, String userName, String password, String note, int isStar) {
+        Password pwd = new Password();
+        pwd.setPlatform(platform);
+        pwd.setUserName(userName);
+        pwd.setPassword(password);
+        pwd.setNote(note);
+        pwd.setStar(isStar);
+        return insert(pwd);
     }
 
     public long insert(Password password) {
@@ -95,9 +94,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_PASSWORD, password.getPassword());
         contentValues.put(COLUMN_NOTE, password.getNote());
         contentValues.put(COLUMN_STAR, password.isStar());
-        if (!contentValues.containsKey(COLUMN_TIME)) {
-            contentValues.put(COLUMN_TIME, System.currentTimeMillis());
-        }
+        contentValues.put(COLUMN_TIME, new Date().getTime());
         return getReadableDatabase().insert(TABLE_NAME, null, contentValues);
     }
 

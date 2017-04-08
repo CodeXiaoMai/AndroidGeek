@@ -85,10 +85,6 @@ public class Password implements Parcelable {
         return time;
     }
 
-    public void setTime(long time) {
-        this.time = time;
-    }
-
     public String getPlatform() {
         return platform;
     }

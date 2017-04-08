@@ -9,4 +9,8 @@
     </style>
 
     <style name="TransparentTheme" parent="AppTheme"/>
+
+    <style name="EditTextDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowSoftInputMode">stateAlwaysVisible</item>
+    </style>
 </resources>

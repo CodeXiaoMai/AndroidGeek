@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
 
+import com.facebook.stetho.Stetho;
+import com.xiaomai.geek.BuildConfig;
 import com.xiaomai.geek.common.utils.FileUtils;
 
 /**
@@ -39,8 +41,13 @@ public class InitializeService extends IntentService {
 
     private void performInit() {
         // 检查创建文件夹
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
             getExternalFilesDirs(null);
+        }
         FileUtils.checkDirs(Environment.getExternalStorageDirectory() + "/" + getPackageName());
+
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this);
+        }
     }
 }

@@ -48,7 +48,7 @@ public class EditAccountPresenter extends BaseRxPresenter<IEditAccountView> {
             @Override
             public void call(Subscriber<? super Boolean> subscriber) {
                 long id = PasswordDBHelper.getInstance(context).insert(platform, userName, password,
-                        note, 0, 0);
+                        note, 0);
                 if (id > 0) {
                     subscriber.onNext(true);
                 } else {

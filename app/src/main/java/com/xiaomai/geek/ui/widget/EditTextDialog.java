@@ -35,6 +35,8 @@ public class EditTextDialog extends Dialog {
 
         private OnPositiveButtonClickListener listener;
 
+        private View.OnClickListener negativeButtonClickListener;
+
         public interface OnPositiveButtonClickListener {
             void onClick(EditTextDialog dialog, TextInputLayout textInputLayout, String password);
         }
@@ -42,6 +44,7 @@ public class EditTextDialog extends Dialog {
         public Builder(Context context) {
             this.context = context;
             this.hint = "请输入密码";
+            this.cancelable = true;
         }
 
         public Builder setTitle(String title) {
@@ -61,6 +64,11 @@ public class EditTextDialog extends Dialog {
 
         public Builder setOnPositiveButtonClickListener(OnPositiveButtonClickListener listener) {
             this.listener = listener;
+            return this;
+        }
+
+        public Builder setOnNegativeButtonClickListener(View.OnClickListener negativeButtonClickListener) {
+            this.negativeButtonClickListener = negativeButtonClickListener;
             return this;
         }
 
@@ -91,12 +99,15 @@ public class EditTextDialog extends Dialog {
             });
             final TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
             tvTitle.setText(title);
-            View cancel = view.findViewById(R.id.bt_cancel);
+            final View cancel = view.findViewById(R.id.bt_cancel);
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mDialog.isShowing())
                         mDialog.dismiss();
+                    if (negativeButtonClickListener != null) {
+                        negativeButtonClickListener.onClick(cancel);
+                    }
                 }
             });
             View ok = view.findViewById(R.id.bt_ok);

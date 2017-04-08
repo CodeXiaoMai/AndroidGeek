@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/menu_password_manage"
             android:checked="true"
-            android:icon="@drawable/key"
-            android:title="@string/password_manage"
+            android:id="@+id/menu_article"
+            android:icon="@drawable/article"
+            android:title="@string/article"
             app:showAsAction="always" />
 
         <item
@@ -17,15 +18,15 @@
             app:showAsAction="always" />
 
         <item
-            android:id="@+id/menu_article"
-            android:icon="@drawable/article"
-            android:title="@string/article"
-            app:showAsAction="always" />
-
-        <item
             android:id="@+id/menu_video"
             android:icon="@drawable/video"
             android:title="@string/video"
             app:showAsAction="always" />
+        <item
+            android:id="@+id/menu_password_manage"
+            android:icon="@drawable/key"
+            android:title="@string/password_manage"
+            app:showAsAction="always" />
+
     </group>
 </menu>

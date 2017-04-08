@@ -13,12 +13,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.pref.PasswordPref;
 import com.xiaomai.geek.ui.base.BaseActivity;
+import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
+import com.xiaomai.geek.ui.module.github.GitHubContainerFragment;
 import com.xiaomai.geek.ui.module.password.PasswordContainerFragment;
+import com.xiaomai.geek.ui.module.video.VideoContainerFragment;
 import com.xiaomai.geek.ui.widget.EditTextDialog;
 
 import butterknife.BindView;
@@ -40,6 +44,8 @@ public class MainActivity extends BaseActivity
 
     private Fragment mCurrentFragment;
 
+    private int mCurrentPosition = 0;
+
     public static void launch(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
     }
@@ -54,33 +60,41 @@ public class MainActivity extends BaseActivity
 
     private void initViews() {
         navView.setNavigationItemSelectedListener(this);
-        changeFragment(PasswordContainerFragment.class.getName());
+        changeFragment(ArticleContainerFragment.class.getName());
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         switch (item.getItemId()) {
+            case R.id.menu_article:
+                changeFragment(ArticleContainerFragment.class.getName());
+                mCurrentPosition = 0;
+                break;
+            case R.id.menu_gitHub:
+                changeFragment(GitHubContainerFragment.class.getName());
+                mCurrentPosition = 1;
+                break;
+            case R.id.menu_video:
+                changeFragment(VideoContainerFragment.class.getName());
+                mCurrentPosition = 2;
+                break;
             case R.id.menu_password_manage:
                 openPassword();
                 break;
-            case R.id.menu_gitHub:
-                changeFragment(PasswordContainerFragment.class.getName());
-                break;
-            case R.id.menu_video:
-                changeFragment(PasswordContainerFragment.class.getName());
-                break;
-            case R.id.menu_article:
-                changeFragment(PasswordContainerFragment.class.getName());
-                break;
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
     private void openPassword() {
         new EditTextDialog.Builder(mContext)
                 .setTitle(PasswordPref.hasPassword(mContext) ? "打开密码箱" : "设置密码")
-                .setCancelable(false).setOnPositiveButtonClickListener(
+                .setCancelable(false).setOnNegativeButtonClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        navView.getMenu().getItem(mCurrentPosition).setChecked(true);
+                    }
+                }).setOnPositiveButtonClickListener(
                         new EditTextDialog.Builder.OnPositiveButtonClickListener() {
                             @Override
                             public void onClick(EditTextDialog dialog,
@@ -89,6 +103,7 @@ public class MainActivity extends BaseActivity
                                     if (password.equals(PasswordPref.getPassword(mContext))) {
                                         dialog.dismiss();
                                         changeFragment(PasswordContainerFragment.class.getName());
+                                        mCurrentPosition = 3;
                                     } else {
                                         textInputLayout.setError("密码错误");
                                     }
@@ -98,6 +113,8 @@ public class MainActivity extends BaseActivity
                                     } else {
                                         PasswordPref.savePassword(mContext, password);
                                         dialog.dismiss();
+                                        changeFragment(PasswordContainerFragment.class.getName());
+                                        mCurrentPosition = 3;
                                         Snackbar.make(flContainer, "密码设置成功，请牢记密码",
                                                 Snackbar.LENGTH_LONG).show();
                                     }

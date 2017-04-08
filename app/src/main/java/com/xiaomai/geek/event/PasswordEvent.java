@@ -19,6 +19,8 @@ public class PasswordEvent {
 
     public static final int TYPE_CLEAR = 4;
 
+    public static final int TYPE_IMPORT = 5;
+
     private int type;
 
     private Password password;
@@ -45,7 +47,7 @@ public class PasswordEvent {
     }
 
     @IntDef({
-            TYPE_UPDATE, TYPE_DELETE, TYPE_ADD, TYPE_CLEAR
+            TYPE_UPDATE, TYPE_DELETE, TYPE_ADD, TYPE_CLEAR, TYPE_IMPORT
     })
     @interface PasswordEventType {
 

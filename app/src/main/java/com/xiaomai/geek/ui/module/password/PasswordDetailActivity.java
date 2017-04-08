@@ -35,6 +35,7 @@ import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.view.IPasswordDetailView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -102,6 +103,7 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        EventBus.getDefault().register(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_detail);
         ButterKnife.bind(this);
@@ -189,16 +191,6 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void dismissLoading() {
-
-    }
-
-    @Override
     public void showContent(Password password) {
         mPassword = password;
         // 这句话触发onPrepareOptionsMenu()方法
@@ -216,15 +208,6 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
             layoutNote.setVisibility(View.VISIBLE);
             tvNote.setText(note);
         }
-    }
-
-    @Override
-    public void showError(Throwable e) {
-
-    }
-
-    @Override
-    public void showEmpty() {
     }
 
     @Override
@@ -282,4 +265,16 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
         }
     }
 
+    @Subscribe
+    public void onHandlePasswordEvent (PasswordEvent passwordEvent) {
+        if (passwordEvent.getType() == PasswordEvent.TYPE_UPDATE) {
+            mPresenter.getPasswordDetail(mContext, mPassword.getId());
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

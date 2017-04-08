@@ -162,7 +162,7 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
     @Override
     public void importComplete(int count) {
         Snackbar.make(layoutBackup, "成功导入" + count + "条数据", Snackbar.LENGTH_LONG).show();
-        EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_ADD, new Password()));
+        EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_IMPORT, new Password()));
     }
 
     @Override

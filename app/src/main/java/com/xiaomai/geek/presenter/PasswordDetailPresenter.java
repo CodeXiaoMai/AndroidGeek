@@ -10,10 +10,8 @@ import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.view.IPasswordDetailView;
 
 import rx.Observable;
-import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
@@ -28,43 +26,20 @@ public class PasswordDetailPresenter extends BaseRxPresenter<IPasswordDetailView
             @Override
             public void call(Subscriber<? super Password> subscriber) {
                 Password password = PasswordDBHelper.getInstance(context).getPasswordById(id);
-                if (password == null) {
-                    subscriber.onError(new Throwable("没有数据"));
-                } else {
-                    subscriber.onNext(password);
-                    subscriber.onCompleted();
-                }
+                subscriber.onNext(password);
+                subscriber.onCompleted();
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(new Action0() {
+                .subscribe(new Action1<Password>() {
                     @Override
-                    public void call() {
-                        getMvpView().showLoading();
-                    }
-                }).doOnTerminate(new Action0() {
-                    @Override
-                    public void call() {
-                        getMvpView().dismissLoading();
-                    }
-                }).subscribe(new Observer<Password>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        getMvpView().showError(e);
-                    }
-
-                    @Override
-                    public void onNext(Password password) {
+                    public void call(Password password) {
                         getMvpView().showContent(password);
                     }
                 }));
     }
 
-    public void startPassword(@UpdateType final int type, final Context context, final int id, final ContentValues contentValues) {
+    public void startPassword(@UpdateType
+    final int type, final Context context, final int id, final ContentValues contentValues) {
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {

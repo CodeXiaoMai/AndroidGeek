@@ -223,7 +223,6 @@ public class EditAccountActivity extends BaseActivity
     public void onSaveComplete(boolean save) {
         if (save) {
             EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_ADD, new Password()));
-            Snackbar.make(toolBar, "保存成功", Snackbar.LENGTH_LONG).show();
             finish();
         } else {
             Snackbar.make(toolBar, "保存失败", Snackbar.LENGTH_LONG).show();
@@ -233,7 +232,8 @@ public class EditAccountActivity extends BaseActivity
     @Override
     public void onUpdateComplete(boolean update) {
         if (update) {
-            Snackbar.make(toolBar, "修改成功", Snackbar.LENGTH_LONG).show();
+            EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_UPDATE, new Password()));
+            finish();
         } else {
             Snackbar.make(toolBar, "修改失败", Snackbar.LENGTH_LONG).show();
         }

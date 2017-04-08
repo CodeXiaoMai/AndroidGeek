@@ -159,11 +159,13 @@ public class PasswordListFragment extends BaseFragment implements IPasswordSearc
                             }
                         }).show();
             case PasswordEvent.TYPE_CLEAR:
-            case PasswordEvent.TYPE_ADD:
-                mPresenter.getAllPasswords(mContext);
-                break;
+            case PasswordEvent.TYPE_IMPORT:
             case PasswordEvent.TYPE_UPDATE:
                 mPresenter.getAllPasswords(mContext);
+                break;
+            case PasswordEvent.TYPE_ADD:
+                mPresenter.getAllPasswords(mContext);
+                Snackbar.make(recyclerView, "保存成功", Snackbar.LENGTH_LONG).show();
                 break;
         }
 

@@ -29,7 +29,10 @@ public class PasswordListAdapter extends BaseQuickAdapter<Password> {
 
     private SpannableString spannableUsername;
 
-    private ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.parseColor("#009ad6"));;
+    private OnPublishClickListener listener;
+
+    private ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(
+            Color.parseColor("#009ad6"));;
 
     public PasswordListAdapter(List<Password> data) {
         super(R.layout.item_password, data);
@@ -73,9 +76,26 @@ public class PasswordListAdapter extends BaseQuickAdapter<Password> {
                 return true;
             }
         });
+
+        holder.getView(R.id.iv_publish).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onPublicClick(password);
+                }
+            }
+        });
     }
 
     public void setKeyWords(String keyWords) {
         this.keyWords = keyWords;
+    }
+
+    public void setOnPublishClickListener(OnPublishClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnPublishClickListener {
+        void onPublicClick(Password password);
     }
 }

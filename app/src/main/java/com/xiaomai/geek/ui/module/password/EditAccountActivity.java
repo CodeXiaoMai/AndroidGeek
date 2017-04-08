@@ -53,7 +53,7 @@ public class EditAccountActivity extends BaseActivity
 
     public static final int MODE_UPDATE = 2;
 
-    private static final String EXTRA_PASSWORD = "EXTRA_PASSWORD";
+    private static final String EXTRA_PASSWORD = "EXTRA_CONTENT";
 
     @BindView(R.id.iv_generate_pwd)
     ImageView ivGeneratePwd;
@@ -224,6 +224,7 @@ public class EditAccountActivity extends BaseActivity
         if (save) {
             EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_ADD, new Password()));
             Snackbar.make(toolBar, "保存成功", Snackbar.LENGTH_LONG).show();
+            finish();
         } else {
             Snackbar.make(toolBar, "保存失败", Snackbar.LENGTH_LONG).show();
         }

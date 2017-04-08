@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
@@ -98,6 +99,16 @@ public class PasswordListFragment extends BaseFragment implements IPasswordSearc
                         PasswordDetailActivity.launch(mContext, password);
                     }
                 });
+        mAdapter.setOnPublishClickListener(new PasswordListAdapter.OnPublishClickListener() {
+            @Override
+            public void onPublicClick(Password password) {
+                NotificationUtils.showNotification(mContext, password,
+                        NotificationUtils.TYPE_PASSWORD);
+                NotificationUtils.showNotification(mContext, password,
+                        NotificationUtils.TYPE_USER_NAME);
+                Snackbar.make(recyclerView, "账号密码已发送到通知栏", Snackbar.LENGTH_LONG).show();
+            }
+        });
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mPresenter.getAllPasswords(mContext);
@@ -167,8 +178,8 @@ public class PasswordListFragment extends BaseFragment implements IPasswordSearc
         mSearchView.setQueryHint("搜索...");
         final SearchView.SearchAutoComplete completeText = (SearchView.SearchAutoComplete) mSearchView
                 .findViewById(R.id.search_src_text);
-        completeText.setAdapter(new ArrayAdapter<>(mContext, R.layout.list_item_textview,
-                R.id.text, new String[] {
+        completeText.setAdapter(
+                new ArrayAdapter<>(mContext, R.layout.list_item_textview, R.id.text, new String[] {
                         "小米", "百度", "QQ", "微信"
                 }));
         completeText.setOnItemClickListener(new AdapterView.OnItemClickListener() {

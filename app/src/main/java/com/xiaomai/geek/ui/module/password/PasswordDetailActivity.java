@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
@@ -139,6 +140,20 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
                 return true;
             case R.id.menu_delete:
                 deletePassword();
+                return true;
+            case R.id.menu_publish:
+                NotificationUtils.showNotification(mContext, mPassword,
+                        NotificationUtils.TYPE_PASSWORD);
+                NotificationUtils.showNotification(mContext, mPassword,
+                        NotificationUtils.TYPE_USER_NAME);
+                Snackbar.make(toolBar, "账号密码已发送到通知栏", Snackbar.LENGTH_LONG).show();
+                return true;
+            case R.id.menu_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, mPassword.getPlatform() + "\n账号："
+                        + mPassword.getUserName() + "\n密码：" + mPassword.getPassword());
+                startActivity(Intent.createChooser(intent, "分享到"));
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -18,7 +18,9 @@ allprojects {
         jcenter()
         // BaseRecyclerViewAdapterHelper 第一步
         // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-        maven { url "https://jitpack.io" }
+        maven { url "https://jitpack.io"
+        }
+
     }
 }
 

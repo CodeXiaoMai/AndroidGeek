@@ -22,6 +22,8 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.utils.InputMethodUtils;
@@ -33,7 +35,6 @@ import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.EditAccountPresenter;
 import com.xiaomai.geek.ui.base.BaseActivity;
-import com.xiaomai.geek.ui.widget.CircleView;
 import com.xiaomai.geek.view.IEditAccountView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -85,7 +86,7 @@ public class EditAccountActivity extends BaseActivity
     TextInputLayout layoutPassword;
 
     @BindView(R.id.circle_view_icon)
-    CircleView circleViewIcon;
+    ImageView circleViewIcon;
 
     private String mPlatform;
 
@@ -98,6 +99,8 @@ public class EditAccountActivity extends BaseActivity
     private int mPasswordId;
 
     private EditAccountPresenter mPresenter;
+
+    private final ColorGenerator mGenerator = ColorGenerator.MATERIAL;
 
     public static void launch(Context context) {
         context.startActivity(new Intent(context, EditAccountActivity.class));
@@ -151,12 +154,13 @@ public class EditAccountActivity extends BaseActivity
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                final String password = editPlatform.getText().toString().trim();
-                if (password.length() > 0) {
-                    String substring = password.substring(0, 1);
-                    circleViewIcon.setText(substring);
+                final String platform = editPlatform.getText().toString().trim();
+                if (platform.length() > 0) {
+                    String substring = platform.substring(0, 1);
+                    TextDrawable textDrawable = TextDrawable.builder().beginConfig().toUpperCase()
+                            .endConfig().buildRound(substring, mGenerator.getColor(platform));
+                    circleViewIcon.setImageDrawable(textDrawable);
                 } else {
-                    circleViewIcon.setText("");
                     circleViewIcon.setImageResource(R.drawable.ic_default_platform);
                 }
             }
@@ -232,7 +236,8 @@ public class EditAccountActivity extends BaseActivity
     @Override
     public void onUpdateComplete(boolean update) {
         if (update) {
-            EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_UPDATE, new Password()));
+            EventBus.getDefault()
+                    .post(new PasswordEvent(PasswordEvent.TYPE_UPDATE, new Password()));
             finish();
         } else {
             Snackbar.make(toolBar, "修改失败", Snackbar.LENGTH_LONG).show();
@@ -358,7 +363,7 @@ public class EditAccountActivity extends BaseActivity
         mDialog = new AlertDialog.Builder(mContext).setView(view).create();
         mDialog.show();
     }
-    
+
     private String getPassword() {
         mPassword = mPresenter.generatePassword(mPasswordType, mLength);
         return mPassword;

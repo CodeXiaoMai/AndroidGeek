@@ -1,7 +1,6 @@
 
 package com.xiaomai.geek.presenter;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.support.annotation.IntDef;
 
@@ -39,11 +38,11 @@ public class PasswordDetailPresenter extends BaseRxPresenter<IPasswordDetailView
     }
 
     public void startPassword(@UpdateType
-    final int type, final Context context, final int id, final ContentValues contentValues) {
+    final int type, final Context context, final Password password) {
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {
-                int i = PasswordDBHelper.getInstance(context).updatePasswordById(id, contentValues);
+                int i = PasswordDBHelper.getInstance(context).updatePassword(password);
                 subscriber.onNext(i);
                 subscriber.onCompleted();
             }

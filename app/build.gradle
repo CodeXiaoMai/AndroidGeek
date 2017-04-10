@@ -4,7 +4,7 @@ apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "com.xiaomai.geek"
         minSdkVersion 15
@@ -111,4 +111,6 @@ dependencies {
 
     // https://github.com/amulyakhare/TextDrawable
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
 }

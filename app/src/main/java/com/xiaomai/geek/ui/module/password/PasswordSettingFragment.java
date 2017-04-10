@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,7 +98,7 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
                             public void onClick(EditTextDialog dialog,
                                     TextInputLayout textInputLayout, String password) {
                                 if (mode == 0) {
-                                    if (TextUtils.equals(PasswordPref.getPassword(mContext), password)) {
+                                    if (PasswordPref.isPasswordCorrect(mContext, password)) {
                                         textInputLayout.setHint("请输入新密码");
                                         textInputLayout.getEditText().setText("");
                                         mode = 1;
@@ -128,7 +127,7 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
                     @Override
                     public void onClick(EditTextDialog dialog, TextInputLayout textInputLayout,
                             String password) {
-                        if (TextUtils.equals(PasswordPref.getPassword(mContext), password)) {
+                        if (PasswordPref.isPasswordCorrect(mContext, password)) {
                             mPresenter.deleteAllPasswords(mContext);
                             dialog.dismiss();
                         } else {

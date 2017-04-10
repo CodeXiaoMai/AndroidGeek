@@ -100,7 +100,7 @@ public class MainActivity extends BaseActivity
                             public void onClick(EditTextDialog dialog,
                                     TextInputLayout textInputLayout, String password) {
                                 if (PasswordPref.hasPassword(mContext)) {
-                                    if (password.equals(PasswordPref.getPassword(mContext))) {
+                                    if (PasswordPref.isPasswordCorrect(mContext, password)) {
                                         dialog.dismiss();
                                         changeFragment(PasswordContainerFragment.class.getName());
                                         mCurrentPosition = 3;

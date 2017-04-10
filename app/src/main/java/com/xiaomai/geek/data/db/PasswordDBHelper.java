@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.xiaomai.geek.common.utils.SecretUtil;
 import com.xiaomai.geek.data.module.Password;
 
 import java.util.ArrayList;
@@ -68,8 +69,9 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
     private void createTables(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
                 + "_ID INTEGER NOT NULL PRIMARY KEY, " + "PLATFORM TEXT NOT NULL, "
-                + "USERNAME TEXT NOT NULL, " + "PASSWORD TEXT NOT NULL, " + "CATEGORY  TEXT NOT NULL DEFAULT 默认, "
-                + "NOTE TEXT, " + "STAR BOOLEAN, " + "TIME INTEGER NOT NULL);");
+                + "USERNAME TEXT NOT NULL, " + "PASSWORD TEXT NOT NULL, "
+                + "CATEGORY  TEXT NOT NULL DEFAULT 默认, " + "NOTE TEXT, " + "STAR BOOLEAN, "
+                + "TIME INTEGER NOT NULL);");
     }
 
     @Override
@@ -88,24 +90,29 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
     }
 
     public long insert(Password password) {
+        ContentValues contentValues = getContentValuesFromPassword(password);
+        return getReadableDatabase().insert(TABLE_NAME, null, contentValues);
+    }
+
+    private ContentValues getContentValuesFromPassword(Password password) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_PLATFORM, password.getPlatform());
-        contentValues.put(COLUMN_USERNAME, password.getUserName());
-        contentValues.put(COLUMN_PASSWORD, password.getPassword());
-        contentValues.put(COLUMN_NOTE, password.getNote());
+        contentValues.put(COLUMN_PLATFORM, SecretUtil.encrypt(password.getPlatform()));
+        contentValues.put(COLUMN_USERNAME, SecretUtil.encrypt(password.getUserName()));
+        contentValues.put(COLUMN_PASSWORD, SecretUtil.encrypt(password.getPassword()));
+        contentValues.put(COLUMN_NOTE, SecretUtil.encrypt(password.getNote()));
         contentValues.put(COLUMN_STAR, password.isStar());
         contentValues.put(COLUMN_TIME, new Date().getTime());
-        return getReadableDatabase().insert(TABLE_NAME, null, contentValues);
+        return contentValues;
     }
 
     private Password getPasswordByCurse(Cursor cursor) {
         int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-        String platform = cursor.getString(cursor.getColumnIndex(COLUMN_PLATFORM));
-        String userName = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
-        String pwd = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
-        String note = cursor.getString(cursor.getColumnIndex(COLUMN_NOTE));
-        int star = cursor.getInt(cursor.getColumnIndex(COLUMN_STAR));
+        String platform = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_PLATFORM)));
+        String userName = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME)));
+        String pwd = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
+        String note = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_NOTE)));
         String category = cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY));
+        int star = cursor.getInt(cursor.getColumnIndex(COLUMN_STAR));
         Password password = new Password();
         password.setId(id);
         password.setPlatform(platform);
@@ -126,7 +133,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, null, null, null, null,
                 ORDER_BY);
         List<Password> passwords = new ArrayList<>();
-        if (cursor == null){
+        if (cursor == null) {
             return passwords;
         }
         while (cursor.moveToNext()) {
@@ -155,11 +162,11 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
 
     public List<Password> getPasswordByKeywords(String keywords) {
         final String selection = COLUMN_PLATFORM + " LIKE ? OR " + COLUMN_USERNAME + " LIKE ?";
-        final String[] selectionArgs = new String[]{
-                "%" + keywords + "%",
-                "%" + keywords + "%"
+        final String[] selectionArgs = new String[] {
+                "%" + keywords + "%", "%" + keywords + "%"
         };
-        Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, selection, selectionArgs,
+                null, null, null);
         List<Password> passwords = new ArrayList<>();
         if (cursor == null) {
             return passwords;
@@ -173,7 +180,12 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
         return passwords;
     }
 
-    public int updatePasswordById(int id, ContentValues contentValues) {
+    public int updatePassword(Password password) {
+        ContentValues contentValues = getContentValuesFromPassword(password);
+        return updatePasswordById(password.getId(), contentValues);
+    }
+
+    private int updatePasswordById(int id, ContentValues contentValues) {
         final String where = COLUMN_ID + "=?";
         final String[] args = new String[] {
                 String.valueOf(id)

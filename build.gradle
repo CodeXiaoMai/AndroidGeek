@@ -20,7 +20,6 @@ allprojects {
         // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
         maven { url "https://jitpack.io"
         }
-
     }
 }
 

@@ -1,12 +1,12 @@
 
 package com.xiaomai.geek.presenter;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.support.annotation.IntDef;
 import android.text.TextUtils;
 
 import com.xiaomai.geek.data.db.PasswordDBHelper;
+import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.view.IEditAccountView;
 
 import java.util.Random;
@@ -71,13 +71,13 @@ public class EditAccountPresenter extends BaseRxPresenter<IEditAccountView> {
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(PasswordDBHelper.COLUMN_PLATFORM, platform);
-                contentValues.put(PasswordDBHelper.COLUMN_USERNAME, userName);
-                contentValues.put(PasswordDBHelper.COLUMN_PASSWORD, password);
-                contentValues.put(PasswordDBHelper.COLUMN_NOTE, note);
-                int id = PasswordDBHelper.getInstance(context).updatePasswordById(passwordId,
-                        contentValues);
+                Password pwd = new Password();
+                pwd.setId(passwordId);
+                pwd.setPlatform(platform);
+                pwd.setUserName(userName);
+                pwd.setPassword(password);
+                pwd.setNote(note);
+                int id = PasswordDBHelper.getInstance(context).updatePassword(pwd);
                 subscriber.onNext(id);
                 subscriber.onCompleted();
             }

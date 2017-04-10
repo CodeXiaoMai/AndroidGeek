@@ -173,11 +173,12 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
 
     private void starPassword() {
         boolean isStar = mPassword.isStar();
+        mPassword.setStar(!isStar);
         ContentValues contentValues = new ContentValues();
         contentValues.put(PasswordDBHelper.COLUMN_STAR, !isStar);
         mPresenter.startPassword(
                 isStar ? PasswordDetailPresenter.TYPE_UN_STAR : PasswordDetailPresenter.TYPE_STAR,
-                mContext, mPassword.getId(), contentValues);
+                mContext, mPassword);
     }
 
     @Override
@@ -214,9 +215,9 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
     public void onStarComplete(boolean success) {
         if (success) {
             Snackbar.make(toolBar, "收藏成功", Snackbar.LENGTH_LONG).show();
-            mPassword.setStar(!mPassword.isStar());
             showContent(mPassword);
         } else {
+            mPassword.setStar(!mPassword.isStar());
             Snackbar.make(toolBar, "收藏失败", Snackbar.LENGTH_LONG).show();
         }
     }
@@ -225,9 +226,9 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
     public void onUnStarComplete(boolean success) {
         if (success) {
             Snackbar.make(toolBar, "已取消收藏", Snackbar.LENGTH_LONG).show();
-            mPassword.setStar(!mPassword.isStar());
             showContent(mPassword);
         } else {
+            mPassword.setStar(!mPassword.isStar());
             Snackbar.make(toolBar, "取消失败", Snackbar.LENGTH_LONG).show();
         }
     }

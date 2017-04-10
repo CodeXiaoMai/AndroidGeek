@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -46,10 +47,10 @@
                         android:id="@+id/edit_platform"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="平台" />
+                        android:hint="平台"
+                        android:maxLines="1" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
-
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/layout_userName"
@@ -61,7 +62,8 @@
                     android:id="@+id/edit_userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="账号" />
+                    android:hint="账号"
+                    android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
@@ -81,7 +83,8 @@
                         android:id="@+id/edit_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="密码" />
+                        android:hint="密码"
+                        android:maxLines="1" />
                 </android.support.design.widget.TextInputLayout>
 
                 <ImageView

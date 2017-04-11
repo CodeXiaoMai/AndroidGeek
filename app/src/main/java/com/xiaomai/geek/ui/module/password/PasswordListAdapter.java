@@ -5,10 +5,13 @@ import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
@@ -73,13 +76,15 @@ public class PasswordListAdapter extends BaseQuickAdapter<Password> {
                 .buildRound(substring, colorGenerator.getColor(platform));
         icon.setImageDrawable(textDrawable);
 
+        final TextView tvPassword = holder.getView(R.id.tv_password);
+        tvPassword.setText(password.getPassword());
         holder.getView(R.id.iv_eye).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    holder.setText(R.id.tv_password, password.getPassword());
+                    tvPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    holder.setText(R.id.tv_password, "******");
+                    tvPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
                 return true;
             }

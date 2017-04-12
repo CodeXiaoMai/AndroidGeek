@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.xiaomai.geek.BuildConfig;
 import com.xiaomai.geek.R;
 
 /**
@@ -81,6 +82,9 @@ public class EditTextDialog extends Dialog {
                     .findViewById(R.id.layout_password);
             textInput.setHint(hint);
             final EditText editText = (EditText) view.findViewById(R.id.edit_password);
+            if (BuildConfig.DEBUG) {
+                editText.setText("123456");
+            }
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {

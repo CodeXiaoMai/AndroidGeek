@@ -1,26 +1,28 @@
 
 package com.xiaomai.geek.ui.module.password;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.presenter.FileExplorePresenter;
 import com.xiaomai.geek.ui.base.BaseActivity;
+import com.xiaomai.geek.view.IFileExploreView;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +31,7 @@ import butterknife.ButterKnife;
  * Created by XiaoMai on 2017/4/11 16:52.
  */
 
-public class FileExploreActivity extends BaseActivity {
+public class FileExploreActivity extends BaseActivity implements IFileExploreView {
 
     public static final String EXTRA_FILE_PATH = "extra_file_path";
 
@@ -47,6 +49,8 @@ public class FileExploreActivity extends BaseActivity {
 
     private FileListAdapter mAdapter;
 
+    private String mRootPath;
+
     private FilenameFilter filenameFilter = new FilenameFilter() {
         @Override
         public boolean accept(File dir, String name) {
@@ -54,9 +58,7 @@ public class FileExploreActivity extends BaseActivity {
         }
     };
 
-    public static void launch(Context context) {
-        context.startActivity(new Intent(context, FileExploreActivity.class));
-    }
+    FileExplorePresenter mPresenter = new FileExplorePresenter();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,36 +75,11 @@ public class FileExploreActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        mCurrentFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
-        actionBar.setSubtitle(mCurrentFile.getAbsolutePath());
-        mFiles = mCurrentFile.listFiles(filenameFilter);
-        sortFiles(mFiles);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mAdapter = new FileListAdapter(Arrays.asList(mFiles));
-        mAdapter.setOnItemClickListener(new FileListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                if (position == 0) {
-                    if (mCurrentFile.getAbsolutePath().equals(Environment.getExternalStorageDirectory().getAbsolutePath())) {
-                        Snackbar.make(recyclerView, "已到达跟节点", Snackbar.LENGTH_LONG).show();
-                    } else {
-                        enterFolder(mCurrentFile.getParentFile());
-                    }
-                } else {
-                    File file = mFiles[position - 1];
-                    if (file.isDirectory()) {
-                        enterFolder(file);
-                    } else {
-                        Intent intent = new Intent();
-                        intent.putExtra(EXTRA_FILE_PATH, file.getAbsolutePath());
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    }
-                }
-            }
-        });
-        recyclerView.setAdapter(mAdapter);
+
+        mPresenter.attachView(this);
+        mPresenter.scanStorage(mContext);
+
     }
 
     private void enterFolder(File file) {
@@ -144,4 +121,55 @@ public class FileExploreActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void showSelectStorageView(final List<String> storages) {
+        if (storages.size() == 1) {
+            mRootPath = storages.get(0);
+            showFiles(mRootPath);
+        } else if (storages.size() > 1) {
+            StorageListAdapter adapter = new StorageListAdapter(storages);
+            adapter.setOnRecyclerViewItemClickListener(
+                    new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int i) {
+                            mRootPath = storages.get(i);
+                            showFiles(mRootPath);
+                        }
+                    });
+            recyclerView.setAdapter(adapter);
+        }
+    }
+
+    @Override
+    public void showFiles(String path) {
+        mCurrentFile = new File(path);
+        toolBar.setSubtitle(mCurrentFile.getAbsolutePath());
+        mFiles = mCurrentFile.listFiles(filenameFilter);
+        sortFiles(mFiles);
+
+        mAdapter = new FileListAdapter(Arrays.asList(mFiles));
+        mAdapter.setOnItemClickListener(new FileListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                if (position == 0) {
+                    if (mCurrentFile.getAbsolutePath().equals(mRootPath)) {
+                        mPresenter.scanStorage(mContext);
+                    } else {
+                        enterFolder(mCurrentFile.getParentFile());
+                    }
+                } else {
+                    File file = mFiles[position - 1];
+                    if (file.isDirectory()) {
+                        enterFolder(file);
+                    } else {
+                        Intent intent = new Intent();
+                        intent.putExtra(EXTRA_FILE_PATH, file.getAbsolutePath());
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
+                }
+            }
+        });
+        recyclerView.setAdapter(mAdapter);
+    }
 }

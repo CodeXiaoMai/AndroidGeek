@@ -143,7 +143,7 @@ public class PasswordSettingPresenter extends BaseRxPresenter<IPasswordSettingVi
                 });
     }
 
-    public void importPassword(final Context context) {
+    public void importPassword(final Context context, final String filePath) {
         Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -151,9 +151,7 @@ public class PasswordSettingPresenter extends BaseRxPresenter<IPasswordSettingVi
                 InputStreamReader streamReader = null;
                 FileInputStream fileInputStream = null;
                 try {
-                    fileInputStream = new FileInputStream(
-                            Environment.getExternalStorageDirectory().getAbsolutePath() + "/"
-                                    + context.getPackageName() + "/" + BACKUP_FILE_NAME);
+                    fileInputStream = new FileInputStream(filePath);
                     streamReader = new InputStreamReader(fileInputStream);
                     bufferedReader = new BufferedReader(streamReader);
                     String line;

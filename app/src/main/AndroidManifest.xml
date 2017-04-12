@@ -26,6 +26,7 @@
         <activity
             android:name=".ui.module.password.PasswordDetailActivity"
             android:theme="@style/TransparentTheme" />
+        <activity android:name=".ui.module.password.FileExploreActivity"/>
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

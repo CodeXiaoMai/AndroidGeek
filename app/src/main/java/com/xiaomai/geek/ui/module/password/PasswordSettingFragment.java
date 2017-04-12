@@ -1,8 +1,10 @@
 
 package com.xiaomai.geek.ui.module.password;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -32,6 +34,8 @@ import butterknife.OnClick;
  */
 
 public class PasswordSettingFragment extends BaseFragment implements IPasswordSettingView {
+
+    private static final int REQUEST_FILE = 0x0001;
 
     @BindView(R.id.layout_clear_data)
     LinearLayout layoutClearData;
@@ -82,7 +86,7 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
                 showModifyDialog();
                 break;
             case R.id.layout_import:
-                mPresenter.importPassword(mContext);
+                startActivityForResult(new Intent(mContext, FileExploreActivity.class), REQUEST_FILE);
                 break;
         }
     }
@@ -174,12 +178,27 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
 
     @Override
     public void importComplete(int count) {
-        Snackbar.make(layoutBackup, "成功导入" + count + "条数据", Snackbar.LENGTH_LONG).show();
-        EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_IMPORT, new Password()));
+        if (count > 0) {
+            Snackbar.make(layoutBackup, "成功导入" + count + "条数据", Snackbar.LENGTH_LONG).show();
+            EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_IMPORT, new Password()));
+        } else {
+            Snackbar.make(layoutBackup, "没有导入任何数据，请检查文件是否正确", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     @Override
     public void importFail(String message) {
         Snackbar.make(layoutBackup, "导入失败，请检查文件", Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_FILE) {
+            if (resultCode == Activity.RESULT_OK) {
+                String filePath = data.getStringExtra(FileExploreActivity.EXTRA_FILE_PATH);
+                mPresenter.importPassword(mContext, filePath);
+            }
+        }
     }
 }

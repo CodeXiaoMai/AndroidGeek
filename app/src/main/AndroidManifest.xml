@@ -12,20 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MainActivity"
-            android:theme="@style/TransparentTheme">
+            android:name=".ui.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/TransparentTheme" />
         <activity android:name=".ui.module.password.EditAccountActivity" />
         <activity
             android:name=".ui.module.password.PasswordDetailActivity"
             android:theme="@style/TransparentTheme" />
-        <activity android:name=".ui.module.password.FileExploreActivity"/>
+        <activity android:name=".ui.module.password.FileExploreActivity" />
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

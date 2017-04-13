@@ -8,9 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TransparentTheme" parent="AppTheme"/>
+    <style name="TransparentTheme" parent="AppTheme" />
 
     <style name="EditTextDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowSoftInputMode">stateAlwaysVisible</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 </resources>

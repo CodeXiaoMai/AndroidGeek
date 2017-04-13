@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android极客</string>
+    <string name="app_name">密码管理</string>
     <string name="password_manage">密码管理</string>
     <string name="gitHub">GitHub</string>
     <string name="article">干货</string>
@@ -10,7 +10,7 @@
 
     <!-- Behavior -->
     <string name="behavior_bottom">com.xiaomai.geek.ui.behavior.BottomBehavior</string>
-    <string name="introduce">这是一款绝对安全的私人密码管理器，因为它只具有文件读取与写入权限（用于本地数据导入与备份）。与市面上的具有网络权限的同类App相比，绝对安全。您可以放心使用！</string>
+    <string name="introduce">这是一款只具有文件读取与写入权限（用于本地数据导入与备份）的私人密码管理器。与市场上具有网络权限（无所不能，我怎么知道App会不会上传我的密码）的同类App相比，更加安全可靠！</string>
     <string name="author_email">xiaomai949804781@gmail.com</string>
 
     <string-array name="password_types">

@@ -54,7 +54,7 @@ public class PasswordContainerFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_password_container, null);
         ButterKnife.bind(this, view);
         initViews();
@@ -114,7 +114,7 @@ public class PasswordContainerFragment extends BaseFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                ((MainActivity)getActivity()).openDrawer();
+                ((MainActivity) getActivity()).openDrawer();
                 return true;
         }
         return super.onOptionsItemSelected(item);

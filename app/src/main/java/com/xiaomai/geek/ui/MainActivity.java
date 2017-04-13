@@ -23,6 +23,7 @@ import android.widget.FrameLayout;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.pref.PasswordPref;
 import com.xiaomai.geek.ui.base.BaseActivity;
+import com.xiaomai.geek.ui.module.AboutUsFragment;
 import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
 import com.xiaomai.geek.ui.module.github.GitHubContainerFragment;
 import com.xiaomai.geek.ui.module.password.PasswordContainerFragment;
@@ -115,6 +116,10 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.menu_password_manage:
                 openPassword();
+                break;
+            case R.id.menu_about:
+                changeFragment(AboutUsFragment.class.getName());
+                mCurrentPosition = 4;
                 break;
         }
         return true;

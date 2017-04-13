@@ -6,7 +6,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
     defaultConfig {
-        applicationId "com.xiaomai.geek"
+        applicationId "com.xiaomai.password"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 4

@@ -1,20 +1,21 @@
 <resources>
-    <string name="app_name">Android极客</string>
+    <string name="app_name">密码管理</string>
     <string name="password_manage">密码管理</string>
     <string name="gitHub">GitHub</string>
     <string name="article">干货</string>
     <string name="video">视频</string>
 
-    <string name="about">由于App不具有网络权限，所以不能在线更新。现已经将代码开源到GitHub，我会不定期更新，</string>
+    <string name="about">由于App不具有网络权限，所以不能在线更新。现已经将代码开源到GitHub，我会不定期更新，欢迎大家Star和Fork（来，互相伤害啊！）。</string>
     <string name="github_address">https://github.com/CodeXiaoMai/AndroidGeek</string>
     <string name="pro_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/%s_pro.apk</string>
     <string name="lite_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/%s_lite.apk</string>
 
-    <string name="app_share_info">嗨！我发现了一款非常好的Android极客软件，你也试试吧！下载地址：%s</string>
+    <string name="app_share_info">嗨！我发现了一款非常好的密码管理软件，你也试试吧！下载地址：%s</string>
 
     <!-- Behavior -->
     <string name="behavior_bottom">com.xiaomai.geek.ui.behavior.BottomBehavior</string>
-    <string name="introduce">"Android极客"一个专门为Android程序猿打造的极客应用。主要包括： 干货笔记、GitHub Trending、密码管理等神秘功能！\n欢迎大家Star和Fork（来，互相伤害啊！）。</string>
+    <string name="introduce">这是一款只具有文件读取与写入权限（用于本地数据导入与备份）的私人密码管理器。与市场上具有网络权限（无所不能，我怎么知道App会不会上传我的密码）的同类App相比，更加安全可靠！</string>
+
     <string name="author_email">xiaomai949804781@gmail.com</string>
 
     <string-array name="password_types">

@@ -13,6 +13,8 @@ import com.xiaomai.geek.common.utils.FileUtils;
 import com.xiaomai.geek.common.wrapper.CrashHelper;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 
+import retrofit2.http.HEAD;
+
 /**
  * Created by XiaoMai on 2017/4/5 11:23.
  */

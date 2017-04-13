@@ -48,6 +48,13 @@
                 android:padding="@dimen/dp_10"
                 android:text="@string/introduce" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:padding="@dimen/dp_10"
+                android:text="@string/about" />
+
             <LinearLayout
                 android:id="@+id/layout_author_home"
                 android:layout_width="match_parent"
@@ -170,15 +177,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:gravity="center"
-                    android:text="精简版（只包含密码管理功能）"
-                    android:tint="@color/colorPrimary" />
+                    android:text="Pro版（更多高级功能）" />
 
                 <TextView
                     android:id="@+id/tv_download_url"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    tools:text="@string/lite_version" />
+                    tools:text="@string/pro_version" />
             </LinearLayout>
 
         </LinearLayout>

@@ -52,7 +52,7 @@ public class AboutUsFragment extends BaseFragment {
             mVersionName = getContext().getPackageManager()
                     .getPackageInfo(getContext().getPackageName(), 0).versionName;
             tvVersion.setText("版本号:" + mVersionName);
-            tvDownloadUrl.setText(getString(R.string.lite_version, mVersionName));
+            tvDownloadUrl.setText(getString(R.string.pro_version, mVersionName));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -74,7 +74,7 @@ public class AboutUsFragment extends BaseFragment {
             case R.id.menu_share:
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.app_share_info, getString(R.string.pro_version, mVersionName)));
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.app_share_info, getString(R.string.lite_version, mVersionName)));
                 startActivity(Intent.createChooser(intent, "分享到"));
                 return true;
         }

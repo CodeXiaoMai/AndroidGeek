@@ -5,34 +5,13 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/menu_article"
-            android:checked="true"
-            android:icon="@drawable/article"
-            android:title="@string/article"
-            app:showAsAction="always" />
-
-        <item
-            android:id="@+id/menu_gitHub"
-            android:icon="@drawable/github"
-            android:title="@string/gitHub"
-            android:checked="true"
-            app:showAsAction="always" />
-
-        <item
-            android:id="@+id/menu_video"
-            android:icon="@drawable/video"
-            android:title="@string/video"
-            android:visible="false"
-            app:showAsAction="always" />
-        <item
             android:id="@+id/menu_password_manage"
-            android:icon="@drawable/key"
+            android:checked="true"
             android:title="@string/password_manage"
             app:showAsAction="always" />
 
         <item
             android:id="@+id/menu_about"
-            android:icon="@drawable/ic_jike"
             android:title="关于"
             app:showAsAction="always" />
     </group>

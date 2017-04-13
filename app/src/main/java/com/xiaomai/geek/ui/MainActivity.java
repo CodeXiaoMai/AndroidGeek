@@ -1,8 +1,10 @@
 
 package com.xiaomai.geek.ui;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -12,6 +14,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -31,6 +35,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainActivity";
+
     @BindView(R.id.fl_container)
     FrameLayout flContainer;
 
@@ -46,6 +52,33 @@ public class MainActivity extends BaseActivity
 
     private int mCurrentPosition = 0;
 
+    public static final String SYSTEM_REASON = "reason";
+
+    public static final String SYSTEM_HOME_KEY = "homekey";
+
+    public static final String SYSTEM_HOME_KEY_LONG = "recentapps";
+
+    private boolean runInBackground;
+
+    private boolean mIsDiaglogShowing;
+
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (TextUtils.equals(action, Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+                String reason = intent.getStringExtra(SYSTEM_REASON);
+                if (TextUtils.equals(reason, SYSTEM_HOME_KEY)) {
+                    // 表示按了home键
+                    Log.e(TAG, "onReceive: home press");
+                    runInBackground = true;
+                } else if (TextUtils.equals(reason, SYSTEM_HOME_KEY_LONG)) {
+                    // 表示长按home键
+                }
+            }
+        }
+    };
+
     public static void launch(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
     }
@@ -56,6 +89,7 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initViews();
+        registerReceiver(mReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
     }
 
     private void initViews() {
@@ -89,10 +123,15 @@ public class MainActivity extends BaseActivity
     private void openPassword() {
         new EditTextDialog.Builder(mContext)
                 .setTitle(PasswordPref.hasPassword(mContext) ? "打开密码箱" : "设置密码")
-                .setCancelable(false).setOnNegativeButtonClickListener(new View.OnClickListener() {
+                .setCancelable(!runInBackground)
+                .setOnNegativeButtonClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        navView.getMenu().getItem(mCurrentPosition).setChecked(true);
+                        if (!runInBackground) {
+                            navView.getMenu().getItem(mCurrentPosition).setChecked(true);
+                        } else {
+                            finish();
+                        }
                     }
                 }).setOnPositiveButtonClickListener(
                         new EditTextDialog.Builder.OnPositiveButtonClickListener() {
@@ -104,6 +143,8 @@ public class MainActivity extends BaseActivity
                                         dialog.dismiss();
                                         changeFragment(PasswordContainerFragment.class.getName());
                                         mCurrentPosition = 3;
+                                        runInBackground = false;
+                                        mIsDiaglogShowing = false;
                                     } else {
                                         textInputLayout.setError("密码错误");
                                     }
@@ -122,6 +163,7 @@ public class MainActivity extends BaseActivity
                             }
                         })
                 .create().show();
+        mIsDiaglogShowing = true;
     }
 
     private void changeFragment(String fragmentName) {
@@ -163,5 +205,22 @@ public class MainActivity extends BaseActivity
 
     public void openDrawer() {
         drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mCurrentFragment == mFragmentManager
+                .findFragmentByTag(PasswordContainerFragment.class.getName()) && runInBackground
+                && !mIsDiaglogShowing) {
+            openPassword();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mReceiver != null)
+            unregisterReceiver(mReceiver);
     }
 }

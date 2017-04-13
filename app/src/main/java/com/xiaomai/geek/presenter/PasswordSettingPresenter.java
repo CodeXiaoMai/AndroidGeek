@@ -2,7 +2,6 @@
 package com.xiaomai.geek.presenter;
 
 import android.content.Context;
-import android.os.Environment;
 import android.text.TextUtils;
 
 import com.xiaomai.geek.data.db.PasswordDBHelper;
@@ -59,7 +58,7 @@ public class PasswordSettingPresenter extends BaseRxPresenter<IPasswordSettingVi
                 }));
     }
 
-    public void backupPasswords(final Context context) {
+    public void backupPasswords(final Context context, final String path) {
         Observable.create(new Observable.OnSubscribe<List<Password>>() {
             @Override
             public void call(Subscriber<? super List<Password>> subscriber) {
@@ -117,22 +116,23 @@ public class PasswordSettingPresenter extends BaseRxPresenter<IPasswordSettingVi
                             xmlSerializer.endTag("", "password_list");
                             xmlSerializer.endDocument();
 
-                            FileOutputStream fileOutputStream = new FileOutputStream(
-                                    Environment.getExternalStorageDirectory() + "/"
-                                            + context.getPackageName() + "/" + BACKUP_FILE_NAME);
+                            FileOutputStream fileOutputStream = new FileOutputStream(path);
                             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
                                     fileOutputStream);
                             outputStreamWriter.write(stringWriter.toString());
                             outputStreamWriter.close();
                             fileOutputStream.close();
+                            return count;
                         } catch (XmlPullParserException e) {
                             e.printStackTrace();
+                            return -1;
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
+                            return -2;
                         } catch (IOException e) {
                             e.printStackTrace();
+                            return -3;
                         }
-                        return count;
                     }
 
                 }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Integer>() {

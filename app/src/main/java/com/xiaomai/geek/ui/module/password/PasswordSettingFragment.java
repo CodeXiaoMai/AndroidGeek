@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.TimeUtils;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.data.pref.PasswordPref;
 import com.xiaomai.geek.event.PasswordEvent;
@@ -24,6 +25,8 @@ import com.xiaomai.geek.ui.widget.EditTextDialog;
 import com.xiaomai.geek.view.IPasswordSettingView;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +38,9 @@ import butterknife.OnClick;
 
 public class PasswordSettingFragment extends BaseFragment implements IPasswordSettingView {
 
-    private static final int REQUEST_FILE = 0x0001;
+    private static final int REQUEST_CODE_IMPORT = 0x0001;
+
+    private static final int REQUEST_CODE_BACKUP = 0x0002;
 
     @BindView(R.id.layout_clear_data)
     LinearLayout layoutClearData;
@@ -80,13 +85,17 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
                 clearData();
                 break;
             case R.id.layout_backup:
-                mPresenter.backupPasswords(mContext);
+                Intent back = new Intent(mContext, FileExploreActivity.class);
+                back.putExtra(FileExploreActivity.EXTRA_TYPE, FileExploreActivity.TYPE_FOLDER);
+                startActivityForResult(back, REQUEST_CODE_BACKUP);
                 break;
             case R.id.layout_modify_password:
                 showModifyDialog();
                 break;
             case R.id.layout_import:
-                startActivityForResult(new Intent(mContext, FileExploreActivity.class), REQUEST_FILE);
+                Intent intent = new Intent(mContext, FileExploreActivity.class);
+                intent.putExtra(FileExploreActivity.EXTRA_TYPE, FileExploreActivity.TYPE_FILE);
+                startActivityForResult(intent, REQUEST_CODE_IMPORT);
                 break;
         }
     }
@@ -163,8 +172,10 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
             mProgressDialog.dismiss();
         if (count > 0) {
             Snackbar.make(layoutBackup, "成功备份" + count + "条数据", Snackbar.LENGTH_LONG).show();
-        } else {
+        } else if (count == 0) {
             Snackbar.make(layoutBackup, "没有备份任何数据", Snackbar.LENGTH_LONG).show();
+        } else {
+            Snackbar.make(layoutBackup, "备份失败，请检查路径或权限", Snackbar.LENGTH_LONG).show();
         }
     }
 
@@ -180,7 +191,8 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
     public void importComplete(int count) {
         if (count > 0) {
             Snackbar.make(layoutBackup, "成功导入" + count + "条数据", Snackbar.LENGTH_LONG).show();
-            EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_IMPORT, new Password()));
+            EventBus.getDefault()
+                    .post(new PasswordEvent(PasswordEvent.TYPE_IMPORT, new Password()));
         } else {
             Snackbar.make(layoutBackup, "没有导入任何数据，请检查文件是否正确", Snackbar.LENGTH_LONG).show();
         }
@@ -192,12 +204,31 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_FILE) {
+        if (requestCode == REQUEST_CODE_IMPORT) {
             if (resultCode == Activity.RESULT_OK) {
-                String filePath = data.getStringExtra(FileExploreActivity.EXTRA_FILE_PATH);
+                String filePath = data.getStringExtra(FileExploreActivity.EXTRA_PATH);
                 mPresenter.importPassword(mContext, filePath);
+            }
+        } else if (requestCode == REQUEST_CODE_BACKUP) {
+            if (resultCode == Activity.RESULT_OK) {
+                final String filePath = data.getStringExtra(FileExploreActivity.EXTRA_PATH);
+                new EditTextDialog.Builder(mContext).setTitle("您选择的存储目录为:" + filePath, 14)
+                        .setIsPassword(false).setHint("请输入文件名")
+                        .setEditTextContent(
+                                "backup_" + TimeUtils.getDate(new Date(), "yyyy_MM_dd") + ".xml")
+                        .setOnPositiveButtonClickListener(
+                                new EditTextDialog.Builder.OnPositiveButtonClickListener() {
+                                    @Override
+                                    public void onClick(EditTextDialog dialog,
+                                            TextInputLayout textInputLayout, String password) {
+                                        mPresenter.backupPasswords(mContext,
+                                                filePath + "/" + password);
+                                        dialog.dismiss();
+                                    }
+                                })
+                        .create().show();
             }
         }
     }

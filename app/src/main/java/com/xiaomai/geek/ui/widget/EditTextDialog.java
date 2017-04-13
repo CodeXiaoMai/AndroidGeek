@@ -5,7 +5,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -30,9 +33,15 @@ public class EditTextDialog extends Dialog {
 
         private String hint;
 
+        private String editTextContent;
+
         private Context context;
 
         private boolean cancelable;
+
+        private boolean isPassword;
+
+        private float fontSize;
 
         private OnPositiveButtonClickListener listener;
 
@@ -46,10 +55,22 @@ public class EditTextDialog extends Dialog {
             this.context = context;
             this.hint = "请输入密码";
             this.cancelable = true;
+            this.isPassword = true;
         }
 
         public Builder setTitle(String title) {
             this.title = title;
+            return this;
+        }
+
+        public Builder setTitle(String title, float fontSize) {
+            this.title = title;
+            this.fontSize = fontSize;
+            return this;
+        }
+
+        public Builder setEditTextContent(String editTextContent) {
+            this.editTextContent = editTextContent;
             return this;
         }
 
@@ -73,6 +94,11 @@ public class EditTextDialog extends Dialog {
             return this;
         }
 
+        public Builder setIsPassword(boolean isPassword) {
+            this.isPassword = isPassword;
+            return this;
+        }
+
         public EditTextDialog create() {
             final EditTextDialog mDialog = new EditTextDialog(context);
             LayoutInflater inflater = (LayoutInflater) context
@@ -84,6 +110,16 @@ public class EditTextDialog extends Dialog {
             final EditText editText = (EditText) view.findViewById(R.id.edit_password);
             if (BuildConfig.DEBUG) {
                 editText.setText("123456");
+            }
+            if (!isPassword) {
+                editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            } else {
+                textInput.setCounterEnabled(true);
+                textInput.setCounterMaxLength(16);
+            }
+            if (!TextUtils.isEmpty(editTextContent)) {
+                editText.setText(editTextContent);
+                editText.setSelectAllOnFocus(true);
             }
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -103,6 +139,7 @@ public class EditTextDialog extends Dialog {
             });
             final TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
             tvTitle.setText(title);
+            tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize == 0 ? 15f : fontSize);
             final View cancel = view.findViewById(R.id.bt_cancel);
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override

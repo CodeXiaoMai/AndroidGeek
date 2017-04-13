@@ -2,15 +2,22 @@
 package com.xiaomai.geek.ui.module.password;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
@@ -33,9 +40,17 @@ import butterknife.ButterKnife;
 
 public class FileExploreActivity extends BaseActivity implements IFileExploreView {
 
-    public static final String EXTRA_FILE_PATH = "extra_file_path";
+    public static final String EXTRA_TYPE = "extra_type";
+
+    public static final int TYPE_FILE = 0x0001;
+
+    public static final int TYPE_FOLDER = 0x0002;
+
+    public static final String EXTRA_PATH = "extra_path";
 
     private static final String TAG = "FileExploreActivity";
+
+    private int mCurrentType = TYPE_FILE;
 
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
@@ -65,7 +80,15 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_explore);
         ButterKnife.bind(this);
+        initData();
         initViews();
+    }
+
+    private void initData() {
+        Intent intent = getIntent();
+        if (intent == null)
+            return;
+        mCurrentType = intent.getIntExtra(EXTRA_TYPE, TYPE_FILE);
     }
 
     private void initViews() {
@@ -108,6 +131,9 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (mCurrentType == TYPE_FOLDER) {
+            getMenuInflater().inflate(R.menu.explore_menu, menu);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -117,8 +143,22 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.menu_ok:
+                if (mCurrentFile != null) {
+                    selectFolder(mCurrentFile.getAbsolutePath());
+                } else {
+                    Snackbar.make(recyclerView, "请选择目录", Snackbar.LENGTH_LONG).show();
+                }
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void selectFolder(String filePath) {
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_PATH, filePath);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override
@@ -127,13 +167,34 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
             mRootPath = storages.get(0);
             showFiles(mRootPath);
         } else if (storages.size() > 1) {
-            StorageListAdapter adapter = new StorageListAdapter(storages);
+            final StorageListAdapter adapter = new StorageListAdapter(storages);
+            if (mCurrentType == TYPE_FOLDER) {
+                TextView footerView = new TextView(mContext);
+                footerView.setLayoutParams(new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                footerView.setText(
+                        "由于系统限制，外置SD卡只能存储到Android/data/" + getPackageName() + "/目录下，且数据会在应用卸载时删除！");
+                footerView.setTextColor(Color.RED);
+                footerView.setPadding(10, 10, 10, 10);
+                footerView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f);
+                adapter.addFooterView(footerView);
+            }
             adapter.setOnRecyclerViewItemClickListener(
                     new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
                         @Override
                         public void onItemClick(View view, int i) {
-                            mRootPath = storages.get(i);
-                            showFiles(mRootPath);
+                            /**
+                             * 如果是选择文件夹，那么SD卡只支持android/data/包名
+                             */
+                            if (mCurrentType == TYPE_FOLDER && !storages.get(i).equals(
+                                    Environment.getExternalStorageDirectory().getAbsolutePath())) {
+                                String path = storages.get(i) + "/Android/data/" + getPackageName()
+                                        + "/" + "files";
+                                selectFolder(path);
+                            } else {
+                                mRootPath = storages.get(i);
+                                showFiles(mRootPath);
+                            }
                         }
                     });
             recyclerView.setAdapter(adapter);
@@ -144,7 +205,16 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
     public void showFiles(String path) {
         mCurrentFile = new File(path);
         toolBar.setSubtitle(mCurrentFile.getAbsolutePath());
-        mFiles = mCurrentFile.listFiles(filenameFilter);
+        if (mCurrentType == TYPE_FILE) {
+            mFiles = mCurrentFile.listFiles(filenameFilter);
+        } else {
+            mFiles = mCurrentFile.listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    return dir.isDirectory();
+                }
+            });
+        }
         sortFiles(mFiles);
 
         mAdapter = new FileListAdapter(Arrays.asList(mFiles));
@@ -163,7 +233,7 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
                         enterFolder(file);
                     } else {
                         Intent intent = new Intent();
-                        intent.putExtra(EXTRA_FILE_PATH, file.getAbsolutePath());
+                        intent.putExtra(EXTRA_PATH, file.getAbsolutePath());
                         setResult(RESULT_OK, intent);
                         finish();
                     }

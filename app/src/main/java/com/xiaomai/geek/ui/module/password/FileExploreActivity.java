@@ -24,6 +24,7 @@ import com.xiaomai.geek.R;
 import com.xiaomai.geek.presenter.FileExplorePresenter;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.view.IFileExploreView;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -99,10 +100,11 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        recyclerView
+                .addItemDecoration(new HorizontalDividerItemDecoration.Builder(mContext).build());
 
         mPresenter.attachView(this);
         mPresenter.scanStorage(mContext);
-
     }
 
     private void enterFolder(File file) {

@@ -40,7 +40,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
 
     public static final String COLUMN_TIME = "TIME";
 
-    private static final String ORDER_BY = COLUMN_TIME + " DESC";
+    private static final String ORDER_BY = COLUMN_PLATFORM;
 
     private static final int DATABASE_VERSION = 1;
 
@@ -96,9 +96,10 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
 
     private ContentValues getContentValuesFromPassword(Password password) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_PLATFORM, SecretUtil.encrypt(password.getPlatform()));
+        contentValues.put(COLUMN_PLATFORM, password.getPlatform());
         contentValues.put(COLUMN_USERNAME, SecretUtil.encrypt(password.getUserName()));
         contentValues.put(COLUMN_PASSWORD, SecretUtil.encrypt(password.getPassword()));
+//        contentValues.put(COLUMN_CATEGORY, password.getCategory());
         contentValues.put(COLUMN_NOTE, SecretUtil.encrypt(password.getNote()));
         contentValues.put(COLUMN_STAR, password.isStar());
         contentValues.put(COLUMN_TIME, new Date().getTime());
@@ -107,7 +108,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
 
     private Password getPasswordByCurse(Cursor cursor) {
         int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-        String platform = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_PLATFORM)));
+        String platform = cursor.getString(cursor.getColumnIndex(COLUMN_PLATFORM));
         String userName = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME)));
         String pwd = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
         String note = SecretUtil.decrypt(cursor.getString(cursor.getColumnIndex(COLUMN_NOTE)));
@@ -161,9 +162,9 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
     }
 
     public List<Password> getPasswordByKeywords(String keywords) {
-        final String selection = COLUMN_PLATFORM + " LIKE ? OR " + COLUMN_USERNAME + " LIKE ?";
+        final String selection = COLUMN_PLATFORM + " LIKE ?";
         final String[] selectionArgs = new String[] {
-                "%" + keywords + "%", "%" + keywords + "%"
+                "%" + keywords + "%"
         };
         Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, selection, selectionArgs,
                 null, null, null);

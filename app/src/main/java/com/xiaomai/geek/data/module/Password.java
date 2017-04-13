@@ -3,12 +3,13 @@ package com.xiaomai.geek.data.module;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 /**
  * Created by XiaoMai on 2017/3/30 10:06.
  */
 
-public class Password implements Parcelable {
+public class Password implements Parcelable, Comparable<Password> {
 
     private int id;
 
@@ -138,5 +139,10 @@ public class Password implements Parcelable {
         return "Password{" + "id='" + id + '\'' + ", platform='" + platform + '\'' + ", userName='"
                 + userName + '\'' + ", password='" + password + '\'' + ", category='" + category
                 + '\'' + ", note='" + note + '\'' + ", star=" + star + ", time=" + time + '}';
+    }
+
+    @Override
+    public int compareTo(@NonNull Password o) {
+        return o.getPlatform().compareToIgnoreCase(getPlatform());
     }
 }

@@ -33,6 +33,7 @@ import com.xiaomai.geek.view.IPasswordSearchView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -126,6 +127,7 @@ public class PasswordListFragment extends BaseFragment implements IPasswordSearc
 
     @Override
     public void showContent(List<Password> data) {
+        Collections.sort(data);
         recyclerView.setVisibility(View.VISIBLE);
         emptyRootLayout.setVisibility(View.GONE);
         mAdapter.setNewData(data);

@@ -4,7 +4,7 @@ apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.xiaomai.geek"
         minSdkVersion 15
@@ -92,6 +92,9 @@ dependencies {
     // BaseRecyclerViewAdapterHelper 第二步
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.8.5'
+    // recycler view divider
+    // https://github.com/yqritc/RecyclerView-FlexibleDivider
+    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
     // EventBus
     // https://github.com/greenrobot/EventBus
     compile 'org.greenrobot:eventbus:3.0.0'

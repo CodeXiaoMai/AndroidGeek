@@ -39,7 +39,7 @@ public class NotificationUtils {
                 .setAutoCancel(true)
                 .setContentIntent(
                         PendingIntent.getService(context, sID, intent, PendingIntent.FLAG_UPDATE_CURRENT))
-                .setContentTitle(password.getPlatform() + (type == TYPE_USER_NAME ? "账号" : "密码"))
+                .setContentTitle(password.getPlatform() + (type == TYPE_USER_NAME ? "--账号" : "--密码"))
                 .build();
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(sID++, notification);

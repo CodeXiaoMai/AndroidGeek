@@ -3,12 +3,12 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.1'
     defaultConfig {
         applicationId "com.xiaomai.geek"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -39,15 +39,11 @@ android {
 
     productFlavors.all {
         flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-            // 在manifest中加入以下配置
-            // <meta-data
-            //android:name="UMENG_CHANNEL"
-            //android:value="${UMENG_CHANNEL_VALUE}" />
     }
 
     // 友盟多渠道打包
     productFlavors {
-        main {}
+        xiaomai {}
     }
 }
 
@@ -58,10 +54,10 @@ dependencies {
     })
     compile project(':mvp')
     // 上滑时FAB能够正常隐藏，但是下拉列表时，FAB就不出现了。
-    // 最后发现是SDK版本的问题，用25(7.1.1)的时候会有这个问题，调成24就没问题了
-    compile 'com.android.support:appcompat-v7:24+'
-    compile 'com.android.support:design:24+'
-    compile 'com.android.support:cardview-v7:24+'
+    // 最后发现是SDK版本的问题，用25(7.1.1)的时候会有这个问题，调成25.0.1就没问题了
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support:cardview-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     // Logger
     // https://github.com/orhanobut/logger

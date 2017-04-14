@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,6 +117,7 @@ public class EditTextDialog extends Dialog {
             } else {
                 textInput.setCounterEnabled(true);
                 textInput.setCounterMaxLength(16);
+                textInput.setPasswordVisibilityToggleEnabled(true);
             }
             if (!TextUtils.isEmpty(editTextContent)) {
                 editText.setText(editTextContent);

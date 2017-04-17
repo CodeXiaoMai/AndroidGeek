@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity
 
     private boolean runInBackground;
 
-    private boolean mIsDiaglogShowing;
+    private boolean mIsDialogShowing;
 
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity
                                         changeFragment(PasswordContainerFragment.class.getName());
                                         mCurrentPosition = 3;
                                         runInBackground = false;
-                                        mIsDiaglogShowing = false;
+                                        mIsDialogShowing = false;
                                     } else {
                                         textInputLayout.setError("密码错误");
                                     }
@@ -168,7 +168,7 @@ public class MainActivity extends BaseActivity
                             }
                         })
                 .create().show();
-        mIsDiaglogShowing = true;
+        mIsDialogShowing = true;
     }
 
     private void changeFragment(String fragmentName) {
@@ -217,7 +217,7 @@ public class MainActivity extends BaseActivity
         super.onResume();
         if (mCurrentFragment == mFragmentManager
                 .findFragmentByTag(PasswordContainerFragment.class.getName()) && runInBackground
-                && !mIsDiaglogShowing) {
+                && !mIsDialogShowing) {
             openPassword();
         }
     }

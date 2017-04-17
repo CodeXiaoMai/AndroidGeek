@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.SplashActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +21,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:configChanges="orientation|screenSize|screenLayout"
             android:name=".ui.MainActivity"
             android:theme="@style/TransparentTheme" />
         <activity android:name=".ui.module.password.EditAccountActivity" />
         <activity
+            android:configChanges="orientation|screenSize|screenLayout"
             android:name=".ui.module.password.PasswordDetailActivity"
             android:theme="@style/TransparentTheme" />
-        <activity android:name=".ui.module.password.FileExploreActivity" />
+        <activity android:name=".ui.module.password.FileExploreActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

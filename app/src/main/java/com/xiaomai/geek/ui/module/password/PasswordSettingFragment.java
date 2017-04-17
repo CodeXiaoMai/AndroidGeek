@@ -63,6 +63,7 @@ public class PasswordSettingFragment extends BaseFragment implements IPasswordSe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Nullable

@@ -161,7 +161,7 @@ public class EditAccountActivity extends BaseActivity
                             .endConfig().buildRound(substring, mGenerator.getColor(platform));
                     circleViewIcon.setImageDrawable(textDrawable);
                 } else {
-                    circleViewIcon.setImageResource(R.drawable.ic_default_platform);
+                    circleViewIcon.setImageResource(R.drawable.ic_launcher);
                 }
             }
 

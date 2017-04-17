@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
@@ -118,6 +118,23 @@
                     android:lineSpacingExtra="3dp"
                     android:text="@string/author_email" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:text="精简版"
+                android:tint="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:autoLink="all"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/lite_version" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

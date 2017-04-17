@@ -7,6 +7,8 @@
 
     <string name="about">由于App不具有网络权限，所以不能在线更新。现已经将代码开源到GitHub，我会不定期更新，欢迎大家Star和Fork（来，互相伤害啊！）。</string>
     <string name="github_address">https://github.com/CodeXiaoMai/AndroidGeek</string>
+    <string name="pro_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.0_pro.apk</string>
+    <string name="lite_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.0_lite.apk</string>
 
     <!-- Behavior -->
     <string name="behavior_bottom">com.xiaomai.geek.ui.behavior.BottomBehavior</string>

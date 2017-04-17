@@ -35,7 +35,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:src="@drawable/ic_default_platform" />
+                    android:src="@drawable/ic_launcher" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/layout_platform"

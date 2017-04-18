@@ -24,10 +24,7 @@ import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.pref.PasswordPref;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.module.AboutUsFragment;
-import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
-import com.xiaomai.geek.ui.module.github.GitHubContainerFragment;
 import com.xiaomai.geek.ui.module.password.PasswordContainerFragment;
-import com.xiaomai.geek.ui.module.video.VideoContainerFragment;
 import com.xiaomai.geek.ui.widget.EditTextDialog;
 
 import butterknife.BindView;
@@ -95,31 +92,19 @@ public class MainActivity extends BaseActivity
 
     private void initViews() {
         navView.setNavigationItemSelectedListener(this);
-        changeFragment(ArticleContainerFragment.class.getName());
+        openPassword();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
         switch (item.getItemId()) {
-            case R.id.menu_article:
-                changeFragment(ArticleContainerFragment.class.getName());
-                mCurrentPosition = 0;
-                break;
-            case R.id.menu_gitHub:
-                changeFragment(GitHubContainerFragment.class.getName());
-                mCurrentPosition = 1;
-                break;
-            case R.id.menu_video:
-                changeFragment(VideoContainerFragment.class.getName());
-                mCurrentPosition = 2;
-                break;
             case R.id.menu_password_manage:
                 openPassword();
                 break;
             case R.id.menu_about:
                 changeFragment(AboutUsFragment.class.getName());
-                mCurrentPosition = 4;
+                mCurrentPosition = 1;
                 break;
         }
         return true;
@@ -133,7 +118,7 @@ public class MainActivity extends BaseActivity
                     @Override
                     public void onClick(View v) {
                         if (!runInBackground) {
-                            navView.getMenu().getItem(mCurrentPosition).setChecked(true);
+                            navView.getMenu().getItem(1).setChecked(true);
                         } else {
                             finish();
                         }
@@ -147,7 +132,7 @@ public class MainActivity extends BaseActivity
                                     if (PasswordPref.isPasswordCorrect(mContext, password)) {
                                         dialog.dismiss();
                                         changeFragment(PasswordContainerFragment.class.getName());
-                                        mCurrentPosition = 3;
+                                        mCurrentPosition = 0;
                                         runInBackground = false;
                                         mIsDialogShowing = false;
                                     } else {
@@ -160,7 +145,7 @@ public class MainActivity extends BaseActivity
                                         PasswordPref.savePassword(mContext, password);
                                         dialog.dismiss();
                                         changeFragment(PasswordContainerFragment.class.getName());
-                                        mCurrentPosition = 3;
+                                        mCurrentPosition = 0;
                                         Snackbar.make(flContainer, "密码设置成功，请牢记密码",
                                                 Snackbar.LENGTH_LONG).show();
                                     }

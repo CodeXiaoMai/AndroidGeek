@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.facebook.stetho.Stetho;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.xiaomai.geek.BuildConfig;
 import com.xiaomai.geek.common.utils.FileUtils;
 
@@ -49,5 +50,7 @@ public class InitializeService extends IntentService {
         if (BuildConfig.DEBUG) {
             Stetho.initializeWithDefaults(this);
         }
+
+        CrashReport.initCrashReport(getApplicationContext(), "8568d789f8", BuildConfig.DEBUG);
     }
 }

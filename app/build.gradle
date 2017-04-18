@@ -112,4 +112,8 @@ dependencies {
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+
+    // Bugly
+    // https://bugly.qq.com/docs/
+    compile 'com.tencent.bugly:crashreport:2.5.0'
 }

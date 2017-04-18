@@ -149,3 +149,6 @@
 
 # V7包
 -keep class !android.support.v7.internal.view.menu.**,android.support.** {*;}
+
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}

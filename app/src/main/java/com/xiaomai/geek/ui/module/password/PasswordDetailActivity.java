@@ -59,7 +59,7 @@ public class PasswordDetailActivity extends BaseActivity implements IPasswordDet
     AppBarLayout appBar;
 
     @BindView(R.id.flb_edit)
-    FloatingActionButton flbEdit;
+    ImageView flbEdit;
 
     @BindView(R.id.collapsingToolBar)
     CollapsingToolbarLayout collapsingToolBar;

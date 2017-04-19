@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.ui.MainActivity;
@@ -38,7 +39,7 @@ public class PasswordContainerFragment extends BaseFragment {
     ViewPager viewPager;
 
     @BindView(R.id.fab_add)
-    FloatingActionButton fabAdd;
+    ImageView fabAdd;
 
     @BindView(R.id.tool_bar)
     Toolbar toolBar;

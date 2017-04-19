@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.pref.PasswordPref;
@@ -139,34 +140,34 @@ public class MainActivity extends BaseActivity
                         }
                     }
                 }).setOnPositiveButtonClickListener(
-                        new EditTextDialog.Builder.OnPositiveButtonClickListener() {
-                            @Override
-                            public void onClick(EditTextDialog dialog,
-                                    TextInputLayout textInputLayout, String password) {
-                                if (PasswordPref.hasPassword(mContext)) {
-                                    if (PasswordPref.isPasswordCorrect(mContext, password)) {
-                                        dialog.dismiss();
-                                        changeFragment(PasswordContainerFragment.class.getName());
-                                        mCurrentPosition = 3;
-                                        runInBackground = false;
-                                        mIsDialogShowing = false;
-                                    } else {
-                                        textInputLayout.setError("密码错误");
-                                    }
-                                } else {
-                                    if (password.length() < 6) {
-                                        textInputLayout.setError("密码长度不能小于6");
-                                    } else {
-                                        PasswordPref.savePassword(mContext, password);
-                                        dialog.dismiss();
-                                        changeFragment(PasswordContainerFragment.class.getName());
-                                        mCurrentPosition = 3;
-                                        Snackbar.make(flContainer, "密码设置成功，请牢记密码",
-                                                Snackbar.LENGTH_LONG).show();
-                                    }
-                                }
+                new EditTextDialog.Builder.OnPositiveButtonClickListener() {
+                    @Override
+                    public void onClick(EditTextDialog dialog,
+                                        TextInputLayout textInputLayout, String password) {
+                        if (PasswordPref.hasPassword(mContext)) {
+                            if (PasswordPref.isPasswordCorrect(mContext, password)) {
+                                dialog.dismiss();
+                                changeFragment(PasswordContainerFragment.class.getName());
+                                mCurrentPosition = 3;
+                                runInBackground = false;
+                                mIsDialogShowing = false;
+                            } else {
+                                textInputLayout.setError("密码错误");
                             }
-                        })
+                        } else {
+                            if (password.length() < 6) {
+                                textInputLayout.setError("密码长度不能小于6");
+                            } else {
+                                PasswordPref.savePassword(mContext, password);
+                                dialog.dismiss();
+                                changeFragment(PasswordContainerFragment.class.getName());
+                                mCurrentPosition = 3;
+                                Snackbar.make(flContainer, "密码设置成功，请牢记密码",
+                                        Snackbar.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                })
                 .create().show();
         mIsDialogShowing = true;
     }
@@ -204,7 +205,7 @@ public class MainActivity extends BaseActivity
             finish();
         } else {
             mLastBackTime = System.currentTimeMillis();
-            Snackbar.make(flContainer, "再按一次退出应用", Snackbar.LENGTH_LONG).show();
+            Toast.makeText(this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -35,6 +35,7 @@
                 android:id="@+id/tv_version"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:gravity="center"
                 tools:text="version:1.0" />
 
@@ -128,12 +129,13 @@
                 android:tint="@color/colorPrimary" />
 
             <TextView
+                android:id="@+id/tv_download_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:autoLink="all"
                 android:lineSpacingExtra="3dp"
-                android:text="@string/lite_version" />
+                tools:text="@string/lite_version" />
 
         </LinearLayout>
     </ScrollView>

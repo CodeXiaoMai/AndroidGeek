@@ -1,4 +1,3 @@
-
 package com.xiaomai.geek.ui.module;
 
 import android.content.pm.PackageManager;
@@ -29,6 +28,8 @@ public class AboutUsFragment extends BaseFragment {
 
     @BindView(R.id.tv_version)
     TextView tvVersion;
+    @BindView(R.id.tv_download_url)
+    TextView tvDownloadUrl;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,13 +40,15 @@ public class AboutUsFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_about_us, null);
         ButterKnife.bind(this, view);
         ((MainActivity) getActivity()).setSupportActionBar(toolBar);
         try {
-            tvVersion.setText("版本号:" + getContext().getPackageManager()
-                    .getPackageInfo(getContext().getPackageName(), 0).versionName);
+            String versionName = getContext().getPackageManager()
+                    .getPackageInfo(getContext().getPackageName(), 0).versionName;
+            tvVersion.setText("版本号:" + versionName);
+            tvDownloadUrl.setText(getString(R.string.lite_version, versionName));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -60,5 +63,10 @@ public class AboutUsFragment extends BaseFragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }

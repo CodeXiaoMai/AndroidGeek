@@ -1,4 +1,3 @@
-
 package com.xiaomai.geek.ui.module.password;
 
 import android.Manifest;
@@ -32,7 +31,6 @@ import com.xiaomai.geek.view.IFileExploreView;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -56,31 +54,16 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
 
     private static final String TAG = "FileExploreActivity";
     private static final int REQUEST_CODE_FILE_PERMISSION = 0x0003;
-
-    private int mCurrentType = TYPE_FILE;
-
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
-
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-
-    private File mCurrentFile;
-
-    private File[] mFiles;
-
-    private FileListAdapter mAdapter;
-
-    private String mRootPath;
-
-    private FilenameFilter filenameFilter = new FilenameFilter() {
-        @Override
-        public boolean accept(File dir, String name) {
-            return true;
-        }
-    };
-
     FileExplorePresenter mPresenter = new FileExplorePresenter();
+    private int mCurrentType = TYPE_FILE;
+    private File mCurrentFile;
+    private File[] mFiles;
+    private FileListAdapter mAdapter;
+    private String mRootPath;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -121,9 +104,13 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
 
     private void enterFolder(File file) {
         getSupportActionBar().setSubtitle(file.getAbsolutePath());
-        mFiles = file.listFiles();
-        sortFiles(mFiles);
-        mAdapter.setNewData(Arrays.asList(mFiles));
+        if (file.canRead()) {
+            mFiles = file.listFiles();
+            sortFiles(mFiles);
+            mAdapter.setNewData(Arrays.asList(mFiles));
+        } else {
+            mAdapter.setNewData(null);
+        }
         mCurrentFile = file;
     }
 
@@ -219,16 +206,7 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
     public void showFiles(String path) {
         mCurrentFile = new File(path);
         toolBar.setSubtitle(mCurrentFile.getAbsolutePath());
-        if (mCurrentType == TYPE_FILE) {
-            mFiles = mCurrentFile.listFiles(filenameFilter);
-        } else {
-            mFiles = mCurrentFile.listFiles(new FilenameFilter() {
-                @Override
-                public boolean accept(File dir, String name) {
-                    return dir.isDirectory();
-                }
-            });
-        }
+        mFiles = mCurrentFile.listFiles();
         sortFiles(mFiles);
 
         mAdapter = new FileListAdapter(Arrays.asList(mFiles));
@@ -246,10 +224,14 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
                     if (file.isDirectory()) {
                         enterFolder(file);
                     } else {
-                        Intent intent = new Intent();
-                        intent.putExtra(EXTRA_PATH, file.getAbsolutePath());
-                        setResult(RESULT_OK, intent);
-                        finish();
+                        if (mCurrentType == TYPE_FILE) {
+                            Intent intent = new Intent();
+                            intent.putExtra(EXTRA_PATH, file.getAbsolutePath());
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        } else {
+                            Snackbar.make(recyclerView, "请选择一个文件夹目录", Snackbar.LENGTH_LONG).show();
+                        }
                     }
                 }
             }

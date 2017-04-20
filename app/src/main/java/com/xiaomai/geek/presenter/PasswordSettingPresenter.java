@@ -4,6 +4,7 @@ package com.xiaomai.geek.presenter;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.xiaomai.geek.common.utils.FileUtils;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.view.IPasswordSettingView;
@@ -14,6 +15,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -118,6 +120,7 @@ public class PasswordSettingPresenter extends BaseRxPresenter<IPasswordSettingVi
                             xmlSerializer.endTag("", "password_list");
                             xmlSerializer.endDocument();
 
+                            FileUtils.checkDirs(new File(path).getParent());
                             FileOutputStream fileOutputStream = new FileOutputStream(path);
                             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
                                     fileOutputStream);

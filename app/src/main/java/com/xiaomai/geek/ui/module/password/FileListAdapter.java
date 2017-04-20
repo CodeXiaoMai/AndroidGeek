@@ -27,7 +27,7 @@ public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.FileVi
 
     @Override
     public int getItemCount() {
-        return files.size() + 1;
+        return files == null ? 1 : files.size() + 1;
     }
 
     public void setNewData(List<File> files) {

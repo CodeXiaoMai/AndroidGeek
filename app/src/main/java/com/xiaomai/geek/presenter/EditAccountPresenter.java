@@ -47,11 +47,15 @@ public class EditAccountPresenter extends BaseRxPresenter<IEditAccountView> {
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<Boolean>() {
             @Override
             public void call(Subscriber<? super Boolean> subscriber) {
-                long id = PasswordDBHelper.getInstance(context).insert(platform, userName, password,
-                        note, 0);
-                if (id > 0) {
-                    subscriber.onNext(true);
-                } else {
+                try {
+                    long id = PasswordDBHelper.getInstance(context).insert(platform, userName, password,
+                            note, 0);
+                    if (id > 0) {
+                        subscriber.onNext(true);
+                    } else {
+                        subscriber.onNext(false);
+                    }
+                } catch (Exception e) {
                     subscriber.onNext(false);
                 }
                 subscriber.onCompleted();
@@ -77,9 +81,13 @@ public class EditAccountPresenter extends BaseRxPresenter<IEditAccountView> {
                 pwd.setUserName(userName);
                 pwd.setPassword(password);
                 pwd.setNote(note);
-                int id = PasswordDBHelper.getInstance(context).updatePassword(pwd);
-                subscriber.onNext(id);
-                subscriber.onCompleted();
+                try {
+                    int id = PasswordDBHelper.getInstance(context).updatePassword(pwd);
+                    subscriber.onNext(id);
+                    subscriber.onCompleted();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Integer>() {

@@ -24,9 +24,13 @@ public class PasswordDetailPresenter extends BaseRxPresenter<IPasswordDetailView
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<Password>() {
             @Override
             public void call(Subscriber<? super Password> subscriber) {
-                Password password = PasswordDBHelper.getInstance(context).getPasswordById(id);
-                subscriber.onNext(password);
-                subscriber.onCompleted();
+                try {
+                    Password password = PasswordDBHelper.getInstance(context).getPasswordById(id);
+                    subscriber.onNext(password);
+                    subscriber.onCompleted();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Password>() {
@@ -42,9 +46,13 @@ public class PasswordDetailPresenter extends BaseRxPresenter<IPasswordDetailView
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {
-                int i = PasswordDBHelper.getInstance(context).updatePassword(password);
-                subscriber.onNext(i);
-                subscriber.onCompleted();
+                try {
+                    int i = PasswordDBHelper.getInstance(context).updatePassword(password);
+                    subscriber.onNext(i);
+                    subscriber.onCompleted();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Integer>() {

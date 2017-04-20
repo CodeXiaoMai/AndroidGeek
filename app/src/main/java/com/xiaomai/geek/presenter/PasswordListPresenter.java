@@ -25,32 +25,37 @@ public class PasswordListPresenter extends BaseRxPresenter<IPasswordSearchView> 
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<List<Password>>() {
             @Override
             public void call(Subscriber<? super List<Password>> subscriber) {
-                List<Password> passwords = PasswordDBHelper.getInstance(context).getAllPasswords();
-                subscriber.onNext(passwords);
+                try {
+                    List<Password> passwords = PasswordDBHelper.getInstance(context).getAllPasswords();
+                    subscriber.onNext(passwords);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                subscriber.onCompleted();
             }
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Subscriber<List<Password>>() {
-            @Override
-            public void onCompleted() {
-                getMvpView().dismissLoading();
-            }
+                .subscribe(new Subscriber<List<Password>>() {
+                    @Override
+                    public void onCompleted() {
+                        getMvpView().dismissLoading();
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                getMvpView().showError(e);
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().showError(e);
+                    }
 
-            @Override
-            public void onNext(List<Password> passwords) {
-                if (passwords.size() == 0) {
-                    getMvpView().showEmpty();
-                } else {
-                    getMvpView().showContent(passwords);
-                }
-            }
-        }));
+                    @Override
+                    public void onNext(List<Password> passwords) {
+                        if (passwords.size() == 0) {
+                            getMvpView().showEmpty();
+                        } else {
+                            getMvpView().showContent(passwords);
+                        }
+                    }
+                }));
     }
 
     public void getPasswordsByKeywords(final Context context, final String keywords) {
@@ -58,21 +63,26 @@ public class PasswordListPresenter extends BaseRxPresenter<IPasswordSearchView> 
                 Observable.create(new Observable.OnSubscribe<List<Password>>() {
                     @Override
                     public void call(Subscriber<? super List<Password>> subscriber) {
-                        List<Password> passwords = PasswordDBHelper.getInstance(context).getPasswordByKeywords(keywords);
-                        subscriber.onNext(passwords);
+                        try {
+                            List<Password> passwords = PasswordDBHelper.getInstance(context).getPasswordByKeywords(keywords);
+                            subscriber.onNext(passwords);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        subscriber.onCompleted();
                     }
                 }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<List<Password>>() {
-                    @Override
-                    public void call(List<Password> passwords) {
-                        if (passwords.size() > 0) {
-                            getMvpView().showContent(passwords);
-                        } else {
-                            getMvpView().onSearchEmpty();
-                        }
-                    }
-                })
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Action1<List<Password>>() {
+                            @Override
+                            public void call(List<Password> passwords) {
+                                if (passwords.size() > 0) {
+                                    getMvpView().showContent(passwords);
+                                } else {
+                                    getMvpView().onSearchEmpty();
+                                }
+                            }
+                        })
         );
     }
 }

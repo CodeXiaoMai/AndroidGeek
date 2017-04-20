@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger;
 
 public class AppLog {
 
-    private static final String TAG = "GitHubApp";
+    private static final String TAG = "AndroidGeek";
 
     public static void init() {
         Logger.init(TAG);

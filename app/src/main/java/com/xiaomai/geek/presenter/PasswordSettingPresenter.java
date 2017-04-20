@@ -39,8 +39,6 @@ import rx.schedulers.Schedulers;
 
 public class PasswordSettingPresenter extends BaseRxPresenter<IPasswordSettingView> {
 
-    private final String BACKUP_FILE_NAME = "back_up.xml";
-
     public void deleteAllPasswords(final Context context) {
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
@@ -62,8 +60,12 @@ public class PasswordSettingPresenter extends BaseRxPresenter<IPasswordSettingVi
         Observable.create(new Observable.OnSubscribe<List<Password>>() {
             @Override
             public void call(Subscriber<? super List<Password>> subscriber) {
-                List<Password> passwords = PasswordDBHelper.getInstance(context).getAllPasswords();
-                subscriber.onNext(passwords);
+                try {
+                    List<Password> passwords = PasswordDBHelper.getInstance(context).getAllPasswords();
+                    subscriber.onNext(passwords);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 subscriber.onCompleted();
             }
         }).subscribeOn(Schedulers.io()).doOnSubscribe(new Action0() {

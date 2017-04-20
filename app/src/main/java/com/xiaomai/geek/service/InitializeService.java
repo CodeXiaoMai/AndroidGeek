@@ -12,6 +12,7 @@ import com.facebook.stetho.Stetho;
 import com.xiaomai.geek.BuildConfig;
 import com.xiaomai.geek.common.utils.FileUtils;
 import com.xiaomai.geek.common.wrapper.CrashHelper;
+import com.xiaomai.geek.data.db.PasswordDBHelper;
 
 /**
  * Created by XiaoMai on 2017/4/5 11:23.
@@ -52,5 +53,8 @@ public class InitializeService extends IntentService {
         }
 
         CrashHelper.init(getApplicationContext());
+
+        // 调用此方法，如果数据库版本有更新，就更新数据库
+        PasswordDBHelper.getInstance(this).getWritableDatabase();
     }
 }

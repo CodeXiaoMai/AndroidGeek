@@ -13,6 +13,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     signingConfigs {
         release {
             storeFile file('../keystore/mykeystore.jks')
@@ -21,6 +22,7 @@ android {
             keyPassword key_password
         }
     }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.release
@@ -31,19 +33,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
-    }
-
-    productFlavors.all {
-        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-    }
-
-    // 友盟多渠道打包
-    productFlavors {
-        xiaomai {}
     }
 }
 

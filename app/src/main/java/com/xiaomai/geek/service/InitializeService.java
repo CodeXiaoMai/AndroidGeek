@@ -9,9 +9,9 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.facebook.stetho.Stetho;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.xiaomai.geek.BuildConfig;
 import com.xiaomai.geek.common.utils.FileUtils;
+import com.xiaomai.geek.common.wrapper.CrashHelper;
 
 /**
  * Created by XiaoMai on 2017/4/5 11:23.
@@ -51,6 +51,6 @@ public class InitializeService extends IntentService {
             Stetho.initializeWithDefaults(this);
         }
 
-        CrashReport.initCrashReport(getApplicationContext(), "8568d789f8", BuildConfig.DEBUG);
+        CrashHelper.init(getApplicationContext());
     }
 }

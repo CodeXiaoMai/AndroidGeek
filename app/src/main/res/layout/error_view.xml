@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/empty_root_layout"
+    android:id="@+id/error_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:orientation="vertical"
     android:visibility="gone">
 
     <LinearLayout
-        android:id="@+id/empty_view"
+        android:id="@+id/error_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/empty_title"
+            android:id="@+id/error_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
+            android:textColor="@android:color/holo_red_dark"
             android:textSize="15sp"
             android:textStyle="bold"
-            tools:text="没有数据!" />
+            tools:text="Ooops!!!" />
 
         <TextView
-            android:id="@+id/empty_desc"
+            android:id="@+id/error_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="56dp"
-            android:layout_marginRight="56dp"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:lineSpacingExtra="5.5dp"
-            tools:text="没有任何内容!" />
+            android:textColor="@android:color/holo_red_dark"
+            tools:text="Looks like something wrong!" />
+
+        <TextView
+            android:id="@+id/retry_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="点击重试" />
     </LinearLayout>
+
 </RelativeLayout>

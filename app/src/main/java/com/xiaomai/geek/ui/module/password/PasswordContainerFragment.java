@@ -3,7 +3,6 @@ package com.xiaomai.geek.ui.module.password;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -71,8 +70,8 @@ public class PasswordContainerFragment extends BaseFragment {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(PasswordListFragment.newInstance());
         fragments.add(PasswordSettingFragment.newInstance());
-//        fragments.add(PasswordListFragment.newInstance());
-        mAdapter.setFragments(fragments);
+//        list.add(PasswordListFragment.newInstance());
+        mAdapter.setList(fragments);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -83,7 +82,7 @@ public class PasswordContainerFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 // 只在密码列表页面显示添加按钮
-                Fragment fragment = mAdapter.getFragments().get(position);
+                Fragment fragment = mAdapter.getList().get(position);
                 if (fragment instanceof PasswordSettingFragment) {
                     fabAdd.setVisibility(View.GONE);
                 } else if (fragment instanceof PasswordListFragment) {

@@ -1,7 +1,6 @@
 
 package com.xiaomai.geek.ui.base;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -12,9 +11,9 @@ import java.util.List;
  * Created by XiaoMai on 2017/3/30 10:17.
  */
 
-public abstract class BaseFragmentPagerAdapter extends FragmentPagerAdapter {
+public abstract class BaseFragmentPagerAdapter<T> extends FragmentPagerAdapter {
 
-    protected List<Fragment> fragments;
+    protected List<T> list;
 
     public BaseFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -22,24 +21,19 @@ public abstract class BaseFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return fragments == null ? 0 : fragments.size();
+        return list == null ? 0 : list.size();
     }
 
-    @Override
-    public Fragment getItem(int position) {
-        return fragments.get(position);
+    public List<T> getList() {
+        return list;
     }
 
-    public List<Fragment> getFragments() {
-        return fragments;
-    }
-
-    public void setFragments(List<Fragment> fragments) {
-        this.fragments = fragments;
+    public void setList(List<T> list) {
+        this.list = list;
         notifyDataSetChanged();
     }
 
-    public void setFragments(Fragment[] fragments) {
-        setFragments(Arrays.asList(fragments));
+    public void setList(T[] fragments) {
+        setList(Arrays.asList(fragments));
     }
 }

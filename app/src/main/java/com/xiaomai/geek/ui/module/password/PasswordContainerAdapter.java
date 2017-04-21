@@ -10,7 +10,7 @@ import com.xiaomai.geek.ui.base.BaseFragmentPagerAdapter;
  * Created by XiaoMai on 2017/3/30 10:03.
  */
 
-public class PasswordContainerAdapter extends BaseFragmentPagerAdapter {
+public class PasswordContainerAdapter extends BaseFragmentPagerAdapter<Fragment> {
 
     public static final String TITLE_PASSWORD_ALL = "全部";
 
@@ -25,8 +25,13 @@ public class PasswordContainerAdapter extends BaseFragmentPagerAdapter {
     }
 
     @Override
+    public Fragment getItem(int position) {
+        return list.get(position);
+    }
+
+    @Override
     public CharSequence getPageTitle(int position) {
-        Fragment fragment = fragments.get(position);
+        Fragment fragment = list.get(position);
         if (fragment instanceof PasswordListFragment) {
             return TITLE_PASSWORD_ALL;
         } else if (fragment instanceof PasswordSettingFragment) {

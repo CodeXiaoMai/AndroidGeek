@@ -19,6 +19,5 @@ public class CrashHelper {
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
         strategy.setAppChannel(CHANNEL_NAME);
         CrashReport.initCrashReport(context, APP_ID, BuildConfig.DEBUG, strategy);
-
     }
 }

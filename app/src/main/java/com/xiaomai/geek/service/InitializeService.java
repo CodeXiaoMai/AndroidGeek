@@ -1,4 +1,3 @@
-
 package com.xiaomai.geek.service;
 
 import android.app.IntentService;
@@ -52,7 +51,10 @@ public class InitializeService extends IntentService {
             Stetho.initializeWithDefaults(this);
         }
 
-        CrashHelper.init(getApplicationContext());
+        // 为了避免开发过程中的错误影响统计数据
+        if (!BuildConfig.DEBUG) {
+            CrashHelper.init(getApplicationContext());
+        }
 
         // 调用此方法，如果数据库版本有更新，就更新数据库
         PasswordDBHelper.getInstance(this).getWritableDatabase();

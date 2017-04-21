@@ -10,6 +10,8 @@
     <string name="pro_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/%s_pro.apk</string>
     <string name="lite_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/%s_lite.apk</string>
 
+    <string name="app_share_info">嗨！我发现了一款非常好的Android极客软件，你也试试吧！下载地址：%s</string>
+
     <!-- Behavior -->
     <string name="behavior_bottom">com.xiaomai.geek.ui.behavior.BottomBehavior</string>
     <string name="introduce">这是一款绝对安全的私人密码管理器，因为它只具有文件读取与写入权限（用于本地数据导入与备份）。与市面上的具有网络权限的同类App相比，绝对安全。您可以放心使用！</string>

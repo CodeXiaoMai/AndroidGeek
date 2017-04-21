@@ -1,10 +1,13 @@
 package com.xiaomai.geek.ui.module;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +33,7 @@ public class AboutUsFragment extends BaseFragment {
     TextView tvVersion;
     @BindView(R.id.tv_download_url)
     TextView tvDownloadUrl;
+    private String mVersionName;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,10 +49,10 @@ public class AboutUsFragment extends BaseFragment {
         ButterKnife.bind(this, view);
         ((MainActivity) getActivity()).setSupportActionBar(toolBar);
         try {
-            String versionName = getContext().getPackageManager()
+            mVersionName = getContext().getPackageManager()
                     .getPackageInfo(getContext().getPackageName(), 0).versionName;
-            tvVersion.setText("版本号:" + versionName);
-            tvDownloadUrl.setText(getString(R.string.lite_version, versionName));
+            tvVersion.setText("版本号:" + mVersionName);
+            tvDownloadUrl.setText(getString(R.string.lite_version, mVersionName));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -56,10 +60,22 @@ public class AboutUsFragment extends BaseFragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.about_menu, menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 ((MainActivity) getActivity()).openDrawer();
+                return true;
+            case R.id.menu_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.app_share_info, getString(R.string.pro_version, mVersionName)));
+                startActivity(Intent.createChooser(intent, "分享到"));
                 return true;
         }
         return super.onOptionsItemSelected(item);

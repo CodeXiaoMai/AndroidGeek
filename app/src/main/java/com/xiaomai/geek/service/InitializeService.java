@@ -42,7 +42,7 @@ public class InitializeService extends IntentService {
 
     private void performInit() {
         // 检查创建文件夹
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getExternalFilesDirs(null);
         }
         FileUtils.checkDirs(Environment.getExternalStorageDirectory() + "/" + getPackageName());

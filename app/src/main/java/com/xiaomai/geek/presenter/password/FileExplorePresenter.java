@@ -1,9 +1,10 @@
-package com.xiaomai.geek.presenter;
+package com.xiaomai.geek.presenter.password;
 
 import android.content.Context;
 import android.os.Environment;
 import android.os.storage.StorageManager;
 
+import com.xiaomai.geek.presenter.BaseRxPresenter;
 import com.xiaomai.geek.view.IFileExploreView;
 
 import java.util.ArrayList;

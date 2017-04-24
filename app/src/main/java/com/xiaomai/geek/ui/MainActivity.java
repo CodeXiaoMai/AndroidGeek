@@ -1,4 +1,3 @@
-
 package com.xiaomai.geek.ui;
 
 import android.content.BroadcastReceiver;
@@ -21,8 +20,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.pref.PasswordPref;
+import com.xiaomai.geek.di.IComponent;
+import com.xiaomai.geek.di.component.DaggerMainComponent;
+import com.xiaomai.geek.di.component.MainComponent;
+import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.module.AboutUsFragment;
 import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
@@ -35,31 +39,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
-    private static final String TAG = "MainActivity";
-
-    @BindView(R.id.fl_container)
-    FrameLayout flContainer;
-
-    @BindView(R.id.nav_view)
-    NavigationView navView;
-
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
-    private FragmentManager mFragmentManager = getSupportFragmentManager();
-
-    private Fragment mCurrentFragment;
-
-    private int mCurrentPosition = 0;
+        implements NavigationView.OnNavigationItemSelectedListener, IComponent<MainComponent> {
 
     public static final String SYSTEM_REASON = "reason";
-
     public static final String SYSTEM_HOME_KEY = "homekey";
-
     public static final String SYSTEM_HOME_KEY_LONG = "recentapps";
-
+    private static final String TAG = "MainActivity";
+    @BindView(R.id.fl_container)
+    FrameLayout flContainer;
+    @BindView(R.id.nav_view)
+    NavigationView navView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+    private FragmentManager mFragmentManager = getSupportFragmentManager();
+    private Fragment mCurrentFragment;
+    private int mCurrentPosition = 0;
     private boolean runInBackground;
 
     private boolean mIsDialogShowing;
@@ -80,6 +74,7 @@ public class MainActivity extends BaseActivity
             }
         }
     };
+    private long mLastBackTime = 0L;
 
     public static void launch(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
@@ -193,8 +188,6 @@ public class MainActivity extends BaseActivity
         mCurrentFragment = fragment;
     }
 
-    private long mLastBackTime = 0L;
-
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -228,5 +221,13 @@ public class MainActivity extends BaseActivity
         super.onDestroy();
         if (mReceiver != null)
             unregisterReceiver(mReceiver);
+    }
+
+    @Override
+    public MainComponent getComponent() {
+        return DaggerMainComponent.builder()
+                .applicationComponent(GeekApplication.get(this).getComponent())
+                .activityModule(new ActivityModule(this))
+                .build();
     }
 }

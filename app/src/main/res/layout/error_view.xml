@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:text="加载失败！"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -31,16 +32,10 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:lineSpacingExtra="5.5dp"
+            android:text="请重试！"
             android:textColor="@android:color/holo_red_dark"
             tools:text="Looks like something wrong!" />
 
-        <TextView
-            android:id="@+id/retry_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:text="点击重试" />
     </LinearLayout>
 
 </RelativeLayout>

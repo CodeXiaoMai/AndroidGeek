@@ -1,10 +1,11 @@
-package com.xiaomai.geek.presenter;
+package com.xiaomai.geek.presenter.password;
 
 
 import android.content.Context;
 
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
+import com.xiaomai.geek.presenter.BaseRxPresenter;
 import com.xiaomai.geek.view.IPasswordSearchView;
 
 import java.util.List;

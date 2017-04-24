@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xiaomai.geek.R;
-import com.xiaomai.geek.data.api.TrendingApi;
+import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.base.BaseFragment;
 
@@ -28,12 +28,12 @@ import butterknife.Unbinder;
 public class GitHubContainerFragment extends BaseFragment {
 
     private static final String[] TRENDING_CATEGORY = {
-            TrendingApi.LANG_JAVA,
-            TrendingApi.LANG_PYTHON,
-            TrendingApi.LANG_OC,
-            TrendingApi.LANG_SWIFT,
-            TrendingApi.LANG_BASH,
-            TrendingApi.LANG_HTML
+            GitHubApi.LANG_JAVA,
+            GitHubApi.LANG_HTML,
+            GitHubApi.LANG_PYTHON,
+            GitHubApi.LANG_BASH,
+            GitHubApi.LANG_OC,
+            GitHubApi.LANG_SWIFT
     };
     @BindView(R.id.tool_bar)
     Toolbar toolBar;

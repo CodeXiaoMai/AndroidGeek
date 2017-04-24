@@ -1,6 +1,6 @@
 package com.xiaomai.geek;
 
-import com.xiaomai.geek.presenter.EditAccountPresenter;
+import com.xiaomai.geek.presenter.password.EditAccountPresenter;
 
 import org.junit.Test;
 

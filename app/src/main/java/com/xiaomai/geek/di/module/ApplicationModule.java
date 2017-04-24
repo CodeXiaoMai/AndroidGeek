@@ -4,7 +4,11 @@ import android.app.Application;
 import android.content.Context;
 
 import com.xiaomai.geek.GeekApplication;
+import com.xiaomai.geek.data.net.GitHubService;
+import com.xiaomai.geek.data.net.client.GitHubTrendingRetrofit;
 import com.xiaomai.geek.di.scope.ApplicationContext;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -33,4 +37,9 @@ public class ApplicationModule {
         return application;
     }
 
+    @Provides
+    @Singleton
+    GitHubService provideGitHubService(GitHubTrendingRetrofit retrofit) {
+        return retrofit.get().create(GitHubService.class);
+    }
 }

@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.CardView;
@@ -30,7 +29,7 @@ import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
-import com.xiaomai.geek.presenter.PasswordDetailPresenter;
+import com.xiaomai.geek.presenter.password.PasswordDetailPresenter;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.view.IPasswordDetailView;
 

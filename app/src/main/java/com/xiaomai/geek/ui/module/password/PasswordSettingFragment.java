@@ -19,7 +19,7 @@ import com.xiaomai.geek.common.utils.TimeUtils;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.data.pref.PasswordPref;
 import com.xiaomai.geek.event.PasswordEvent;
-import com.xiaomai.geek.presenter.PasswordSettingPresenter;
+import com.xiaomai.geek.presenter.password.PasswordSettingPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
 import com.xiaomai.geek.ui.widget.EditTextDialog;
 import com.xiaomai.geek.view.IPasswordSettingView;

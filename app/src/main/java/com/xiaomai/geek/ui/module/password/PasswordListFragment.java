@@ -26,7 +26,7 @@ import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
-import com.xiaomai.geek.presenter.PasswordListPresenter;
+import com.xiaomai.geek.presenter.password.PasswordListPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
 import com.xiaomai.geek.view.IPasswordSearchView;
 

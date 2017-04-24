@@ -33,7 +33,7 @@ import com.xiaomai.geek.di.component.ActivityComponent;
 import com.xiaomai.geek.di.component.DaggerActivityComponent;
 import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.event.PasswordEvent;
-import com.xiaomai.geek.presenter.EditAccountPresenter;
+import com.xiaomai.geek.presenter.password.EditAccountPresenter;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.view.IEditAccountView;
 

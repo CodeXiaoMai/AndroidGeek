@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.xiaomai.geek.common.wrapper.AppLog;
-import com.xiaomai.geek.data.api.TrendingApi;
+import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.ui.base.BaseFragmentPagerAdapter;
 
 /**
@@ -26,22 +26,22 @@ public class GitHubContainerAdapter extends BaseFragmentPagerAdapter<String> {
     public CharSequence getPageTitle(int position) {
         String language = list.get(position);
         switch (language) {
-            case TrendingApi.LANG_JAVA:
+            case GitHubApi.LANG_JAVA:
                 return "Java";
 
-            case TrendingApi.LANG_OC:
-                return "Objective-C";
+            case GitHubApi.LANG_HTML:
+                return "Html";
 
-            case TrendingApi.LANG_SWIFT:
-                return "Swift";
-
-            case TrendingApi.LANG_HTML:
-                return "HTML";
-
-            case TrendingApi.LANG_PYTHON:
+            case GitHubApi.LANG_PYTHON:
                 return "Python";
 
-            case TrendingApi.LANG_BASH:
+            case GitHubApi.LANG_OC:
+                return "Objective-C";
+
+            case GitHubApi.LANG_SWIFT:
+                return "Swift";
+
+            case GitHubApi.LANG_BASH:
                 return "Shell";
 
             default:

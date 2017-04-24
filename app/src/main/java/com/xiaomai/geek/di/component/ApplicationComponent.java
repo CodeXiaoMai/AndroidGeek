@@ -1,5 +1,6 @@
 package com.xiaomai.geek.di.component;
 
+import com.xiaomai.geek.data.net.GitHubService;
 import com.xiaomai.geek.di.module.ApplicationModule;
 
 import javax.inject.Singleton;
@@ -13,4 +14,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
+
+    GitHubService gitHubService();
+
 }

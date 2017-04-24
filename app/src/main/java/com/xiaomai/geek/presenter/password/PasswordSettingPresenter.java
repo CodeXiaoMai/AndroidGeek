@@ -1,5 +1,5 @@
 
-package com.xiaomai.geek.presenter;
+package com.xiaomai.geek.presenter.password;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.xiaomai.geek.common.utils.FileUtils;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
+import com.xiaomai.geek.presenter.BaseRxPresenter;
 import com.xiaomai.geek.view.IPasswordSettingView;
 
 import org.xmlpull.v1.XmlPullParser;

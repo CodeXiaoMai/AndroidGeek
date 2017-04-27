@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.di.component.MainComponent;
@@ -113,7 +114,10 @@ public class TrendingFragment extends BaseFragment implements ILceView<ArrayList
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
-
+                Repo repo = mAdapter.getItem(i);
+                String repoName = StringUtil.replaceAllBlank(repo.getName());
+                String owner = repo.getOwner().getLogin();
+                RepoDetailActivity.launch(getActivity(), owner, repoName);
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

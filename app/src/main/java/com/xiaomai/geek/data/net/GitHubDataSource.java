@@ -33,7 +33,11 @@ public class GitHubDataSource implements GitHubApi {
     public Observable<ArrayList<Repo>> getTrendingRepos(@LanguageType String language) {
         String queryParams = "";
         if (!TextUtils.isEmpty(language)) {
-            queryParams = "language:" + language;
+            if (TextUtils.equals(language, GitHubApi.LANG_ANDROID)) {
+                queryParams = "android+language:java";
+            } else {
+                queryParams = "language:" + language;
+            }
         }
         return mGitHubService.searchRepo(queryParams, SORT_BY_STARTS, ORDER_BY_DESC, 1, PAGE_SIZE)
                 .map(new Func1<SearchResultResp, ArrayList<Repo>>() {

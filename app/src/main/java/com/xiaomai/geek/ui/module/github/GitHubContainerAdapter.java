@@ -26,8 +26,14 @@ public class GitHubContainerAdapter extends BaseFragmentPagerAdapter<String> {
     public CharSequence getPageTitle(int position) {
         String language = list.get(position);
         switch (language) {
+            case GitHubApi.LANG_ANDROID:
+                return "Android";
+
             case GitHubApi.LANG_JAVA:
                 return "Java";
+
+            case GitHubApi.LANG_PHP:
+                return "Php";
 
             case GitHubApi.LANG_HTML:
                 return "Html";

@@ -7,9 +7,10 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.xiaomai.geek.data.module.User;
+import com.xiaomai.geek.ui.module.LoginActivity;
 
 /**
- * Created by HSEDU on 2017/3/14 16:14.
+ * Created by XiaoMai on 2017/3/14 16:14.
  */
 
 public class AccountPref {
@@ -64,7 +65,7 @@ public class AccountPref {
         if (isLogin(context)) {
             return true;
         }
-//        LoginActivity.launch(context);
+        LoginActivity.launch(context);
         return false;
     }
 

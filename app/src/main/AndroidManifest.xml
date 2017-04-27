@@ -3,7 +3,6 @@
     package="com.xiaomai.geek">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,20 +22,32 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:configChanges="orientation|screenSize|screenLayout"
             android:name=".ui.MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
             android:theme="@style/TransparentTheme" />
         <activity android:name=".ui.module.password.EditAccountActivity" />
         <activity
-            android:configChanges="orientation|screenSize|screenLayout"
             android:name=".ui.module.password.PasswordDetailActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
             android:theme="@style/TransparentTheme" />
-        <activity android:name=".ui.module.password.FileExploreActivity"
+        <activity
+            android:name=".ui.module.password.FileExploreActivity"
             android:configChanges="orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".ui.module.github.RepoDetailActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".ui.module.github.UserActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".ui.module.LoginActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:windowSoftInputMode="adjustResize" />
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

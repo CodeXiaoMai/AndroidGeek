@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.api.GitHubApi;
+import com.xiaomai.geek.data.pref.AccountPref;
 import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.base.BaseFragment;
 
@@ -28,8 +29,10 @@ import butterknife.Unbinder;
 public class GitHubContainerFragment extends BaseFragment {
 
     private static final String[] TRENDING_CATEGORY = {
+            GitHubApi.LANG_ANDROID,
             GitHubApi.LANG_JAVA,
             GitHubApi.LANG_HTML,
+            GitHubApi.LANG_PHP,
             GitHubApi.LANG_PYTHON,
             GitHubApi.LANG_BASH,
             GitHubApi.LANG_OC,
@@ -63,6 +66,7 @@ public class GitHubContainerFragment extends BaseFragment {
         ((MainActivity) getActivity()).setSupportActionBar(toolBar);
         mAdapter = new GitHubContainerAdapter(getChildFragmentManager());
         viewPager.setAdapter(mAdapter);
+        viewPager.setOffscreenPageLimit(TRENDING_CATEGORY.length);
         tabLayout.setupWithViewPager(viewPager);
 
         mAdapter.setList(TRENDING_CATEGORY);
@@ -84,7 +88,8 @@ public class GitHubContainerFragment extends BaseFragment {
 
                 return true;
             case R.id.menu_profile:
-
+                if (AccountPref.checkLogin(getContext()))
+                    UserActivity.launch(getContext(), AccountPref.getLoginUser(getContext()));
                 return true;
         }
         return super.onOptionsItemSelected(item);

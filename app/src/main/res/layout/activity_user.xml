@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <ScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_10"
+        tools:context="com.xiaomai.geek.ui.module.github.UserActivity">
+
+        <LinearLayout
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.xiaomai.geek.ui.widget.UserCard
+                android:id="@+id/userCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/repo"
+                style="@style/MimeTextView"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/button_selector"
+                android:text="Repositories" />
+
+            <TextView
+                android:id="@+id/starred"
+                style="@style/MimeTextView"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/button_selector"
+                android:text="Starred Repositories" />
+
+            <TextView
+                android:id="@+id/following"
+                style="@style/MimeTextView"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/button_selector"
+                android:text="Following" />
+
+            <TextView
+                android:id="@+id/followers"
+                style="@style/MimeTextView"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/button_selector"
+                android:text="Followers" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

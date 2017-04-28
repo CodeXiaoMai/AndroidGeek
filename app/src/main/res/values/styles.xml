@@ -17,4 +17,14 @@
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
+
+
+    <style name="MimeTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_60</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:padding">@dimen/dimen_10</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+    </style>
 </resources>

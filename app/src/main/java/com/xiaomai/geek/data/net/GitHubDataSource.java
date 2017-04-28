@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.Repo;
+import com.xiaomai.geek.data.module.User;
 import com.xiaomai.geek.data.net.response.SearchResultResp;
 
 import java.util.ArrayList;
@@ -46,5 +47,10 @@ public class GitHubDataSource implements GitHubApi {
                 return searchResultResp.getItems();
             }
         });
+    }
+
+    @Override
+    public Observable<User> getSingleUser(String name) {
+        return mGitHubService.getSingleUser(name);
     }
 }

@@ -1,9 +1,11 @@
 package com.xiaomai.geek.data.net;
 
+import com.xiaomai.geek.data.module.User;
 import com.xiaomai.geek.data.net.response.SearchResultResp;
 
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -20,4 +22,8 @@ public interface GitHubService {
                                             @Query("order") String order,
                                             @Query("page") int page,
                                             @Query("per_page") int pageSize);
+
+    @Headers("Cache-Control: public, max-age=3600")
+    @GET("users/{user}")
+    Observable<User> getSingleUser(@Path("user") String user);
 }

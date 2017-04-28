@@ -25,9 +25,6 @@ public class LoginPresenter extends BaseRxPresenter<ILoginView> {
         this.accountApi = accountApi;
     }
 
-//    @Inject
-//    Application context;
-
     public void login(String userName, String password) {
         mCompositeSubscription.add(
                 accountApi.login(userName, password)

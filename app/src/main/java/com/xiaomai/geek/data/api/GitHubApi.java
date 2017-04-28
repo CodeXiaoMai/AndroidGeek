@@ -3,6 +3,7 @@ package com.xiaomai.geek.data.api;
 import android.support.annotation.StringDef;
 
 import com.xiaomai.geek.data.module.Repo;
+import com.xiaomai.geek.data.module.User;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,8 @@ public interface GitHubApi {
     String LANG_PHP = "php";
 
     Observable<ArrayList<Repo>> getTrendingRepos(@LanguageType String language);
+
+    Observable<User> getSingleUser(String name);
 
     @StringDef({
             LANG_ANDROID, LANG_JAVA, LANG_OC, LANG_SWIFT, LANG_HTML, LANG_PYTHON, LANG_BASH

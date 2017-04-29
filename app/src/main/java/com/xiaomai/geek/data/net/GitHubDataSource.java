@@ -20,6 +20,7 @@ import rx.functions.Func1;
 
 public class GitHubDataSource implements GitHubApi {
     private static final String SORT_BY_STARTS = "stars";
+    private static final String SORT_BY_UPDATED = "updated";
     private static final String ORDER_BY_DESC = "desc";
     private static final int PAGE_SIZE = 30;
 
@@ -52,5 +53,45 @@ public class GitHubDataSource implements GitHubApi {
     @Override
     public Observable<User> getSingleUser(String name) {
         return mGitHubService.getSingleUser(name);
+    }
+
+    @Override
+    public Observable<ArrayList<Repo>> getMyRepos() {
+        return mGitHubService.getMyRepos(SORT_BY_UPDATED, "all");
+    }
+
+    @Override
+    public Observable<ArrayList<Repo>> getUserRepos(String userName) {
+        return mGitHubService.getUserRepos(userName, SORT_BY_UPDATED);
+    }
+
+    @Override
+    public Observable<ArrayList<Repo>> getMyStarredRepos() {
+        return mGitHubService.getMyStarredRepos(SORT_BY_UPDATED);
+    }
+
+    @Override
+    public Observable<ArrayList<Repo>> getUserStarredRepos(String userName) {
+        return mGitHubService.getUserStarredRepos(userName, SORT_BY_UPDATED);
+    }
+
+    @Override
+    public Observable<ArrayList<User>> getMyFollowers() {
+        return mGitHubService.getMyFollowers();
+    }
+
+    @Override
+    public Observable<ArrayList<User>> getUserFollowers(String userName) {
+        return mGitHubService.getUserFollowers(userName);
+    }
+
+    @Override
+    public Observable<ArrayList<User>> getMyFollowing() {
+        return mGitHubService.getMyFollowing();
+    }
+
+    @Override
+    public Observable<ArrayList<User>> getUserFollowing(String userName) {
+        return mGitHubService.getUserFollowing(userName);
     }
 }

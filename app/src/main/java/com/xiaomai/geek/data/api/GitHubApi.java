@@ -1,5 +1,6 @@
 package com.xiaomai.geek.data.api;
 
+import android.support.annotation.IntDef;
 import android.support.annotation.StringDef;
 
 import com.xiaomai.geek.data.module.Repo;
@@ -35,9 +36,36 @@ public interface GitHubApi {
 
     Observable<User> getSingleUser(String name);
 
+    Observable<ArrayList<Repo>> getMyRepos();
+
+    Observable<ArrayList<Repo>> getUserRepos(String userName);
+
+    Observable<ArrayList<Repo>> getMyStarredRepos();
+
+    Observable<ArrayList<Repo>> getUserStarredRepos(String userName);
+
+    Observable<ArrayList<User>> getMyFollowers();
+
+    Observable<ArrayList<User>> getUserFollowers(String userName);
+
+    Observable<ArrayList<User>> getMyFollowing();
+
+    Observable<ArrayList<User>> getUserFollowing(String userName);
+
+
     @StringDef({
             LANG_ANDROID, LANG_JAVA, LANG_OC, LANG_SWIFT, LANG_HTML, LANG_PYTHON, LANG_BASH
     })
     @interface LanguageType {
+    }
+
+    int OWNER_REPO = 1;
+
+    int STARRED_REPO = 2;
+
+    @IntDef({
+            OWNER_REPO, STARRED_REPO
+    })
+    @interface RepoType {
     }
 }

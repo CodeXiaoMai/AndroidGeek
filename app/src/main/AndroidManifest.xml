@@ -48,6 +48,9 @@
             android:name=".ui.module.LoginActivity"
             android:configChanges="orientation|screenSize|screenLayout"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.module.github.RepoListActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

@@ -23,4 +23,14 @@
         <item>仅数字</item>
         <item>仅字母</item>
     </string-array>
+
+    <string name="my_repositories">my repositories</string>
+    <string name="my_stars">my stars</string>
+    <string name="my_following">my following</string>
+    <string name="my_followers">my followers</string>
+
+    <string name="repositories">%1$s \'s repositories</string>
+    <string name="your_stars">%1$s \'s stars</string>
+    <string name="following">%1$s \'s following</string>
+    <string name="followers">%1$s \'s followers</string>
 </resources>

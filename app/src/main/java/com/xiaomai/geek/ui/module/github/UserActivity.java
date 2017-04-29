@@ -153,8 +153,10 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.repo:
+                RepoListActivity.launchToShowRepos(this, mUserName);
                 break;
             case R.id.starred:
+                RepoListActivity.launchToShowStars(this, mUserName);
                 break;
             case R.id.following:
                 break;

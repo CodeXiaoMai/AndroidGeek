@@ -68,4 +68,14 @@ public interface GitHubApi {
     })
     @interface RepoType {
     }
+
+    int FOLLOWING = 1;
+
+    int FOLLOWER = 2;
+
+    @IntDef({
+            FOLLOWER, FOLLOWING
+    })
+    @interface UserType {
+    }
 }

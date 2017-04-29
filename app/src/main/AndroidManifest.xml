@@ -43,13 +43,17 @@
             android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name=".ui.module.github.UserActivity"
-            android:configChanges="orientation|screenSize|screenLayout" />
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:launchMode="singleTask" />
         <activity
             android:name=".ui.module.LoginActivity"
             android:configChanges="orientation|screenSize|screenLayout"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.module.github.RepoListActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".ui.module.github.UserListActivity"
             android:configChanges="orientation|screenSize|screenLayout" />
 
         <service android:name=".service.InitializeService" />

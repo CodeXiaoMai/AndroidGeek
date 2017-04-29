@@ -86,6 +86,13 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
         loadUser();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        loadUser();
+    }
+
     private void loadUser() {
         Intent intent = getIntent();
         if (intent == null)
@@ -159,8 +166,10 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
                 RepoListActivity.launchToShowStars(this, mUserName);
                 break;
             case R.id.following:
+                UserListActivity.launchToShowFollowing(this, mUserName);
                 break;
             case R.id.followers:
+                UserListActivity.launchToShowFollowers(this, mUserName);
                 break;
         }
     }

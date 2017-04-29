@@ -6,6 +6,7 @@ import com.xiaomai.geek.di.scope.PerActivity;
 import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.module.github.RepoListActivity;
 import com.xiaomai.geek.ui.module.github.UserActivity;
+import com.xiaomai.geek.ui.module.github.UserListActivity;
 
 import dagger.Component;
 
@@ -22,4 +23,6 @@ public interface GitHubComponent extends ActivityComponent {
     void inject(UserActivity activity);
 
     void inject(RepoListActivity activity);
+
+    void inject(UserListActivity activity);
 }

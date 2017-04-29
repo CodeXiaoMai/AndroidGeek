@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -113,7 +114,8 @@ public class RepoListActivity extends BaseLoadActivity implements ILceView<Array
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
-
+                Repo repo = mAdapter.getItem(i);
+                RepoDetailActivity.launch(mContext, repo.getOwner().getLogin(), repo.getName());
             }
         });
         repoList.setAdapter(mAdapter);
@@ -129,27 +131,26 @@ public class RepoListActivity extends BaseLoadActivity implements ILceView<Array
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void dismissLoading() {
-
-    }
-
-    @Override
     public void showContent(ArrayList<Repo> data) {
         mAdapter.setNewData(data);
     }
 
     @Override
     public void showError(Throwable e) {
-
+        error(e);
     }
 
     @Override
     public void showEmpty() {
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -2,12 +2,17 @@ package com.xiaomai.geek.data.net;
 
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.data.module.User;
+import com.xiaomai.geek.data.net.response.Content;
 import com.xiaomai.geek.data.net.response.SearchResultResp;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -62,4 +67,35 @@ public interface GitHubService {
     @Headers("Cache-Control: public, max-age=3600")
     @GET("user/followers")
     Observable<ArrayList<User>> getMyFollowers();
+
+    @Headers("Cache-Control: public, max-age=3600")
+    @GET("repos/{owner}/{name}")
+    Observable<Repo> get(@Path("owner") String owner, @Path("name") String repo);
+
+    @Headers("Cache-Control: public, max-age=3600")
+    @GET("repos/{owner}/{name}/contributors")
+    Observable<ArrayList<User>> contributors(@Path("owner") String owner,
+                                             @Path("name") String repo);
+
+    @Headers("Cache-Control: public, max-age=3600")
+    @GET("repos/{owner}/{name}/readme")
+    Observable<Content> readme(@Path("owner") String owner, @Path("name") String repo);
+
+    @Headers("Cache-Control: public, max-age=3600")
+    @GET("repos/{owner}/{name}/forks")
+    Observable<ArrayList<Repo>> listForks(@Path("owner") String owner, @Path("name") String repo,
+                                          @Query("sort") String sort);
+
+    @GET("user/starred/{owner}/{repo}")
+    Observable<Response<ResponseBody>> checkIfRepoIsStarred(@Path("owner") String owner,
+                                                            @Path("repo") String repo);
+
+    @Headers("Content-Length: 0")
+    @PUT("user/starred/{owner}/{repo}")
+    Observable<Response<ResponseBody>> starRepo(@Path("owner") String owner,
+                                                @Path("repo") String repo);
+
+    @DELETE("user/starred/{owner}/{repo}")
+    Observable<Response<ResponseBody>> unStarRepo(@Path("owner") String owner,
+                                                  @Path("repo") String repo);
 }

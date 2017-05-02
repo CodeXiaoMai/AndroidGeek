@@ -43,8 +43,7 @@
             android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name=".ui.module.github.UserActivity"
-            android:configChanges="orientation|screenSize|screenLayout"
-            android:launchMode="singleTask" />
+            android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name=".ui.module.LoginActivity"
             android:configChanges="orientation|screenSize|screenLayout"

@@ -33,4 +33,7 @@
     <string name="your_stars">%1$s \'s stars</string>
     <string name="following">%1$s \'s following</string>
     <string name="followers">%1$s \'s followers</string>
+
+    <string name="forks_count">( %1$d )</string>
+    <string name="contributors_count">( %1$d )</string>
 </resources>

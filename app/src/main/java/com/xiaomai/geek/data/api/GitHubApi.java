@@ -4,6 +4,7 @@ import android.support.annotation.IntDef;
 import android.support.annotation.StringDef;
 
 import com.xiaomai.geek.data.module.Repo;
+import com.xiaomai.geek.data.module.RepoDetail;
 import com.xiaomai.geek.data.module.User;
 
 import java.util.ArrayList;
@@ -52,6 +53,19 @@ public interface GitHubApi {
 
     Observable<ArrayList<User>> getUserFollowing(String userName);
 
+    Observable<RepoDetail> getRepoDetail(String owner, String name);
+
+    Observable<Boolean> isStarred(String owner, String repoName);
+
+    /**
+     * Star a repository
+     */
+    Observable<Boolean> starRepo(String owner, String repo);
+
+    /**
+     * UnStar a repository
+     */
+    Observable<Boolean> unStarRepo(String owner, String repo);
 
     @StringDef({
             LANG_ANDROID, LANG_JAVA, LANG_OC, LANG_SWIFT, LANG_HTML, LANG_PYTHON, LANG_BASH

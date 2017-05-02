@@ -86,13 +86,6 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
         loadUser();
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        setIntent(intent);
-        loadUser();
-    }
-
     private void loadUser() {
         Intent intent = getIntent();
         if (intent == null)

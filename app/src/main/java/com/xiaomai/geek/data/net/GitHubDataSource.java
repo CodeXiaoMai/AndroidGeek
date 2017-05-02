@@ -2,17 +2,23 @@ package com.xiaomai.geek.data.net;
 
 import android.text.TextUtils;
 
+import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.Repo;
+import com.xiaomai.geek.data.module.RepoDetail;
 import com.xiaomai.geek.data.module.User;
+import com.xiaomai.geek.data.net.response.Content;
 import com.xiaomai.geek.data.net.response.SearchResultResp;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import rx.Observable;
 import rx.functions.Func1;
+import rx.functions.Func5;
 
 /**
  * Created by XiaoMai on 2017/4/24.
@@ -43,11 +49,11 @@ public class GitHubDataSource implements GitHubApi {
         }
         return mGitHubService.searchRepo(queryParams, SORT_BY_STARTS, ORDER_BY_DESC, 1, PAGE_SIZE)
                 .map(new Func1<SearchResultResp, ArrayList<Repo>>() {
-            @Override
-            public ArrayList<Repo> call(SearchResultResp searchResultResp) {
-                return searchResultResp.getItems();
-            }
-        });
+                    @Override
+                    public ArrayList<Repo> call(SearchResultResp searchResultResp) {
+                        return searchResultResp.getItems();
+                    }
+                });
     }
 
     @Override
@@ -93,5 +99,63 @@ public class GitHubDataSource implements GitHubApi {
     @Override
     public Observable<ArrayList<User>> getUserFollowing(String userName) {
         return mGitHubService.getUserFollowing(userName);
+    }
+
+    @Override
+    public Observable<RepoDetail> getRepoDetail(String owner, String name) {
+        return Observable.zip(mGitHubService.get(owner, name),
+                mGitHubService.contributors(owner, name),
+                mGitHubService.listForks(owner, name, "newest"),
+                mGitHubService.readme(owner, name),
+                isStarred(owner, name),
+                new Func5<Repo, ArrayList<User>, ArrayList<Repo>, Content, Boolean, RepoDetail>() {
+                    @Override
+                    public RepoDetail call(Repo repo, ArrayList<User> users, ArrayList<Repo> forks, Content readme, Boolean isStarred) {
+                        RepoDetail repoDetail = new RepoDetail();
+
+                        repo.setStarred(isStarred);
+                        repoDetail.setBaseRepo(repo);
+                        repoDetail.setForks(forks);
+
+                        readme.content = StringUtil.base64Decode(readme.content);
+                        repoDetail.setReadme(readme);
+                        repoDetail.setContributors(users);
+                        return repoDetail;
+                    }
+                }
+        );
+    }
+
+    @Override
+    public Observable<Boolean> isStarred(String owner, String repoName) {
+        return mGitHubService.checkIfRepoIsStarred(owner, repoName)
+                .map(new Func1<Response<ResponseBody>, Boolean>() {
+                    @Override
+                    public Boolean call(Response<ResponseBody> responseBodyResponse) {
+                        return responseBodyResponse != null && responseBodyResponse.code() == 204;
+                    }
+                });
+    }
+
+    @Override
+    public Observable<Boolean> starRepo(String owner, final String repo) {
+        return mGitHubService.starRepo(owner, repo)
+                .map(new Func1<Response<ResponseBody>, Boolean>() {
+                    @Override
+                    public Boolean call(Response<ResponseBody> responseBodyResponse) {
+                        return responseBodyResponse != null && responseBodyResponse.code() == 204;
+                    }
+                });
+    }
+
+    @Override
+    public Observable<Boolean> unStarRepo(String owner, String repo) {
+        return mGitHubService.unStarRepo(owner, repo)
+                .map(new Func1<Response<ResponseBody>, Boolean>() {
+                    @Override
+                    public Boolean call(Response<ResponseBody> responseBodyResponse) {
+                        return responseBodyResponse != null && responseBodyResponse.code() == 204;
+                    }
+                });
     }
 }

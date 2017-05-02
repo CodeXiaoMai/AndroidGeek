@@ -37,6 +37,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, IComponent<GitHubComponent> {
 
@@ -231,5 +232,10 @@ public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, I
     protected void onDestroy() {
         super.onDestroy();
         mPresenter.detachView();
+    }
+
+    @OnClick(R.id.readme_layout)
+    public void onViewClicked() {
+        ReadmeActivity.launch(this, mRepoDetail.getReadme());
     }
 }

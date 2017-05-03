@@ -14,7 +14,8 @@
 
     <ScrollView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="@dimen/dimen_10"
         tools:context="com.xiaomai.geek.ui.module.github.UserActivity">
 
@@ -63,4 +64,13 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/bt_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/colorPrimary"
+        android:text="退出登录"
+        android:textColor="@android:color/white" />
 </LinearLayout>

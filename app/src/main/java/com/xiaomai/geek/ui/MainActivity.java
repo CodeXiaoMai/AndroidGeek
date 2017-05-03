@@ -18,10 +18,15 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.wrapper.ImageLoader;
+import com.xiaomai.geek.data.module.User;
+import com.xiaomai.geek.data.pref.AccountPref;
 import com.xiaomai.geek.data.pref.PasswordPref;
 import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.DaggerMainComponent;
@@ -31,6 +36,7 @@ import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.module.AboutUsFragment;
 import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
 import com.xiaomai.geek.ui.module.github.GitHubContainerFragment;
+import com.xiaomai.geek.ui.module.github.UserActivity;
 import com.xiaomai.geek.ui.module.password.PasswordContainerFragment;
 import com.xiaomai.geek.ui.module.video.VideoContainerFragment;
 import com.xiaomai.geek.ui.widget.EditTextDialog;
@@ -90,6 +96,22 @@ public class MainActivity extends BaseActivity
     }
 
     private void initViews() {
+        View headerView = navView.getHeaderView(0);
+        final User user = AccountPref.getLoginUser(this);
+        if (AccountPref.isLogin(this)) {
+            ImageView civHead = (ImageView) headerView.findViewById(R.id.userHead);
+            ImageLoader.loadWithCircle(this, user.getAvatar_url(), civHead, R.drawable.github);
+            TextView tvName = (TextView) headerView.findViewById(R.id.userName);
+            tvName.setText(user.getLogin());
+        }
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(AccountPref.checkLogin(MainActivity.this)){
+                    UserActivity.launch(MainActivity.this, user);
+                }
+            }
+        });
         navView.setNavigationItemSelectedListener(this);
         changeFragment(ArticleContainerFragment.class.getName());
     }

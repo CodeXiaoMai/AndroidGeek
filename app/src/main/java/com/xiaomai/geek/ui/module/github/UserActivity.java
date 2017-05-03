@@ -1,19 +1,23 @@
 package com.xiaomai.geek.ui.module.github;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.module.User;
+import com.xiaomai.geek.data.pref.AccountPref;
 import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.DaggerGitHubComponent;
 import com.xiaomai.geek.di.component.GitHubComponent;
@@ -56,6 +60,8 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
     UserPresenter mPresenter;
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
+    @BindView(R.id.bt_logout)
+    Button btLogout;
     private String mUserName;
 
     public static void launch(Context context, String userName) {
@@ -149,7 +155,7 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
                 .build();
     }
 
-    @OnClick({R.id.repo, R.id.starred, R.id.following, R.id.followers})
+    @OnClick({R.id.repo, R.id.starred, R.id.following, R.id.followers, R.id.bt_logout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.repo:
@@ -164,6 +170,24 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
             case R.id.followers:
                 UserListActivity.launchToShowFollowers(this, mUserName);
                 break;
+            case R.id.bt_logout:
+                showLogoutDialog();
+                break;
         }
     }
+
+    private void showLogoutDialog() {
+        new AlertDialog.Builder(this)
+                .setMessage("退出登录")
+                .setNegativeButton("取消", null)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AccountPref.removeLoginUser(UserActivity.this);
+                        finish();
+                    }
+                })
+                .create().show();
+    }
+
 }

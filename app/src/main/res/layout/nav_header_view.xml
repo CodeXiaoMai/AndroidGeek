@@ -8,17 +8,17 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
+        android:id="@+id/userHead"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:src="@drawable/background"
-        app:civ_border_color="@android:color/white"
-        app:civ_border_width="1dp" />
+        android:src="@drawable/github" />
 
     <TextView
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="XiaoMai"
+        android:text="登录"
         android:textColor="@android:color/white" />
 </LinearLayout>

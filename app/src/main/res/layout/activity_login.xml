@@ -67,6 +67,7 @@
                 android:background="@color/blue"
                 android:elevation="@dimen/dimen_4"
                 android:text="登录"
+                android:textColor="@android:color/white"
                 tools:targetApi="lollipop" />
         </LinearLayout>
     </android.support.v7.widget.CardView>

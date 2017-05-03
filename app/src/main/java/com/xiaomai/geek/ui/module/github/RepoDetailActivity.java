@@ -2,6 +2,7 @@ package com.xiaomai.geek.ui.module.github;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -77,6 +79,7 @@ public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, I
 
     private ContributorListAdapter mContributorListAdapter;
     private ForkUserListAdapter mForkUserListAdapter;
+    private String mRepoUrl;
 
     public static void launch(Context context, String owner, String repoName) {
         Intent intent = new Intent(context, RepoDetailActivity.class);
@@ -105,6 +108,7 @@ public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, I
         if (TextUtils.isEmpty(mOwner) || TextUtils.isEmpty(mRepoName))
             return;
         mPresenter.loadRepoDetails(mOwner, mRepoName);
+        mRepoUrl = "https://github.com/" + mOwner + "/" + mRepoName;
     }
 
     private void initViews() {
@@ -136,11 +140,23 @@ public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, I
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.repo_detail_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.menu_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, mOwner + "/" + mRepoName + "\n" + mRepoUrl);
+                startActivity(Intent.createChooser(intent, "分享到"));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -234,8 +250,18 @@ public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, I
         mPresenter.detachView();
     }
 
-    @OnClick(R.id.readme_layout)
-    public void onViewClicked() {
-        ReadmeActivity.launch(this, mRepoDetail.getReadme());
+    @OnClick({R.id.readme_layout, R.id.repoItemView})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.readme_layout:
+                ReadmeActivity.launch(this, mRepoDetail.getReadme());
+                break;
+            case R.id.repoItemView:
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(mRepoUrl));
+                startActivity(intent);
+                break;
+        }
     }
+
 }

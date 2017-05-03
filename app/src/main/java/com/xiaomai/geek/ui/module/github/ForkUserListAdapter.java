@@ -24,6 +24,6 @@ public class ForkUserListAdapter extends BaseQuickAdapter<Repo> {
     @Override
     protected void convert(BaseViewHolder baseViewHolder, Repo repo) {
         ImageLoader.loadWithCircle(repo.getOwner().getAvatar_url(),
-                (ImageView) baseViewHolder.getView(R.id.user_icon));
+                (ImageView) baseViewHolder.getView(R.id.user_icon), R.drawable.github);
     }
 }

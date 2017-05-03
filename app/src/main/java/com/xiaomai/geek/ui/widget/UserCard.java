@@ -62,7 +62,7 @@ public class UserCard extends FrameLayout {
     }
 
     public void setUser(User user) {
-        ImageLoader.loadWithCircle(getContext(), user.getAvatar_url(), userIcon);
+        ImageLoader.loadWithCircle(getContext(), user.getAvatar_url(), userIcon, R.drawable.github);
 
         String displayName = TextUtils.isEmpty(user.getName()) ? user.getLogin() : user.getName();
         userName.setText(displayName);

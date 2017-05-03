@@ -130,7 +130,7 @@ public class UserListActivity extends BaseLoadActivity implements ILceView<Array
 
     @Override
     public void showError(Throwable e) {
-        showError(e);
+        error(e);
     }
 
     @Override

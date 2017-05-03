@@ -55,6 +55,7 @@ public class ReadmeActivity extends BaseActivity {
     private void initViews() {
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Readme");
     }
 
     @Override

@@ -27,15 +27,19 @@ public class ImageLoader {
         load(imageView.getContext(), source, imageView);
     }
 
-    public static void loadWithCircle(Context context, Object source, ImageView imageView) {
+    public static void loadWithCircle(Context context, Object source, ImageView imageView, int defaultImageRes) {
         Glide.with(context)
                 .load(source)
                 .bitmapTransform(new CropCircleTransformation(context))
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(defaultImageRes)
                 .into(imageView);
     }
 
     public static void loadWithCircle(Object source, ImageView imageView) {
-        loadWithCircle(imageView.getContext(), source, imageView);
+        loadWithCircle(imageView.getContext(), source, imageView, R.mipmap.ic_launcher);
+    }
+
+    public static void loadWithCircle(Object source, ImageView imageView, int defaultImageRes) {
+        loadWithCircle(imageView.getContext(), source, imageView, defaultImageRes);
     }
 }

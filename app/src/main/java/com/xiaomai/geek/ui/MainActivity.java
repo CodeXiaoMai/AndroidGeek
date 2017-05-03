@@ -97,8 +97,8 @@ public class MainActivity extends BaseActivity
 
     private void initViews() {
         View headerView = navView.getHeaderView(0);
-        final User user = AccountPref.getLoginUser(this);
         if (AccountPref.isLogin(this)) {
+            User user = AccountPref.getLoginUser(this);
             ImageView civHead = (ImageView) headerView.findViewById(R.id.userHead);
             ImageLoader.loadWithCircle(this, user.getAvatar_url(), civHead, R.drawable.github);
             TextView tvName = (TextView) headerView.findViewById(R.id.userName);
@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity
             @Override
             public void onClick(View v) {
                 if(AccountPref.checkLogin(MainActivity.this)){
-                    UserActivity.launch(MainActivity.this, user);
+                    UserActivity.launch(MainActivity.this, AccountPref.getLoginUser(MainActivity.this));
                 }
             }
         });

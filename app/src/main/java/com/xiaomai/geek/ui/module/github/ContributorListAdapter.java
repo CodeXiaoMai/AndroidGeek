@@ -23,6 +23,6 @@ public class ContributorListAdapter extends BaseQuickAdapter<User> {
     @Override
     protected void convert(BaseViewHolder baseViewHolder, User user) {
         ImageLoader.loadWithCircle(user.getAvatar_url(),
-                (ImageView) baseViewHolder.getView(R.id.user_icon), R.drawable.github);
+                (ImageView) baseViewHolder.getView(R.id.user_icon), R.drawable.github_blue);
     }
 }

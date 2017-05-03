@@ -125,11 +125,15 @@
 # OkHttp3
 -dontwarn okhttp3.logging.**
 -keep class okhttp3.internal.**{*;}
+-keep class com.squareup.okhttp.** {*;}
+-keep class com.squareup.okhttp3.** {*;}
 -dontwarn okio.**
 
 # Retrofit
+-keep class com.squareup.retrofit2.** {*;}
 # Platform calls Class.forName on types which do not exist on Android to determine platform.
--dontnote retrofit2.Platform
+-dontnote retrofit2.**
+-keep class retrofit2.** { *; }
 # Platform used when running on Java 8 VMs. Will not be used at runtime.
 -dontwarn retrofit2.Platform$Java8
 # Retain generic type information for use by reflection by converters and adapters.
@@ -139,9 +143,30 @@
 
 # Gson
 -keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.** {*;}
+#-keep class com.google.**{*;}
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+-keep class com.google.** {
+    <fields>;
+    <methods>;
+}
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+-dontwarn com.google.gson.**
 -keepattributes EnclosingMethod
+
 # 这是你定义的实体类
--keep class com.xiaomai.geek.data.model.**{*;}
+-keep class com.xiaomai.geek.data.module.**{*;}
+-keep class com.xiaomai.geek.data.net.response.**{*;}
+-keep class com.xiaomai.geek.data.net.request.**{*;}
 
 # Bugly
 -dontwarn com.tencent.bugly.**
@@ -150,5 +175,16 @@
 # V7包
 -keep class !android.support.v7.internal.view.menu.**,android.support.** {*;}
 
--dontwarn com.tencent.bugly.**
--keep public class com.tencent.bugly.**{*;}
+# stetho
+-keep class com.facebook.** {*;}
+
+# V4包
+-dontwarn android.support.**
+-dontwarn android.support.v4.**
+-keep class android.support.v4.** { *; }
+-keep public class * extends android.support.v4.**
+-keep public class * extends android.support.v4.app.Fragment
+
+-keep class dmax.dialog.** {
+ *;
+}

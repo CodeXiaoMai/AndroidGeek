@@ -22,7 +22,7 @@ public class UserListAdapter extends BaseQuickAdapter<User> {
     @Override
     protected void convert(BaseViewHolder holder, User user) {
         ImageView icon = holder.getView(R.id.user_icon);
-        ImageLoader.loadWithCircle(icon.getContext(), user.getAvatar_url(), icon, R.drawable.github);
+        ImageLoader.loadWithCircle(icon.getContext(), user.getAvatar_url(), icon, R.drawable.github_blue);
         holder.setText(R.id.userName, user.getLogin());
     }
 }

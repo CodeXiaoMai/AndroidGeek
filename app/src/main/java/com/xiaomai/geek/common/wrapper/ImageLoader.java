@@ -15,12 +15,16 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class ImageLoader {
 
-    public static void load(Context context, Object source, ImageView imageView) {
+    public static void load(Context context, Object source, ImageView imageView, int defaultImageRes) {
         Glide.with(context)
                 .load(source)
                 .centerCrop()
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(defaultImageRes)
                 .into(imageView);
+    }
+
+    public static void load(Context context, Object source, ImageView imageView) {
+        load(context, source, imageView, R.mipmap.ic_launcher);
     }
 
     public static void load(Object source, ImageView imageView) {

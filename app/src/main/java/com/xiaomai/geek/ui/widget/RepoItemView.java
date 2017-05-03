@@ -79,7 +79,7 @@ public class RepoItemView extends FrameLayout {
         name.setText(repo.getName());
         desc.setText(repo.getDescription());
 
-        ImageLoader.load(getContext(), repo.getOwner().getAvatar_url(), image);
+        ImageLoader.load(getContext(), repo.getOwner().getAvatar_url(), image, R.drawable.github_blue);
         owner.setText(repo.getOwner().getLogin());
 
         if (!TextUtils.isEmpty(repo.getLanguage())) {

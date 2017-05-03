@@ -82,14 +82,18 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
         getComponent().inject(this);
         setContentView(R.layout.activity_user);
         ButterKnife.bind(this);
+        initViews();
 
+        mPresenter.attachView(this);
+        loadUser();
+    }
+
+    private void initViews() {
         setSupportActionBar(toolBar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        mPresenter.attachView(this);
-        loadUser();
     }
 
     private void loadUser() {
@@ -106,6 +110,8 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
             setTitle(mUserName);
             userCard.setUser(user);
         }
+        if (!AccountPref.isSelf(this, mUserName))
+            btLogout.setVisibility(View.GONE);
     }
 
     @Override

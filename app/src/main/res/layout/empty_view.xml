@@ -26,7 +26,7 @@
             android:layout_marginTop="20dp"
             android:textSize="15sp"
             android:textStyle="bold"
-            tools:text="没有数据!" />
+            android:text="没有数据!" />
 
         <TextView
             android:id="@+id/empty_desc"
@@ -39,6 +39,6 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:lineSpacingExtra="5.5dp"
-            tools:text="没有任何内容!" />
+            android:text="没有任何内容!" />
     </LinearLayout>
 </RelativeLayout>

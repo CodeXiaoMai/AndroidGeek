@@ -67,6 +67,8 @@ public interface GitHubApi {
      */
     Observable<Boolean> unStarRepo(String owner, String repo);
 
+    Observable<ArrayList<Repo>> searchRepo(String key, String language);
+
     @StringDef({
             LANG_ANDROID, LANG_JAVA, LANG_OC, LANG_SWIFT, LANG_HTML, LANG_PYTHON, LANG_BASH
     })

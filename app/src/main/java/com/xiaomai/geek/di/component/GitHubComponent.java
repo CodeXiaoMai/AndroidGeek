@@ -6,6 +6,7 @@ import com.xiaomai.geek.di.scope.PerActivity;
 import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.module.github.RepoDetailActivity;
 import com.xiaomai.geek.ui.module.github.RepoListActivity;
+import com.xiaomai.geek.ui.module.github.SearchActivity;
 import com.xiaomai.geek.ui.module.github.UserActivity;
 import com.xiaomai.geek.ui.module.github.UserListActivity;
 
@@ -28,4 +29,6 @@ public interface GitHubComponent extends ActivityComponent {
     void inject(UserListActivity activity);
 
     void inject(RepoDetailActivity repoDetailActivity);
+
+    void inject(SearchActivity activity);
 }

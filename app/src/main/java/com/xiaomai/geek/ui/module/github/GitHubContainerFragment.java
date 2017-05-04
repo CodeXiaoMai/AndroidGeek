@@ -85,7 +85,7 @@ public class GitHubContainerFragment extends BaseFragment {
                 ((MainActivity) getActivity()).openDrawer();
                 return true;
             case R.id.menu_search:
-
+                SearchActivity.launch(getContext());
                 return true;
             case R.id.menu_profile:
                 if (AccountPref.checkLogin(getContext()))

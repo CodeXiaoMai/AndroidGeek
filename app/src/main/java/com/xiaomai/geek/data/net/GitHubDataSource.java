@@ -158,4 +158,20 @@ public class GitHubDataSource implements GitHubApi {
                     }
                 });
     }
+
+    @Override
+    public Observable<ArrayList<Repo>> searchRepo(String key, String language) {
+        StringBuilder queryParams = new StringBuilder(key);
+        if (!TextUtils.isEmpty(language)) {
+            queryParams.append("+language:");
+            queryParams.append(language);
+        }
+        return mGitHubService.searchRepo(queryParams.toString(), SORT_BY_STARTS, ORDER_BY_DESC, 1, PAGE_SIZE)
+                .map(new Func1<SearchResultResp, ArrayList<Repo>>() {
+                    @Override
+                    public ArrayList<Repo> call(SearchResultResp searchResultResp) {
+                        return searchResultResp.getItems();
+                    }
+                });
+    }
 }

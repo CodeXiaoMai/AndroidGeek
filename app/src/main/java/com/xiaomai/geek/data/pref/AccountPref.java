@@ -16,9 +16,8 @@ import com.xiaomai.geek.ui.module.LoginActivity;
 public class AccountPref {
 
     private static final String KEY_LOGIN_TOKEN = "login_token";
-
     private static final String KEY_LOGIN_USER = "login_user";
-
+    private static final String KEY_LOGIN_USERNAME = "login_user_name";
     private static final String PREFERENCE_ACCOUNT = "account_preference";
 
     private static SharedPreferences getPreference(Context context) {
@@ -37,6 +36,14 @@ public class AccountPref {
     public static void saveLoginUser(Context context, User user) {
         String userJson = new Gson().toJson(user);
         getPreference(context).edit().putString(KEY_LOGIN_USER, userJson).apply();
+    }
+
+    public static void saveLoginUserName(Context context, String userName) {
+        getPreference(context).edit().putString(KEY_LOGIN_USERNAME, userName).apply();
+    }
+
+    public static String getLoginUserName(Context context) {
+        return getPreference(context).getString(KEY_LOGIN_USERNAME, "");
     }
 
     public static User getLoginUser(Context context) {

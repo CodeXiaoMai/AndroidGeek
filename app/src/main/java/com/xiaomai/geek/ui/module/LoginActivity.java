@@ -20,9 +20,12 @@ import com.xiaomai.geek.di.component.AccountComponent;
 import com.xiaomai.geek.di.component.DaggerAccountComponent;
 import com.xiaomai.geek.di.module.AccountModule;
 import com.xiaomai.geek.di.module.ActivityModule;
+import com.xiaomai.geek.event.AccountEvent;
 import com.xiaomai.geek.presenter.github.LoginPresenter;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
 import com.xiaomai.geek.view.ILoginView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -58,8 +61,16 @@ public class LoginActivity extends BaseLoadActivity implements ILoginView, IComp
         getComponent().inject(this);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
+        initViews();
         mPresenter.attachView(this);
+    }
+
+    private void initViews() {
+        String name = AccountPref.getLoginUserName(this);
+        userName.setText(name);
+        if (!TextUtils.isEmpty(name)) {
+            password.requestFocus();
+        }
     }
 
     @Override
@@ -81,7 +92,14 @@ public class LoginActivity extends BaseLoadActivity implements ILoginView, IComp
     public void loginSuccess(User user) {
         Snackbar.make(loginBtn, "登录成功", Snackbar.LENGTH_LONG).show();
         AccountPref.saveLoginUser(this, user);
+        AccountPref.saveLoginUserName(this, userName.getText().toString().trim());
+        EventBus.getDefault().post(new AccountEvent(AccountEvent.LOGIN));
         finish();
+    }
+
+    @Override
+    public void error(Throwable e) {
+        Snackbar.make(loginBtn, "登录失败！请检查用户名或密码", Snackbar.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.login_btn)

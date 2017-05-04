@@ -23,10 +23,13 @@ import com.xiaomai.geek.di.component.DaggerGitHubComponent;
 import com.xiaomai.geek.di.component.GitHubComponent;
 import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.di.module.GitHubModule;
+import com.xiaomai.geek.event.AccountEvent;
 import com.xiaomai.geek.presenter.github.UserPresenter;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
 import com.xiaomai.geek.ui.widget.UserCard;
 import com.xiaomai.mvp.lce.ILceView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -190,6 +193,7 @@ public class UserActivity extends BaseLoadActivity implements ILceView<User>, IC
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         AccountPref.removeLoginUser(UserActivity.this);
+                        EventBus.getDefault().post(new AccountEvent(AccountEvent.LOGOUT));
                         finish();
                     }
                 })

@@ -32,6 +32,7 @@ import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.DaggerMainComponent;
 import com.xiaomai.geek.di.component.MainComponent;
 import com.xiaomai.geek.di.module.ActivityModule;
+import com.xiaomai.geek.event.AccountEvent;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.module.AboutUsFragment;
 import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
@@ -40,6 +41,9 @@ import com.xiaomai.geek.ui.module.github.UserActivity;
 import com.xiaomai.geek.ui.module.password.PasswordContainerFragment;
 import com.xiaomai.geek.ui.module.video.VideoContainerFragment;
 import com.xiaomai.geek.ui.widget.EditTextDialog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,6 +85,8 @@ public class MainActivity extends BaseActivity
         }
     };
     private long mLastBackTime = 0L;
+    private ImageView mUserHeadImage;
+    private TextView mTvUserName;
 
     public static void launch(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
@@ -93,17 +99,14 @@ public class MainActivity extends BaseActivity
         ButterKnife.bind(this);
         initViews();
         registerReceiver(mReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+        EventBus.getDefault().register(this);
     }
 
     private void initViews() {
         View headerView = navView.getHeaderView(0);
-        if (AccountPref.isLogin(this)) {
-            User user = AccountPref.getLoginUser(this);
-            ImageView civHead = (ImageView) headerView.findViewById(R.id.userHead);
-            ImageLoader.loadWithCircle(this, user.getAvatar_url(), civHead, R.drawable.github);
-            TextView tvName = (TextView) headerView.findViewById(R.id.userName);
-            tvName.setText(user.getLogin());
-        }
+        mUserHeadImage = (ImageView) headerView.findViewById(R.id.userHead);
+        mTvUserName = (TextView) headerView.findViewById(R.id.userName);
+        updateHeadView();
         headerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,6 +117,17 @@ public class MainActivity extends BaseActivity
         });
         navView.setNavigationItemSelectedListener(this);
         changeFragment(ArticleContainerFragment.class.getName());
+    }
+
+    private void updateHeadView() {
+        if (AccountPref.isLogin(this)) {
+            User user = AccountPref.getLoginUser(this);
+            ImageLoader.loadWithCircle(this, user.getAvatar_url(), mUserHeadImage, R.drawable.github);
+            mTvUserName.setText(user.getLogin());
+        } else {
+            mUserHeadImage.setImageResource(R.drawable.github);
+            mTvUserName.setText("登录");
+        }
     }
 
     @Override
@@ -243,6 +257,7 @@ public class MainActivity extends BaseActivity
         super.onDestroy();
         if (mReceiver != null)
             unregisterReceiver(mReceiver);
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -251,5 +266,10 @@ public class MainActivity extends BaseActivity
                 .applicationComponent(GeekApplication.get(this).getComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
+    }
+
+    @Subscribe
+    public void onHandleAccountEvent(AccountEvent accountEvent) {
+        updateHeadView();
     }
 }

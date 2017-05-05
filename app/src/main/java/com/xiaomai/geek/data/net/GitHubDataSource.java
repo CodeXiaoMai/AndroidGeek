@@ -28,7 +28,7 @@ public class GitHubDataSource implements GitHubApi {
     private static final String SORT_BY_STARTS = "stars";
     private static final String SORT_BY_UPDATED = "updated";
     private static final String ORDER_BY_DESC = "desc";
-    private static final int PAGE_SIZE = 30;
+    public static final int PAGE_SIZE = 30;
 
     GitHubService mGitHubService;
 
@@ -160,16 +160,17 @@ public class GitHubDataSource implements GitHubApi {
     }
 
     @Override
-    public Observable<ArrayList<Repo>> searchRepo(String key, String language) {
+    public Observable<ArrayList<Repo>> searchRepo(String key, String language, int page) {
         StringBuilder queryParams = new StringBuilder(key);
         if (!TextUtils.isEmpty(language)) {
             queryParams.append("+language:");
             queryParams.append(language);
         }
-        return mGitHubService.searchRepo(queryParams.toString(), SORT_BY_STARTS, ORDER_BY_DESC, 1, PAGE_SIZE)
+        return mGitHubService.searchRepo(queryParams.toString(), SORT_BY_STARTS, ORDER_BY_DESC, page, PAGE_SIZE)
                 .map(new Func1<SearchResultResp, ArrayList<Repo>>() {
                     @Override
                     public ArrayList<Repo> call(SearchResultResp searchResultResp) {
+                        searchResultResp.getTotal_count();
                         return searchResultResp.getItems();
                     }
                 });

@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -16,11 +17,14 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.module.Repo;
+import com.xiaomai.geek.data.net.GitHubDataSource;
 import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.DaggerGitHubComponent;
 import com.xiaomai.geek.di.component.GitHubComponent;
@@ -28,6 +32,7 @@ import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.di.module.GitHubModule;
 import com.xiaomai.geek.presenter.github.SearchPresenter;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
+import com.xiaomai.geek.ui.base.EndlessRecyclerOnScrollListener;
 import com.xiaomai.geek.view.ISearchView;
 
 import java.util.ArrayList;
@@ -52,6 +57,10 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    @BindView(R.id.empty_root_layout)
+    RelativeLayout emptyRootLayout;
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefresh;
 
     private RepoListAdapter mAdapter;
 
@@ -62,6 +71,9 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
     @Inject
     SearchPresenter mPresenter;
     private SearchView mSearchView;
+    private int mCurrentPage;
+    private TextView mFooterViewContent;
+    private View mFooterView;
 
     public static void launch(Context context) {
         context.startActivity(new Intent(context, SearchActivity.class));
@@ -86,6 +98,12 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
     private void initViews() {
         setSupportActionBar(toolBar);
         setTitle("搜索");
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                search();
+            }
+        });
         navView.setNavigationItemSelectedListener(this);
         mAdapter = new RepoListAdapter(null);
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
@@ -97,6 +115,15 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
+            @Override
+            public void loadMore() {
+                if (!TextUtils.isEmpty(mCurrentKey))
+                    mPresenter.searchRepo(mCurrentKey, mCurrentLanguage, ++mCurrentPage, true);
+            }
+        });
+        mFooterView = getLayoutInflater().inflate(R.layout.layout_load_more, recyclerView, false);
+        mFooterViewContent = (TextView) mFooterView.findViewById(R.id.tv_content);
         mCurrentLanguage = "Java";
     }
 
@@ -136,7 +163,6 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public GitHubComponent getComponent() {
         return DaggerGitHubComponent.builder()
@@ -148,10 +174,43 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
 
     @Override
     public void showSearchResult(ArrayList<Repo> result) {
-        mAdapter.setNewData(result);
+        swipeRefresh.setRefreshing(false);
+        mAdapter.addFooterView(null);
         setTitle("关键词:\"" + mCurrentKey + "\"，语言:\"" + mCurrentLanguage + "\"");
         mSearchView.setActivated(false);
         invalidateOptionsMenu();
+        if (result != null && result.size() > 0) {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyRootLayout.setVisibility(View.GONE);
+            mAdapter.setNewData(result);
+            // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
+            if (result.size() >= GitHubDataSource.PAGE_SIZE) {
+                mFooterViewContent.setText("加载更多...");
+            } else {
+                mFooterViewContent.setText("加载完毕！");
+            }
+            mAdapter.addFooterView(mFooterView);
+        } else {
+            recyclerView.setVisibility(View.GONE);
+            emptyRootLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void showMoreResult(ArrayList<Repo> result) {
+        mAdapter.addFooterView(null);
+        if (result != null && result.size() > 0) {
+            // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
+            if (result.size() >= GitHubDataSource.PAGE_SIZE) {
+                mFooterViewContent.setText("加载更多...");
+            } else {
+                mFooterViewContent.setText("加载完毕！");
+            }
+            mAdapter.notifyDataChangedAfterLoadMore(result, false);
+        } else {
+            mFooterViewContent.setText("加载完毕！");
+        }
+        mAdapter.addFooterView(mFooterView);
     }
 
     @Override
@@ -163,7 +222,8 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
     }
 
     private void search() {
+        mCurrentPage = 1;
         if (!TextUtils.isEmpty(mCurrentKey))
-            mPresenter.searchRepo(mCurrentKey, mCurrentLanguage);
+            mPresenter.searchRepo(mCurrentKey, mCurrentLanguage, 1);
     }
 }

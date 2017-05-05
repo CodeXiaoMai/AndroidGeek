@@ -27,27 +27,36 @@ public class SearchPresenter extends BaseRxPresenter<ISearchView<ArrayList<Repo>
         this.gitHubApi = gitHubApi;
     }
 
-    public void searchRepo(String key, String language) {
+    public void searchRepo(String key, String language, int page) {
+        searchRepo(key, language, page, false);
+    }
+
+    public void searchRepo(String key, String language, int page, final boolean loadMore) {
         mCompositeSubscription.add(
-                gitHubApi.searchRepo(key, language)
+                gitHubApi.searchRepo(key, language, page)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(new Action0() {
                             @Override
                             public void call() {
-                                getMvpView().showLoading();
+                                if (!loadMore)
+                                    getMvpView().showLoading();
                             }
                         })
                         .doOnTerminate(new Action0() {
                             @Override
                             public void call() {
-                                getMvpView().dismissLoading();
+                                if (!loadMore)
+                                    getMvpView().dismissLoading();
                             }
                         })
                         .subscribe(new BaseResponseObserver<ArrayList<Repo>>() {
                             @Override
                             public void onSuccess(ArrayList<Repo> repos) {
-                                getMvpView().showSearchResult(repos);
+                                if (!loadMore)
+                                    getMvpView().showSearchResult(repos);
+                                else
+                                    getMvpView().showMoreResult(repos);
                             }
 
                             @Override

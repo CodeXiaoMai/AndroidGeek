@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="gone"
+    tools:visibility="visible">
 
     <LinearLayout
         android:id="@+id/empty_view"
@@ -24,9 +25,9 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="20dp"
+            android:text="没有数据!"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:text="没有数据!" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/empty_desc"

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ import butterknife.Unbinder;
 public class TrendingFragment extends BaseFragment implements ILceView<ArrayList<Repo>> {
 
     public static final String EXTRA_LANGUAGE = "extra_language";
+    private static final String TAG = "TrendingFragment";
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     Unbinder unbinder;
@@ -122,6 +124,28 @@ public class TrendingFragment extends BaseFragment implements ILceView<ArrayList
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                // 屏幕内可见的item的个数
+                int visibleItemCount = recyclerView.getChildCount();
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                // item的总数 = 可见的 + 不可见的
+                int totalChildCount = layoutManager.getItemCount();
+                int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
+                Log.e(TAG, "visibleItemCount: " + visibleItemCount + ",totalChildCount:" + totalChildCount
+                        + ",firstVisibleItemPosition:" + firstVisibleItemPosition);
+                if (totalChildCount - visibleItemCount <= firstVisibleItemPosition) {
+
+                }
+            }
+        });
     }
 
     private void reloadData() {

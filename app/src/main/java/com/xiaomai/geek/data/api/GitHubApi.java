@@ -33,7 +33,7 @@ public interface GitHubApi {
 
     String LANG_PHP = "php";
 
-    Observable<ArrayList<Repo>> getTrendingRepos(@LanguageType String language);
+    Observable<ArrayList<Repo>> getTrendingRepos(@LanguageType String language, int page);
 
     Observable<User> getSingleUser(String name);
 

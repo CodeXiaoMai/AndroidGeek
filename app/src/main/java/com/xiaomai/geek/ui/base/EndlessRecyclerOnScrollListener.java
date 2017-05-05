@@ -11,7 +11,9 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
 
     private int previousTotalItemCount = 0;
     private int firstVisibleItemPosition;
+    // item的总数 = 可见的 + 不可见的
     private int totalItemCount;
+    // 屏幕内可见的item的个数
     private int visibleItemCount;
 
     private boolean mIsLoading;

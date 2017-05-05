@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +17,12 @@ import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.Repo;
+import com.xiaomai.geek.data.net.GitHubDataSource;
 import com.xiaomai.geek.di.component.MainComponent;
 import com.xiaomai.geek.presenter.github.TrendingPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
-import com.xiaomai.mvp.lce.ILceView;
+import com.xiaomai.geek.ui.base.EndlessRecyclerOnScrollListener;
+import com.xiaomai.geek.view.ILoadMoreView;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ import butterknife.Unbinder;
  * Created by XiaoMai on 2017/4/21.
  */
 
-public class TrendingFragment extends BaseFragment implements ILceView<ArrayList<Repo>> {
+public class TrendingFragment extends BaseFragment implements ILoadMoreView<ArrayList<Repo>> {
 
     public static final String EXTRA_LANGUAGE = "extra_language";
     private static final String TAG = "TrendingFragment";
@@ -65,6 +66,10 @@ public class TrendingFragment extends BaseFragment implements ILceView<ArrayList
     RelativeLayout errorRootLayout;
     private String mCurrentLanguage;
     private TrendingListAdapter mAdapter;
+
+    private int mCurrentPage;
+    private TextView mFooterViewContent;
+    private View mFooterView;
 
     public static TrendingFragment newInstance(String tag) {
         TrendingFragment fragment = new TrendingFragment();
@@ -124,35 +129,22 @@ public class TrendingFragment extends BaseFragment implements ILceView<ArrayList
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                // 屏幕内可见的item的个数
-                int visibleItemCount = recyclerView.getChildCount();
-                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                // item的总数 = 可见的 + 不可见的
-                int totalChildCount = layoutManager.getItemCount();
-                int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
-                Log.e(TAG, "visibleItemCount: " + visibleItemCount + ",totalChildCount:" + totalChildCount
-                        + ",firstVisibleItemPosition:" + firstVisibleItemPosition);
-                if (totalChildCount - visibleItemCount <= firstVisibleItemPosition) {
-
-                }
+            public void loadMore() {
+                mPresenter.loadTrendingRepos(mCurrentLanguage, ++mCurrentPage, true);
             }
         });
+        mFooterView = LayoutInflater.from(getContext()).inflate(R.layout.layout_load_more, recyclerView, false);
+        mFooterViewContent = (TextView) mFooterView.findViewById(R.id.tv_content);
     }
 
     private void reloadData() {
+        mCurrentPage = 1;
         recyclerView.setVisibility(View.VISIBLE);
         errorRootLayout.setVisibility(View.GONE);
         emptyRootLayout.setVisibility(View.GONE);
-        mPresenter.loadTrendingRepos(mCurrentLanguage);
+        mPresenter.loadTrendingRepos(mCurrentLanguage, 1);
     }
 
     @Override
@@ -199,7 +191,35 @@ public class TrendingFragment extends BaseFragment implements ILceView<ArrayList
         if (data != null) {
             recyclerView.setVisibility(View.VISIBLE);
             mAdapter.setNewData(data);
+            if (data.size() >= GitHubDataSource.PAGE_SIZE) {
+                mFooterViewContent.setText("加载更多...");
+            } else {
+                mFooterViewContent.setText("加载完毕！");
+            }
+            mAdapter.addFooterView(mFooterView);
         }
+    }
+
+    @Override
+    public void showMoreResult(ArrayList<Repo> result) {
+        if (result != null && result.size() > 0) {
+            // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
+            if (result.size() >= GitHubDataSource.PAGE_SIZE) {
+                mFooterViewContent.setText("加载更多...");
+            } else {
+                mFooterViewContent.setText("加载完毕！");
+            }
+            mAdapter.notifyDataChangedAfterLoadMore(result, false);
+        } else {
+            mFooterViewContent.setText("加载完毕！");
+        }
+        mAdapter.addFooterView(mFooterView);
+    }
+
+    @Override
+    public void loadComplete() {
+        mFooterViewContent.setText("加载完毕！");
+        mAdapter.addFooterView(mFooterView);
     }
 
     @Override

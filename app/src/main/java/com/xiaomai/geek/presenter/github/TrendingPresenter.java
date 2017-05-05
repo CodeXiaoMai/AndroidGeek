@@ -4,7 +4,7 @@ import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.data.net.response.BaseResponseObserver;
 import com.xiaomai.geek.presenter.BaseRxPresenter;
-import com.xiaomai.mvp.lce.ILceView;
+import com.xiaomai.geek.view.ILoadMoreView;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import rx.schedulers.Schedulers;
  * Created by XiaoMai on 2017/4/24.
  */
 
-public class TrendingPresenter extends BaseRxPresenter<ILceView<ArrayList<Repo>>> {
+public class TrendingPresenter extends BaseRxPresenter<ILoadMoreView<ArrayList<Repo>>> {
 
     private final GitHubApi gitHubApi;
 
@@ -27,29 +27,42 @@ public class TrendingPresenter extends BaseRxPresenter<ILceView<ArrayList<Repo>>
         this.gitHubApi = gitHubApi;
     }
 
-    public void loadTrendingRepos(@GitHubApi.LanguageType String languageType) {
-        mCompositeSubscription.add(gitHubApi.getTrendingRepos(languageType)
+    public void loadTrendingRepos(@GitHubApi.LanguageType String languageType, int page) {
+        loadTrendingRepos(languageType, page, false);
+    }
+
+    public void loadTrendingRepos(@GitHubApi.LanguageType String languageType, int page, final boolean loadMore) {
+        mCompositeSubscription.add(gitHubApi.getTrendingRepos(languageType, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
-                        getMvpView().showLoading();
+                        if (!loadMore)
+                            getMvpView().showLoading();
                     }
                 })
                 .doOnTerminate(new Action0() {
                     @Override
                     public void call() {
-                        getMvpView().dismissLoading();
+                        if (!loadMore)
+                            getMvpView().dismissLoading();
                     }
                 })
                 .subscribe(new BaseResponseObserver<ArrayList<Repo>>() {
                     @Override
                     public void onSuccess(ArrayList<Repo> repos) {
-                        if (repos != null && repos.size() > 0)
-                            getMvpView().showContent(repos);
-                        else
-                            getMvpView().showEmpty();
+                        if (loadMore) {
+                            if (repos != null && repos.size() > 0)
+                                getMvpView().showMoreResult(repos);
+                            else
+                                getMvpView().loadComplete();
+                        } else {
+                            if (repos != null && repos.size() > 0)
+                                getMvpView().showContent(repos);
+                            else
+                                getMvpView().showEmpty();
+                        }
                     }
 
                     @Override

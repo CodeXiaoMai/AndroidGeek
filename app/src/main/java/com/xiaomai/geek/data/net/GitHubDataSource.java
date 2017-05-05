@@ -38,7 +38,7 @@ public class GitHubDataSource implements GitHubApi {
     }
 
     @Override
-    public Observable<ArrayList<Repo>> getTrendingRepos(@LanguageType String language) {
+    public Observable<ArrayList<Repo>> getTrendingRepos(@LanguageType String language, int page) {
         String queryParams = "";
         if (!TextUtils.isEmpty(language)) {
             if (TextUtils.equals(language, GitHubApi.LANG_ANDROID)) {
@@ -47,7 +47,7 @@ public class GitHubDataSource implements GitHubApi {
                 queryParams = "language:" + language;
             }
         }
-        return mGitHubService.searchRepo(queryParams, SORT_BY_STARTS, ORDER_BY_DESC, 1, PAGE_SIZE)
+        return mGitHubService.searchRepo(queryParams, SORT_BY_STARTS, ORDER_BY_DESC, page, PAGE_SIZE)
                 .map(new Func1<SearchResultResp, ArrayList<Repo>>() {
                     @Override
                     public ArrayList<Repo> call(SearchResultResp searchResultResp) {

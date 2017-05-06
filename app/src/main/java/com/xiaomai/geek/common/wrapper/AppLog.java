@@ -1,8 +1,8 @@
 
 package com.xiaomai.geek.common.wrapper;
 
-import com.orhanobut.logger.BuildConfig;
 import com.orhanobut.logger.Logger;
+import com.xiaomai.geek.BuildConfig;
 
 /**
  * Created by XiaoMai on 2017/3/9 15:56. Logger封装 创建一个AppLog类来包装Logger
@@ -41,6 +41,8 @@ public class AppLog {
     }
 
     public static void e(Throwable e) {
-        Logger.e(e, "");
+        if (BuildConfig.DEBUG) {
+            Logger.e(e, "");
+        }
     }
 }

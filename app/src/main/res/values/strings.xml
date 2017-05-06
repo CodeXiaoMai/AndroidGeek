@@ -5,7 +5,7 @@
     <string name="article">干货</string>
     <string name="video">视频</string>
 
-    <string name="about">由于App不具有网络权限，所以不能在线更新。现已经将代码开源到GitHub，我会不定期更新，欢迎大家Star和Fork（来，互相伤害啊！）。</string>
+    <string name="about">由于App不具有网络权限，所以不能在线更新。现已经将代码开源到GitHub，我会不定期更新，</string>
     <string name="github_address">https://github.com/CodeXiaoMai/AndroidGeek</string>
     <string name="pro_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/%s_pro.apk</string>
     <string name="lite_version">https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/%s_lite.apk</string>
@@ -14,7 +14,7 @@
 
     <!-- Behavior -->
     <string name="behavior_bottom">com.xiaomai.geek.ui.behavior.BottomBehavior</string>
-    <string name="introduce">这是一款绝对安全的私人密码管理器，因为它只具有文件读取与写入权限（用于本地数据导入与备份）。与市面上的具有网络权限的同类App相比，绝对安全。您可以放心使用！</string>
+    <string name="introduce">"Android极客"一个专门为Android程序猿打造的极客应用。主要包括： 干货笔记、GitHub Trending、密码管理等神秘功能！\n欢迎大家Star和Fork（来，互相伤害啊！）。</string>
     <string name="author_email">xiaomai949804781@gmail.com</string>
 
     <string-array name="password_types">

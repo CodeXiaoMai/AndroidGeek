@@ -1,5 +1,6 @@
 package com.xiaomai.geek.presenter.github;
 
+import com.xiaomai.geek.common.wrapper.AppLog;
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.data.net.response.BaseResponseObserver;
@@ -32,6 +33,7 @@ public class TrendingPresenter extends BaseRxPresenter<ILoadMoreView<ArrayList<R
     }
 
     public void loadTrendingRepos(@GitHubApi.LanguageType String languageType, int page, final boolean loadMore) {
+        AppLog.e(languageType + ",page:" + page);
         mCompositeSubscription.add(gitHubApi.getTrendingRepos(languageType, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

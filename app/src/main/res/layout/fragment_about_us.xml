@@ -22,6 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/white"
             android:orientation="vertical">
 
             <ImageView
@@ -35,101 +36,150 @@
                 android:id="@+id/tv_version"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/dp_10"
                 android:gravity="center"
                 tools:text="version:1.0" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:lineSpacingExtra="3dp"
-                android:padding="@dimen/activity_horizontal_margin"
+                android:padding="@dimen/dp_10"
                 android:text="@string/introduce" />
 
             <LinearLayout
+                android:id="@+id/layout_author_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:background="@drawable/button_selector"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icon_head"
-                    android:tint="@color/colorPrimary" />
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:lineSpacingExtra="3dp"
-                    android:text="小迈" />
+                    android:autoLink="all"
+                    android:text="简书主页" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:text="http://www.jianshu.com/u/6c430e6970a4" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="5dp"
+                android:background="@drawable/button_selector"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/github"
-                    android:tint="@color/colorPrimary" />
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:autoLink="web"
-                    android:lineSpacingExtra="3dp"
+                    android:autoLink="all"
+                    android:text="CSDN主页" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:text="http://blog.csdn.net/xiaomai949804781" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_git_hub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_selector"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:text="项目主页" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
                     android:text="@string/github_address" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="5dp"
+                android:background="@drawable/button_selector"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@android:drawable/sym_action_email"
-                    android:tint="@color/colorPrimary" />
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:autoLink="all"
+                    android:text="邮箱" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:autoLink="email"
-                    android:lineSpacingExtra="3dp"
                     android:text="@string/author_email" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:text="精简版（只包含密码管理功能）"
-                android:tint="@color/colorPrimary" />
-
-            <TextView
-                android:id="@+id/tv_download_url"
+            <LinearLayout
+                android:id="@+id/layout_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:autoLink="all"
-                android:lineSpacingExtra="3dp"
-                tools:text="@string/lite_version" />
+                android:background="@drawable/button_selector"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:text="检查更新" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:text="https://github.com/CodeXiaoMai/AndroidGeek/tree/master/release" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_lite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_selector"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="精简版（只包含密码管理功能）"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_download_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    tools:text="@string/lite_version" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

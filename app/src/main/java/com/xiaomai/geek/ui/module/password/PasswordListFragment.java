@@ -15,8 +15,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -180,19 +178,19 @@ public class PasswordListFragment extends BaseFragment implements IPasswordSearc
         MenuItem item = menu.findItem(R.id.search_view);
         mSearchView = (SearchView) MenuItemCompat.getActionView(item);
         mSearchView.setQueryHint("搜索...");
-        final SearchView.SearchAutoComplete completeText = (SearchView.SearchAutoComplete) mSearchView
-                .findViewById(R.id.search_src_text);
-        completeText.setAdapter(
-                new ArrayAdapter<>(mContext, R.layout.list_item_textview, R.id.text, new String[] {
-                        "小米", "百度", "QQ", "微信"
-                }));
-        completeText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                completeText.setText(parent.getItemAtPosition(position).toString());
-            }
-        });
-        completeText.setThreshold(0);
+//        final SearchView.SearchAutoComplete completeText = (SearchView.SearchAutoComplete) mSearchView
+//                .findViewById(R.id.search_src_text);
+//        completeText.setAdapter(
+//                new ArrayAdapter<>(mContext, R.layout.list_item_textview, R.id.text, new String[] {
+//                        "小米", "百度", "QQ", "微信"
+//                }));
+//        completeText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                completeText.setText(parent.getItemAtPosition(position).toString());
+//            }
+//        });
+//        completeText.setThreshold(0);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

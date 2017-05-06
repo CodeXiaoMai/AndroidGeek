@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity
             }
         });
         navView.setNavigationItemSelectedListener(this);
-        changeFragment(ArticleContainerFragment.class.getName());
+        changeFragment(GitHubContainerFragment.class.getName());
     }
 
     private void updateHeadView() {
@@ -132,7 +132,6 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawerLayout.closeDrawer(GravityCompat.START);
         switch (item.getItemId()) {
             case R.id.menu_article:
                 changeFragment(ArticleContainerFragment.class.getName());
@@ -154,6 +153,7 @@ public class MainActivity extends BaseActivity
                 mCurrentPosition = 4;
                 break;
         }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 

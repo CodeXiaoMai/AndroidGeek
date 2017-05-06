@@ -122,7 +122,7 @@ public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, I
             @Override
             public void onItemClick(View view, int i) {
                 User user = mContributorListAdapter.getItem(i);
-                UserActivity.launch(RepoDetailActivity.this, user);
+                UserActivity.launch(RepoDetailActivity.this, user.getLogin());
             }
         });
         contributorList.setAdapter(mContributorListAdapter);
@@ -133,7 +133,7 @@ public class RepoDetailActivity extends BaseLoadActivity implements IRepoView, I
             @Override
             public void onItemClick(View view, int i) {
                 Repo repo = mForkUserListAdapter.getItem(i);
-                UserActivity.launch(RepoDetailActivity.this, repo.getOwner());
+                UserActivity.launch(RepoDetailActivity.this, repo.getOwner().getLogin());
             }
         });
         forkList.setAdapter(mForkUserListAdapter);

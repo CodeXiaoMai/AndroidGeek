@@ -2,6 +2,14 @@
 
 > "Android极客"一个专门为Android程序猿打造的极客应用
 
+## 截图 ##
+
+![device-2017-05-06-181313.png](http://upload-images.jianshu.io/upload_images/5275145-d4737fd9df280caf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-181313_958896.png](http://upload-images.jianshu.io/upload_images/5275145-cbc3213bbb789ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-181423.png](http://upload-images.jianshu.io/upload_images/5275145-0cde9bda4f55c9db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) 
+
+![device-2017-05-06-182155.png](http://upload-images.jianshu.io/upload_images/5275145-84000f8dff97a752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182535.png](http://upload-images.jianshu.io/upload_images/5275145-559cc566e5a40d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182555.png](http://upload-images.jianshu.io/upload_images/5275145-08acc7d89becb6ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280)
+
+![device-2017-05-06-182616.png](http://upload-images.jianshu.io/upload_images/5275145-3e81e59a89c8db5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182641.png](http://upload-images.jianshu.io/upload_images/5275145-c0d58c6c2c1bb669.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280)
+
 ## 主要功能 ##
 
 - 密码管理
@@ -54,3 +62,5 @@
 ### 2017-4-18 ###
 
 **发布1.0版本**
+
+参考项目：https://github.com/mingjunli/GithubApp

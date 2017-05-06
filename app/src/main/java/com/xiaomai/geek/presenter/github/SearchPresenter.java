@@ -61,7 +61,8 @@ public class SearchPresenter extends BaseRxPresenter<ISearchView<ArrayList<Repo>
 
                             @Override
                             public void onError(Throwable e) {
-                                getMvpView().error(e);
+                                if (!loadMore)
+                                    getMvpView().error(e);
                             }
                         })
         );

@@ -69,7 +69,8 @@ public class TrendingPresenter extends BaseRxPresenter<ILoadMoreView<ArrayList<R
 
                     @Override
                     public void onError(Throwable e) {
-                        getMvpView().showError(e);
+                        if (!loadMore)
+                            getMvpView().showError(e);
                     }
                 }));
     }

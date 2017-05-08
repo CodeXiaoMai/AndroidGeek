@@ -20,6 +20,8 @@ import rx.Observable;
 import rx.functions.Func1;
 import rx.functions.Func5;
 
+import static com.xiaomai.geek.common.utils.Const.PAGE_SIZE;
+
 /**
  * Created by XiaoMai on 2017/4/24.
  */
@@ -28,7 +30,6 @@ public class GitHubDataSource implements GitHubApi {
     private static final String SORT_BY_STARTS = "stars";
     private static final String SORT_BY_UPDATED = "updated";
     private static final String ORDER_BY_DESC = "desc";
-    public static final int PAGE_SIZE = 30;
 
     GitHubService mGitHubService;
 
@@ -62,13 +63,13 @@ public class GitHubDataSource implements GitHubApi {
     }
 
     @Override
-    public Observable<ArrayList<Repo>> getMyRepos() {
-        return mGitHubService.getMyRepos(SORT_BY_UPDATED, "all");
+    public Observable<ArrayList<Repo>> getMyRepos(int page) {
+        return mGitHubService.getMyRepos(SORT_BY_UPDATED, "all", page);
     }
 
     @Override
-    public Observable<ArrayList<Repo>> getUserRepos(String userName) {
-        return mGitHubService.getUserRepos(userName, SORT_BY_UPDATED);
+    public Observable<ArrayList<Repo>> getUserRepos(String userName, int page) {
+        return mGitHubService.getUserRepos(userName, SORT_BY_UPDATED, page);
     }
 
     @Override

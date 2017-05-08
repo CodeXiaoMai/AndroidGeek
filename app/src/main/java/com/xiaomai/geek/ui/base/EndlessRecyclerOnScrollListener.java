@@ -3,6 +3,8 @@ package com.xiaomai.geek.ui.base;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.xiaomai.geek.common.utils.Const;
+
 /**
  * Created by XiaoMai on 2017/5/5.
  */
@@ -22,11 +24,18 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
-        if (mLinearLayoutManager == null)
+
+        if (mLinearLayoutManager == null) {
             mLinearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        }
+
+        totalItemCount = mLinearLayoutManager.getItemCount();
+        /** 如果item总数小于每页加载的数目，那么肯定没有更多数据了 **/
+        if (totalItemCount < Const.PAGE_SIZE) {
+            return;
+        }
 
         visibleItemCount = recyclerView.getChildCount();
-        totalItemCount = mLinearLayoutManager.getItemCount();
         firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
 
         if (mIsLoading) {

@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.Const;
 import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.Repo;
-import com.xiaomai.geek.data.net.GitHubDataSource;
 import com.xiaomai.geek.di.component.MainComponent;
 import com.xiaomai.geek.presenter.github.TrendingPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
@@ -191,7 +191,7 @@ public class TrendingFragment extends BaseFragment implements ILoadMoreView<Arra
         if (data != null) {
             recyclerView.setVisibility(View.VISIBLE);
             mAdapter.setNewData(data);
-            if (data.size() >= GitHubDataSource.PAGE_SIZE) {
+            if (data.size() >= Const.PAGE_SIZE) {
                 mFooterViewContent.setText("加载更多...");
             } else {
                 mFooterViewContent.setText("加载完毕！");
@@ -204,7 +204,7 @@ public class TrendingFragment extends BaseFragment implements ILoadMoreView<Arra
     public void showMoreResult(ArrayList<Repo> result) {
         if (result != null && result.size() > 0) {
             // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
-            if (result.size() >= GitHubDataSource.PAGE_SIZE) {
+            if (result.size() >= Const.PAGE_SIZE) {
                 mFooterViewContent.setText("加载更多...");
             } else {
                 mFooterViewContent.setText("加载完毕！");

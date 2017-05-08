@@ -23,8 +23,8 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.Const;
 import com.xiaomai.geek.data.module.Repo;
-import com.xiaomai.geek.data.net.GitHubDataSource;
 import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.DaggerGitHubComponent;
 import com.xiaomai.geek.di.component.GitHubComponent;
@@ -184,7 +184,7 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
             emptyRootLayout.setVisibility(View.GONE);
             mAdapter.setNewData(result);
             // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
-            if (result.size() >= GitHubDataSource.PAGE_SIZE) {
+            if (result.size() >= Const.PAGE_SIZE) {
                 mFooterViewContent.setText("加载更多...");
             } else {
                 mFooterViewContent.setText("加载完毕！");
@@ -201,7 +201,7 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
         mAdapter.addFooterView(null);
         if (result != null && result.size() > 0) {
             // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
-            if (result.size() >= GitHubDataSource.PAGE_SIZE) {
+            if (result.size() >= Const.PAGE_SIZE) {
                 mFooterViewContent.setText("加载更多...");
             } else {
                 mFooterViewContent.setText("加载完毕！");

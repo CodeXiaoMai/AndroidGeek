@@ -21,6 +21,9 @@ import rx.Observable;
  * Created by XiaoMai on 2017/4/24.
  */
 
+/**
+ * GitHub 接口的 per_page 默认为30
+ */
 public interface GitHubService {
 
     @Headers("Cache-Control: public, max-age=600")
@@ -37,11 +40,11 @@ public interface GitHubService {
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("user/repos")
-    Observable<ArrayList<Repo>> getMyRepos(@Query("sort") String sort, @Query("type") String type);
+    Observable<ArrayList<Repo>> getMyRepos(@Query("sort") String sort, @Query("type") String type, @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("users/{name}/repos")
-    Observable<ArrayList<Repo>> getUserRepos(@Path("name") String user, @Query("sort") String sort);
+    Observable<ArrayList<Repo>> getUserRepos(@Path("name") String user, @Query("sort") String sort, @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("user/starred")

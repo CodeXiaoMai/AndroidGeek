@@ -37,9 +37,9 @@ public interface GitHubApi {
 
     Observable<User> getSingleUser(String name);
 
-    Observable<ArrayList<Repo>> getMyRepos();
+    Observable<ArrayList<Repo>> getMyRepos(int page);
 
-    Observable<ArrayList<Repo>> getUserRepos(String userName);
+    Observable<ArrayList<Repo>> getUserRepos(String userName, int page);
 
     Observable<ArrayList<Repo>> getMyStarredRepos();
 

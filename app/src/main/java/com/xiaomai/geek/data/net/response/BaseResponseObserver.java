@@ -1,7 +1,5 @@
 package com.xiaomai.geek.data.net.response;
 
-import com.xiaomai.geek.common.wrapper.AppLog;
-
 import rx.Subscriber;
 
 /**
@@ -12,12 +10,12 @@ public abstract class BaseResponseObserver<T> extends Subscriber<T> {
 
     @Override
     public void onCompleted() {
-        AppLog.d("onCompleted");
+//        AppLog.d("onCompleted");
     }
 
     @Override
     public void onNext(T t) {
-        AppLog.d("onNext");
+//        AppLog.d("onNext");
         onSuccess(t);
     }
 

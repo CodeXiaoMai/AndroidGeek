@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
@@ -10,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_selector"
-        android:orientation="horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
         android:padding="@dimen/dimen_10">
 
         <ImageView
@@ -18,15 +20,13 @@
             android:layout_width="@dimen/dimen_48"
             android:layout_height="@dimen/dimen_48"
             android:scaleType="centerInside"
-            android:src="@drawable/github_blue" />
+            tools:src="@drawable/github_blue" />
 
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/dimen_10"
-            android:maxLines="1"
+            android:gravity="center"
             android:textSize="@dimen/text_size_18"
             tools:text="UserName" />
     </LinearLayout>

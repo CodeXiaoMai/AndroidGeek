@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +27,7 @@ import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.di.module.GitHubModule;
 import com.xiaomai.geek.presenter.github.UserListPresenter;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
-import com.xiaomai.geek.ui.base.EndlessRecyclerOnScrollListener;
+import com.xiaomai.geek.ui.base.EndlessStaggeredGridOnScrollListener;
 import com.xiaomai.geek.view.ILoadMoreView;
 
 import java.util.ArrayList;
@@ -129,7 +129,7 @@ public class UserListActivity extends BaseLoadActivity implements ILoadMoreView<
         if (null != actionBar)
             actionBar.setDisplayHomeAsUpEnabled(true);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mAdapter = new UserListAdapter(null);
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
@@ -139,7 +139,7 @@ public class UserListActivity extends BaseLoadActivity implements ILoadMoreView<
             }
         });
         recyclerView.setAdapter(mAdapter);
-        recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
+        recyclerView.addOnScrollListener(new EndlessStaggeredGridOnScrollListener() {
             @Override
             public void loadMore() {
                 mPresenter.loadUsers(mUserName, mIsSelf, mType, ++mCurrentPage, true);

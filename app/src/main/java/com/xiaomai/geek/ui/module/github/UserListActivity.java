@@ -10,10 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.Const;
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.data.module.User;
 import com.xiaomai.geek.data.pref.AccountPref;
@@ -24,7 +27,8 @@ import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.di.module.GitHubModule;
 import com.xiaomai.geek.presenter.github.UserListPresenter;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
-import com.xiaomai.mvp.lce.ILceView;
+import com.xiaomai.geek.ui.base.EndlessRecyclerOnScrollListener;
+import com.xiaomai.geek.view.ILoadMoreView;
 
 import java.util.ArrayList;
 
@@ -37,7 +41,7 @@ import butterknife.ButterKnife;
  * Created by XiaoMai on 2017/4/29.
  */
 
-public class UserListActivity extends BaseLoadActivity implements ILceView<ArrayList<User>>, IComponent<GitHubComponent> {
+public class UserListActivity extends BaseLoadActivity implements ILoadMoreView<ArrayList<User>>, IComponent<GitHubComponent> {
 
     private static final String EXTRA_USER_NAME = "extra_user_name";
 
@@ -52,8 +56,21 @@ public class UserListActivity extends BaseLoadActivity implements ILceView<Array
     RecyclerView recyclerView;
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
+    @BindView(R.id.empty_title)
+    TextView emptyTitle;
+    @BindView(R.id.empty_desc)
+    TextView emptyDesc;
+    @BindView(R.id.empty_root_layout)
+    RelativeLayout emptyRootLayout;
+
+    private View mFooterView;
+    private TextView mFooterViewContent;
 
     private UserListAdapter mAdapter;
+    private String mUserName;
+    private boolean mIsSelf;
+    private int mType;
+    private int mCurrentPage = 1;
 
     public static void launchToShowFollowing(Context context, String username) {
         Intent intent = new Intent(context, UserListActivity.class);
@@ -91,18 +108,19 @@ public class UserListActivity extends BaseLoadActivity implements ILceView<Array
         Intent intent = getIntent();
         if (intent == null)
             return;
-        String userName = intent.getStringExtra(EXTRA_USER_NAME);
+        mUserName = intent.getStringExtra(EXTRA_USER_NAME);
         String action = intent.getAction();
-        boolean isSelf = AccountPref.isSelf(this, userName);
+        mIsSelf = AccountPref.isSelf(this, mUserName);
         if (ACTION_FOLLOWING.equals(action)) {
-            setTitle(isSelf ? getString(R.string.my_following)
-                    : getString(R.string.following, userName));
-            mPresenter.loadUsers(userName, isSelf, GitHubApi.FOLLOWING);
+            setTitle(mIsSelf ? getString(R.string.my_following)
+                    : getString(R.string.following, mUserName));
+            mType = GitHubApi.FOLLOWING;
         } else if (ACTION_FOLLOWERS.equals(action)) {
-            setTitle(isSelf ? getString(R.string.my_followers)
-                    : getString(R.string.followers, userName));
-            mPresenter.loadUsers(userName, isSelf, GitHubApi.FOLLOWER);
+            setTitle(mIsSelf ? getString(R.string.my_followers)
+                    : getString(R.string.followers, mUserName));
+            mType = GitHubApi.FOLLOWER;
         }
+        mPresenter.loadUsers(mUserName, mIsSelf, mType);
     }
 
     private void initViews() {
@@ -121,11 +139,28 @@ public class UserListActivity extends BaseLoadActivity implements ILceView<Array
             }
         });
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
+            @Override
+            public void loadMore() {
+                mPresenter.loadUsers(mUserName, mIsSelf, mType, ++mCurrentPage, true);
+            }
+        });
+        mFooterView = getLayoutInflater().inflate(R.layout.layout_load_more, recyclerView, false);
+        mFooterViewContent = (TextView) mFooterView.findViewById(R.id.tv_content);
     }
 
     @Override
     public void showContent(ArrayList<User> data) {
         mAdapter.setNewData(data);
+        recyclerView.setVisibility(View.VISIBLE);
+        emptyRootLayout.setVisibility(View.GONE);
+        // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
+        if (data.size() >= Const.PAGE_SIZE) {
+            mFooterViewContent.setText("加载更多...");
+        } else {
+            mFooterViewContent.setText("加载完毕！");
+        }
+        mAdapter.addFooterView(mFooterView);
     }
 
     @Override
@@ -135,7 +170,31 @@ public class UserListActivity extends BaseLoadActivity implements ILceView<Array
 
     @Override
     public void showEmpty() {
+        recyclerView.setVisibility(View.GONE);
+        emptyRootLayout.setVisibility(View.VISIBLE);
+    }
 
+    @Override
+    public void showMoreResult(ArrayList<User> result) {
+        mAdapter.addFooterView(null);
+        if (result != null && result.size() > 0) {
+            // 当结果不足 PAGE_SIZE 时很明显没有更多数据了。
+            if (result.size() >= Const.PAGE_SIZE) {
+                mFooterViewContent.setText("加载更多...");
+            } else {
+                mFooterViewContent.setText("加载完毕！");
+            }
+            mAdapter.notifyDataChangedAfterLoadMore(result, false);
+        } else {
+            mFooterViewContent.setText("加载完毕！");
+        }
+        mAdapter.addFooterView(mFooterView);
+    }
+
+    @Override
+    public void loadComplete() {
+        mFooterViewContent.setText("加载完毕！");
+        mAdapter.addFooterView(mFooterView);
     }
 
     @Override

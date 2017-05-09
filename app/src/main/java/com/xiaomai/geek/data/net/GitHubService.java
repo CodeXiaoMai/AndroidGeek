@@ -63,19 +63,21 @@ public interface GitHubService {
 
     @Headers("Cache-Control: public, max-age=3600")
     @GET("users/{user}/following")
-    Observable<ArrayList<User>> getUserFollowing(@Path("user") String user);
+    Observable<ArrayList<User>> getUserFollowing(@Path("user") String user,
+                                                 @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=3600")
     @GET("user/following")
-    Observable<ArrayList<User>> getMyFollowing();
+    Observable<ArrayList<User>> getMyFollowing(@Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=3600")
     @GET("users/{user}/followers")
-    Observable<ArrayList<User>> getUserFollowers(@Path("user") String user);
+    Observable<ArrayList<User>> getUserFollowers(@Path("user") String user,
+                                                 @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=3600")
     @GET("user/followers")
-    Observable<ArrayList<User>> getMyFollowers();
+    Observable<ArrayList<User>> getMyFollowers(@Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=3600")
     @GET("repos/{owner}/{name}")

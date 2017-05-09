@@ -45,13 +45,13 @@ public interface GitHubApi {
 
     Observable<ArrayList<Repo>> getUserStarredRepos(String userName, int page);
 
-    Observable<ArrayList<User>> getMyFollowers();
+    Observable<ArrayList<User>> getMyFollowers(int page);
 
-    Observable<ArrayList<User>> getUserFollowers(String userName);
+    Observable<ArrayList<User>> getUserFollowers(String userName, int page);
 
-    Observable<ArrayList<User>> getMyFollowing();
+    Observable<ArrayList<User>> getMyFollowing(int page);
 
-    Observable<ArrayList<User>> getUserFollowing(String userName);
+    Observable<ArrayList<User>> getUserFollowing(String userName, int page);
 
     Observable<RepoDetail> getRepoDetail(String owner, String name);
 

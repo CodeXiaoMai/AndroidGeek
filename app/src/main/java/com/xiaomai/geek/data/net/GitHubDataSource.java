@@ -83,23 +83,23 @@ public class GitHubDataSource implements GitHubApi {
     }
 
     @Override
-    public Observable<ArrayList<User>> getMyFollowers() {
-        return mGitHubService.getMyFollowers();
+    public Observable<ArrayList<User>> getMyFollowers(int page) {
+        return mGitHubService.getMyFollowers(page);
     }
 
     @Override
-    public Observable<ArrayList<User>> getUserFollowers(String userName) {
-        return mGitHubService.getUserFollowers(userName);
+    public Observable<ArrayList<User>> getUserFollowers(String userName, int page) {
+        return mGitHubService.getUserFollowers(userName, page);
     }
 
     @Override
-    public Observable<ArrayList<User>> getMyFollowing() {
-        return mGitHubService.getMyFollowing();
+    public Observable<ArrayList<User>> getMyFollowing(int page) {
+        return mGitHubService.getMyFollowing(page);
     }
 
     @Override
-    public Observable<ArrayList<User>> getUserFollowing(String userName) {
-        return mGitHubService.getUserFollowing(userName);
+    public Observable<ArrayList<User>> getUserFollowing(String userName, int page) {
+        return mGitHubService.getUserFollowing(userName, page);
     }
 
     @Override

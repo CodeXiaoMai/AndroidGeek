@@ -73,13 +73,13 @@ public class GitHubDataSource implements GitHubApi {
     }
 
     @Override
-    public Observable<ArrayList<Repo>> getMyStarredRepos() {
-        return mGitHubService.getMyStarredRepos(SORT_BY_UPDATED);
+    public Observable<ArrayList<Repo>> getMyStarredRepos(int page) {
+        return mGitHubService.getMyStarredRepos(SORT_BY_UPDATED, page);
     }
 
     @Override
-    public Observable<ArrayList<Repo>> getUserStarredRepos(String userName) {
-        return mGitHubService.getUserStarredRepos(userName, SORT_BY_UPDATED);
+    public Observable<ArrayList<Repo>> getUserStarredRepos(String userName, int page) {
+        return mGitHubService.getUserStarredRepos(userName, SORT_BY_UPDATED, page);
     }
 
     @Override

@@ -1,3 +1,6 @@
+转载请注明出处：
+http://www.jianshu.com/p/1abf8f86ad16
+
 # Android极客 #
 
 > "Android极客"一个专门为Android程序猿打造的极客应用（未完待续....），你们的支持是我最大的动力！！！！
@@ -10,7 +13,7 @@
 
 GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
-下载地址：https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.1.1_pro.apk
+[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.1.1_pro.apk)
 
 ## 截图 ##
 ![device-2017-05-06-181313.png](http://upload-images.jianshu.io/upload_images/5275145-d4737fd9df280caf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-181313_958896.png](http://upload-images.jianshu.io/upload_images/5275145-cbc3213bbb789ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-181423.png](http://upload-images.jianshu.io/upload_images/5275145-0cde9bda4f55c9db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) 
@@ -77,13 +80,8 @@ GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
 **发布1.0版本**
 
-
-----------
-
-
-下载地址：https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.1.1_pro.apk
+[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.1.1_pro.apk)
 
 GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
-GitHub模块参考了https://github.com/mingjunli/GithubApp
-开源项目，并在其基础上进行了修改。
+GitHub模块参考了开源项目 [https://github.com/mingjunli/GithubApp](https://github.com/mingjunli/GithubApp)，并在其基础上进行了修改。

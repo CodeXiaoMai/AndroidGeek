@@ -41,9 +41,9 @@ public interface GitHubApi {
 
     Observable<ArrayList<Repo>> getUserRepos(String userName, int page);
 
-    Observable<ArrayList<Repo>> getMyStarredRepos();
+    Observable<ArrayList<Repo>> getMyStarredRepos(int page);
 
-    Observable<ArrayList<Repo>> getUserStarredRepos(String userName);
+    Observable<ArrayList<Repo>> getUserStarredRepos(String userName, int page);
 
     Observable<ArrayList<User>> getMyFollowers();
 

@@ -40,20 +40,26 @@ public interface GitHubService {
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("user/repos")
-    Observable<ArrayList<Repo>> getMyRepos(@Query("sort") String sort, @Query("type") String type, @Query("page") int page);
+    Observable<ArrayList<Repo>> getMyRepos(@Query("sort") String sort,
+                                           @Query("type") String type,
+                                           @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("users/{name}/repos")
-    Observable<ArrayList<Repo>> getUserRepos(@Path("name") String user, @Query("sort") String sort, @Query("page") int page);
+    Observable<ArrayList<Repo>> getUserRepos(@Path("name") String user,
+                                             @Query("sort") String sort,
+                                             @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("user/starred")
-    Observable<ArrayList<Repo>> getMyStarredRepos(@Query("sort") String sort);
+    Observable<ArrayList<Repo>> getMyStarredRepos(@Query("sort") String sort,
+                                                  @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("users/{name}/starred")
     Observable<ArrayList<Repo>> getUserStarredRepos(@Path("name") String user,
-                                                    @Query("sort") String sort);
+                                                    @Query("sort") String sort,
+                                                    @Query("page") int page);
 
     @Headers("Cache-Control: public, max-age=3600")
     @GET("users/{user}/following")
@@ -86,7 +92,8 @@ public interface GitHubService {
 
     @Headers("Cache-Control: public, max-age=3600")
     @GET("repos/{owner}/{name}/forks")
-    Observable<ArrayList<Repo>> listForks(@Path("owner") String owner, @Path("name") String repo,
+    Observable<ArrayList<Repo>> listForks(@Path("owner") String owner,
+                                          @Path("name") String repo,
                                           @Query("sort") String sort);
 
     @GET("user/starred/{owner}/{repo}")

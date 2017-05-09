@@ -45,9 +45,9 @@ public class RepoListPresenter extends BaseRxPresenter<ILoadMoreView<ArrayList<R
                 break;
             case GitHubApi.STARRED_REPO:
                 if (isSelf)
-                    observable = gitHubApi.getMyStarredRepos();
+                    observable = gitHubApi.getMyStarredRepos(page);
                 else
-                    observable = gitHubApi.getUserStarredRepos(userName);
+                    observable = gitHubApi.getUserStarredRepos(userName, page);
                 break;
         }
         if (observable == null)

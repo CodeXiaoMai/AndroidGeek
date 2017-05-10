@@ -8,13 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -24,6 +22,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.utils.Const;
+import com.xiaomai.geek.common.wrapper.AppLog;
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.DaggerGitHubComponent;
@@ -59,8 +58,8 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
     DrawerLayout drawerLayout;
     @BindView(R.id.empty_root_layout)
     RelativeLayout emptyRootLayout;
-    @BindView(R.id.swipe_refresh)
-    SwipeRefreshLayout swipeRefresh;
+    @BindView(R.id.search_view)
+    SearchView searchView;
 
     private RepoListAdapter mAdapter;
 
@@ -70,7 +69,6 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
 
     @Inject
     SearchPresenter mPresenter;
-    private SearchView mSearchView;
     private int mCurrentPage;
     private TextView mFooterViewContent;
     private View mFooterView;
@@ -98,12 +96,6 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
     private void initViews() {
         setSupportActionBar(toolBar);
         setTitle("搜索");
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                search();
-            }
-        });
         navView.setNavigationItemSelectedListener(this);
         mAdapter = new RepoListAdapter(null);
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
@@ -125,13 +117,17 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
         mFooterView = getLayoutInflater().inflate(R.layout.layout_load_more, recyclerView, false);
         mFooterViewContent = (TextView) mFooterView.findViewById(R.id.tv_content);
         mCurrentLanguage = "Java";
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu, menu);
-        mSearchView = (SearchView) menu.findItem(R.id.search_view).getActionView();
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        //设置展开后图标的样式,这里只有两种,一种图标在搜索框外,一种在搜索框内
+        searchView.setIconifiedByDefault(true);
+        // searchView初始是可以点击输入的状态，如果不写，那么就需要点击下放大镜，才能出现输入框,也就是设置为ToolBar的ActionView，默认展开
+//        searchView.onActionViewExpanded();
+        searchView.requestFocus();//输入焦点
+//        searchView.setSubmitButtonEnabled(true);//添加提交按钮，监听在OnQueryTextListener的onQueryTextSubmit响应
+        searchView.setFocusable(true);//将控件设置成可获取焦点状态,默认是无法获取焦点的,只有设置成true,才能获取控件的点击事件
+        searchView.setIconified(false);//输入框内icon不显示
+        searchView.requestFocusFromTouch();//模拟焦点点击事件
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mCurrentKey = query;
@@ -144,13 +140,12 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
                 return false;
             }
         });
-        mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
                 return false;
             }
         });
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -174,10 +169,9 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
 
     @Override
     public void showSearchResult(ArrayList<Repo> result) {
-        swipeRefresh.setRefreshing(false);
         mAdapter.addFooterView(null);
-        setTitle("关键词:\"" + mCurrentKey + "\"，语言:\"" + mCurrentLanguage + "\"");
-        mSearchView.setActivated(false);
+        AppLog.e("clearfocus");
+        searchView.clearFocus();
         invalidateOptionsMenu();
         if (result != null && result.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
@@ -225,5 +219,13 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
         mCurrentPage = 1;
         if (!TextUtils.isEmpty(mCurrentKey))
             mPresenter.searchRepo(mCurrentKey, mCurrentLanguage, 1);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            drawerLayout.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
     }
 }

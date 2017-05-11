@@ -6,9 +6,11 @@ import android.content.Context;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.presenter.BaseRxPresenter;
-import com.xiaomai.geek.view.IPasswordSearchView;
+import com.xiaomai.mvp.lce.ILceView;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -20,7 +22,11 @@ import rx.schedulers.Schedulers;
  * Created by XiaoMai on 2017/3/30 17:18.
  */
 
-public class PasswordListPresenter extends BaseRxPresenter<IPasswordSearchView> {
+public class PasswordListPresenter extends BaseRxPresenter<ILceView<List<Password>>> {
+
+    @Inject
+    public PasswordListPresenter() {
+    }
 
     public void getAllPasswords(final Context context) {
         mCompositeSubscription.add(Observable.create(new Observable.OnSubscribe<List<Password>>() {
@@ -80,7 +86,7 @@ public class PasswordListPresenter extends BaseRxPresenter<IPasswordSearchView> 
                                 if (passwords.size() > 0) {
                                     getMvpView().showContent(passwords);
                                 } else {
-                                    getMvpView().onSearchEmpty();
+                                    getMvpView().showEmpty();
                                 }
                             }
                         })

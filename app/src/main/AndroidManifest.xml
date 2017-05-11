@@ -60,6 +60,9 @@
         <activity
             android:name=".ui.module.github.SearchActivity"
             android:configChanges="orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".ui.module.password.SearchActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +72,6 @@ public class PasswordContainerFragment extends BaseFragment {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(PasswordListFragment.newInstance());
         fragments.add(PasswordSettingFragment.newInstance());
-//        list.add(PasswordListFragment.newInstance());
         mAdapter.setList(fragments);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -111,10 +112,19 @@ public class PasswordContainerFragment extends BaseFragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.password_container_menu, menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 ((MainActivity) getActivity()).openDrawer();
+                return true;
+            case R.id.search_view:
+                SearchActivity.launch(getContext());
                 return true;
         }
         return super.onOptionsItemSelected(item);

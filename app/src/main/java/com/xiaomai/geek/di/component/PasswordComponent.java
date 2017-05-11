@@ -4,6 +4,7 @@ import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.di.module.PasswordModule;
 import com.xiaomai.geek.di.scope.PerActivity;
 import com.xiaomai.geek.ui.module.password.EditAccountActivity;
+import com.xiaomai.geek.ui.module.password.SearchActivity;
 
 import dagger.Component;
 
@@ -16,4 +17,6 @@ import dagger.Component;
 public interface PasswordComponent extends ActivityComponent {
 
     void inject(EditAccountActivity editAccountActivity);
+
+    void inject(SearchActivity searchActivity);
 }

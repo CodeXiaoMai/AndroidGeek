@@ -118,13 +118,6 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
         mFooterViewContent = (TextView) mFooterView.findViewById(R.id.tv_content);
         mCurrentLanguage = "Java";
 
-        //设置展开后图标的样式,这里只有两种,一种图标在搜索框外,一种在搜索框内
-        searchView.setIconifiedByDefault(true);
-        // searchView初始是可以点击输入的状态，如果不写，那么就需要点击下放大镜，才能出现输入框,也就是设置为ToolBar的ActionView，默认展开
-//        searchView.onActionViewExpanded();
-        searchView.requestFocus();//输入焦点
-//        searchView.setSubmitButtonEnabled(true);//添加提交按钮，监听在OnQueryTextListener的onQueryTextSubmit响应
-        searchView.setFocusable(true);//将控件设置成可获取焦点状态,默认是无法获取焦点的,只有设置成true,才能获取控件的点击事件
         searchView.setIconified(false);//输入框内icon不显示
         searchView.requestFocusFromTouch();//模拟焦点点击事件
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

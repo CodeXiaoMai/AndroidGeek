@@ -22,7 +22,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.utils.Const;
-import com.xiaomai.geek.common.wrapper.AppLog;
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.di.IComponent;
 import com.xiaomai.geek.di.component.DaggerGitHubComponent;
@@ -163,7 +162,6 @@ public class SearchActivity extends BaseLoadActivity implements ISearchView<Arra
     @Override
     public void showSearchResult(ArrayList<Repo> result) {
         mAdapter.addFooterView(null);
-        AppLog.e("clearfocus");
         searchView.clearFocus();
         invalidateOptionsMenu();
         if (result != null && result.size() > 0) {

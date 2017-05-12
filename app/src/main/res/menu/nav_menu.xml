@@ -9,7 +9,6 @@
             android:checked="true"
             android:icon="@drawable/article"
             android:title="@string/article"
-            android:visible="false"
             app:showAsAction="always" />
 
         <item
@@ -33,7 +32,7 @@
 
         <item
             android:id="@+id/menu_about"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@drawable/ic_jike"
             android:title="关于"
             app:showAsAction="always" />
     </group>

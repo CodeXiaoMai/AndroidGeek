@@ -23,6 +23,7 @@ GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
 - MVP架构
 - Retrofit + Okhttp
+- Tinker 热更新
 - RxJava + RxAndroid
 - EventBus
 - Glide

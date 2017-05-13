@@ -2,6 +2,7 @@ package com.xiaomai.geek.common.wrapper;
 
 import android.content.Context;
 
+import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.xiaomai.geek.BuildConfig;
 
@@ -18,6 +19,8 @@ public class CrashHelper {
     public static void init(Context context) {
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
         strategy.setAppChannel(CHANNEL_NAME);
-        CrashReport.initCrashReport(context, APP_ID, BuildConfig.DEBUG, strategy);
+        // 之前使用过Bugly SDK，请将以下这句注释掉。
+//        CrashReport.initCrashReport(context, APP_ID, BuildConfig.DEBUG, strategy);
+        Bugly.init(context, APP_ID, BuildConfig.DEBUG, strategy);
     }
 }

@@ -15,6 +15,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:debuggable="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.SplashActivity"
@@ -63,9 +64,22 @@
         <activity
             android:name=".ui.module.password.SearchActivity"
             android:configChanges="orientation|screenSize|screenLayout" />
-
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
 
     </application>
 

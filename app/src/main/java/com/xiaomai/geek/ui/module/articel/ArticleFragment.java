@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.module.Article;
+import com.xiaomai.geek.data.module.Chapter;
 import com.xiaomai.geek.ui.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class ArticleFragment extends BaseFragment {
     RecyclerView recyclerView;
     Unbinder unbinder;
 
-    GridAdapter mAdapter;
+    ChapterListAdapter mAdapter;
 
     public static ArticleFragment newInstance() {
         ArticleFragment fragment = new ArticleFragment();
@@ -48,16 +49,22 @@ public class ArticleFragment extends BaseFragment {
 
     private void initViews() {
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
-        mAdapter = new GridAdapter(null);
+        mAdapter = new ChapterListAdapter(null);
         recyclerView.setAdapter(mAdapter);
-        final List<Article> list = new ArrayList<>();
-        list.add(new Article("RxJava", "w"));
+        final List<Chapter> list = new ArrayList<>();
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article("RxJava 一", "http://www.jianshu.com/p/464fa025229e"));
+        list.add(new Chapter("RxJava",
+                "RxJava Description",
+                "http://reactivex.io/assets/Rx_Logo_S.png",
+                "https://github.com/ReactiveX/RxJava",
+                articles));
         mAdapter.setNewData(list);
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
-                Article article = mAdapter.getItem(i);
-                ArticleDetailActivity.launch(getActivity(), article);
+                Chapter chapter = mAdapter.getItem(i);
+                ChapterActivity.launch(getActivity(), chapter);
             }
         });
     }

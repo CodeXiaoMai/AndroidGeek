@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity
             }
         });
         navView.setNavigationItemSelectedListener(this);
-        changeFragment(GitHubContainerFragment.class.getName());
+        changeFragment(ArticleContainerFragment.class.getName());
     }
 
     private void updateHeadView() {

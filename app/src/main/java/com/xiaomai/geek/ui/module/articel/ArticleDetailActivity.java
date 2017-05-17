@@ -14,11 +14,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.orhanobut.logger.Logger;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.module.Article;
-
-import java.util.Stack;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,6 +73,7 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
     private void initWebViewSettings() {
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         // WebView中含有可以下载文件的链接，点击该链接后，应该开始执行下载的操作并保存文件到本地中。
         webView.setDownloadListener(new DownloadListener() {
             @Override
@@ -97,7 +95,7 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
         toolBar.setTitle(article.getName());
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        webView.loadUrl("http://www.jianshu.com/p/464fa025229e");
+        webView.loadUrl(article.getUrl());
     }
 
     @Override

@@ -51,15 +51,23 @@ public class ArticleFragment extends BaseFragment {
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         mAdapter = new ChapterListAdapter(null);
         recyclerView.setAdapter(mAdapter);
-        final List<Chapter> list = new ArrayList<>();
-        List<Article> articles = new ArrayList<>();
-        articles.add(new Article("RxJava 一", "http://www.jianshu.com/p/464fa025229e"));
-        list.add(new Chapter("RxJava",
+        final List<Chapter> chapters = new ArrayList<>();
+        List<Article> rxJavaArticles = new ArrayList<>();
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(一)", "http://www.jianshu.com/p/464fa025229e"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(二)", "http://www.jianshu.com/p/8818b98c44e2"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(三)", "http://www.jianshu.com/p/128e662906af"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(四)", "http://www.jianshu.com/p/bb58571cdb64"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(五)", "http://www.jianshu.com/p/0f2d6c2387c9"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(六)", "http://www.jianshu.com/p/e4c6d7989356"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(七)", "http://www.jianshu.com/p/9b1304435564"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(八)", "http://www.jianshu.com/p/a75ecf461e02"));
+        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(九)", "http://www.jianshu.com/p/36e0f7f43a51"));
+        chapters.add(new Chapter("RxJava",
                 "RxJava Description",
                 "http://reactivex.io/assets/Rx_Logo_S.png",
                 "https://github.com/ReactiveX/RxJava",
-                articles));
-        mAdapter.setNewData(list);
+                rxJavaArticles));
+        mAdapter.setNewData(chapters);
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {

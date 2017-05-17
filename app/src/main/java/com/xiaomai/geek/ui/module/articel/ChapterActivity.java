@@ -9,6 +9,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -73,13 +74,16 @@ public class ChapterActivity extends BaseActivity {
             }
         });
         Intent intent = getIntent();
-        Chapter chapter = intent.getParcelableExtra(EXTRA_CHAPTER);
+        final Chapter chapter = intent.getParcelableExtra(EXTRA_CHAPTER);
         setTitle(chapter.getName());
         ImageLoader.load(this, chapter.getImage(), ivIcon, R.color.colorPrimary);
         ivIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RepoDetailActivity.launch(ChapterActivity.this, "ReactiveX", "RxJava");
+                String owner = chapter.getOwner();
+                String repoName = chapter.getRepoName();
+                if (!TextUtils.isEmpty(owner) && !TextUtils.isEmpty(repoName))
+                    RepoDetailActivity.launch(ChapterActivity.this, "ReactiveX", "RxJava");
             }
         });
         mAdapter.setNewData(chapter.getArticles());

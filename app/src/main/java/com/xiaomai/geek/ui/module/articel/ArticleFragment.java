@@ -10,12 +10,15 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
-import com.xiaomai.geek.data.module.Article;
 import com.xiaomai.geek.data.module.Chapter;
+import com.xiaomai.geek.di.component.MainComponent;
+import com.xiaomai.geek.presenter.article.ChapterPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
+import com.xiaomai.mvp.lce.ILceView;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,11 +28,14 @@ import butterknife.Unbinder;
  * Created by XiaoMai on 2017/5/16.
  */
 
-public class ArticleFragment extends BaseFragment {
+public class ArticleFragment extends BaseFragment implements ILceView<List<Chapter>>{
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     Unbinder unbinder;
+
+    @Inject
+    ChapterPresenter mPresenter;
 
     ChapterListAdapter mAdapter;
 
@@ -38,12 +44,20 @@ public class ArticleFragment extends BaseFragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getComponent(MainComponent.class).inject(this);
+        mPresenter.attachView(this);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = inflater.inflate(R.layout.fragment_article, null, false);
         unbinder = ButterKnife.bind(this, contentView);
         initViews();
+        mPresenter.getChapters();
         return contentView;
     }
 
@@ -51,23 +65,6 @@ public class ArticleFragment extends BaseFragment {
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         mAdapter = new ChapterListAdapter(null);
         recyclerView.setAdapter(mAdapter);
-        final List<Chapter> chapters = new ArrayList<>();
-        List<Article> rxJavaArticles = new ArrayList<>();
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(一)", "http://www.jianshu.com/p/464fa025229e"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(二)", "http://www.jianshu.com/p/8818b98c44e2"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(三)", "http://www.jianshu.com/p/128e662906af"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(四)", "http://www.jianshu.com/p/bb58571cdb64"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(五)", "http://www.jianshu.com/p/0f2d6c2387c9"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(六)", "http://www.jianshu.com/p/e4c6d7989356"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(七)", "http://www.jianshu.com/p/9b1304435564"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(八)", "http://www.jianshu.com/p/a75ecf461e02"));
-        rxJavaArticles.add(new Article("给初学者的RxJava2.0教程(九)", "http://www.jianshu.com/p/36e0f7f43a51"));
-        chapters.add(new Chapter("RxJava",
-                "RxJava Description",
-                "http://reactivex.io/assets/Rx_Logo_S.png",
-                "https://github.com/ReactiveX/RxJava",
-                rxJavaArticles));
-        mAdapter.setNewData(chapters);
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
@@ -83,8 +80,39 @@ public class ArticleFragment extends BaseFragment {
     }
 
     @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void dismissLoading() {
+
+    }
+
+    @Override
+    public void showContent(List<Chapter> data) {
+        mAdapter.setNewData(data);
+    }
+
+    @Override
+    public void showError(Throwable e) {
+
+    }
+
+    @Override
+    public void showEmpty() {
+
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.detachView();
     }
 }

@@ -1,8 +1,10 @@
 package com.xiaomai.geek.di.component;
 
 import com.xiaomai.geek.di.module.ActivityModule;
+import com.xiaomai.geek.di.module.ArticleModule;
 import com.xiaomai.geek.di.module.GitHubModule;
 import com.xiaomai.geek.di.scope.PerActivity;
+import com.xiaomai.geek.ui.module.articel.ArticleFragment;
 import com.xiaomai.geek.ui.module.github.TrendingFragment;
 
 import dagger.Component;
@@ -13,9 +15,11 @@ import dagger.Component;
 
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = {
-        ActivityModule.class, GitHubModule.class
+        ActivityModule.class, GitHubModule.class, ArticleModule.class
 })
 public interface MainComponent extends ActivityComponent {
 
     void inject(TrendingFragment trendingFragment);
+
+    void inject(ArticleFragment articleFragment);
 }

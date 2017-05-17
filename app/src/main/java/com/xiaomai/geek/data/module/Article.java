@@ -13,6 +13,9 @@ public class Article implements Parcelable {
 
     private String url;
 
+    public Article() {
+    }
+
     public Article(String name, String url) {
         this.name = name;
         this.url = url;

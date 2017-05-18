@@ -7,8 +7,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -16,6 +19,7 @@ import android.webkit.WebViewClient;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.module.Article;
+import com.xiaomai.geek.data.pref.ArticlePref;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +37,12 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
 
     @BindView(R.id.webView)
     WebView webView;
+    @BindView(R.id.nestedScrollView)
+    NestedScrollView nestedScrollView;
+
+    private String mArticleUrl;
+
+    private int mReadProgress;
 
     public static void launch(Context context, Article article) {
         Intent intent = new Intent(context, ArticleDetailActivity.class);
@@ -62,6 +72,17 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 dismissLoading();
+                int readProgress = ArticlePref.getReadProgress(ArticleDetailActivity.this, mArticleUrl);
+                if (readProgress > 100) {
+                    nestedScrollView.smoothScrollTo(0, readProgress);
+                    Snackbar.make(nestedScrollView, "已跳转到上次阅读的位置", Snackbar.LENGTH_INDEFINITE)
+                            .setAction("返回顶部", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    nestedScrollView.smoothScrollTo(0, 0);
+                                }
+                            }).show();
+                }
             }
 
         };
@@ -95,7 +116,14 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
         toolBar.setTitle(article.getName());
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        webView.loadUrl(article.getUrl());
+        mArticleUrl = article.getUrl();
+        webView.loadUrl(mArticleUrl);
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                mReadProgress = scrollY;
+            }
+        });
     }
 
     @Override
@@ -115,5 +143,11 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ArticlePref.saveReadProgress(this, mArticleUrl, mReadProgress);
     }
 }

@@ -15,7 +15,6 @@
             android:id="@+id/menu_gitHub"
             android:icon="@drawable/github"
             android:title="@string/gitHub"
-            android:checked="true"
             app:showAsAction="always" />
 
         <item
@@ -35,5 +34,12 @@
             android:icon="@drawable/ic_jike"
             android:title="关于"
             app:showAsAction="always" />
+
+        <item
+            android:id="@+id/menu_upgrade"
+            android:icon="@drawable/update"
+            android:title="检查更新"
+            app:showAsAction="always" />
+
     </group>
 </menu>

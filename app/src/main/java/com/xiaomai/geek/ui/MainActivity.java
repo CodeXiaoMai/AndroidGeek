@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tencent.bugly.beta.Beta;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.wrapper.ImageLoader;
@@ -110,7 +111,7 @@ public class MainActivity extends BaseActivity
         headerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(AccountPref.checkLogin(MainActivity.this)){
+                if (AccountPref.checkLogin(MainActivity.this)) {
                     UserActivity.launch(MainActivity.this, AccountPref.getLoginUser(MainActivity.this));
                 }
             }
@@ -152,6 +153,10 @@ public class MainActivity extends BaseActivity
                 changeFragment(AboutUsFragment.class.getName());
                 mCurrentPosition = 4;
                 break;
+            case R.id.menu_upgrade:
+                // 第一个参数:是否为用户手动点击，第二个参数：是否提示用户正在检查更新
+                Beta.checkUpgrade(true, false);
+                return true;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

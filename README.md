@@ -1,23 +1,27 @@
 # Android极客 #
 
-> "Android极客"一个专门为Android程序猿打造的极客应用（未完待续....），你们的支持是我最大的动力！！！！
+> "Android极客"一个专门为Android程序猿打造的极客应用，你们的支持是我最大的动力！！！！
 
-## 下期更新预告 ##
+## 本周更新内容 ##
 
-- 加入Android进阶文章精选干货（大家可以把想学习的关键技术提交issues或留言给我）
-- 加入bugly更新功能
-- 以后新版本有哪些更新，你说的算 ^_^ 
+- 谷歌在 5/18 举行的 I/O 开发者大会上宣布，将 `Kotlin` 语言作为安卓开发的一级编程语言
+- Kotlin 成为了 Android 界的 Swift
+- 你还不会 Kotlin ? 快来一起学习吧
+- 添加技术干货模块，Kotlin、RxJava 来打头阵
+- 添加在线更新功能，以后可以第一时间更新到最新版本了
+- 你期望下期的更新中添加哪方面的技术干货？
 
 GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
-[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.1.2_pro.apk)
+[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.0_pro.apk)
 
 ## 截图 ##
-![device-2017-05-06-181313.png](http://upload-images.jianshu.io/upload_images/5275145-d4737fd9df280caf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-181313_958896.png](http://upload-images.jianshu.io/upload_images/5275145-cbc3213bbb789ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-181423.png](http://upload-images.jianshu.io/upload_images/5275145-0cde9bda4f55c9db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) 
 
-![device-2017-05-06-182155.png](http://upload-images.jianshu.io/upload_images/5275145-84000f8dff97a752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182535.png](http://upload-images.jianshu.io/upload_images/5275145-559cc566e5a40d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182555.png](http://upload-images.jianshu.io/upload_images/5275145-08acc7d89becb6ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280)
+![device-2017-05-18-163703.png](http://upload-images.jianshu.io/upload_images/5275145-b3ccd19961c90a57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-18-163814.png](http://upload-images.jianshu.io/upload_images/5275145-afb9de7500104cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-18-163757.png](http://upload-images.jianshu.io/upload_images/5275145-007f93b62a3b1988.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280)
 
-![device-2017-05-06-182616.png](http://upload-images.jianshu.io/upload_images/5275145-3e81e59a89c8db5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182641.png](http://upload-images.jianshu.io/upload_images/5275145-c0d58c6c2c1bb669.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280)
+![device-2017-05-06-181313_958896.png](http://upload-images.jianshu.io/upload_images/5275145-cbc3213bbb789ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-181423.png](http://upload-images.jianshu.io/upload_images/5275145-0cde9bda4f55c9db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182155.png](http://upload-images.jianshu.io/upload_images/5275145-84000f8dff97a752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) 
+
+![device-2017-05-06-182535.png](http://upload-images.jianshu.io/upload_images/5275145-559cc566e5a40d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182555.png](http://upload-images.jianshu.io/upload_images/5275145-08acc7d89becb6ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) ![device-2017-05-06-182616.png](http://upload-images.jianshu.io/upload_images/5275145-3e81e59a89c8db5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280) 
 
 ## 主要技术 ##
 
@@ -38,11 +42,12 @@ GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
 **建议您升级之前使用备份功能先导出数据到本地，升级之后如发现数据异常可以导入数据恢复！**
 
-### 下期更新预告 ###
+### 2017-5-18 ###
 
-- 加入Android进阶文章精选干货（大家可以把想学习的关键技术提交issues或留言给我）
-- 加入bugly更新功能
-- 以后新版本有哪些更新，大家说的算
+**发布1.2.0版本**
+
+- 添加技术干货模块，Kotlin、RxJava 来打头阵
+- 添加在线更新功能，以后可以第一时间更新到最新版本了
 
 ### 2017-5-12 ###
 
@@ -79,7 +84,7 @@ GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
 **发布1.0版本**
 
-[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.1.2_pro.apk)
+[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.0_pro.apk)
 
 GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 

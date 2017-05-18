@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
@@ -110,6 +111,7 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
         });
     }
 
+    private float lastX;
     private void initViews() {
         Intent intent = getIntent();
         Article article = intent.getParcelableExtra(EXTRA_ARTICLE);
@@ -122,6 +124,19 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 mReadProgress = scrollY;
+            }
+        });
+        webView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float x = event.getX();
+                if (Math.abs(x - lastX) >= 5) {
+                    ((WebView) v).requestDisallowInterceptTouchEvent(true);
+                } else {
+                    ((WebView) v).requestDisallowInterceptTouchEvent(false);
+                }
+                lastX = x;
+                return false;
             }
         });
     }

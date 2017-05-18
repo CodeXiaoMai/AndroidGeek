@@ -39,36 +39,38 @@
     {
         "articles": [
             {
-                "name": "给初学者的RxJava2.0教程(一)",
-                "url": "http://www.jianshu.com/p/464fa025229e"},
+                "name": "使用Kotlin开发Android",
+                "url": "https://kymjs.com/code/2015/07/22/01/"},
             {
-                "name": "给初学者的RxJava2.0教程(二)",
-                "url": "http://www.jianshu.com/p/8818b98c44e2"},
+                "name": "kotlin基础语法",
+                "url": "https://kymjs.com/code/2015/08/02/01/"},
             {
-                "name": "给初学者的RxJava2.0教程(三)",
-                "url": "http://www.jianshu.com/p/128e662906af"},
+                "name": "kotlin简单项目",
+                "url": "https://kymjs.com/code/2015/08/03/01/"},
             {
-                "name": "给初学者的RxJava2.0教程(四)",
-                "url": "http://www.jianshu.com/p/bb58571cdb64"},
+                "name": "Kotlin Primer·第一章·启程",
+                "url": "https://kymjs.com/code/2017/02/03/01"},
             {
-                "name": "给初学者的RxJava2.0教程(五)",
-                "url": "http://www.jianshu.com/p/0f2d6c2387c9"},
+                "name": "Kotlin Primer·第二章·基本语法",
+                "url": "https://kymjs.com/code/2017/02/04/01"},
             {
-                "name": "给初学者的RxJava2.0教程(六)",
-                "url": "http://www.jianshu.com/p/e4c6d7989356"},
+                "name": "Kotlin Primer·第三章·Kotlin 与 Java 混编",
+                "url": "https://kymjs.com/code/2017/02/07/01"},
             {
-                "name": "给初学者的RxJava2.0教程(七)",
-                "url": "http://www.jianshu.com/p/9b1304435564"},
+                "name": "Kotlin Primer·第四章·Kotlin 的类特性(上)",
+                "url": "https://kymjs.com/code/2017/02/12/01"},
             {
-                "name": "给初学者的RxJava2.0教程(八)",
-                "url": "http://www.jianshu.com/p/a75ecf461e02"},
+                "name": "Kotlin Primer·第四章·Kotlin 的类特性(下)",
+                "url": "https://kymjs.com/code/2017/02/26/01"},
             {
-                "name": "给初学者的RxJava2.0教程(九)",
-                "url": "http://www.jianshu.com/p/36e0f7f43a51"}
+                "name": "Kotlin Primer·第五章·函数与闭包",
+                "url": "https://kymjs.com/code/2017/04/09/01"}
         ],
-        "description": "RxJava Description",
-        "image": "http://reactivex.io/assets/Rx_Logo_S.png",
-        "name": "RxJava",
-        "url": "https://github.com/ReactiveX/RxJava"
+        "description": "Kotlin Description",
+        "image": "https://imgsa.baidu.com/baike/w%3D268/sign=818bbcabfcf2b211e42e8248f2826511/9a504fc2d5628535746e08f997ef76c6a6ef6358.jpg",
+        "name": "Kotlin",
+        "url": "https://github.com/JetBrains/kotlin",
+        "owner": "JetBrains",
+        "repoName": "kotlin"
     }
 ]

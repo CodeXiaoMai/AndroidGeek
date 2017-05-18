@@ -83,7 +83,7 @@ public class ChapterActivity extends BaseActivity {
                 String owner = chapter.getOwner();
                 String repoName = chapter.getRepoName();
                 if (!TextUtils.isEmpty(owner) && !TextUtils.isEmpty(repoName))
-                    RepoDetailActivity.launch(ChapterActivity.this, "ReactiveX", "RxJava");
+                    RepoDetailActivity.launch(ChapterActivity.this, owner, repoName);
             }
         });
         mAdapter.setNewData(chapter.getArticles());

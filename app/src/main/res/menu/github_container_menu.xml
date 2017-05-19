@@ -10,9 +10,9 @@
             app:showAsAction="always" />
 
         <item
-            android:id="@+id/menu_profile"
-            android:icon="@drawable/icon_head"
-            android:title="我的"
+            android:id="@+id/menu_trending"
+            android:icon="@drawable/trending_up"
+            android:title="Trending"
             app:showAsAction="always" />
     </group>
 </menu>

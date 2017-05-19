@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.api.GitHubApi;
-import com.xiaomai.geek.data.pref.AccountPref;
 import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.base.BaseFragment;
+import com.xiaomai.geek.ui.module.articel.BaseWebViewActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,9 +87,11 @@ public class GitHubContainerFragment extends BaseFragment {
             case R.id.menu_search:
                 SearchActivity.launch(getContext());
                 return true;
-            case R.id.menu_profile:
-                if (AccountPref.checkLogin(getContext()))
-                    UserActivity.launch(getContext(), AccountPref.getLoginUser(getContext()));
+            case R.id.menu_trending:
+//                Uri uri = Uri.parse("https://github.com/trending/java");
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                startActivity(intent);
+                BaseWebViewActivity.launch(getContext(), "https://github.com/trending/java");
                 return true;
         }
         return super.onOptionsItemSelected(item);

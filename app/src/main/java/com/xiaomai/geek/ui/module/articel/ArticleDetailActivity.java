@@ -1,29 +1,17 @@
 package com.xiaomai.geek.ui.module.articel;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.DownloadListener;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.module.Article;
 import com.xiaomai.geek.data.pref.ArticlePref;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by XiaoMai on 2017/5/16.
@@ -32,14 +20,6 @@ import butterknife.ButterKnife;
 public class ArticleDetailActivity extends BaseWebViewActivity {
 
     public static final String EXTRA_ARTICLE = "extra_article";
-
-    @BindView(R.id.tool_bar)
-    Toolbar toolBar;
-
-    @BindView(R.id.webView)
-    WebView webView;
-    @BindView(R.id.nestedScrollView)
-    NestedScrollView nestedScrollView;
 
     private String mArticleUrl;
 
@@ -52,16 +32,7 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article_detail);
-        ButterKnife.bind(this);
-        initViews();
-        initWebViewSettings();
-        initWebViewClient();
-    }
-
-    private void initWebViewClient() {
+    protected void initWebViewClient() {
         WebViewClient webViewClient = new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -91,28 +62,10 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
         webView.setWebViewClient(webViewClient);
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private void initWebViewSettings() {
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        // WebView中含有可以下载文件的链接，点击该链接后，应该开始执行下载的操作并保存文件到本地中。
-        webView.setDownloadListener(new DownloadListener() {
-            @Override
-            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-                Uri uri = Uri.parse(url);
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-                if (webView.canGoBack())
-                    webView.goBack();
-                else
-                    finish();
-            }
-        });
-    }
-
     private float lastX;
-    private void initViews() {
+
+    @Override
+    protected void initViews() {
         Intent intent = getIntent();
         Article article = intent.getParcelableExtra(EXTRA_ARTICLE);
         toolBar.setTitle(article.getName());
@@ -139,16 +92,6 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
                 return false;
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

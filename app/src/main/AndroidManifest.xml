@@ -72,6 +72,9 @@
             android:configChanges="orientation|screenSize|screenLayout"
             android:theme="@style/TransparentTheme" />
         <activity
+            android:name=".ui.module.articel.BaseWebViewActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
+        <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@android:style/Theme.Translucent" />

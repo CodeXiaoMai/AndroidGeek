@@ -88,10 +88,7 @@ public class GitHubContainerFragment extends BaseFragment {
                 SearchActivity.launch(getContext());
                 return true;
             case R.id.menu_trending:
-//                Uri uri = Uri.parse("https://github.com/trending/java");
-//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                startActivity(intent);
-                BaseWebViewActivity.launch(getContext(), "https://github.com/trending/java");
+                BaseWebViewActivity.launch(getContext(), "https://github.com/trending/java", "GitHub Trending");
                 return true;
         }
         return super.onOptionsItemSelected(item);

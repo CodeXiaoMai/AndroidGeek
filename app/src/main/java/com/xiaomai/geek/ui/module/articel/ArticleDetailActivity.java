@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -33,7 +34,15 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
 
     @Override
     protected void initWebViewClient() {
-        WebViewClient webViewClient = new WebViewClient() {
+        final WebViewClient webViewClient = new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+                mArticleUrl = url;
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
@@ -54,6 +63,8 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
                                     nestedScrollView.smoothScrollTo(0, 0);
                                 }
                             }).show();
+                } else {
+                    nestedScrollView.smoothScrollTo(0, 0);
                 }
             }
 
@@ -71,8 +82,7 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
         toolBar.setTitle(article.getName());
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mArticleUrl = article.getUrl();
-        webView.loadUrl(mArticleUrl);
+        webView.loadUrl(article.getUrl());
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -92,15 +102,6 @@ public class ArticleDetailActivity extends BaseWebViewActivity {
                 return false;
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override

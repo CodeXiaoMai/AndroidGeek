@@ -22,6 +22,7 @@ public class LoadingView {
     }
 
     public void dismiss() {
-        mLoadingDialog.dismiss();
+        if (mLoadingDialog != null && mLoadingDialog.isShowing())
+            mLoadingDialog.dismiss();
     }
 }

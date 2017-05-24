@@ -72,7 +72,7 @@
             android:configChanges="orientation|screenSize|screenLayout"
             android:theme="@style/TransparentTheme" />
         <activity
-            android:name=".ui.module.articel.BaseWebViewActivity"
+            android:name=".ui.module.articel.WebViewActivity"
             android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

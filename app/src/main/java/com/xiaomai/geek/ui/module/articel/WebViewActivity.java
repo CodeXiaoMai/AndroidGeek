@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.xiaomai.geek.R;
@@ -17,7 +19,7 @@ import butterknife.ButterKnife;
  * Created by XiaoMai on 2017/5/16.
  */
 
-public class BaseWebViewActivity extends BaseLoadActivity {
+public class WebViewActivity extends BaseLoadActivity {
 
     public static final String EXTRA_URL = "extra_url";
 
@@ -27,7 +29,7 @@ public class BaseWebViewActivity extends BaseLoadActivity {
     FrameLayout flContainer;
 
     public static void launch(Context context, String url, String title) {
-        Intent intent = new Intent(context, BaseWebViewActivity.class);
+        Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra(EXTRA_URL, url);
         intent.putExtra(Intent.EXTRA_TITLE, title);
         context.startActivity(intent);
@@ -36,22 +38,43 @@ public class BaseWebViewActivity extends BaseLoadActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article_detail);
+        setContentView(R.layout.activity_web_view);
         ButterKnife.bind(this);
         initViews();
+        loadData();
     }
 
-    protected void initViews() {
+    private void loadData() {
         Intent intent = getIntent();
+        if (null == intent)
+            return;
         String url = intent.getStringExtra(EXTRA_URL);
-        String title = intent.getStringExtra(Intent.EXTRA_TITLE);
-        toolBar.setTitle(title);
-        setSupportActionBar(toolBar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (TextUtils.isEmpty(url))
+            return;
         WebViewFragment fragment = WebViewFragment.newInstance(url);
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fl_container, fragment, String.valueOf(fragment.hashCode()))
                 .commit();
+    }
+
+    protected void initViews() {
+        Intent intent = getIntent();
+        if (intent == null)
+            return;
+        String title = intent.getStringExtra(Intent.EXTRA_TITLE);
+        toolBar.setTitle(title);
+        setSupportActionBar(toolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

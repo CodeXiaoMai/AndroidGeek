@@ -16,7 +16,7 @@ import com.xiaomai.geek.R;
 import com.xiaomai.geek.data.api.GitHubApi;
 import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.base.BaseFragment;
-import com.xiaomai.geek.ui.module.articel.BaseWebViewActivity;
+import com.xiaomai.geek.ui.module.articel.WebViewActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,7 +88,7 @@ public class GitHubContainerFragment extends BaseFragment {
                 SearchActivity.launch(getContext());
                 return true;
             case R.id.menu_trending:
-                BaseWebViewActivity.launch(getContext(), "https://github.com/trending/java", "GitHub Trending");
+                WebViewActivity.launch(getContext(), "https://github.com/trending/java", "GitHub Trending");
                 return true;
         }
         return super.onOptionsItemSelected(item);

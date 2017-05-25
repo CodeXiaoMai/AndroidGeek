@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -27,6 +28,8 @@ public class WebViewActivity extends BaseLoadActivity {
     Toolbar toolBar;
     @BindView(R.id.fl_container)
     FrameLayout flContainer;
+    @BindView(R.id.coordinatorLayout)
+    CoordinatorLayout coordinatorLayout;
 
     public static void launch(Context context, String url, String title) {
         Intent intent = new Intent(context, WebViewActivity.class);

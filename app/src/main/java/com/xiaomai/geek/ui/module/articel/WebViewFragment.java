@@ -1,6 +1,7 @@
 package com.xiaomai.geek.ui.module.articel;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.ui.base.BaseLoadFragment;
@@ -26,6 +28,7 @@ import com.xiaomai.geek.ui.widget.MyWebView;
 public class WebViewFragment extends BaseLoadFragment {
 
     public static final String EXTRA_URL = "extra_url";
+    private RelativeLayout mRootlayout;
 
     public static WebViewFragment newInstance(String url) {
         WebViewFragment fragment = new WebViewFragment();
@@ -41,23 +44,23 @@ public class WebViewFragment extends BaseLoadFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LinearLayout linearLayout = new LinearLayout(getContext());
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setLayoutParams(
+        mRootlayout = new RelativeLayout(getContext());
+        mRootlayout.setLayoutParams(
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT));
-        mProgressBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
-        linearLayout.addView(mProgressBar);
         mWebView = new MyWebView(getContext());
-        linearLayout.addView(mWebView);
+        mRootlayout.addView(mWebView);
+        mProgressBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
+        mProgressBar.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        mRootlayout.addView(mProgressBar);
         initWebViewSettings();
         initWebViewClient();
         Bundle arguments = getArguments();
         String url = arguments.getString(EXTRA_URL);
         initCustomWebView(mWebView);
         mWebView.loadUrl(url);
-        return linearLayout;
+        return mRootlayout;
     }
 
     protected void initCustomWebView(MyWebView webView) {
@@ -85,6 +88,12 @@ public class WebViewFragment extends BaseLoadFragment {
             }
 
             @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                onPageStart(view, url, favicon);
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 onLoadFinish(view, url);
@@ -98,9 +107,12 @@ public class WebViewFragment extends BaseLoadFragment {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                mProgressBar.setProgress(newProgress);
-                if (newProgress >= 100)
-                    mProgressBar.setVisibility(View.INVISIBLE);
+                if (newProgress >= 100) {
+                    mProgressBar.setVisibility(View.GONE);
+                } else {
+                    mProgressBar.setProgress(newProgress);
+                    mProgressBar.setVisibility(View.VISIBLE);
+                }
             }
         };
         mWebView.setWebChromeClient(webChromeClient);
@@ -108,6 +120,10 @@ public class WebViewFragment extends BaseLoadFragment {
 
     protected WebViewFragment getFragmentInstance(String url) {
         return WebViewFragment.newInstance(url);
+    }
+
+    protected void onPageStart(WebView view, String url, Bitmap favicon) {
+
     }
 
     protected void onLoadFinish(WebView view, String url) {
@@ -145,6 +161,7 @@ public class WebViewFragment extends BaseLoadFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mRootlayout.removeAllViews();
         mWebView.removeAllViews();
         mWebView.destroy();
     }

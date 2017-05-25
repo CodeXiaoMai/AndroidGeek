@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.orhanobut.logger.Logger;
 import com.xiaomai.geek.data.pref.ArticlePref;
 import com.xiaomai.geek.ui.widget.MyWebView;
 
@@ -35,13 +36,25 @@ public class ArticleDetailFragment extends WebViewFragment {
                 @Override
                 public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                     mReadProgress = scrollY;
+                    Logger.e(scrollY + "," + oldScrollY);
+                    if (scrollY > oldScrollY) {
+                        ((ArticleDetailActivity) getActivity()).hideToolBar(scrollY - oldScrollY);
+                    } else if (scrollY < oldScrollY){
+                        ((ArticleDetailActivity) getActivity()).showToolBar(oldScrollY - scrollY);
+                    }
                 }
             });
         } else {
             webView.setOnScrollChangedListener(new MyWebView.OnScrollChangedListener() {
                 @Override
                 public void onScrollChange(int l, int t, int oldl, int oldt) {
+                    Logger.e(t + "," + oldt);
                     mReadProgress = t;
+                    if (t > oldt) {
+                        ((ArticleDetailActivity) getActivity()).hideToolBar(t - oldt);
+                    } else if (t < oldt){
+                        ((ArticleDetailActivity) getActivity()).showToolBar(oldt - t);
+                    }
                 }
             });
         }
@@ -56,9 +69,9 @@ public class ArticleDetailFragment extends WebViewFragment {
     protected void onLoadFinish(final WebView view, String url) {
         super.onLoadFinish(view, url);
         mArticleUrl = url;
-        int readProgress = ArticlePref.getReadProgress(getContext(), url);
-        if (readProgress > 100) {
-            view.scrollTo(0, readProgress);
+        mReadProgress = ArticlePref.getReadProgress(getContext(), url);
+        if (mReadProgress > 100) {
+            view.scrollTo(0, mReadProgress);
             // 使用 SnackBar 根布局要使用 CoordinatorLayout
             Snackbar.make(view, "已跳转到上次阅读的位置", Snackbar.LENGTH_INDEFINITE)
                     .setAction("返回顶部", new View.OnClickListener() {

@@ -75,11 +75,6 @@ public class ArticleFragment extends BaseFragment implements ILceView<List<Chapt
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
     public void showLoading() {
 
     }

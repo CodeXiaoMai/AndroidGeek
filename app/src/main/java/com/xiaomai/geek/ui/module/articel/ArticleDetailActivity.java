@@ -33,4 +33,18 @@ public class ArticleDetailActivity extends WebViewActivity {
                 .add(R.id.fl_container, fragment)
                 .commit();
     }
+
+    public void showToolBar(int duration) {
+//        if (toolBar.getTop() < top) {
+//            toolBar.setTop(toolBar.getTop() + duration);
+//            flContainer.setTop(flContainer.getTop() + duration);
+//        }
+    }
+
+    public void hideToolBar(int duration) {
+//        if (toolBar.getTop() > -top && toolBar.getTop() <= 0) {
+//            toolBar.setTop(toolBar.getTop() - duration);
+//            flContainer.setTop(flContainer.getTop() - duration);
+//        }
+    }
 }

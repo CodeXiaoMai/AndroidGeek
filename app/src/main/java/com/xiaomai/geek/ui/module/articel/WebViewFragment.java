@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.NetworkUtil;
 import com.xiaomai.geek.ui.base.BaseLoadFragment;
 import com.xiaomai.geek.ui.widget.MyWebView;
 
@@ -137,8 +138,11 @@ public class WebViewFragment extends BaseLoadFragment {
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
-        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-
+        if (NetworkUtil.isNetworkAvailable(getContext())) {
+            settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        } else {
+            settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        }
         // WebView中含有可以下载文件的链接，点击该链接后，应该开始执行下载的操作并保存文件到本地中。
         // 重写 shouldOverrideUrlLoading 方法后总是 Crash
 //        mWebView.setDownloadListener(new DownloadListener() {

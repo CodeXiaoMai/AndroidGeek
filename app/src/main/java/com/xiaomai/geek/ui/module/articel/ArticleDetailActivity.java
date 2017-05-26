@@ -24,14 +24,20 @@ public class ArticleDetailActivity extends WebViewActivity {
     protected void initViews() {
         Intent intent = getIntent();
         Article article = intent.getParcelableExtra(EXTRA_ARTICLE);
-        toolBar.setTitle(article.getName());
+        mTitle = article.getName();
+        toolBar.setTitle(mTitle);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ArticleDetailFragment fragment = ArticleDetailFragment.newInstance(article.getUrl());
+        mUrl = article.getUrl();
+        ArticleDetailFragment fragment = ArticleDetailFragment.newInstance(mUrl);
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fl_container, fragment)
                 .commit();
+    }
+
+    @Override
+    protected void loadData() {
     }
 
     public void showToolBar(int duration) {

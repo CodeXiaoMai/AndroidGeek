@@ -7,10 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.ShareUtils;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
 
 import butterknife.BindView;
@@ -31,6 +33,10 @@ public class WebViewActivity extends BaseLoadActivity {
     @BindView(R.id.coordinatorLayout)
     CoordinatorLayout coordinatorLayout;
 
+    protected String mTitle;
+
+    protected String mUrl;
+
     public static void launch(Context context, String url, String title) {
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra(EXTRA_URL, url);
@@ -47,14 +53,14 @@ public class WebViewActivity extends BaseLoadActivity {
         loadData();
     }
 
-    private void loadData() {
+    protected void loadData() {
         Intent intent = getIntent();
         if (null == intent)
             return;
-        String url = intent.getStringExtra(EXTRA_URL);
-        if (TextUtils.isEmpty(url))
+        mUrl = intent.getStringExtra(EXTRA_URL);
+        if (TextUtils.isEmpty(mUrl))
             return;
-        WebViewFragment fragment = WebViewFragment.newInstance(url);
+        WebViewFragment fragment = WebViewFragment.newInstance(mUrl);
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fl_container, fragment, String.valueOf(fragment.hashCode()))
@@ -65,10 +71,16 @@ public class WebViewActivity extends BaseLoadActivity {
         Intent intent = getIntent();
         if (intent == null)
             return;
-        String title = intent.getStringExtra(Intent.EXTRA_TITLE);
-        toolBar.setTitle(title);
+        mTitle = intent.getStringExtra(Intent.EXTRA_TITLE);
+        toolBar.setTitle(mTitle);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.about_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -76,6 +88,11 @@ public class WebViewActivity extends BaseLoadActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.menu_share:
+                if (!TextUtils.isEmpty(mUrl)) {
+                    ShareUtils.share(WebViewActivity.this, mTitle, mUrl);
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);

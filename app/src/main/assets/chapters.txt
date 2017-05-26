@@ -111,5 +111,23 @@
         ],
         "description": "RxJava Description",
         "name": "WebView解析"
+    },
+    {
+        "articles": [
+            {
+                "name": "Android 相关面试知识点整理",
+                "url": "http://www.jianshu.com/p/b87e9f853597"}
+        ],
+        "description": "RxJava Description",
+        "name": "面试"
+    },
+    {
+        "articles": [
+            {
+                "name": "一文读懂Android View事件分发机制",
+                "url": "http://www.jianshu.com/p/238d1b753e64"}
+        ],
+        "description": "RxJava Description",
+        "name": "事件分发机制"
     }
 ]

@@ -172,7 +172,9 @@ public class MainActivity extends BaseActivity
                         if (!runInBackground) {
                             navView.getMenu().getItem(mCurrentPosition).setChecked(true);
                         } else {
-                            finish();
+                            changeFragment(AboutUsFragment.class.getName());
+                            mCurrentPosition = 4;
+                            navView.getMenu().getItem(mCurrentPosition).setChecked(true);
                         }
                     }
                 }).setOnPositiveButtonClickListener(

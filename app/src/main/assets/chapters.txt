@@ -39,6 +39,9 @@
     {
         "articles": [
             {
+                "name": "Kotlin 资源大全",
+                "url": "https://juejin.im/post/591dd9f544d904006c9fbb96"},
+            {
                 "name": "使用Kotlin开发Android",
                 "url": "https://kymjs.com/code/2015/07/22/01/"},
             {
@@ -125,7 +128,10 @@
         "articles": [
             {
                 "name": "一文读懂Android View事件分发机制",
-                "url": "http://www.jianshu.com/p/238d1b753e64"}
+                "url": "http://www.jianshu.com/p/238d1b753e64"},
+            {
+                "name": "Android滑动冲突解决方法（一）",
+                "url": "http://www.jianshu.com/p/8bc0765dffc9"}
         ],
         "description": "RxJava Description",
         "name": "事件分发机制"

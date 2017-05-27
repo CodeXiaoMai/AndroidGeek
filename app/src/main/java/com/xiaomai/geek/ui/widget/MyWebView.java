@@ -1,6 +1,7 @@
 package com.xiaomai.geek.ui.widget;
 
 import android.content.Context;
+import android.view.MotionEvent;
 import android.webkit.WebView;
 
 /**
@@ -9,11 +10,36 @@ import android.webkit.WebView;
 
 public class MyWebView extends WebView {
 
-    private OnScrollChangedListener mOnScrollChangedListener;
-
     public MyWebView(Context context) {
         super(context);
         setHorizontalScrollBarEnabled(false);
+    }
+
+    private OnScrollChangedListener mOnScrollChangedListener;
+
+    private int mLastX, mLastY;
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        int x = (int) ev.getRawX();
+        int y = (int) ev.getRawY();
+
+        final int action = ev.getAction() & MotionEvent.ACTION_MASK;
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                getParent().requestDisallowInterceptTouchEvent(true);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int deltaX = x - mLastX;
+                int deltaY = y - mLastY;
+                if (Math.abs(deltaX) < Math.abs(deltaY)) {
+                    getParent().requestDisallowInterceptTouchEvent(false);
+                }
+                break;
+        }
+        mLastX = x;
+        mLastY = y;
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override

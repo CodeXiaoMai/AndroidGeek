@@ -130,10 +130,22 @@
                 "name": "一文读懂Android View事件分发机制",
                 "url": "http://www.jianshu.com/p/238d1b753e64"},
             {
+                "name": "一文解决Android View滑动冲突",
+                "url": "http://www.jianshu.com/p/982a83271327"},
+            {
                 "name": "Android滑动冲突解决方法（一）",
                 "url": "http://www.jianshu.com/p/8bc0765dffc9"}
         ],
         "description": "RxJava Description",
         "name": "事件分发机制"
+    },
+    {
+        "articles": [
+            {
+                "name": "20个帮助提高开发技巧的开源Android App",
+                "url": "http://www.androidchina.net/6941.html"}
+        ],
+        "description": "RxJava Description",
+        "name": "开源Android App"
     }
 ]

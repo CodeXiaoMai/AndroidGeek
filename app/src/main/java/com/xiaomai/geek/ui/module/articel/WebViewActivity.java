@@ -27,6 +27,9 @@ import com.xiaomai.geek.common.utils.ShareUtils;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
 import com.xiaomai.geek.ui.widget.MyWebView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,6 +38,8 @@ import butterknife.ButterKnife;
  */
 
 public class WebViewActivity extends BaseLoadActivity {
+
+    private static List<WebViewActivity> sWebViewActivitys = new ArrayList<>();
 
     public static final String EXTRA_URL = "extra_url";
 
@@ -68,6 +73,7 @@ public class WebViewActivity extends BaseLoadActivity {
         ButterKnife.bind(this);
         initViews();
         loadData();
+        sWebViewActivitys.add(this);
     }
 
     protected void loadData() {
@@ -171,7 +177,8 @@ public class WebViewActivity extends BaseLoadActivity {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
-                setTitle(title);
+                mTitle = title;
+                toolBar.setTitle(mTitle);
             }
         };
         mWebView.setWebChromeClient(webChromeClient);
@@ -197,7 +204,11 @@ public class WebViewActivity extends BaseLoadActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                if (sWebViewActivitys != null && sWebViewActivitys.size() > 0) {
+                    for (WebViewActivity activity : sWebViewActivitys) {
+                        activity.finish();
+                    }
+                }
                 return true;
             case R.id.menu_share:
                 if (!TextUtils.isEmpty(mUrl)) {

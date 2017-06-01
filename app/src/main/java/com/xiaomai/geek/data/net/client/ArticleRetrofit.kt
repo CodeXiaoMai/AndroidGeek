@@ -8,7 +8,7 @@ import javax.inject.Inject
  */
 class ArticleRetrofit @Inject constructor(var mCacheHttpClient: HttpClient) : BaseRetrofit() {
 
-    val BASE_URL: String = "https://raw.githubusercontent.com/CodeXiaoMai/AndroidGeek/"
+    val BASE_URL: String = "https://api.github.com/repos/CodeXiaoMai/AndroidGeek/"
 
     override fun getBaseUrl(): String {
         return BASE_URL

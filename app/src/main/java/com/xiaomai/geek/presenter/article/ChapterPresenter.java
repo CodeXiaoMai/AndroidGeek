@@ -32,7 +32,7 @@ public class ChapterPresenter extends BaseRxPresenter<ILceView<List<Chapter>>> {
     public void getChapters() {
         Observable<List<Chapter>> observable = BuildConfig.DEBUG ? articleApi.getChaptersFromAssets() : articleApi.getChapters();
         mCompositeSubscription.add(
-                articleApi.getChapters()
+                observable
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(new Action0() {

@@ -1,6 +1,6 @@
-package com.xiaomai.geek.data.net.response
+package com.xiaomai.geek.data.net
 
-import com.xiaomai.geek.data.module.Chapter
+import com.xiaomai.geek.data.net.response.ChapterResp
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import rx.Observable
@@ -11,6 +11,6 @@ import rx.Observable
 interface ArticleService {
 
     @Headers("Cache-Control: public, max-age=600")
-    @GET("master/app/src/main/assets/chapters")
-    fun getChapters(): Observable<List<Chapter>>
+    @GET("contents/app/src/main/assets/chapters?ref=master")
+    fun getChapters(): Observable<ChapterResp>
 }

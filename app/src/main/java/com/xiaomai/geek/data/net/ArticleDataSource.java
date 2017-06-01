@@ -3,9 +3,10 @@ package com.xiaomai.geek.data.net;
 import android.app.Application;
 
 import com.alibaba.fastjson.JSON;
+import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.ArticleApi;
 import com.xiaomai.geek.data.module.Chapter;
-import com.xiaomai.geek.data.net.response.ArticleService;
+import com.xiaomai.geek.data.net.response.ChapterResp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func1;
 
 /**
  * Created by XiaoMai on 2017/5/17.
@@ -61,6 +63,11 @@ public class ArticleDataSource implements ArticleApi {
     }
 
     public Observable<List<Chapter>> getChapters() {
-        return mArticleService.getChapters();
+        return mArticleService.getChapters().map(new Func1<ChapterResp, List<Chapter>>() {
+            @Override
+            public List<Chapter> call(ChapterResp chapterResp) {
+                return JSON.parseArray(StringUtil.base64Decode(chapterResp.getContent()), Chapter.class);
+            }
+        });
     }
 }

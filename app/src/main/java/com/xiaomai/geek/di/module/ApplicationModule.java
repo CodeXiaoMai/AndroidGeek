@@ -7,7 +7,7 @@ import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.data.net.GitHubService;
 import com.xiaomai.geek.data.net.client.ArticleRetrofit;
 import com.xiaomai.geek.data.net.client.GitHubTrendingRetrofit;
-import com.xiaomai.geek.data.net.response.ArticleService;
+import com.xiaomai.geek.data.net.ArticleService;
 import com.xiaomai.geek.di.scope.ApplicationContext;
 
 import javax.inject.Singleton;

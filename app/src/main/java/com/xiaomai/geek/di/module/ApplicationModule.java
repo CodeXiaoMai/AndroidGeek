@@ -5,7 +5,9 @@ import android.content.Context;
 
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.data.net.GitHubService;
+import com.xiaomai.geek.data.net.client.ArticleRetrofit;
 import com.xiaomai.geek.data.net.client.GitHubTrendingRetrofit;
+import com.xiaomai.geek.data.net.response.ArticleService;
 import com.xiaomai.geek.di.scope.ApplicationContext;
 
 import javax.inject.Singleton;
@@ -41,5 +43,11 @@ public class ApplicationModule {
     @Singleton
     GitHubService provideGitHubService(GitHubTrendingRetrofit retrofit) {
         return retrofit.get().create(GitHubService.class);
+    }
+
+    @Provides
+    @Singleton
+    ArticleService provideArticleService(ArticleRetrofit retrofit) {
+        return retrofit.get().create(ArticleService.class);
     }
 }

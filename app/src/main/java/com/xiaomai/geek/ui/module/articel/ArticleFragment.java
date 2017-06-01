@@ -2,11 +2,13 @@ package com.xiaomai.geek.ui.module.articel;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xiaomai.geek.R;
@@ -22,16 +24,23 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
  * Created by XiaoMai on 2017/5/16.
  */
 
-public class ArticleFragment extends BaseFragment implements ILceView<List<Chapter>>{
+public class ArticleFragment extends BaseFragment implements ILceView<List<Chapter>> {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+    @BindView(R.id.empty_root_layout)
+    RelativeLayout emptyRootLayout;
+    @BindView(R.id.error_root_layout)
+    RelativeLayout errorRootLayout;
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefresh;
     Unbinder unbinder;
 
     @Inject
@@ -57,8 +66,15 @@ public class ArticleFragment extends BaseFragment implements ILceView<List<Chapt
         View contentView = inflater.inflate(R.layout.fragment_article, null, false);
         unbinder = ButterKnife.bind(this, contentView);
         initViews();
-        mPresenter.getChapters();
+        loadData();
         return contentView;
+    }
+
+    private void loadData() {
+        recyclerView.setVisibility(View.VISIBLE);
+        errorRootLayout.setVisibility(View.GONE);
+        emptyRootLayout.setVisibility(View.GONE);
+        mPresenter.getChapters();
     }
 
     private void initViews() {
@@ -72,31 +88,49 @@ public class ArticleFragment extends BaseFragment implements ILceView<List<Chapt
                 ChapterActivity.launch(getActivity(), chapter);
             }
         });
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+            }
+        });
     }
 
     @Override
     public void showLoading() {
-
+        swipeRefresh.setRefreshing(true);
     }
 
     @Override
     public void dismissLoading() {
-
+        swipeRefresh.setRefreshing(false);
     }
 
     @Override
     public void showContent(List<Chapter> data) {
-        mAdapter.setNewData(data);
+        if (null != data && data.size() > 0) {
+            mAdapter.setNewData(data);
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyRootLayout.setVisibility(View.GONE);
+            errorRootLayout.setVisibility(View.GONE);
+        } else {
+            showEmpty();
+        }
     }
 
     @Override
     public void showError(Throwable e) {
-
+        recyclerView.setVisibility(View.GONE);
+        emptyRootLayout.setVisibility(View.GONE);
+        errorRootLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showEmpty() {
-
+        recyclerView.setVisibility(View.GONE);
+        emptyRootLayout.setVisibility(View.VISIBLE);
+        errorRootLayout.setVisibility(View.GONE);
     }
 
     @Override
@@ -109,5 +143,17 @@ public class ArticleFragment extends BaseFragment implements ILceView<List<Chapt
     public void onDestroy() {
         super.onDestroy();
         mPresenter.detachView();
+    }
+
+    @OnClick({R.id.empty_root_layout, R.id.error_root_layout})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.empty_root_layout:
+                loadData();
+                break;
+            case R.id.error_root_layout:
+                loadData();
+                break;
+        }
     }
 }

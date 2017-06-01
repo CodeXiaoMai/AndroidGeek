@@ -12,5 +12,7 @@ import rx.Observable;
 
 public interface ArticleApi {
 
+    Observable<List<Chapter>> getChaptersFromAssets();
+
     Observable<List<Chapter>> getChapters();
 }

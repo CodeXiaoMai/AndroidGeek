@@ -1,5 +1,6 @@
 package com.xiaomai.geek.presenter.article;
 
+import com.xiaomai.geek.BuildConfig;
 import com.xiaomai.geek.data.api.ArticleApi;
 import com.xiaomai.geek.data.module.Chapter;
 import com.xiaomai.geek.data.net.response.BaseResponseObserver;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.schedulers.Schedulers;
@@ -28,32 +30,34 @@ public class ChapterPresenter extends BaseRxPresenter<ILceView<List<Chapter>>> {
     }
 
     public void getChapters() {
-        mCompositeSubscription.add(articleApi.getChapters()
-                .doOnSubscribe(new Action0() {
-                    @Override
-                    public void call() {
-                        getMvpView().showLoading();
-                    }
-                })
-                .doOnTerminate(new Action0() {
-                    @Override
-                    public void call() {
-                        getMvpView().dismissLoading();
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseResponseObserver<List<Chapter>>() {
-                    @Override
-                    public void onSuccess(List<Chapter> chapters) {
-                        getMvpView().showContent(chapters);
-                    }
+        Observable<List<Chapter>> observable = BuildConfig.DEBUG ? articleApi.getChaptersFromAssets() : articleApi.getChapters();
+        mCompositeSubscription.add(
+                articleApi.getChapters()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(new Action0() {
+                            @Override
+                            public void call() {
+                                getMvpView().showLoading();
+                            }
+                        })
+                        .doOnTerminate(new Action0() {
+                            @Override
+                            public void call() {
+                                getMvpView().dismissLoading();
+                            }
+                        })
+                        .subscribe(new BaseResponseObserver<List<Chapter>>() {
+                            @Override
+                            public void onSuccess(List<Chapter> chapters) {
+                                getMvpView().showContent(chapters);
+                            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        getMvpView().showError(e);
-                    }
-                }));
+                            @Override
+                            public void onError(Throwable e) {
+                                getMvpView().showError(e);
+                            }
+                        }));
 
     }
 }

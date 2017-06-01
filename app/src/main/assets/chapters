@@ -158,7 +158,10 @@
         "articles": [
             {
                 "name": "Android安全开发之安全使用HTTPS",
-                "url": "http://www.cnblogs.com/alisecurity/p/5939336.html"}
+                "url": "http://www.cnblogs.com/alisecurity/p/5939336.html"},
+            {
+                "name": "看完你就知道什么是 HTTPS 了",
+                "url": "https://juejin.im/post/592d23630ce46300579882b4"}
         ],
         "description": "RxJava Description",
         "name": "HTTP VS HTTPS"
@@ -184,10 +187,46 @@
     {
         "articles": [
             {
-                "name": " Java基础——拿起枪炮，面试复习",
+                "name": "Java基础——拿起枪炮，面试复习",
                 "url": "http://m.blog.csdn.net/article/details?id=72550701"}
         ],
         "description": "RxJava Description",
         "name": "Java基础"
+    },
+    {
+        "articles": [
+            {
+                "name": "Android架构思考(模块化、多进程)",
+                "url": "http://blog.spinytech.com/2016/12/28/android_modularization/"},
+            {
+                "name": "客户端模块化解耦实践 - Router",
+                "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099&chksm=8fd9e77cb8ae6e6a56444493a1b54974c42b614f123b9a7abb1d4f52945b084fa7cfe51314bf&mpshare=1&scene=23&srcid=05265LN28JWodtP0UH0iW5K2#rd"},
+        ],
+        "description": "RxJava Description",
+        "name": "路由架构"
+    },
+    {
+        "articles": [
+            {
+                "name": "ConstraintLayout基础系列之约束（constraints）",
+                "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-constraints-1/#more"},
+            {
+                "name": "ConstraintLayout基础系列之Chains链",
+                "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-chains-2/"},
+            {
+                "name": "ConstraintLayout基础系列之参照线guidelines",
+                "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-guidelines-3/"},
+            {
+                "name": "ConstraintLayout基础系列之尺寸横纵比 dimensions",
+                "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-dimensions-4/"},
+            {
+                "name": "ConstraintLayout深入系列之代替常见布局",
+                "url": "https://biaomingzhong.github.io/2017/constraintlayout-layouts-common/"},
+            {
+                "name": "ConstraintLayout深入系列之中心点对齐",
+                "url": "https://biaomingzhong.github.io/2017/constraintlayout-tricks-centring/"},
+        ],
+        "description": "RxJava Description",
+        "name": "ConstraintLayout"
     }
 ]

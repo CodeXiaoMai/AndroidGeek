@@ -119,7 +119,13 @@
         "articles": [
             {
                 "name": "Android 相关面试知识点整理",
-                "url": "http://www.jianshu.com/p/b87e9f853597"}
+                "url": "http://www.jianshu.com/p/b87e9f853597"},
+            {
+                "name": "Java方向如何准备BAT技术面试答案(汇总版)",
+                "url": "http://www.jianshu.com/p/1f1d3193d9e3"},
+            {
+                "name": "较新的Android面试题",
+                "url": "http://www.jianshu.com/p/1eaab1e43681"},
         ],
         "description": "RxJava Description",
         "name": "面试"

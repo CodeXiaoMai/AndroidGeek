@@ -71,7 +71,6 @@ public class ArticleFragment extends BaseFragment implements ILceView<List<Chapt
     }
 
     private void loadData() {
-        recyclerView.setVisibility(View.VISIBLE);
         errorRootLayout.setVisibility(View.GONE);
         emptyRootLayout.setVisibility(View.GONE);
         mPresenter.getChapters();

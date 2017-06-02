@@ -22,11 +22,11 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabBackground="@android:color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/blue"
+            app:tabSelectedTextColor="@android:color/white"
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="@android:color/darker_gray" />
+            app:tabTextColor="#CCCCCC" />
 
     </android.support.design.widget.AppBarLayout>
 

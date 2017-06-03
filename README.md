@@ -2,6 +2,11 @@
 
 > "Android极客"一个专门为Android程序猿打造的极客应用，你们的支持是我最大的动力！！！！
 
+**热烈庆祝 “Android极客” 进入 GitHub Trending 排行榜，当然这离不开大家的支持，谢谢大家！！！。**
+
+![GitHub Trending.png](http://upload-images.jianshu.io/upload_images/5275145-a71c7b9e71c125a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290)
+
+
 ## 本周更新推荐 ##
 
 - 本周部分功能已经采用 `Kotlin`实现，之后的所有新功能将用 `Kotlin` 实现(PS：你学会使用 Kotlin 了吗？)

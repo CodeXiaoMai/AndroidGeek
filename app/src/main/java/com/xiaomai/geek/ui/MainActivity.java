@@ -36,6 +36,7 @@ import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.event.AccountEvent;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.module.AboutUsFragment;
+import com.xiaomai.geek.ui.module.ReportActivity;
 import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
 import com.xiaomai.geek.ui.module.github.GitHubContainerFragment;
 import com.xiaomai.geek.ui.module.github.UserActivity;
@@ -157,6 +158,10 @@ public class MainActivity extends BaseActivity
                 // 第一个参数:是否为用户手动点击，第二个参数：是否提示用户正在检查更新
                 Beta.checkUpgrade(true, false);
                 return true;
+            case R.id.menu_report:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                ReportActivity.Companion.launch(this);
+                return false;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

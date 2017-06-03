@@ -149,6 +149,7 @@ dependencies {
 
     compile 'com.alibaba:fastjson:1.1.57.android'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
 }
 repositories {
     mavenCentral()

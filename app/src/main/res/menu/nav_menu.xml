@@ -36,6 +36,12 @@
             app:showAsAction="always" />
 
         <item
+            android:id="@+id/menu_report"
+            android:icon="@drawable/menu_report"
+            android:title="反馈"
+            app:showAsAction="always" />
+
+        <item
             android:id="@+id/menu_upgrade"
             android:icon="@drawable/update"
             android:title="检查更新"

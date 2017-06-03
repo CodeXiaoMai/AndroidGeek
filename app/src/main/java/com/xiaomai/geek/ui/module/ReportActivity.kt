@@ -15,7 +15,6 @@ class ReportActivity : BaseActivity() {
     var toolBar: Toolbar? = null
     var etTitle: EditText? = null
     var etContent: EditText? = null
-    var etContact: EditText? = null
     var btOk: Button? = null
 
     companion object {
@@ -34,7 +33,6 @@ class ReportActivity : BaseActivity() {
         toolBar = findViewById(R.id.tool_bar) as Toolbar
         etTitle = findViewById(R.id.et_title) as EditText
         etContent = findViewById(R.id.et_content) as EditText
-        etContact = findViewById(R.id.et_contact) as EditText
         btOk = findViewById(R.id.bt_ok) as Button
 
         toolBar?.title = "意见反馈"

@@ -1,5 +1,6 @@
 package com.xiaomai.geek.data.net;
 
+import com.xiaomai.geek.data.module.Issue;
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.data.module.User;
 import com.xiaomai.geek.data.net.response.Content;
@@ -9,9 +10,11 @@ import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
 import retrofit2.Response;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -110,4 +113,9 @@ public interface GitHubService {
     @DELETE("user/starred/{owner}/{repo}")
     Observable<Response<ResponseBody>> unStarRepo(@Path("owner") String owner,
                                                   @Path("repo") String repo);
+
+    @POST("repos/{owner}/{repo}/issues")
+    Observable<Response<ResponseBody>> createIssue(@Path("owner") String owner,
+                                                   @Path("repo") String repo,
+                                                   @Body Issue issue);
 }

@@ -69,6 +69,8 @@ public interface GitHubApi {
 
     Observable<ArrayList<Repo>> searchRepo(String key, String language, int page);
 
+    Observable<Boolean> createIssue(String title, String body, String[] labels, String[] assignees);
+
     @StringDef({
             LANG_ANDROID, LANG_JAVA, LANG_OC, LANG_SWIFT, LANG_HTML, LANG_PYTHON, LANG_BASH
     })

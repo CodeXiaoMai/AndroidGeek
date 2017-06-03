@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.GitHubApi;
+import com.xiaomai.geek.data.module.Issue;
 import com.xiaomai.geek.data.module.Repo;
 import com.xiaomai.geek.data.module.RepoDetail;
 import com.xiaomai.geek.data.module.User;
@@ -173,6 +174,22 @@ public class GitHubDataSource implements GitHubApi {
                     public ArrayList<Repo> call(SearchResultResp searchResultResp) {
                         searchResultResp.getTotal_count();
                         return searchResultResp.getItems();
+                    }
+                });
+    }
+
+    @Override
+    public Observable<Boolean> createIssue(String title, String body, String[] labels, String[] assignees) {
+        Issue issue = new Issue();
+        issue.setTitle(title);
+        issue.setBody(body);
+        issue.setLabels(labels);
+        issue.setAssignees(assignees);
+        return mGitHubService.createIssue("CodeXiaoMai", "github", issue)
+                .map(new Func1<Response<ResponseBody>, Boolean>() {
+                    @Override
+                    public Boolean call(Response<ResponseBody> responseBodyResponse) {
+                        return responseBodyResponse != null && responseBodyResponse.code() == 201;
                     }
                 });
     }

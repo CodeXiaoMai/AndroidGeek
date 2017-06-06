@@ -7,15 +7,34 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import com.xiaomai.geek.GeekApplication
 import com.xiaomai.geek.R
+import com.xiaomai.geek.di.IComponent
+import com.xiaomai.geek.di.component.GitHubComponent
+import com.xiaomai.geek.di.module.ActivityModule
+import com.xiaomai.geek.di.module.GitHubModule
+import com.xiaomai.geek.presenter.github.ReportPresenter
 import com.xiaomai.geek.ui.base.BaseActivity
+import com.xiaomai.geek.view.IReportView
+import javax.inject.Inject
 
-class ReportActivity : BaseActivity() {
+class ReportActivity : BaseActivity(), IReportView, IComponent<GitHubComponent> {
+    override fun showLoading() {
+    }
+
+    override fun dismissLoading() {
+    }
+
+    override fun error(e: Throwable?) {
+    }
 
     var toolBar: Toolbar? = null
     var etTitle: EditText? = null
     var etContent: EditText? = null
     var btOk: Button? = null
+
+    @Inject
+    internal var mPresenter: ReportPresenter? = null
 
     companion object {
         fun launch(context: Context): Unit {
@@ -23,10 +42,15 @@ class ReportActivity : BaseActivity() {
         }
     }
 
+    override fun reportResult(result: Boolean) {
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        component.inject(this)
         setContentView(R.layout.activity_report)
         initViews()
+        mPresenter?.attachView(this)
     }
 
     private fun initViews() {
@@ -45,7 +69,7 @@ class ReportActivity : BaseActivity() {
     }
 
     private fun postReport() {
-
+        mPresenter?.report(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -57,4 +81,18 @@ class ReportActivity : BaseActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun getComponent(): GitHubComponent {
+        return DaggerGitHubComponent.builder()
+                .applicationComponent(GeekApplication.get(this).component)
+                .gitHubModule(GitHubModule())
+                .activityModule(ActivityModule(this))
+                .build()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter?.detachView()
+    }
+
 }

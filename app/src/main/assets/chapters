@@ -241,4 +241,13 @@
         "description": "RxJava Description",
         "name": "性能优化"
     },
+    {
+        "articles": [
+            {
+                "name": "知乎和简书的Android客户端夜间模式实现方式",
+                "url": "http://blog.coderclock.com/2016/08/28/android/%E7%9F%A5%E4%B9%8E%E5%92%8C%E7%AE%80%E4%B9%A6%E7%9A%84%E5%A4%9C%E9%97%B4%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%A5%97%E8%B7%AF/"},
+        ],
+        "description": "RxJava Description",
+        "name": "夜间模式"
+    },
 ]

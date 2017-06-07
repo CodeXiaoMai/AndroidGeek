@@ -185,7 +185,7 @@ public class GitHubDataSource implements GitHubApi {
         issue.setBody(body);
         issue.setLabels(labels);
         issue.setAssignees(assignees);
-        return mGitHubService.createIssue("CodeXiaoMai", "github", issue)
+        return mGitHubService.createIssue("CodeXiaoMai", "AndroidGeek", issue)
                 .map(new Func1<Response<ResponseBody>, Boolean>() {
                     @Override
                     public Boolean call(Response<ResponseBody> responseBodyResponse) {

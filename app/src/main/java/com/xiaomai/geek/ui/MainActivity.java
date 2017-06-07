@@ -160,7 +160,7 @@ public class MainActivity extends BaseActivity
                 return true;
             case R.id.menu_report:
                 drawerLayout.closeDrawer(GravityCompat.START);
-                ReportActivity.Companion.launch(this);
+                ReportActivity.launch(this);
                 return false;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

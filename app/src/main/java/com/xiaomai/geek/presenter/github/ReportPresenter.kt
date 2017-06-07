@@ -1,6 +1,7 @@
 package com.xiaomai.geek.presenter.github
 
 import android.content.Context
+import com.alibaba.fastjson.JSON
 import com.xiaomai.geek.GeekApplication
 import com.xiaomai.geek.data.api.GitHubApi
 import com.xiaomai.geek.data.net.response.BaseResponseObserver
@@ -16,10 +17,10 @@ import javax.inject.Inject
  */
 class ReportPresenter @Inject constructor(private val gitHubApi: GitHubApi) : BaseRxPresenter<IReportView>() {
 
-    @JvmOverloads fun report(context: Context) {
+    fun report(context: Context) {
         mCompositeSubscription.add(
                 gitHubApi.createIssue("this is title", "this is body", arrayOf("bug"), arrayOf(
-                        AccountPref.getLoginUser(GeekApplication.get(context)).toString()
+                        JSON.toJSONString(AccountPref.getLoginUser(GeekApplication.get(context)))
                 ))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())

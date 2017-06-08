@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="?attr/clockTextColor"
             android:textSize="18sp"
             tools:text="CodeXiaoMai/AndroidGeekCodeXiaoMai/AndroidGeek" />
 
@@ -31,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textColor="?attr/clockTextColorSecond"
             tools:text="This is description!This is descriptionThis is descriptionThis is descriptionThis is descriptionThis is descriptionThis is description" />
 
         <LinearLayout

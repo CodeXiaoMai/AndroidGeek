@@ -3,7 +3,6 @@ package com.xiaomai.geek.ui.module.password;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -175,7 +174,7 @@ public class FileExploreActivity extends BaseActivity implements IFileExploreVie
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 footerView.setText(
                         "由于系统限制，外置SD卡只能存储到Android/data/" + getPackageName() + "/目录下，且数据会在应用卸载时删除！");
-                footerView.setTextColor(Color.RED);
+                footerView.setTextColor(getResources().getColor(R.color.colorAccent));
                 footerView.setPadding(10, 10, 10, 10);
                 footerView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f);
                 adapter.addFooterView(footerView);

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:elevation="@dimen/dimen_4"
     android:orientation="vertical"
-    app:cardBackgroundColor="@color/colorAccent"
+    app:cardBackgroundColor="?attr/colorAccent"
     app:cardCornerRadius="@dimen/dimen_4"
     app:contentPadding="@dimen/dimen_10">
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10"
             android:singleLine="true"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/clockTextColorReverse"
             android:textSize="@dimen/text_size_14"
             android:textStyle="bold"
             tools:text="UserName" />
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10"
             android:maxLines="3"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/clockTextColorReverse"
             android:textSize="@dimen/text_size_14"
             tools:text="bio" />
 
@@ -58,7 +58,7 @@
                 android:drawablePadding="@dimen/dimen_5"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/clockTextColorReverse"
                 android:textSize="@dimen/text_size_14"
                 tools:text="Company" />
 
@@ -70,7 +70,7 @@
                 android:drawablePadding="@dimen/dimen_5"
                 android:gravity="start|center_vertical"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/clockTextColorReverse"
                 android:textSize="@dimen/text_size_14"
                 tools:text="location" />
 
@@ -83,7 +83,7 @@
                 android:drawablePadding="@dimen/dimen_5"
                 android:gravity="start|center_vertical"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/clockTextColorReverse"
                 android:textSize="@dimen/text_size_14"
                 tools:text="blog" />
 
@@ -95,7 +95,7 @@
                 android:drawablePadding="@dimen/dimen_5"
                 android:gravity="start|center_vertical"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/clockTextColorReverse"
                 android:textSize="@dimen/text_size_14"
                 tools:text="email" />
         </LinearLayout>

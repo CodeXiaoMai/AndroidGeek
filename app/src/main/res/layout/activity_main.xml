@@ -19,7 +19,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="?attr/clockBackgroundPrimary"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_view"
+        app:itemBackground="@drawable/button_selector"
+        app:itemIconTint="?attr/colorPrimary"
+        app:itemTextColor="?attr/clockTextColor"
         app:menu="@menu/nav_menu" />
 </android.support.v4.widget.DrawerLayout>

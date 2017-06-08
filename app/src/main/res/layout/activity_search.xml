@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/clockBackgroundPrimary"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -49,6 +50,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="?attr/clockBackgroundPrimary"
+            app:itemBackground="@drawable/button_selector"
+            app:itemTextColor="?attr/clockTextColor"
             app:menu="@menu/search_nav_menu" />
 
     </android.support.v4.widget.DrawerLayout>

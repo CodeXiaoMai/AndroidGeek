@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="?attr/clockBackgroundPrimary"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:contentScrim="@color/colorPrimary"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
@@ -52,8 +52,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/clockBackgroundPrimary"
                 android:padding="15dp"
-                android:text="文章列表" />
+                android:text="文章列表"
+                android:textColor="?attr/clockTextColorSecond" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"

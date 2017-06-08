@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:cardBackgroundColor="?attr/clockBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="@android:color/black"
+            android:textColor="?attr/clockTextColor"
             android:textSize="@dimen/text_size_18"
             tools:text="CoderName" />
 
@@ -29,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="?attr/clockTextColorSecond"
             android:textSize="@dimen/sp_12"
             tools:text="Description" />
 
@@ -48,11 +49,12 @@
 
             <TextView
                 android:id="@+id/owner"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="@dimen/dimen_10"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/clockTextColor"
                 android:textSize="@dimen/text_size_14"
                 tools:text="Owner" />
         </LinearLayout>
@@ -76,7 +78,7 @@
                 android:layout_weight="1"
                 android:paddingBottom="@dimen/dimen_10"
                 android:paddingTop="@dimen/dimen_10"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/clockTextColor"
                 android:textSize="@dimen/text_size_12"
                 tools:text="Update Time" />
 
@@ -110,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/dimen_5"
-                    android:textColor="@android:color/black"
+                    android:textColor="?attr/clockTextColor"
                     android:textSize="@dimen/text_size_12"
                     tools:text="Stars Number" />
             </LinearLayout>
@@ -126,5 +128,6 @@
         app:lv_background_color="@android:color/background_dark"
         app:lv_gravity="TOP_RIGHT"
         app:lv_text="LANG"
+        app:lv_text_color="?attr/clockTextColorReverse"
         app:lv_text_size="@dimen/text_size_12" />
 </android.support.v7.widget.CardView>

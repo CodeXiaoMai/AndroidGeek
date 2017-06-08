@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/clockBackgroundPrimary"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:navigationIcon="@drawable/ic_menu"
         app:title="关于我们" />
@@ -22,7 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
+            android:background="?attr/clockBackgroundPrimary"
             android:orientation="vertical">
 
             <ImageView
@@ -38,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
                 android:gravity="center"
+                android:textColor="?attr/clockTextColor"
                 tools:text="version:1.0" />
 
             <TextView
@@ -46,7 +48,8 @@
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:lineSpacingExtra="3dp"
                 android:padding="@dimen/dp_10"
-                android:text="@string/introduce" />
+                android:text="@string/introduce"
+                android:textColor="?attr/clockTextColor" />
 
             <LinearLayout
                 android:id="@+id/layout_author_home"
@@ -61,13 +64,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:text="简书主页" />
+                    android:text="简书主页"
+                    android:textColor="?attr/clockTextColor" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:text="http://www.jianshu.com/u/6c430e6970a4" />
+                    android:text="http://www.jianshu.com/u/6c430e6970a4"
+                    android:textColor="?attr/colorAccent" />
             </LinearLayout>
 
             <LinearLayout
@@ -82,13 +87,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:text="CSDN主页" />
+                    android:text="CSDN主页"
+                    android:textColor="?attr/clockTextColor" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:text="http://blog.csdn.net/xiaomai949804781" />
+                    android:text="http://blog.csdn.net/xiaomai949804781"
+                    android:textColor="?attr/colorAccent" />
             </LinearLayout>
 
             <LinearLayout
@@ -104,13 +111,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:text="项目主页" />
+                    android:text="项目主页"
+                    android:textColor="?attr/clockTextColor" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:text="@string/github_address" />
+                    android:text="@string/github_address"
+                    android:textColor="?attr/colorAccent" />
             </LinearLayout>
 
             <LinearLayout
@@ -126,13 +135,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:text="邮箱" />
+                    android:text="邮箱"
+                    android:textColor="?attr/clockTextColor" />
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="email"
-                    android:text="@string/author_email" />
+                    android:text="@string/author_email"
+                    android:textColor="?attr/colorAccent" />
             </LinearLayout>
 
             <LinearLayout
@@ -172,6 +184,7 @@
                     android:layout_height="24dp"
                     android:gravity="center"
                     android:text="精简版（只包含密码管理功能）"
+                    android:textColor="?attr/clockTextColor"
                     android:tint="@color/colorPrimary" />
 
                 <TextView
@@ -179,6 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
+                    android:textColor="?attr/colorAccent"
                     tools:text="@string/lite_version" />
             </LinearLayout>
 

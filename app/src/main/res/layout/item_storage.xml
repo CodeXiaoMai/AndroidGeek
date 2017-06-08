@@ -13,12 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:layout_weight="1"
+        android:textColor="?attr/clockTextColor"
         tools:text="手机存储" />
 
     <TextView
         android:id="@+id/tv_available_space"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="?attr/clockTextColor"
         tools:text="20G可用" />
 
     <ImageView

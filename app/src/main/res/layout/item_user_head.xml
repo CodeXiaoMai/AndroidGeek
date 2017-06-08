@@ -4,7 +4,7 @@
     android:id="@+id/user_icon"
     android:layout_width="60dp"
     android:layout_height="60dp"
-    android:background="@android:color/white"
+    android:background="?attr/clockBackground"
     android:padding="2dp"
     android:scaleType="centerInside"
     tools:src="@drawable/github_blue" />

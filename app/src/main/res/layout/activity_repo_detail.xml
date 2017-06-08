@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/clockBackgroundPrimary"
     android:orientation="vertical"
     tools:context="com.xiaomai.geek.ui.module.github.RepoDetailActivity">
 
@@ -10,7 +11,7 @@
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <ScrollView
@@ -51,13 +52,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="Contributors" />
+                        android:text="Contributors"
+                        android:textColor="?attr/clockTextColor" />
 
                     <TextView
                         android:id="@+id/contributors_count"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
+                        android:textColor="?attr/clockTextColor"
                         tools:text="(30)" />
                 </LinearLayout>
 
@@ -66,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_60"
                     android:layout_marginTop="@dimen/dimen_2"
-                    android:background="@android:color/white" />
+                    android:background="?attr/clockBackground" />
             </LinearLayout>
 
             <LinearLayout
@@ -88,13 +91,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="Forks" />
+                        android:text="Forks"
+                        android:textColor="?attr/clockTextColor" />
 
                     <TextView
                         android:id="@+id/forks_count"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
+                        android:textColor="?attr/clockTextColor"
                         tools:text="(30)" />
                 </LinearLayout>
 
@@ -102,8 +107,7 @@
                     android:id="@+id/fork_list"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_60"
-                    android:layout_marginTop="@dimen/dimen_2"
-                    android:background="@android:color/white" />
+                    android:layout_marginTop="@dimen/dimen_2" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,7 +125,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dimen_10"
-                    android:text="README" />
+                    android:text="README"
+                    android:textColor="?attr/clockTextColor" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

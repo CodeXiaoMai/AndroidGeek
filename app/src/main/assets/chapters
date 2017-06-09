@@ -67,7 +67,10 @@
                 "url": "https://kymjs.com/code/2017/02/26/01/"},
             {
                 "name": "Kotlin Primer·第五章·函数与闭包",
-                "url": "https://kymjs.com/code/2017/04/09/01/"}
+                "url": "https://kymjs.com/code/2017/04/09/01/"},
+            {
+                "name": "Kotlin Primer·第六章·集合泛型与操作符",
+                "url": "https://kymjs.com/code/2017/06/06/01/"}
         ],
         "description": "Kotlin Description",
         "image": "https://imgsa.baidu.com/baike/w%3D268/sign=818bbcabfcf2b211e42e8248f2826511/9a504fc2d5628535746e08f997ef76c6a6ef6358.jpg",
@@ -249,5 +252,14 @@
         ],
         "description": "RxJava Description",
         "name": "夜间模式"
+    },
+    {
+        "articles": [
+            {
+                "name": "如何优雅地从浏览器打开本地应用",
+                "url": "http://blog.zhuimengfb.com/2017/04/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0%E5%BA%94%E7%94%A8/"},
+        ],
+        "description": "RxJava Description",
+        "name": "浏览器调App"
     },
 ]

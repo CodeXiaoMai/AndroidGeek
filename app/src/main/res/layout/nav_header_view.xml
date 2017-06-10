@@ -20,5 +20,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="登录"
-        android:textColor="?attr/clockTextColor" />
+        android:textColor="?attr/clockLoginTextColor" />
 </LinearLayout>

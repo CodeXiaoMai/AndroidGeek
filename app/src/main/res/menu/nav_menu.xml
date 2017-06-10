@@ -49,5 +49,10 @@
             android:title="检查更新"
             app:showAsAction="always" />
 
+        <item
+            android:id="@+id/menu_setting"
+            android:icon="@drawable/menu_setting"
+            android:title="设置"
+            app:showAsAction="always" />
     </group>
 </menu>

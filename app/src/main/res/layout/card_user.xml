@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:elevation="@dimen/dimen_4"
     android:orientation="vertical"
-    app:cardBackgroundColor="?attr/colorAccent"
+    app:cardBackgroundColor="?attr/clockUserCardColor"
     app:cardCornerRadius="@dimen/dimen_4"
     app:contentPadding="@dimen/dimen_10">
 

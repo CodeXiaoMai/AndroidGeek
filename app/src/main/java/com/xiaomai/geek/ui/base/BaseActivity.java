@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
-import com.xiaomai.geek.R;
+import com.xiaomai.geek.data.pref.ThemePref;
 import com.xiaomai.mvp.MvpView;
 
 /**
@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     }
 
     private void initTheme() {
-        setTheme(R.style.NightTheme);
+        setTheme(ThemePref.Companion.getTheme(this));
     }
 
     protected void initToolBar(String title) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/clockBackgroundPrimary"
     tools:context="com.xiaomai.geek.ui.module.ReportActivity">
 
     <android.support.v7.widget.Toolbar
@@ -39,7 +40,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="标题"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/colorPrimary"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,12 +49,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/white"
+                android:background="?attr/clockStateUnChecked"
                 android:ems="10"
                 android:gravity="top"
                 android:hint="请输入标题"
                 android:lineSpacingExtra="3dp"
                 android:padding="8dp"
+                android:textColor="?attr/clockTextColor"
+                android:textColorHint="?attr/clockTextColorSecond"
                 android:textSize="15sp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -68,7 +71,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="问题或意见"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/colorPrimary"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
@@ -77,13 +80,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/white"
+                android:background="?attr/clockStateUnChecked"
                 android:ems="10"
                 android:gravity="top"
                 android:hint="描述您要反馈的问题或意见"
                 android:lineSpacingExtra="3dp"
                 android:minLines="5"
+                android:maxLines="8"
                 android:padding="8dp"
+                android:textColor="?attr/clockTextColor"
+                android:textColorHint="?attr/clockTextColorSecond"
                 android:textSize="15sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -97,7 +103,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="标签"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/colorPrimary"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_content" />
 
@@ -108,6 +115,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@android:color/white"
                 android:padding="8dp"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -118,6 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:padding="8dp"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
@@ -139,7 +148,6 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView_labels" />
-
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

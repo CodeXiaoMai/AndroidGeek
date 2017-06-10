@@ -31,7 +31,10 @@
             android:name=".ui.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout"
             android:theme="@style/TransparentTheme" />
-        <activity android:name=".ui.module.password.EditAccountActivity" />
+        <activity
+            android:name=".ui.module.password.EditAccountActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.module.password.PasswordDetailActivity"
             android:configChanges="orientation|screenSize|screenLayout"
@@ -81,7 +84,10 @@
         <activity
             android:name=".ui.module.ReportActivity"
             android:configChanges="orientation|screenSize|screenLayout"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustNothing" />
+        <activity
+            android:name=".ui.SettingActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

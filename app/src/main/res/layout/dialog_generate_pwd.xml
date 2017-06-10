@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
+    android:background="?attr/clockBackground"
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin">
 
@@ -11,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="生成密码"
-        android:textColor="@android:color/black"
+        android:textColor="?attr/clockTextColor"
         android:textSize="15sp" />
 
     <TextView
@@ -20,9 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        android:textColor="?attr/clockTextColorSecond"
         tools:text="1234545" />
 
-    <android.support.v7.widget.AppCompatSeekBar
+    <SeekBar
         android:id="@+id/seek_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="密码长度：6" />
+        android:text="密码长度：6"
+        android:textColor="?attr/clockTextColorSecond" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -69,7 +72,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_selector"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="取消" />
+            android:text="取消"
+            android:textColor="?attr/clockTextColor" />
 
         <TextView
             android:id="@+id/bt_ok"
@@ -77,6 +81,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_selector"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="确定" />
+            android:text="确定"
+            android:textColor="?attr/clockTextColor" />
     </LinearLayout>
 </LinearLayout>

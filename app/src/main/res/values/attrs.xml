@@ -15,6 +15,10 @@
     <attr name="clockTextColor" format="color" />
     <attr name="clockTextColorSecond" format="color" />
     <attr name="clockTextColorReverse" format="color" />
+    <attr name="clockStateChecked" format="color" />
+    <attr name="clockStateUnChecked" format="color" />
+    <attr name="clockLoginTextColor" format="color" />
+    <attr name="clockUserCardColor" format="color" />
 
     <declare-styleable name="CircleView">
         <attr name="border_width" />

@@ -34,6 +34,7 @@ import com.xiaomai.geek.di.component.DaggerMainComponent;
 import com.xiaomai.geek.di.component.MainComponent;
 import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.event.AccountEvent;
+import com.xiaomai.geek.event.ThemeEvent;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.module.AboutUsFragment;
 import com.xiaomai.geek.ui.module.ReportActivity;
@@ -162,6 +163,9 @@ public class MainActivity extends BaseActivity
                 drawerLayout.closeDrawer(GravityCompat.START);
                 ReportActivity.launch(this);
                 return false;
+            case R.id.menu_setting:
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                return false;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -283,5 +287,12 @@ public class MainActivity extends BaseActivity
     @Subscribe
     public void onHandleAccountEvent(AccountEvent accountEvent) {
         updateHeadView();
+    }
+
+    @Subscribe
+    public void onHandleThemeEvent(ThemeEvent themeEvent) {
+        finish();
+        launch(this);
+        startActivity(new Intent(this, SettingActivity.class));
     }
 }

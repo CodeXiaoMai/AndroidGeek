@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.data.pref.ThemePref;
 
 import dmax.dialog.SpotsDialog;
 
@@ -16,8 +17,11 @@ public class LoadingView {
     private AlertDialog mLoadingDialog;
 
     public LoadingView(Context context, String message) {
-        mLoadingDialog = new SpotsDialog(context, R.style.NightSpotsDialog);
-        mLoadingDialog.setMessage(message);
+        if (ThemePref.Companion.getTheme(context) == R.style.AppTheme) {
+            mLoadingDialog = new SpotsDialog(context, message);
+        } else {
+            mLoadingDialog = new SpotsDialog(context, R.style.NightSpotsDialog);
+        }
     }
 
     public void show() {

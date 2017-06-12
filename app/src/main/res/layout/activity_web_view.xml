@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/clockBackgroundPrimary">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -19,10 +20,10 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:progressDrawable="@drawable/progress_horizontal_style"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="1.5dp" />
+            android:layout_height="1.5dp"
+            android:progressDrawable="@drawable/progress_horizontal_style" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView

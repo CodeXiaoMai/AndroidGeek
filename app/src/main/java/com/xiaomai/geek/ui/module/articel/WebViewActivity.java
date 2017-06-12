@@ -24,6 +24,7 @@ import android.widget.ProgressBar;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.utils.NetworkUtil;
 import com.xiaomai.geek.common.utils.ShareUtils;
+import com.xiaomai.geek.data.pref.ThemePref;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
 import com.xiaomai.geek.ui.widget.MyWebView;
 
@@ -59,6 +60,83 @@ public class WebViewActivity extends BaseLoadActivity {
     protected String mTitle;
     protected String mUrl;
 
+    final String javaScript = "document.body.style.backgroundColor=\"#1E1E29\";" +
+            "document.body.style.color=\"#8C96B4\";" +
+            "var code = document.getElementsByTagName(\"code\");\n" +
+            "        for(var i = 0 ; i < code.length ; i++){\n" +
+            "            code[i].style.background=\"#13161E\";\n" +
+            "}\n" +
+            "var p = document.getElementsByTagName(\"p\");\n" +
+            "        for(var i = 0 ; i < p.length ; i++){\n" +
+            "            p[i].style.color=\"#8C96B4\";\n" +
+            "            p[i].style.background=\"#1E1E29\";\n" +
+            "}\n" +
+            "var figure = document.getElementsByTagName(\"figure\");\n" +
+            "        for(var i = 0 ; i < figure.length ; i++){\n" +
+            "            figure[i].style.background=\"#13161E\";\n" +
+            "}\n" +
+            "var ul = document.getElementsByTagName(\"ul\");\n" +
+            "        for(var i = 0 ; i < ul.length ; i++){\n" +
+            "            ul[i].style.background=\"#13161E\";\n" +
+            "}\n" +
+            "var ol = document.getElementsByTagName(\"ol\");\n" +
+            "        for(var i = 0 ; i < ol.length ; i++){\n" +
+            "            ol[i].style.background=\"#13161E\";\n" +
+            "}\n" +
+            "var blockquote = document.getElementsByTagName(\"blockquote\");\n" +
+            "        for(var i = 0 ; i < blockquote.length ; i++){\n" +
+            "            blockquote[i].style.background=\"#13161E\";\n" +
+            "}\n" +
+            "var li = document.getElementsByTagName(\"li\");\n" +
+            "        for(var i = 0 ; i < li.length ; i++){\n" +
+            "            li[i].style.background=\"#1E1E29\";\n" +
+            "            li[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var table = document.getElementsByTagName(\"table\");\n" +
+            "        for(var i = 0 ; i < table.length ; i++){\n" +
+            "            table[i].style.background=\"#ff1E1E29\";\n" +
+            "            table[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var div = document.getElementsByTagName(\"div\");\n" +
+            "        for(var i = 0 ; i < div.length ; i++){\n" +
+            "            div[i].style.background=\"#1E1E29\";\n" +
+            "            div[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var div = document.getElementsByTagName(\"div\");\n" +
+            "        for(var i = 0 ; i < div.length ; i++){\n" +
+            "            div[i].style.background=\"#1E1E29\";\n" +
+            "            div[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var h1 = document.getElementsByTagName(\"h1\");\n" +
+            "        for(var i = 0 ; i < h1.length ; i++){\n" +
+            "            h1[i].style.background=\"#1E1E29\";\n" +
+            "            h1[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var h2 = document.getElementsByTagName(\"h2\");\n" +
+            "        for(var i = 0 ; i < h2.length ; i++){\n" +
+            "            h2[i].style.background=\"#1E1E29\";\n" +
+            "            h2[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var h3 = document.getElementsByTagName(\"h3\");\n" +
+            "        for(var i = 0 ; i < h3.length ; i++){\n" +
+            "            h3[i].style.background=\"#1E1E29\";\n" +
+            "            h3[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var h4 = document.getElementsByTagName(\"h4\");\n" +
+            "        for(var i = 0 ; i < h4.length ; i++){\n" +
+            "            h4[i].style.background=\"#1E1E29\";\n" +
+            "            h4[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var span = document.getElementsByTagName(\"span\");\n" +
+            "        for(var i = 0 ; i < span.length ; i++){\n" +
+            "            span[i].style.background=\"#1E1E29\";\n" +
+            "            span[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var pre = document.getElementsByTagName(\"pre\");\n" +
+            "        for(var i = 0 ; i < pre.length ; i++){\n" +
+            "            pre[i].style.background=\"#13161E\";\n" +
+            "}\n";
+
     public static void launch(Context context, String url, String title) {
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra(EXTRA_URL, url);
@@ -93,6 +171,9 @@ public class WebViewActivity extends BaseLoadActivity {
 
     protected void initViews() {
         mWebView = new MyWebView(this);
+        if (ThemePref.getTheme(this) == R.style.NightTheme) {
+            mWebView.setBackgroundColor(getResources().getColor(R.color.colorBackgroundPrimaryNight));
+        }
         flContainer.addView(mWebView);
         initCustomWebView(mWebView);
         initWebViewSettings();
@@ -107,7 +188,7 @@ public class WebViewActivity extends BaseLoadActivity {
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
-        if (NetworkUtil.isNetworkAvailable(this)) {
+        if (NetworkUtil.isWifiAvailable(this)) {
             settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         } else {
             settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
@@ -157,6 +238,14 @@ public class WebViewActivity extends BaseLoadActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 onLoadFinish(view, url);
+                if (ThemePref.getTheme(WebViewActivity.this) != R.style.NightTheme) {
+                    return;
+                }
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                    mWebView.evaluateJavascript(javaScript, null);
+                } else {
+                    mWebView.loadUrl("javascript:" + javaScript);
+                }
             }
         };
         // 如果用户设置了WebViewClient，则在点击新的链接以后就不会跳转到系统浏览器了，而是在本WebView中显示。

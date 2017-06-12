@@ -16,10 +16,12 @@ class ThemePref {
             return context.applicationContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         }
 
+        @JvmStatic
         public fun saveTheme(context: Context, theme: Int) {
             getPreferences(context).edit().putInt(KEY_THEME, theme).apply()
         }
 
+        @JvmStatic
         public fun getTheme(context: Context): Int {
             return getPreferences(context).getInt(KEY_THEME, R.style.AppTheme)
         }

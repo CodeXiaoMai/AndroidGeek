@@ -23,7 +23,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_view"
         app:itemBackground="@drawable/button_selector"
-        app:itemIconTint="?attr/colorPrimary"
+        app:itemIconTint="@color/blue"
         app:itemTextColor="?attr/clockTextColor"
         app:menu="@menu/nav_menu" />
 </android.support.v4.widget.DrawerLayout>

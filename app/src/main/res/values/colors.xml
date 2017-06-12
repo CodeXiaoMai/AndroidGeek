@@ -12,8 +12,8 @@
     <color name="colorBackgroundPrimary">#EEEEEE</color>
 
     <!-- NightThemeColor -->
-    <color name="colorPrimaryNight">#3F3F3F</color>
-    <color name="colorPrimaryDarkNight">#3F3F3F</color>
+    <color name="colorPrimaryNight">#1E1E29</color>
+    <color name="colorPrimaryDarkNight">#1E1E29</color>
     <color name="colorAccentNight">#FF4081</color>
     <color name="colorBackgroundNight">#1E1E29</color>
     <color name="colorBackgroundPrimaryNight">#13161E</color>

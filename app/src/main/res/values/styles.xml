@@ -10,7 +10,6 @@
         <item name="clockBackground">@android:color/white</item>
         <item name="clockBackgroundPrimary">@color/colorBackgroundPrimary</item>
         <item name="clockTextColor">@android:color/black</item>
-        <item name="android:textColor">@android:color/black</item>
         <item name="clockTextColorSecond">@android:color/darker_gray</item>
         <item name="clockTextColorReverse">@android:color/white</item>
         <item name="clockStateChecked">@color/colorBackgroundPrimary</item>

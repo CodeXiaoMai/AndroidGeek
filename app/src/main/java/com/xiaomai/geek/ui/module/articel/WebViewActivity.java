@@ -61,7 +61,7 @@ public class WebViewActivity extends BaseLoadActivity {
     protected String mTitle;
     protected String mUrl;
 
-    final String javaScript = "document.body.style.backgroundColor=\"#1E1E29\";" +
+    public static final String JAVASCRIPT = "document.body.style.backgroundColor=\"#1E1E29\";" +
             "document.body.style.color=\"#8C96B4\";" +
             "var code = document.getElementsByTagName(\"code\");\n" +
             "        for(var i = 0 ; i < code.length ; i++){\n" +
@@ -257,9 +257,9 @@ public class WebViewActivity extends BaseLoadActivity {
                     return;
                 }
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                    mWebView.evaluateJavascript(javaScript, null);
+                    mWebView.evaluateJavascript(JAVASCRIPT, null);
                 } else {
-                    mWebView.loadUrl("javascript:" + javaScript);
+                    mWebView.loadUrl("javascript:" + JAVASCRIPT);
                 }
             }
 
@@ -286,9 +286,9 @@ public class WebViewActivity extends BaseLoadActivity {
                     return;
                 }
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                    mWebView.evaluateJavascript(javaScript, null);
+                    mWebView.evaluateJavascript(JAVASCRIPT, null);
                 } else {
-                    mWebView.loadUrl("javascript:" + javaScript);
+                    mWebView.loadUrl("javascript:" + JAVASCRIPT);
                 }
             }
 

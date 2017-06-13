@@ -33,7 +33,6 @@ public class TrendingPresenter extends BaseRxPresenter<ILoadMoreView<ArrayList<R
     }
 
     public void loadTrendingRepos(@GitHubApi.LanguageType String languageType, int page, final boolean loadMore) {
-        AppLog.e(languageType + ",page:" + page);
         mCompositeSubscription.add(gitHubApi.getTrendingRepos(languageType, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

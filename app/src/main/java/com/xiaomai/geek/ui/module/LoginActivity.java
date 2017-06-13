@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -20,12 +22,9 @@ import com.xiaomai.geek.di.component.AccountComponent;
 import com.xiaomai.geek.di.component.DaggerAccountComponent;
 import com.xiaomai.geek.di.module.AccountModule;
 import com.xiaomai.geek.di.module.ActivityModule;
-import com.xiaomai.geek.event.AccountEvent;
 import com.xiaomai.geek.presenter.github.LoginPresenter;
 import com.xiaomai.geek.ui.base.BaseLoadActivity;
 import com.xiaomai.geek.view.ILoginView;
-
-import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -39,6 +38,8 @@ import butterknife.OnClick;
 
 public class LoginActivity extends BaseLoadActivity implements ILoginView, IComponent<AccountComponent> {
 
+    @BindView(R.id.tool_bar)
+    Toolbar toolbar;
     @BindView(R.id.userName)
     EditText userName;
     @BindView(R.id.userName_layout)
@@ -66,6 +67,9 @@ public class LoginActivity extends BaseLoadActivity implements ILoginView, IComp
     }
 
     private void initViews() {
+        setTitle("登录");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String name = AccountPref.getLoginUserName(this);
         userName.setText(name);
         if (!TextUtils.isEmpty(name)) {
@@ -91,9 +95,6 @@ public class LoginActivity extends BaseLoadActivity implements ILoginView, IComp
     @Override
     public void loginSuccess(User user) {
         Snackbar.make(loginBtn, "登录成功", Snackbar.LENGTH_LONG).show();
-        AccountPref.saveLoginUser(this, user);
-        AccountPref.saveLoginUserName(this, userName.getText().toString().trim());
-        EventBus.getDefault().post(new AccountEvent(AccountEvent.LOGIN));
         finish();
     }
 
@@ -118,5 +119,15 @@ public class LoginActivity extends BaseLoadActivity implements ILoginView, IComp
     @Override
     public String getLoadingMessage() {
         return "登录中...";
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

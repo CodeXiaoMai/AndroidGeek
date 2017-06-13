@@ -5,7 +5,7 @@ apply plugin: 'android-apt'
 
 // 依赖插件脚本,不用热更新时注掉，热更新不支持 instant run
 // 打包时，无论是打普通的 release 包，还是打 base 包，都要开启，否则会因为混淆配置的问题导致crash
-apply from: 'tinker-support.gradle'
+//apply from: 'tinker-support.gradle'
 
 android {
     compileSdkVersion 25

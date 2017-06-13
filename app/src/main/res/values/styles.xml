@@ -16,6 +16,7 @@
         <item name="clockStateUnChecked">@android:color/white</item>
         <item name="clockLoginTextColor">@android:color/white</item>
         <item name="clockUserCardColor">@color/colorAccent</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
     <style name="NightTheme" parent="AppTheme">
@@ -33,6 +34,7 @@
         <item name="clockStateUnChecked">#1E1E29</item>
         <item name="clockLoginTextColor">@color/textColorNight</item>
         <item name="clockUserCardColor">@color/colorBackgroundNight</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 
     <style name="NightSpotsDialog" parent="android:Theme.DeviceDefault.Dialog">

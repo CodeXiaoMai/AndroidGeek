@@ -6,12 +6,12 @@
             android:id="@+id/menu_share"
             android:icon="@drawable/share"
             android:title="分享"
-            app:showAsAction="always" />
+            app:showAsAction="never" />
 
         <item
             android:id="@+id/menu_browser"
             android:icon="@drawable/menu_browser"
             android:title="浏览器打开"
-            app:showAsAction="always" />
+            app:showAsAction="never" />
     </group>
 </menu>

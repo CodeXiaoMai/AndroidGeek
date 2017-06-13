@@ -253,12 +253,6 @@ public class WebViewActivity extends BaseLoadActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 onPageStart(view, url, favicon);
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                onLoadFinish(view, url);
                 if (ThemePref.getTheme(WebViewActivity.this) != R.style.NightTheme) {
                     return;
                 }
@@ -267,6 +261,12 @@ public class WebViewActivity extends BaseLoadActivity {
                 } else {
                     mWebView.loadUrl("javascript:" + javaScript);
                 }
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                onLoadFinish(view, url);
             }
         };
         // 如果用户设置了WebViewClient，则在点击新的链接以后就不会跳转到系统浏览器了，而是在本WebView中显示。
@@ -281,6 +281,14 @@ public class WebViewActivity extends BaseLoadActivity {
                 } else {
                     progressBar.setProgress(newProgress);
                     progressBar.setVisibility(View.VISIBLE);
+                }
+                if (ThemePref.getTheme(WebViewActivity.this) != R.style.NightTheme) {
+                    return;
+                }
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                    mWebView.evaluateJavascript(javaScript, null);
+                } else {
+                    mWebView.loadUrl("javascript:" + javaScript);
                 }
             }
 

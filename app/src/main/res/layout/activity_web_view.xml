@@ -16,7 +16,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_scrollFlags="scroll|enterAlways|snap" />
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:popupTheme="?attr/actionBarPopupTheme" />
 
         <ProgressBar
             android:id="@+id/progressBar"

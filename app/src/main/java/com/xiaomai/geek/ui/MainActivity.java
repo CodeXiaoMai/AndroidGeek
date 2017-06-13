@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tencent.bugly.beta.Beta;
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.wrapper.ImageLoader;
@@ -36,7 +35,6 @@ import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.event.AccountEvent;
 import com.xiaomai.geek.event.ThemeEvent;
 import com.xiaomai.geek.ui.base.BaseActivity;
-import com.xiaomai.geek.ui.module.AboutUsFragment;
 import com.xiaomai.geek.ui.module.ReportActivity;
 import com.xiaomai.geek.ui.module.articel.ArticleContainerFragment;
 import com.xiaomai.geek.ui.module.github.GitHubContainerFragment;
@@ -151,14 +149,6 @@ public class MainActivity extends BaseActivity
             case R.id.menu_password_manage:
                 openPassword();
                 break;
-            case R.id.menu_about:
-                changeFragment(AboutUsFragment.class.getName());
-                mCurrentPosition = 4;
-                break;
-            case R.id.menu_upgrade:
-                // 第一个参数:是否为用户手动点击，第二个参数：是否提示用户正在检查更新
-                Beta.checkUpgrade(true, false);
-                return true;
             case R.id.menu_report:
                 drawerLayout.closeDrawer(GravityCompat.START);
                 ReportActivity.launch(this);
@@ -181,8 +171,8 @@ public class MainActivity extends BaseActivity
                         if (!runInBackground) {
                             navView.getMenu().getItem(mCurrentPosition).setChecked(true);
                         } else {
-                            changeFragment(AboutUsFragment.class.getName());
-                            mCurrentPosition = 4;
+                            changeFragment(ArticleContainerFragment.class.getName());
+                            mCurrentPosition = 0;
                             navView.getMenu().getItem(mCurrentPosition).setChecked(true);
                         }
                     }

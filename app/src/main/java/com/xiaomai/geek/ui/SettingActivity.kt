@@ -1,14 +1,18 @@
 package com.xiaomai.geek.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import com.suke.widget.SwitchButton
+import com.tencent.bugly.beta.Beta
 import com.xiaomai.geek.R
 import com.xiaomai.geek.data.pref.ThemePref
 import com.xiaomai.geek.event.ThemeEvent
 import com.xiaomai.geek.ui.base.BaseActivity
+import com.xiaomai.geek.ui.module.AboutUsActivity
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -19,6 +23,8 @@ class SettingActivity : BaseActivity() {
     var toolBar: Toolbar? = null
     var tvNightMode: TextView? = null
     var switchButton: SwitchButton? = null
+    var llUpgrade: View? = null
+    var llAboutUs: View? = null
 
     companion object {
         var flag: Boolean = false
@@ -53,6 +59,16 @@ class SettingActivity : BaseActivity() {
             }
             EventBus.getDefault().post(ThemeEvent())
             finish()
+        }
+
+        llUpgrade = findViewById(R.id.ll_upGrade)
+        llUpgrade?.setOnClickListener { view ->
+            // 第一个参数:是否为用户手动点击，第二个参数：是否提示用户正在检查更新
+            Beta.checkUpgrade(true, false)
+        }
+        llAboutUs = findViewById(R.id.ll_about)
+        llAboutUs?.setOnClickListener { view ->
+            startActivity(Intent(this, AboutUsActivity::class.java))
         }
     }
 

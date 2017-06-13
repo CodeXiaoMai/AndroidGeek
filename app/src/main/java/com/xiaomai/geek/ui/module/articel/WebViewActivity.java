@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -97,6 +98,21 @@ public class WebViewActivity extends BaseLoadActivity {
             "            table[i].style.background=\"#ff1E1E29\";\n" +
             "            table[i].style.color=\"#8C96B4\";\n" +
             "}\n" +
+            "var tbody = document.getElementsByTagName(\"tbody\");\n" +
+            "        for(var i = 0 ; i < tbody.length ; i++){\n" +
+            "            tbody[i].style.background=\"#ff1E1E29\";\n" +
+            "            tbody[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var td = document.getElementsByTagName(\"td\");\n" +
+            "        for(var i = 0 ; i < td.length ; i++){\n" +
+            "            td[i].style.background=\"#ff1E1E29\";\n" +
+            "            td[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var tr = document.getElementsByTagName(\"tr\");\n" +
+            "        for(var i = 0 ; i < tr.length ; i++){\n" +
+            "            tr[i].style.background=\"#ff1E1E29\";\n" +
+            "            tr[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
             "var div = document.getElementsByTagName(\"div\");\n" +
             "        for(var i = 0 ; i < div.length ; i++){\n" +
             "            div[i].style.background=\"#1E1E29\";\n" +
@@ -126,6 +142,11 @@ public class WebViewActivity extends BaseLoadActivity {
             "        for(var i = 0 ; i < h4.length ; i++){\n" +
             "            h4[i].style.background=\"#1E1E29\";\n" +
             "            h4[i].style.color=\"#8C96B4\";\n" +
+            "}\n" +
+            "var article = document.getElementsByTagName(\"article\");\n" +
+            "        for(var i = 0 ; i < article.length ; i++){\n" +
+            "            article[i].style.background=\"#1E1E29\";\n" +
+            "            article[i].style.color=\"#8C96B4\";\n" +
             "}\n" +
             "var span = document.getElementsByTagName(\"span\");\n" +
             "        for(var i = 0 ; i < span.length ; i++){\n" +
@@ -285,7 +306,7 @@ public class WebViewActivity extends BaseLoadActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.about_menu, menu);
+        getMenuInflater().inflate(R.menu.webview_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -302,6 +323,13 @@ public class WebViewActivity extends BaseLoadActivity {
             case R.id.menu_share:
                 if (!TextUtils.isEmpty(mUrl)) {
                     ShareUtils.share(WebViewActivity.this, mTitle, mUrl);
+                }
+                return true;
+            case R.id.menu_browser:
+                if (!TextUtils.isEmpty(mUrl)) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(mUrl));
+                    startActivity(intent);
                 }
                 return true;
         }

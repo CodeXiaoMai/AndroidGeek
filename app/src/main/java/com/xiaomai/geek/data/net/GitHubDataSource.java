@@ -172,7 +172,6 @@ public class GitHubDataSource implements GitHubApi {
                 .map(new Func1<SearchResultResp, ArrayList<Repo>>() {
                     @Override
                     public ArrayList<Repo> call(SearchResultResp searchResultResp) {
-                        searchResultResp.getTotal_count();
                         return searchResultResp.getItems();
                     }
                 });

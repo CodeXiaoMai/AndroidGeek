@@ -2,49 +2,46 @@
 
 > "Android极客"一个专门为Android程序猿打造的极客应用，你们的支持是我最大的动力！！！！
 
-**热烈庆祝 “Android极客” 进入 GitHub Trending 排行榜，当然这离不开大家的支持，谢谢大家！！！。**
-
-![GitHub Trending.png](http://upload-images.jianshu.io/upload_images/5275145-a71c7b9e71c125a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290)
-
-
 ## 本周更新推荐 ##
 
-- 本周部分功能已经采用 `Kotlin`实现，之后的所有新功能将用 `Kotlin` 实现(PS：你学会使用 Kotlin 了吗？)
-- 经过两周的打磨，文章阅读功能的体验效果有了质的飞跃
-- 添加大量干货文章
-- 最重要的是，解决了文章在线更新的问题（以后不用依赖版本升级更新文章了）
-- 之后的版本中会进一步优化阅读体验，我相信大多数用户都和我一样，白天工作，晚上才有时间学习，所以考虑加入夜间模式
-
+- 本周重磅更新内容，添加夜间模式支持，白天夜晚上“极客”，不用担心伤眼睛
+- 你们期待什么功能，欢迎反馈
+  
 GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
-[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.1_pro.apk)
+[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.2_pro.apk)
 
 ## 截图 ##
 
-![device-2017-05-18-163703.png](http://upload-images.jianshu.io/upload_images/5275145-b3ccd19961c90a57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-18-163814.png](http://upload-images.jianshu.io/upload_images/5275145-afb9de7500104cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-18-163757.png](http://upload-images.jianshu.io/upload_images/5275145-007f93b62a3b1988.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290)
+![device-2017-06-16-160932.png](http://upload-images.jianshu.io/upload_images/5275145-a914ae3badc477ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-06-16-160320.png](http://upload-images.jianshu.io/upload_images/5275145-6caf7ea8e6ba0450.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-18-163814.png](http://upload-images.jianshu.io/upload_images/5275145-afb9de7500104cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290)
 
-![device-2017-05-06-181313_958896.png](http://upload-images.jianshu.io/upload_images/5275145-cbc3213bbb789ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-181423.png](http://upload-images.jianshu.io/upload_images/5275145-0cde9bda4f55c9db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182155.png](http://upload-images.jianshu.io/upload_images/5275145-84000f8dff97a752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) 
+![device-2017-05-06-181313_958896.png](http://upload-images.jianshu.io/upload_images/5275145-cbc3213bbb789ec6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-06-16-160752.png](http://upload-images.jianshu.io/upload_images/5275145-b02d12c60fbfe974.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182155.png](http://upload-images.jianshu.io/upload_images/5275145-84000f8dff97a752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) 
 
-![device-2017-05-06-182535.png](http://upload-images.jianshu.io/upload_images/5275145-559cc566e5a40d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182555.png](http://upload-images.jianshu.io/upload_images/5275145-08acc7d89becb6ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182616.png](http://upload-images.jianshu.io/upload_images/5275145-3e81e59a89c8db5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) 
+![device-2017-05-06-182535.png](http://upload-images.jianshu.io/upload_images/5275145-559cc566e5a40d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182555.png](http://upload-images.jianshu.io/upload_images/5275145-08acc7d89becb6ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290) ![device-2017-05-06-182641.png](http://upload-images.jianshu.io/upload_images/5275145-c0d58c6c2c1bb669.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/290)
 
 ## 主要技术 ##
 
 - Kotlin
 - MVP架构
 - Retrofit + Okhttp
-- Tinker 热更新
 - RxJava + RxAndroid
 - EventBus
 - Glide
 - Dagger2
 - Material Design
 - Logger
-- butterknife
+- Butterknife
 - BaseRecyclerViewAdapterHelper
 
 ## 更新日志 ##
 
-**建议您升级之前使用备份功能先导出数据到本地，升级之后如发现数据异常可以导入数据恢复！**
+**如果您使用密码管理功能，建议您升级之前使用备份功能先导出数据到本地，升级之后如发现数据异常可以导入数据恢复！**
+
+### 2017-6-15 ###
+
+**发布1.2.2版本**
+
+- 本周重磅更新内容，添加夜间模式支持，白天夜晚上“极客”，不用担心伤眼睛
 
 ### 2017-6-2 ###
 
@@ -97,7 +94,7 @@ GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 
 **发布1.0版本**
 
-[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.1_pro.apk)
+[Demo Apk下载](https://github.com/CodeXiaoMai/AndroidGeek/raw/master/release/1.2.2_pro.apk)
 
 GitHub地址：https://github.com/CodeXiaoMai/AndroidGeek
 

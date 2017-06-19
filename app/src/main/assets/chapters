@@ -274,4 +274,22 @@
         "description": "RxJava Description",
         "name": "提高英语水平"
     },
+    {
+        "articles": [
+            {
+                "name": "Android Studio 上传 Library 至 Jcenter 生成依赖的两种方式",
+                "url": "https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=2650576777&idx=1&sn=16f848047b89b40b7d8e6fc7e28a5d50&chksm=87e061f1b097e8e7ec20df7509b4df90cb79972e572cd75927922aa9b89ed6b508535bc58a2e&mpshare=1&scene=23&srcid=0614vy0Ik0vjhiosniCRZgCt#rd"},
+        ],
+        "description": "RxJava Description",
+        "name": "上传 Library 至 Jcenter"
+    },
+    {
+        "articles": [
+            {
+                "name": "2017 上半年最酷，最受欢迎的10 个 Android 库",
+                "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c&chksm=bd5654778a21dd61373c27261a2a5ddc0a899de02c9deb0e8e5d74b7f578570bf601b1a0a5c2#rd"},
+        ],
+        "description": "RxJava Description",
+        "name": "热门框架"
+    },
 ]

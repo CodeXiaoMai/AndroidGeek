@@ -104,7 +104,10 @@
                 "url": "http://m.blog.csdn.net/article/details?id=53939176"},
             {
                 "name": " Android图片加载框架最全解析（三），深入探究Glide的缓存机制",
-                "url": "http://m.blog.csdn.net/article/details?id=54895665"}
+                "url": "http://m.blog.csdn.net/article/details?id=54895665"},
+            {
+                "name": "Android图片加载框架最全解析（四），玩转Glide的回调与监听",
+                "url": "http://m.blog.csdn.net/article/details?id=70215985"},
         ],
         "image": "https://github.com/bumptech/glide/raw/master/static/glide_logo.png",
         "description": "RxJava Description",

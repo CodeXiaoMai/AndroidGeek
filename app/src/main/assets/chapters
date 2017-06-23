@@ -295,4 +295,16 @@
         "description": "RxJava Description",
         "name": "热门框架"
     },
+    {
+        "articles": [
+            {
+                "name": "Android 深入理解 JNI（一）JNI 原理与静态、动态注册",
+                "url": "https://juejin.im/post/5949fd0c5c497d006b0a8815"},
+            {
+                "name": "Android Studio2.3下NDK开发流程",
+                "url": "http://www.jianshu.com/p/b4a4cd12d528"},
+        ],
+        "description": "RxJava Description",
+        "name": "JNI & NDK"
+    },
 ]

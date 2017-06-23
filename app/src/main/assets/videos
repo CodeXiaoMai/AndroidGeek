@@ -1,0 +1,10 @@
+[
+  {
+    "description": "RxJava Description",
+    "image": "http://reactivex.io/assets/Rx_Logo_S.png",
+    "name": "RxJava",
+    "url": "https://github.com/ReactiveX/RxJava",
+    "owner": "ReactiveX",
+    "repoName": "RxJava"
+  }
+]

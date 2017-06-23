@@ -23,7 +23,6 @@
             android:id="@+id/menu_video"
             android:icon="@drawable/video"
             android:title="@string/video"
-            android:visible="false"
             app:showAsAction="always" />
         <item
             android:id="@+id/menu_password_manage"

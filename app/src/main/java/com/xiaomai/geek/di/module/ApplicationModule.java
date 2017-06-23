@@ -5,9 +5,11 @@ import android.content.Context;
 
 import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.data.net.GitHubService;
+import com.xiaomai.geek.data.net.VideoService;
 import com.xiaomai.geek.data.net.client.ArticleRetrofit;
 import com.xiaomai.geek.data.net.client.GitHubTrendingRetrofit;
 import com.xiaomai.geek.data.net.ArticleService;
+import com.xiaomai.geek.data.net.client.VideoRetrofit;
 import com.xiaomai.geek.di.scope.ApplicationContext;
 
 import javax.inject.Singleton;
@@ -49,5 +51,11 @@ public class ApplicationModule {
     @Singleton
     ArticleService provideArticleService(ArticleRetrofit retrofit) {
         return retrofit.get().create(ArticleService.class);
+    }
+
+    @Provides
+    @Singleton
+    VideoService provideVideoService(VideoRetrofit retrofit) {
+        return retrofit.get().create(VideoService.class);
     }
 }

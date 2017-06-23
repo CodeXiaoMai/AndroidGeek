@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.xiaomai.geek.data.net.GitHubService;
 import com.xiaomai.geek.data.net.ArticleService;
+import com.xiaomai.geek.data.net.VideoService;
 import com.xiaomai.geek.di.module.ApplicationModule;
 
 import javax.inject.Singleton;
@@ -23,4 +24,6 @@ public interface ApplicationComponent {
     GitHubService gitHubService();
 
     ArticleService articleService();
+
+    VideoService videoService();
 }

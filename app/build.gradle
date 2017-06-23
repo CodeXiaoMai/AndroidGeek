@@ -141,7 +141,7 @@ dependencies {
 
     // Tinker
     compile "com.android.support:multidex:1.0.1" // 多dex配置
-    // //注释掉原有bugly的仓库
+    // 注释掉原有bugly的仓库
     // https://bugly.qq.com/docs/
     //compile 'com.tencent.bugly:crashreport:2.5.0'
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
@@ -152,6 +152,12 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
 
     compile 'com.github.zcweng:switch-button:0.0.2@aar'
+
+    // ijkplayer
+    // https://github.com/Bilibili/ijkplayer
+    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.8.0'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.0'
+
 }
 repositories {
     mavenCentral()

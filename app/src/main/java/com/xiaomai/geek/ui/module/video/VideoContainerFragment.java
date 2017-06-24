@@ -3,10 +3,11 @@ package com.xiaomai.geek.ui.module.video;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -20,6 +21,7 @@ import com.xiaomai.geek.di.component.MainComponent;
 import com.xiaomai.geek.di.module.ActivityModule;
 import com.xiaomai.geek.di.module.VideoModule;
 import com.xiaomai.geek.presenter.video.VideoPresenter;
+import com.xiaomai.geek.ui.MainActivity;
 import com.xiaomai.geek.ui.base.BaseFragment;
 import com.xiaomai.mvp.lce.ILceView;
 
@@ -29,13 +31,14 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
  * Created by XiaoMai on 2017/4/8 16:53.
  */
 
-public class VideoContainerFragment extends BaseFragment implements ILceView<List<Video>>, IComponent<MainComponent>{
+public class VideoContainerFragment extends BaseFragment implements ILceView<List<Video>>, IComponent<MainComponent> {
 
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
@@ -57,6 +60,7 @@ public class VideoContainerFragment extends BaseFragment implements ILceView<Lis
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         getComponent().inject(this);
         mPresenter.attachView(this);
     }
@@ -67,30 +71,27 @@ public class VideoContainerFragment extends BaseFragment implements ILceView<Lis
         View view = inflater.inflate(R.layout.fragment_video_container, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
+        loadData();
         return view;
     }
 
     private void initView() {
+        ((MainActivity) getActivity()).setSupportActionBar(toolBar);
+        getActivity().setTitle("视频");
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                refresh();
+                loadData();
             }
         });
 
         mAdapter = new VideoListAdapter(null);
         recyclerView.setAdapter(mAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
     }
 
-    private void refresh() {
+    private void loadData() {
         mPresenter.getVideos();
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        refresh();
     }
 
     @Override
@@ -140,5 +141,27 @@ public class VideoContainerFragment extends BaseFragment implements ILceView<Lis
                 .activityModule(new ActivityModule(this))
                 .videoModule(new VideoModule())
                 .build();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                ((MainActivity) getActivity()).openDrawer();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick({R.id.empty_root_layout, R.id.error_root_layout})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.empty_root_layout:
+                loadData();
+                break;
+            case R.id.error_root_layout:
+                loadData();
+                break;
+        }
     }
 }

@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.ArticleApi;
 import com.xiaomai.geek.data.module.Chapter;
-import com.xiaomai.geek.data.net.response.ChapterResp;
+import com.xiaomai.geek.data.net.response.ContentResp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -63,10 +63,10 @@ public class ArticleDataSource implements ArticleApi {
     }
 
     public Observable<List<Chapter>> getChapters() {
-        return mArticleService.getChapters().map(new Func1<ChapterResp, List<Chapter>>() {
+        return mArticleService.getChapters().map(new Func1<ContentResp, List<Chapter>>() {
             @Override
-            public List<Chapter> call(ChapterResp chapterResp) {
-                return JSON.parseArray(StringUtil.base64Decode(chapterResp.getContent()), Chapter.class);
+            public List<Chapter> call(ContentResp contentResp) {
+                return JSON.parseArray(StringUtil.base64Decode(contentResp.getContent()), Chapter.class);
             }
         });
     }

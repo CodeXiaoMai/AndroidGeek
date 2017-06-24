@@ -3,8 +3,10 @@ package com.xiaomai.geek.data.net;
 import android.app.Application;
 
 import com.alibaba.fastjson.JSON;
+import com.xiaomai.geek.common.utils.StringUtil;
 import com.xiaomai.geek.data.api.VideoApi;
 import com.xiaomai.geek.data.module.Video;
+import com.xiaomai.geek.data.net.response.ContentResp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func1;
 
 /**
  * Created by XiaoMai on 2017/6/23.
@@ -74,6 +77,11 @@ public class VideoDataSource implements VideoApi {
 
     @Override
     public Observable<List<Video>> getVideos() {
-        return null;
+        return mVideoService.getVideos().map(new Func1<ContentResp, List<Video>>() {
+            @Override
+            public List<Video> call(ContentResp contentResp) {
+                return JSON.parseArray(StringUtil.base64Decode(contentResp.getContent()), Video.class);
+            }
+        });
     }
 }

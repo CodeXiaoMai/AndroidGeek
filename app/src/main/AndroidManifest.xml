@@ -91,6 +91,9 @@
         <activity
             android:name=".ui.module.AboutUsActivity"
             android:configChanges="orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".ui.module.video.VideoDetailActivity"
+            android:configChanges="orientation|screenSize|screenLayout" />
 
         <service android:name=".service.InitializeService" />
         <service android:name=".service.NotificationService" />

@@ -1,5 +1,7 @@
 package com.xiaomai.geek.ui.module.video
 
+import android.content.Intent
+import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.xiaomai.geek.R
@@ -16,6 +18,12 @@ class VideoListAdapter : BaseQuickAdapter<Video> {
         holder?.let {
 //            holder.setImageResource
             holder.setText(R.id.name, video?.name)
+            holder.setOnClickListener(R.id.parent, object : View.OnClickListener{
+                override fun onClick(v: View?) {
+                    val context = holder.convertView.context
+                    VideoDetailActivity.launch(video, context)
+                }
+            })
         }
     }
 }

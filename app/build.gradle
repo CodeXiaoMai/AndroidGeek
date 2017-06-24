@@ -66,6 +66,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':mvp')
+    compile project(':ijkplayer')
     // 上滑时FAB能够正常隐藏，但是下拉列表时，FAB就不出现了。
     // 最后发现是SDK版本的问题，用25(7.1.1)的时候会有这个问题，调成25.0.1就没问题了
     compile 'com.android.support:appcompat-v7:25.0.1'

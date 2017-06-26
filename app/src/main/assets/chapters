@@ -27,7 +27,10 @@
         "url": "http://www.jianshu.com/p/a75ecf461e02"},
       {
         "name": "给初学者的RxJava2.0教程(九)",
-        "url": "http://www.jianshu.com/p/36e0f7f43a51"}
+        "url": "http://www.jianshu.com/p/36e0f7f43a51"},
+      {
+        "name": "一起来造一个RxJava，揭秘RxJava的实现原理",
+        "url": "http://blog.csdn.net/TellH/article/details/71534704"}
     ],
     "description": "RxJava Description",
     "image": "http://reactivex.io/assets/Rx_Logo_S.png",
@@ -211,6 +214,9 @@
         "name": "Android架构思考(模块化、多进程)",
         "url": "http://blog.spinytech.com/2016/12/28/android_modularization/"},
       {
+        "name": "Android 组件化 —— 路由设计最佳实践",
+        "url": "http://www.jianshu.com/p/8a3eeeaf01e8"},
+      {
         "name": "客户端模块化解耦实践 - Router",
         "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099&chksm=8fd9e77cb8ae6e6a56444493a1b54974c42b614f123b9a7abb1d4f52945b084fa7cfe51314bf&mpshare=1&scene=23&srcid=05265LN28JWodtP0UH0iW5K2#rd"},
     ],
@@ -306,5 +312,35 @@
     ],
     "description": "RxJava Description",
     "name": "JNI & NDK"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 加密算法",
+        "url": "http://www.jianshu.com/p/c7ec2b8d103b"},
+    ],
+    "description": "RxJava Description",
+    "name": "加密算法"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android Studio 代码混淆",
+        "url": "https://juejin.im/post/5947e7e8128fe1006a52d922"},
+      {
+        "name": "对ProGuard使用方法的思考",
+        "url": "http://www.jianshu.com/p/14af4a474d55"},
+    ],
+    "description": "RxJava Description",
+    "name": "代码混淆"
+  },
+  {
+    "articles": [
+      {
+        "name": "必备技 |一文看懂Java垃圾回收机制",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMjQ0MTU0NA==&mid=2247484077&idx=1&sn=1b17a10fc52264bdb0bee7038a36fe3b"},
+    ],
+    "description": "RxJava Description",
+    "name": "Java垃圾回收"
   },
 ]

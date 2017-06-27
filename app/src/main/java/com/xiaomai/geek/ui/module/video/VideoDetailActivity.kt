@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.xiaomai.geek.R
 import com.xiaomai.geek.data.module.Video
 import com.xiaomai.geek.ui.base.BaseActivity
+import com.xiaomai.ijkplayer.widget.media.IjkPlayerView
 import com.xiaomai.ijkplayer.widget.media.IjkVideoView
 
 /**
@@ -27,11 +28,7 @@ class VideoDetailActivity : BaseActivity() {
         }
     }
 
-    private var ivBack: ImageView? = null
-    private var ivPlay: ImageView? = null
-    private var videoView: IjkVideoView? = null
-    private var imageView: ImageView? = null
-    private var tvName: TextView? = null
+    private var videoView: IjkPlayerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,30 +41,12 @@ class VideoDetailActivity : BaseActivity() {
         intent?.let {
             val video = intent.getParcelableExtra<Video>(EXTRA_VIDEO)
             video?.let {
-                videoView?.setVideoURI(Uri.parse(video.url))
-                tvName?.text = video.name
+                videoView?.setVideoPath(video.url)
             }
         }
     }
 
     private fun initView() {
-        ivBack = findViewById(R.id.iv_back) as ImageView
-        ivPlay = findViewById(R.id.iv_play) as ImageView
-        videoView = findViewById(R.id.video_view) as IjkVideoView
-        imageView = findViewById(R.id.imageView) as ImageView
-        tvName = findViewById(R.id.tv_name) as TextView
-
-        ivBack?.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                finish()
-            }
-        })
-
-        ivPlay?.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                videoView?.start()
-                ivPlay?.visibility = View.GONE
-            }
-        })
+        videoView = findViewById(R.id.ijk_player_view) as IjkPlayerView
     }
 }

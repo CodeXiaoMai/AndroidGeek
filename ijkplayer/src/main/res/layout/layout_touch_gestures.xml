@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_touch_gestures_background">
+
+    <!-- 声音 -->
+    <TextView
+        android:id="@+id/tv_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_volume_on"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        tools:text="50%" />
+
+    <!-- 亮度 -->
+    <TextView
+        android:id="@+id/tv_brightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_brightness"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        tools:text="50%" />
+
+    <!-- 快进 -->
+    <TextView
+        android:id="@+id/tv_fast_forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_fast_forward"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        tools:text="50%" />
+
+    <!-- 快退 -->
+    <TextView
+        android:id="@+id/tv_fast_rewind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/ic_fast_rewind"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        tools:text="50%" />
+</FrameLayout>

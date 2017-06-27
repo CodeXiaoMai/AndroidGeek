@@ -6,51 +6,8 @@
     android:background="?attr/clockBackgroundPrimary"
     android:orientation="vertical">
 
-    <FrameLayout
+    <com.xiaomai.ijkplayer.widget.media.IjkPlayerView
+        android:id="@+id/ijk_player_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.xiaomai.ijkplayer.widget.media.IjkVideoView
-            android:id="@+id/video_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:background="@drawable/background_splash" />
-
-        <RelativeLayout
-            android:id="@+id/rl_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.4"
-            android:background="#000000">
-
-            <ImageView
-                android:id="@+id/iv_back"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:padding="10dp"
-                android:src="@drawable/back" />
-
-            <ImageView
-                android:id="@+id/iv_play"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/play" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/iv_play"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:textColor="?attr/clockTextColorReverse"
-                tools:text="视频名字" />
-        </RelativeLayout>
-    </FrameLayout>
+        android:layout_height="wrap_content" />
 </LinearLayout>

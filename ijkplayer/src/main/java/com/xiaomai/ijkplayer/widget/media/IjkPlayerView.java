@@ -2,6 +2,7 @@ package com.xiaomai.ijkplayer.widget.media;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,9 +11,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.xiaomai.ijkplayer.R;
+import com.xiaomai.ijkplayer.callback.OnShareClickListener;
 
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
@@ -25,8 +28,20 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     // 关联的Activity
     private Activity mAttachActivity;
     private IjkVideoView mVideoView;
+    private ImageView mIvBack;
     private TextView mTvTitle;
+    private ImageView mIvShare;
     private ImageView mIvPlay;
+    private TextView mTvCurrentTime;
+    private TextView mTvTotalTime;
+    private SeekBar mSeekBar;
+    private ImageView mIvFullScreen;
+
+    private String mTitle;
+    private String mUrl;
+    private boolean mIsForceFullScreen;
+
+    private OnShareClickListener mOnShareClickListener;
 
     public IjkPlayerView(@NonNull Context context) {
         this(context, null);
@@ -44,10 +59,12 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
 
     public IjkPlayerView setTitle(String title) {
         mTvTitle.setText(title);
+        mTitle = title;
         return this;
     }
 
     public IjkPlayerView setVideoPath(String url) {
+        mUrl = url;
         return setVideoPath(Uri.parse(url));
     }
 
@@ -97,18 +114,46 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     private void initView(Context context) {
         mAttachActivity = (Activity) context;
         View view = View.inflate(context, R.layout.ijk_player_view, this);
-        mVideoView = (IjkVideoView) view.findViewById(R.id.ijk_video_view);
+        mIvBack = (ImageView) view.findViewById(R.id.iv_back);
         mTvTitle = (TextView) view.findViewById(R.id.tv_title);
+        mIvShare = (ImageView) view.findViewById(R.id.iv_share);
+        mVideoView = (IjkVideoView) view.findViewById(R.id.ijk_video_view);
         mIvPlay = (ImageView) view.findViewById(R.id.iv_play);
+        mTvCurrentTime = (TextView) view.findViewById(R.id.tv_current_time);
+        mTvTotalTime = (TextView) view.findViewById(R.id.tv_total_time);
+        mSeekBar = (SeekBar) view.findViewById(R.id.seekBar);
+        mIvFullScreen = (ImageView) view.findViewById(R.id.iv_full_screen);
 
+        mIvBack.setOnClickListener(this);
+        mIvShare.setOnClickListener(this);
         mIvPlay.setOnClickListener(this);
+        mIvFullScreen.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == mIvPlay) {
+        if (v == mIvBack) {
+            // 如果强制横屏就直接退出，否则判断当前是否为横屏，如果横屏退出横屏，否则finish
+            if (mIsForceFullScreen) {
+                mAttachActivity.finish();
+            } else {
+                if (mAttachActivity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+                    mAttachActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                } else {
+                    mAttachActivity.finish();
+                }
+            }
+        } else if (v == mIvShare) {
+            if (mOnShareClickListener != null) {
+                mOnShareClickListener.onShareClick(mTitle, mUrl);
+            }
+        } else if (v == mIvPlay) {
             togglePlayStatus();
         }
+    }
+
+    public void setOnShareClickListener(OnShareClickListener listener) {
+        mOnShareClickListener = listener;
     }
 
     private void togglePlayStatus() {

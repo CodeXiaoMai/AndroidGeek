@@ -30,5 +30,6 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
-        android:src="@drawable/play" />
+        android:src="@drawable/play"
+        android:visibility="gone" />
 </FrameLayout>

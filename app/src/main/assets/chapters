@@ -95,7 +95,7 @@
         "url": "http://m.blog.csdn.net/article/details?id=42628537"}
     ],
     "description": "RxJava Description",
-    "name": "Fragment完全解析"
+    "name": "Fragment"
   },
   {
     "articles": [
@@ -111,10 +111,13 @@
       {
         "name": "Android图片加载框架最全解析（四），玩转Glide的回调与监听",
         "url": "http://m.blog.csdn.net/article/details?id=70215985"},
+      {
+        "name": "Android 基于 glide 4.0 封装图片加载库",
+        "url": "http://www.jianshu.com/p/920f36983613"},
     ],
     "image": "https://github.com/bumptech/glide/raw/master/static/glide_logo.png",
     "description": "RxJava Description",
-    "name": "Glide解析"
+    "name": "Glide"
   },
   {
     "articles": [
@@ -127,7 +130,7 @@
     ],
     "image": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496394845783&di=e29d3cc0eb00aba0c38e066d048c6589&imgtype=0&src=http%3A%2F%2Fwww.liulanqi.net%2Fuploads%2Fallimg%2F141107%2F1-14110F951354M.jpg",
     "description": "RxJava Description",
-    "name": "WebView解析"
+    "name": "WebView"
   },
   {
     "articles": [
@@ -342,5 +345,41 @@
     ],
     "description": "RxJava Description",
     "name": "Java垃圾回收"
+  },
+  {
+    "articles": [
+      {
+        "name": "自定义进度条PictureProgressBar——从开发到开源发布全过程",
+        "url": "http://blog.csdn.net/totond/article/details/72359888"},
+    ],
+    "description": "RxJava Description",
+    "name": "自定义View"
+  },
+  {
+    "articles": [
+      {
+        "name": "如何提升你的能力？给年轻程序员的几条建议",
+        "url": "http://tech.glowing.com/cn/advices-to-junior-developers/"},
+    ],
+    "description": "RxJava Description",
+    "name": "能力提升"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 开发，跳不过的内存管理",
+        "url": "https://juejin.im/post/5952641bf265da6c21533f15"},
+    ],
+    "description": "RxJava Description",
+    "name": "内存优化"
+  },
+  {
+    "articles": [
+      {
+        "name": "目前最流行的运行时权限请求框架PermissionsDispatcher、RxPermissions和easypermissions的使用和对比",
+        "url": "http://www.jianshu.com/p/07e1a1cff5ad"},
+    ],
+    "description": "RxJava Description",
+    "name": "运行时权限"
   },
 ]

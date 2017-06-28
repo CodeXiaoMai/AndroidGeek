@@ -22,6 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="#33000000"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:padding="3dp"
             android:textColor="?attr/clockTextColorReverse"
             android:textSize="12sp"

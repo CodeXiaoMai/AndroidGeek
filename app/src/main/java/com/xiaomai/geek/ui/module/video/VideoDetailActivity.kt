@@ -42,11 +42,18 @@ class VideoDetailActivity : BaseActivity() {
             val video = intent.getParcelableExtra<Video>(EXTRA_VIDEO)
             video?.let {
                 videoView?.setVideoPath(video.url)
+                        ?.setTitle(video.name)
+                        ?.start()
             }
         }
     }
 
     private fun initView() {
         videoView = findViewById(R.id.ijk_player_view) as IjkPlayerView
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        videoView?.onDestroy()
     }
 }

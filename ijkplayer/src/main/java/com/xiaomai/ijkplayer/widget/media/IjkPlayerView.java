@@ -1,9 +1,12 @@
 package com.xiaomai.ijkplayer.widget.media;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -16,6 +19,9 @@ import android.widget.TextView;
 
 import com.xiaomai.ijkplayer.R;
 import com.xiaomai.ijkplayer.callback.OnShareClickListener;
+import com.xiaomai.ijkplayer.utils.TimeUtils;
+
+import java.lang.ref.WeakReference;
 
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
@@ -42,6 +48,62 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     private boolean mIsForceFullScreen;
 
     private OnShareClickListener mOnShareClickListener;
+
+    @SuppressLint("HandlerLeak")
+    private final MyHandler mHandler = new MyHandler(mAttachActivity) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MSG_UPDATE_SEEK:
+                    updateSeekProgress();
+                    msg = obtainMessage(MSG_UPDATE_SEEK);
+                    sendMessageDelayed(msg, 1000);
+                    break;
+            }
+        }
+    };
+
+    // 静态内部类的实例不会持有外部类的引用
+    private static class MyHandler extends Handler {
+        private final WeakReference<Context> mContext;
+
+        public MyHandler(Context context) {
+            this.mContext = new WeakReference<>(context);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Context context = mContext.get();
+            if (null != context) {
+                super.handleMessage(msg);
+            }
+        }
+    }
+
+    private void updateSeekProgress() {
+        // 视频播放的当前进度
+        int currentPosition = mVideoView.getCurrentPosition();
+        // 视频的总时长
+        int duration = mVideoView.getDuration();
+        if (duration > 0) {
+            long pos = (long) MAX_VIDEO_SEEK * currentPosition / duration;
+            mSeekBar.setProgress((int) pos);
+        }
+        // 获取缓冲的进度百分比
+        int percentage = mVideoView.getBufferPercentage();
+        mSeekBar.setSecondaryProgress(percentage * 10);
+        mTvCurrentTime.setText(TimeUtils.generateTime(currentPosition));
+        mTvTotalTime.setText(TimeUtils.generateTime(duration));
+    }
+
+    private static final Runnable sRunnable = new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    };
 
     public IjkPlayerView(@NonNull Context context) {
         this(context, null);
@@ -77,6 +139,8 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         if (!mVideoView.isPlaying()) {
             mVideoView.start();
             mIvPlay.setSelected(true);
+
+            mHandler.sendEmptyMessage(MSG_UPDATE_SEEK);
         }
         // 视频播放时开启屏幕常亮
         mAttachActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -116,6 +180,7 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         View view = View.inflate(context, R.layout.ijk_player_view, this);
         mIvBack = (ImageView) view.findViewById(R.id.iv_back);
         mTvTitle = (TextView) view.findViewById(R.id.tv_title);
+        mTvTitle.setSelected(true);
         mIvShare = (ImageView) view.findViewById(R.id.iv_share);
         mVideoView = (IjkVideoView) view.findViewById(R.id.ijk_video_view);
         mIvPlay = (ImageView) view.findViewById(R.id.iv_play);
@@ -128,6 +193,24 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         mIvShare.setOnClickListener(this);
         mIvPlay.setOnClickListener(this);
         mIvFullScreen.setOnClickListener(this);
+
+        mSeekBar.setMax(MAX_VIDEO_SEEK);
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override
@@ -162,6 +245,14 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         } else {
             start();
         }
+    }
+
+    public void onDestroy() {
+        mVideoView.destroy();
+        IjkMediaPlayer.native_profileEnd();
+        mHandler.removeMessages(MSG_UPDATE_SEEK);
+        mHandler.removeMessages(MSG_TRY_RELOAD);
+        mAttachActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     // 进度条最大值

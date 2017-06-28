@@ -68,13 +68,20 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
     private Map<String, String> mHeaders;
 
     // all possible internal states
-    private static final int STATE_ERROR = -1;
-    private static final int STATE_IDLE = 0;
-    private static final int STATE_PREPARING = 1;
-    private static final int STATE_PREPARED = 2;
-    private static final int STATE_PLAYING = 3;
-    private static final int STATE_PAUSED = 4;
-    private static final int STATE_PLAYBACK_COMPLETED = 5;
+    // 空闲
+    public static final int STATE_IDLE = 330;
+    // 错误
+    public static final int STATE_ERROR = 331;
+    // 加载中
+    public static final int STATE_PREPARING = 332;
+    // 加载完成
+    public static final int STATE_PREPARED = 333;
+    // 播放中
+    public static final int STATE_PLAYING = 334;
+    // 暂停
+    public static final int STATE_PAUSED = 335;
+    // 结束
+    public static final int STATE_PLAYBACK_COMPLETED = 336;
 
     // mCurrentState is a VideoView object's current state.
     // mTargetState is the state that a method caller intends to reach.
@@ -594,7 +601,9 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         @Override
         public void onSeekComplete(IMediaPlayer mp) {
             mSeekEndTime = System.currentTimeMillis();
-            mHudViewHolder.updateSeekCost(mSeekEndTime - mSeekStartTime);
+            if (mHudViewHolder != null) {
+                mHudViewHolder.updateSeekCost(mSeekEndTime - mSeekStartTime);
+            }
         }
     };
 
@@ -1253,5 +1262,23 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
 
     public int getSelectedTrack(int trackType) {
         return MediaPlayerCompat.getSelectedTrack(mMediaPlayer, trackType);
+    }
+
+    public void destroy() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.reset();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+            mCurrentState = STATE_IDLE;
+            notifyMediaStatus();
+            AudioManager audioManager = (AudioManager) mAppContext.getSystemService(Context.AUDIO_SERVICE);
+            audioManager.abandonAudioFocus(null);
+        }
+    }
+
+    private void notifyMediaStatus() {
+        if (mOnInfoListener != null) {
+            mOnInfoListener.onInfo(mMediaPlayer, mCurrentState, -1);
+        }
     }
 }

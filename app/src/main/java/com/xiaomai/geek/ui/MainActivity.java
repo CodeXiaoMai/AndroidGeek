@@ -285,4 +285,9 @@ public class MainActivity extends BaseActivity
         launch(this);
         startActivity(new Intent(this, SettingActivity.class));
     }
+
+    @Override
+    protected boolean allowSlideSlip() {
+        return false;
+    }
 }

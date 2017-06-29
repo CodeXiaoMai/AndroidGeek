@@ -142,7 +142,10 @@
         "url": "http://www.jianshu.com/p/1f1d3193d9e3"},
       {
         "name": "较新的Android面试题",
-        "url": "http://www.jianshu.com/p/1eaab1e43681"}
+        "url": "http://www.jianshu.com/p/1eaab1e43681"},
+      {
+        "name": "一年Android工作经验，一举拿下百度、网易、美团、小米、快手等Offer面经",
+        "url": "     https://mp.weixin.qq.com/s?__biz=MzI2OTQxMTM4OQ==&mid=2247485000&idx=1&sn=2d74c597c62c9c4229f79cce9587b6bf"}
     ],
     "description": "RxJava Description",
     "name": "面试"
@@ -381,5 +384,14 @@
     ],
     "description": "RxJava Description",
     "name": "运行时权限"
+  },
+  {
+    "articles": [
+      {
+        "name": "【Android】热修复——Tinker（入门）",
+        "url": "http://www.jianshu.com/p/db504b33bca5"},
+    ],
+    "description": "RxJava Description",
+    "name": "热更新"
   },
 ]

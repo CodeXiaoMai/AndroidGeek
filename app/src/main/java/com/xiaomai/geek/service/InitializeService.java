@@ -8,7 +8,9 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.facebook.stetho.Stetho;
+import com.squareup.leakcanary.LeakCanary;
 import com.xiaomai.geek.BuildConfig;
+import com.xiaomai.geek.GeekApplication;
 import com.xiaomai.geek.common.utils.FileUtils;
 import com.xiaomai.geek.common.wrapper.CrashHelper;
 import com.xiaomai.geek.data.db.PasswordDBHelper;
@@ -58,5 +60,9 @@ public class InitializeService extends IntentService {
 
         // 调用此方法，如果数据库版本有更新，就更新数据库
         PasswordDBHelper.getInstance(this).getWritableDatabase();
+
+        if (!LeakCanary.isInAnalyzerProcess(this)) {
+            LeakCanary.install(GeekApplication.get(this));
+        }
     }
 }

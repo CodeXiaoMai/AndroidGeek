@@ -154,7 +154,7 @@ dependencies {
 
     compile 'com.github.zcweng:switch-button:0.0.2@aar'
 
-
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
 }
 repositories {
     mavenCentral()

@@ -354,6 +354,9 @@
       {
         "name": "自定义进度条PictureProgressBar——从开发到开源发布全过程",
         "url": "http://blog.csdn.net/totond/article/details/72359888"},
+      {
+        "name": "实现一个清新美观的加载按钮",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzA5MzI3NjE2MA==&mid=2650240209&idx=1&sn=fdfdc869cb8b5dd587f3c51519ec723b"},
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -363,6 +366,9 @@
       {
         "name": "如何提升你的能力？给年轻程序员的几条建议",
         "url": "http://tech.glowing.com/cn/advices-to-junior-developers/"},
+      {
+        "name": "老司机告诉你如何在进击的路上成长— 程序员路上学习经验总结",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484386&idx=1&sn=f2fccf82a5c75fa943bff9c6521b4d18"},
     ],
     "description": "RxJava Description",
     "name": "能力提升"
@@ -393,5 +399,14 @@
     ],
     "description": "RxJava Description",
     "name": "热更新"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 图片高斯模糊解决方案",
+        "url": "http://www.jianshu.com/p/02da487a2f43"},
+    ],
+    "description": "RxJava Description",
+    "name": "高斯模糊"
   },
 ]

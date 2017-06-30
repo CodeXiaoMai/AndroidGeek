@@ -41,8 +41,8 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     private boolean mIsFinish;
     private int mStartX;
-    private int mLastX;
-    private int mLastY;
+    private int mLastX = 0;
+    private int mLastY = 0;
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
@@ -59,6 +59,9 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
                     mIsFinish = event.getRawX() <= 20;
                     if (mIsFinish) {
                         mStartX = (int) event.getRawX();
+                        mLastX = x;
+                        mLastY = y;
+                        return true;
                     }
                 }
                 break;
@@ -72,22 +75,29 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
                         if (event.getRawX() - mStartX >= 300) {
                             finish();
                         }
+                        mLastX = x;
+                        mLastY = y;
                         return true;
                     } else {
                         mIsFinish = false;
                         mStartX = 0;
+                        mLastX = 0;
+                        mLastY = 0;
                     }
                 }
                 break;
             case MotionEvent.ACTION_UP:
                 mIsFinish = false;
                 mStartX = 0;
+                mLastX = 0;
+                mLastY = 0;
                 break;
         }
         mLastX = x;
         mLastY = y;
         return super.dispatchTouchEvent(event);
     }
+
 
 
     /**

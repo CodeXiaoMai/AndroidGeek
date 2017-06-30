@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import com.xiaomai.geek.BuildConfig
 import com.xiaomai.geek.R
 import com.xiaomai.geek.ui.base.BaseActivity
 
@@ -31,7 +32,10 @@ class AboutUsActivity : BaseActivity() {
     private fun initData() {
         try {
             mVersionName = packageManager.getPackageInfo(packageName, 0).versionName
-            tvVersion?.text = "版本号:$mVersionName"
+            var versionValue: String = "版本号:$mVersionName"
+            if (BuildConfig.DEBUG)
+                versionValue = "$versionValue-debug"
+            tvVersion?.text = versionValue
             tvDownloadUrl?.text = getString(R.string.lite_version, mVersionName)
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()

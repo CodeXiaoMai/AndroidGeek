@@ -199,7 +199,13 @@
     "articles": [
       {
         "name": "Android单元测试之JUnit4",
-        "url": "http://www.jianshu.com/p/dba1290f9dc8"}
+        "url": "http://www.jianshu.com/p/dba1290f9dc8"},
+      {
+        "name": "Android单元测试框架Robolectric3.0介绍(一)",
+        "url": "http://www.jianshu.com/p/9d988a2f8ff7"},
+      {
+        "name": "Android单元测试框架Robolectric3.0介绍(二)",
+        "url": "http://www.jianshu.com/p/3aa0e4efcfd3"},
     ],
     "description": "RxJava Description",
     "name": "单元测试"
@@ -409,4 +415,13 @@
     "description": "RxJava Description",
     "name": "高斯模糊"
   },
+  {
+      "articles": [
+        {
+          "name": "rxjava+retrofit+okhttp+mvp 简单实践",
+          "url": "http://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484391&idx=1&sn=f421676926e9a993a592aa32028232ae"},
+      ],
+      "description": "RxJava Description",
+      "name": "RxJava+Retrofit+OkHttp+MVP"
+    },
 ]

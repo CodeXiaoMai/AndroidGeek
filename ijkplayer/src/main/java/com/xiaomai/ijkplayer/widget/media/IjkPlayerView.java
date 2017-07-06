@@ -21,8 +21,6 @@ import com.xiaomai.ijkplayer.R;
 import com.xiaomai.ijkplayer.callback.OnShareClickListener;
 import com.xiaomai.ijkplayer.utils.TimeUtils;
 
-import java.lang.ref.WeakReference;
-
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 /**
@@ -46,11 +44,12 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     private String mTitle;
     private String mUrl;
     private boolean mIsForceFullScreen;
+    private boolean mIsSeeking;
 
     private OnShareClickListener mOnShareClickListener;
 
     @SuppressLint("HandlerLeak")
-    private final MyHandler mHandler = new MyHandler(mAttachActivity) {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -63,24 +62,6 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
             }
         }
     };
-
-    // 静态内部类的实例不会持有外部类的引用
-    private static class MyHandler extends Handler {
-        private final WeakReference<Context> mContext;
-
-        public MyHandler(Context context) {
-            this.mContext = new WeakReference<>(context);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            Context context = mContext.get();
-            if (null != context) {
-                super.handleMessage(msg);
-            }
-        }
-    }
 
     private void updateSeekProgress() {
         // 视频播放的当前进度
@@ -97,13 +78,6 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         mTvCurrentTime.setText(TimeUtils.generateTime(currentPosition));
         mTvTotalTime.setText(TimeUtils.generateTime(duration));
     }
-
-    private static final Runnable sRunnable = new Runnable() {
-        @Override
-        public void run() {
-
-        }
-    };
 
     public IjkPlayerView(@NonNull Context context) {
         this(context, null);
@@ -132,6 +106,18 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
 
     public IjkPlayerView setVideoPath(Uri uri) {
         mVideoView.setVideoURI(uri);
+        return this;
+    }
+
+    public IjkPlayerView setForceFullScreen(boolean isForceFullScreen) {
+        mIsForceFullScreen = isForceFullScreen;
+        if (mIsForceFullScreen) {
+            mAttachActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            mIvFullScreen.setVisibility(GONE);
+        } else {
+            mAttachActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            mIvFullScreen.setVisibility(VISIBLE);
+        }
         return this;
     }
 
@@ -196,19 +182,30 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
 
         mSeekBar.setMax(MAX_VIDEO_SEEK);
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            private long newPosition;
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+                if (!fromUser) {
+                    return;
+                }
+                long duration = mVideoView.getDuration();
+                newPosition = duration * progress / MAX_VIDEO_SEEK;
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                mIsSeeking = true;
+                mHandler.removeMessages(MSG_UPDATE_SEEK);
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                mIsSeeking = false;
+                seekTo((int) newPosition);
+                updateSeekProgress();
+                mHandler.sendEmptyMessage(MSG_UPDATE_SEEK);
             }
         });
     }
@@ -232,6 +229,8 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
             }
         } else if (v == mIvPlay) {
             togglePlayStatus();
+        } else if (v == mIvFullScreen) {
+            mAttachActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
     }
 

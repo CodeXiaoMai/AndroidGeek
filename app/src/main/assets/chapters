@@ -31,6 +31,9 @@
       {
         "name": "一起来造一个RxJava，揭秘RxJava的实现原理",
         "url": "http://blog.csdn.net/TellH/article/details/71534704"}
+    {
+        "name": "重新理解响应式编程",
+        "url": "http://www.jianshu.com/p/c95e29854cb1"}
     ],
     "description": "RxJava Description",
     "image": "http://reactivex.io/assets/Rx_Logo_S.png",
@@ -145,7 +148,10 @@
         "url": "http://www.jianshu.com/p/1eaab1e43681"},
       {
         "name": "一年Android工作经验，一举拿下百度、网易、美团、小米、快手等Offer面经",
-        "url": "     https://mp.weixin.qq.com/s?__biz=MzI2OTQxMTM4OQ==&mid=2247485000&idx=1&sn=2d74c597c62c9c4229f79cce9587b6bf"}
+        "url": "https://mp.weixin.qq.com/s?__biz=MzI2OTQxMTM4OQ==&mid=2247485000&idx=1&sn=2d74c597c62c9c4229f79cce9587b6bf"},
+      {
+        "name": "面试总结 | 记一次Android 面试",
+        "url": "http://www.jianshu.com/p/97be3137741c"}
     ],
     "description": "RxJava Description",
     "name": "面试"
@@ -229,6 +235,12 @@
         "name": "Android 组件化 —— 路由设计最佳实践",
         "url": "http://www.jianshu.com/p/8a3eeeaf01e8"},
       {
+        "name": "谈谈App的统一跳转和ARouter",
+        "url": "http://www.jianshu.com/p/c0eecbbf1481"},
+      {
+        "name": "App组件化与业务拆分那些事",
+        "url": "http://www.jianshu.com/p/60c1b9ddd8ab"},
+      {
         "name": "客户端模块化解耦实践 - Router",
         "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099&chksm=8fd9e77cb8ae6e6a56444493a1b54974c42b614f123b9a7abb1d4f52945b084fa7cfe51314bf&mpshare=1&scene=23&srcid=05265LN28JWodtP0UH0iW5K2#rd"},
     ],
@@ -255,6 +267,9 @@
       {
         "name": "ConstraintLayout深入系列之中心点对齐",
         "url": "https://biaomingzhong.github.io/2017/constraintlayout-tricks-centring/"},
+      {
+        "name": "ConstraintLayout 属性详解 和Chain的使用",
+        "url": "http://blog.csdn.net/zxt0601/article/details/72683379"},
     ],
     "description": "RxJava Description",
     "name": "ConstraintLayout"
@@ -363,6 +378,12 @@
       {
         "name": "实现一个清新美观的加载按钮",
         "url": "https://mp.weixin.qq.com/s?__biz=MzA5MzI3NjE2MA==&mid=2650240209&idx=1&sn=fdfdc869cb8b5dd587f3c51519ec723b"},
+      {
+        "name": "自定义View_手把手教你撸出一个圆形加载进度条",
+        "url": "http://www.jianshu.com/p/be71f6ffe512"},
+      {
+        "name": "自定义实现MIUI的拖动视差效果",
+        "url": "http://www.jianshu.com/p/f089efa081eb"},
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -384,6 +405,9 @@
       {
         "name": "Android 开发，跳不过的内存管理",
         "url": "https://juejin.im/post/5952641bf265da6c21533f15"},
+      {
+        "name": "带你学开源项目：LeakCanary- 如何检测 Activity 是否泄漏",
+        "url": "http://wingjay.com/2017/05/14/dig_into_leakcanary/"},
     ],
     "description": "RxJava Description",
     "name": "内存优化"
@@ -423,5 +447,60 @@
       ],
       "description": "RxJava Description",
       "name": "RxJava+Retrofit+OkHttp+MVP"
+    },
+    {
+      "articles": [
+        {
+          "name": "Android高级动画（1）",
+          "url": "http://www.jianshu.com/p/48554844a2db"},
+        {
+          "name": "Android高级动画（2）",
+          "url": "http://www.jianshu.com/p/89cfd9042b1e"},
+        {
+          "name": "Android高级动画（3）",
+          "url": "http://www.jianshu.com/p/d6cc8d218900"},
+        {
+          "name": "Android高级动画（4）",
+          "url": "http://www.jianshu.com/p/91f8363c3a8c"},
+      ],
+      "description": "RxJava Description",
+      "name": "动画"
+    },
+    {
+      "articles": [
+        {
+          "name": "Android百度地图(一):百度地图定位sdk 类方法参数、定位原理详细介绍",
+          "url": "http://www.jianshu.com/p/29ccac3e1e42"},
+        {
+          "name": "Android百度地图(二):百度定位与地图结合显示位置点",
+          "url": "http://www.jianshu.com/p/fdd1ba783495"},
+        {
+          "name": "Android百度地图(三):百度地图画运动轨迹及图层点击事件处理",
+          "url": "http://www.jianshu.com/p/2ad4c2077dfd"},
+        {
+          "name": "Android百度地图(四):百度地图运动轨迹纠偏、去噪、绑路之百度鹰眼",
+          "url": "http://www.jianshu.com/p/3c3d9e92739d"},
+      ],
+      "description": "RxJava Description",
+      "name": "LBS"
+    },
+    {
+      "articles": [
+        {
+          "name": "有关项目依赖包发生 Manifest Merge 冲突的详细解决方案",
+          "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"},
+      ],
+      "description": "RxJava Description",
+      "name": "疑难杂症"
+    },
+    {
+      "articles": [
+        {
+          "name": "Android 开发进阶: 自定义 View 1-1 绘制基础",
+          "url": "http://hencoder.com/ui-1-1/"},
+      ],
+      "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
+      "description": "RxJava Description",
+      "name": "HenCoder 专栏"
     },
 ]

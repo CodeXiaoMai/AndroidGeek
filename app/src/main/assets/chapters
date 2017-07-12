@@ -408,6 +408,9 @@
       {
         "name": "带你学开源项目：LeakCanary- 如何检测 Activity 是否泄漏",
         "url": "http://wingjay.com/2017/05/14/dig_into_leakcanary/"},
+      {
+        "name": "Android之Handler内存泄漏分析及解决",
+        "url": "http://www.jianshu.com/p/cb9b4b71a820"},
     ],
     "description": "RxJava Description",
     "name": "内存优化"

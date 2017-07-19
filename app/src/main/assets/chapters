@@ -384,6 +384,9 @@
       {
         "name": "自定义实现MIUI的拖动视差效果",
         "url": "http://www.jianshu.com/p/f089efa081eb"},
+      {
+        "name": "自定义View之渐变圆环进度条",
+        "url": "http://www.jianshu.com/p/20f399dc7bde"},
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -500,10 +503,57 @@
       "articles": [
         {
           "name": "Android 开发进阶: 自定义 View 1-1 绘制基础",
-          "url": "http://hencoder.com/ui-1-1/"},
+          "url": "http://hencoder.com/ui-1-1/"},{
+          "name": "Android 开发进阶: 自定义 View 1-2 Paint 详解",
+          "url": "http://hencoder.com/ui-1-2/"},
       ],
       "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
       "description": "RxJava Description",
       "name": "HenCoder 专栏"
+    },
+    {
+      "articles": [
+        {
+          "name": "使用 Gradle 实现一套代码开发多个应用",
+          "url": "https://juejin.im/post/59648441f265da6c415f3078"},
+      ],
+      "description": "RxJava Description",
+      "name": "Gradle"
+    },
+    {
+      "articles": [
+        {
+          "name": "Java服务器接口快速开发之Servlet详细教程",
+          "url": "http://blog.csdn.net/qq_35522272/article/details/71435602"},
+      ],
+      "description": "RxJava Description",
+      "name": "Servlet"
+    },
+    {
+      "articles": [
+        {
+          "name": "Android Studio Live Templates使用详解，提高敲代码的速度",
+          "url": "http://blog.csdn.net/qq137722697/article/details/74085789"},
+      ],
+      "description": "RxJava Description",
+      "name": "Android Studio"
+    },
+    {
+      "articles": [
+        {
+          "name": "Android 蓝牙开发(BLE)封装",
+          "url": "http://www.androidchina.net/7004.html"},
+      ],
+      "description": "RxJava Description",
+      "name": "蓝牙开发(BLE)"
+    },
+    {
+      "articles": [
+        {
+          "name": "微信支付，支付宝支付，银联支付——三大支付总结",
+          "url": "https://juejin.im/post/596d97576fb9a06bb874a812"},
+      ],
+      "description": "RxJava Description",
+      "name": "支付"
     },
 ]

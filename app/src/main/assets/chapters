@@ -516,6 +516,15 @@
         {
           "name": "使用 Gradle 实现一套代码开发多个应用",
           "url": "https://juejin.im/post/59648441f265da6c415f3078"},
+        {
+          "name": "体验飞一般的感觉，将Android 构建速度提升10倍以上",
+          "url": "http://www.jianshu.com/p/fb11b02af8f2"},
+        {
+          "name": "Gradle的高级技巧",
+          "url": "http://www.jianshu.com/p/cc98a6b4f52e"},
+        {
+          "name": "[大餐]加快gradle构建速度",
+          "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"},
       ],
       "description": "RxJava Description",
       "name": "Gradle"

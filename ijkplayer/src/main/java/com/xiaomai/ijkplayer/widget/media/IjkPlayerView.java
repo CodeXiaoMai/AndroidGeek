@@ -10,6 +10,8 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -45,6 +47,9 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
     private String mUrl;
     private boolean mIsForceFullScreen;
     private boolean mIsSeeking;
+
+    // 手势控制
+    private GestureDetector mGestureDetector;
 
     private OnShareClickListener mOnShareClickListener;
 
@@ -159,7 +164,57 @@ public class IjkPlayerView extends FrameLayout implements View.OnClickListener {
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 
+        mGestureDetector = new GestureDetector(mAttachActivity, mGestureListener);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+        return true;
+    }
+
+    private GestureDetector.OnGestureListener mGestureListener = new GestureDetector.SimpleOnGestureListener() {
+
+        private boolean isDownTouch;
+
+        // 是否是横向滑动
+        private boolean isHorizontal;
+
+        private boolean isVolume;
+
+        @Override
+        public boolean onDown(MotionEvent e) {
+            isDownTouch = true;
+            return super.onDown(e);
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            if (isDownTouch) {
+                isHorizontal = Math.abs(distanceX) > Math.abs(distanceY);
+                // 如果是屏幕左半部分就是音量
+                isVolume = e1.getX() > getResources().getDisplayMetrics().widthPixels * 0.5f;
+                isDownTouch = false;
+            }
+
+            if (isHorizontal) {
+                int currentPosition = mVideoView.getCurrentPosition();
+                int duration = mVideoView.getDuration();
+                // 单次滑动最大时间差为100秒或播放时长的1/2
+                long deltaMax = Math.min(100 * 1000, duration / 2);
+                // 滑动的时间
+                long delta = (long) (-deltaMax * distanceX / mVideoView.getWidth());
+                long targetPosition = delta + currentPosition;
+                if (targetPosition > duration) {
+                    targetPosition = duration;
+                } else if (targetPosition < 0) {
+                    targetPosition = 0;
+                }
+                seekTo((int) targetPosition);
+            }
+            return super.onScroll(e1, e2, distanceX, distanceY);
+        }
+    };
 
     private void initView(Context context) {
         mAttachActivity = (Activity) context;

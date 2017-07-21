@@ -48,6 +48,10 @@ class VideoDetailActivity : BaseActivity() {
         videoView = findViewById(R.id.ijk_player_view) as IjkPlayerView
     }
 
+    override fun allowSlideSlip(): Boolean {
+        return false
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         videoView?.onDestroy()

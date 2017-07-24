@@ -30,8 +30,8 @@
         "url": "http://www.jianshu.com/p/36e0f7f43a51"},
       {
         "name": "一起来造一个RxJava，揭秘RxJava的实现原理",
-        "url": "http://blog.csdn.net/TellH/article/details/71534704"}
-    {
+        "url": "http://blog.csdn.net/TellH/article/details/71534704"},
+      {
         "name": "重新理解响应式编程",
         "url": "http://www.jianshu.com/p/c95e29854cb1"}
     ],
@@ -116,7 +116,7 @@
         "url": "http://m.blog.csdn.net/article/details?id=70215985"},
       {
         "name": "Android 基于 glide 4.0 封装图片加载库",
-        "url": "http://www.jianshu.com/p/920f36983613"},
+        "url": "http://www.jianshu.com/p/920f36983613"}
     ],
     "image": "https://github.com/bumptech/glide/raw/master/static/glide_logo.png",
     "description": "RxJava Description",
@@ -129,7 +129,7 @@
         "url": "https://juejin.im/post/5924dbf58d6d810058fdde43"},
       {
         "name": "WebView性能、体验分析与优化",
-        "url": "http://tech.meituan.com/WebViewPerf.html"},
+        "url": "http://tech.meituan.com/WebViewPerf.html"}
     ],
     "image": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496394845783&di=e29d3cc0eb00aba0c38e066d048c6589&imgtype=0&src=http%3A%2F%2Fwww.liulanqi.net%2Fuploads%2Fallimg%2F141107%2F1-14110F951354M.jpg",
     "description": "RxJava Description",
@@ -211,7 +211,7 @@
         "url": "http://www.jianshu.com/p/9d988a2f8ff7"},
       {
         "name": "Android单元测试框架Robolectric3.0介绍(二)",
-        "url": "http://www.jianshu.com/p/3aa0e4efcfd3"},
+        "url": "http://www.jianshu.com/p/3aa0e4efcfd3"}
     ],
     "description": "RxJava Description",
     "name": "单元测试"
@@ -242,7 +242,7 @@
         "url": "http://www.jianshu.com/p/60c1b9ddd8ab"},
       {
         "name": "客户端模块化解耦实践 - Router",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099&chksm=8fd9e77cb8ae6e6a56444493a1b54974c42b614f123b9a7abb1d4f52945b084fa7cfe51314bf&mpshare=1&scene=23&srcid=05265LN28JWodtP0UH0iW5K2#rd"},
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099&chksm=8fd9e77cb8ae6e6a56444493a1b54974c42b614f123b9a7abb1d4f52945b084fa7cfe51314bf&mpshare=1&scene=23&srcid=05265LN28JWodtP0UH0iW5K2#rd"}
     ],
     "description": "RxJava Description",
     "name": "路由架构"
@@ -269,7 +269,7 @@
         "url": "https://biaomingzhong.github.io/2017/constraintlayout-tricks-centring/"},
       {
         "name": "ConstraintLayout 属性详解 和Chain的使用",
-        "url": "http://blog.csdn.net/zxt0601/article/details/72683379"},
+        "url": "http://blog.csdn.net/zxt0601/article/details/72683379"}
     ],
     "description": "RxJava Description",
     "name": "ConstraintLayout"
@@ -278,7 +278,7 @@
     "articles": [
       {
         "name": "Android卡顿检测方案",
-        "url": "https://juejin.im/entry/59341c13b123db00641ee758"},
+        "url": "https://juejin.im/entry/59341c13b123db00641ee758"}
     ],
     "description": "RxJava Description",
     "name": "性能优化"
@@ -287,7 +287,7 @@
     "articles": [
       {
         "name": "知乎和简书的Android客户端夜间模式实现方式",
-        "url": "http://blog.coderclock.com/2016/08/28/android/%E7%9F%A5%E4%B9%8E%E5%92%8C%E7%AE%80%E4%B9%A6%E7%9A%84%E5%A4%9C%E9%97%B4%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%A5%97%E8%B7%AF/"},
+        "url": "http://blog.coderclock.com/2016/08/28/android/%E7%9F%A5%E4%B9%8E%E5%92%8C%E7%AE%80%E4%B9%A6%E7%9A%84%E5%A4%9C%E9%97%B4%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%A5%97%E8%B7%AF/"}
     ],
     "description": "RxJava Description",
     "name": "夜间模式"
@@ -296,7 +296,7 @@
     "articles": [
       {
         "name": "如何优雅地从浏览器打开本地应用",
-        "url": "http://blog.zhuimengfb.com/2017/04/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0%E5%BA%94%E7%94%A8/"},
+        "url": "http://blog.zhuimengfb.com/2017/04/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0%E5%BA%94%E7%94%A8/"}
     ],
     "description": "RxJava Description",
     "name": "浏览器调App"
@@ -305,7 +305,7 @@
     "articles": [
       {
         "name": "帮助中国开发者和设计师提高英语水平的学习方法",
-        "url": "https://github.com/byoungd/english-level-up-tips-for-Chinese"},
+        "url": "https://github.com/byoungd/english-level-up-tips-for-Chinese"}
     ],
     "description": "RxJava Description",
     "name": "提高英语水平"
@@ -314,7 +314,7 @@
     "articles": [
       {
         "name": "Android Studio 上传 Library 至 Jcenter 生成依赖的两种方式",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=2650576777&idx=1&sn=16f848047b89b40b7d8e6fc7e28a5d50&chksm=87e061f1b097e8e7ec20df7509b4df90cb79972e572cd75927922aa9b89ed6b508535bc58a2e&mpshare=1&scene=23&srcid=0614vy0Ik0vjhiosniCRZgCt#rd"},
+        "url": "https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=2650576777&idx=1&sn=16f848047b89b40b7d8e6fc7e28a5d50&chksm=87e061f1b097e8e7ec20df7509b4df90cb79972e572cd75927922aa9b89ed6b508535bc58a2e&mpshare=1&scene=23&srcid=0614vy0Ik0vjhiosniCRZgCt#rd"}
     ],
     "description": "RxJava Description",
     "name": "上传 Library 至 Jcenter"
@@ -323,7 +323,7 @@
     "articles": [
       {
         "name": "2017 上半年最酷，最受欢迎的10 个 Android 库",
-        "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c&chksm=bd5654778a21dd61373c27261a2a5ddc0a899de02c9deb0e8e5d74b7f578570bf601b1a0a5c2#rd"},
+        "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c&chksm=bd5654778a21dd61373c27261a2a5ddc0a899de02c9deb0e8e5d74b7f578570bf601b1a0a5c2#rd"}
     ],
     "description": "RxJava Description",
     "name": "热门框架"
@@ -335,7 +335,7 @@
         "url": "https://juejin.im/post/5949fd0c5c497d006b0a8815"},
       {
         "name": "Android Studio2.3下NDK开发流程",
-        "url": "http://www.jianshu.com/p/b4a4cd12d528"},
+        "url": "http://www.jianshu.com/p/b4a4cd12d528"}
     ],
     "description": "RxJava Description",
     "name": "JNI & NDK"
@@ -344,7 +344,7 @@
     "articles": [
       {
         "name": "Android 加密算法",
-        "url": "http://www.jianshu.com/p/c7ec2b8d103b"},
+        "url": "http://www.jianshu.com/p/c7ec2b8d103b"}
     ],
     "description": "RxJava Description",
     "name": "加密算法"
@@ -356,7 +356,7 @@
         "url": "https://juejin.im/post/5947e7e8128fe1006a52d922"},
       {
         "name": "对ProGuard使用方法的思考",
-        "url": "http://www.jianshu.com/p/14af4a474d55"},
+        "url": "http://www.jianshu.com/p/14af4a474d55"}
     ],
     "description": "RxJava Description",
     "name": "代码混淆"
@@ -365,7 +365,7 @@
     "articles": [
       {
         "name": "必备技 |一文看懂Java垃圾回收机制",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMjQ0MTU0NA==&mid=2247484077&idx=1&sn=1b17a10fc52264bdb0bee7038a36fe3b"},
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMjQ0MTU0NA==&mid=2247484077&idx=1&sn=1b17a10fc52264bdb0bee7038a36fe3b"}
     ],
     "description": "RxJava Description",
     "name": "Java垃圾回收"
@@ -387,6 +387,12 @@
       {
         "name": "自定义View之渐变圆环进度条",
         "url": "http://www.jianshu.com/p/20f399dc7bde"},
+      {
+        "name": "从零开始的堆叠卡片控件",
+        "url": "https://juejin.im/post/585ba544128fe10069c2fdc7"},
+      {
+        "name": "自定义ViewGroup_给QQ视频加点特效吧",
+        "url": "http://www.jianshu.com/p/619cc65d66a5"}
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -398,7 +404,7 @@
         "url": "http://tech.glowing.com/cn/advices-to-junior-developers/"},
       {
         "name": "老司机告诉你如何在进击的路上成长— 程序员路上学习经验总结",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484386&idx=1&sn=f2fccf82a5c75fa943bff9c6521b4d18"},
+        "url": "https://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484386&idx=1&sn=f2fccf82a5c75fa943bff9c6521b4d18"}
     ],
     "description": "RxJava Description",
     "name": "能力提升"
@@ -413,7 +419,7 @@
         "url": "http://wingjay.com/2017/05/14/dig_into_leakcanary/"},
       {
         "name": "Android之Handler内存泄漏分析及解决",
-        "url": "http://www.jianshu.com/p/cb9b4b71a820"},
+        "url": "http://www.jianshu.com/p/cb9b4b71a820"}
     ],
     "description": "RxJava Description",
     "name": "内存优化"
@@ -422,7 +428,7 @@
     "articles": [
       {
         "name": "目前最流行的运行时权限请求框架PermissionsDispatcher、RxPermissions和easypermissions的使用和对比",
-        "url": "http://www.jianshu.com/p/07e1a1cff5ad"},
+        "url": "http://www.jianshu.com/p/07e1a1cff5ad"}
     ],
     "description": "RxJava Description",
     "name": "运行时权限"
@@ -431,7 +437,7 @@
     "articles": [
       {
         "name": "【Android】热修复——Tinker（入门）",
-        "url": "http://www.jianshu.com/p/db504b33bca5"},
+        "url": "http://www.jianshu.com/p/db504b33bca5"}
     ],
     "description": "RxJava Description",
     "name": "热更新"
@@ -440,7 +446,7 @@
     "articles": [
       {
         "name": "Android 图片高斯模糊解决方案",
-        "url": "http://www.jianshu.com/p/02da487a2f43"},
+        "url": "http://www.jianshu.com/p/02da487a2f43"}
     ],
     "description": "RxJava Description",
     "name": "高斯模糊"
@@ -449,7 +455,7 @@
       "articles": [
         {
           "name": "rxjava+retrofit+okhttp+mvp 简单实践",
-          "url": "http://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484391&idx=1&sn=f421676926e9a993a592aa32028232ae"},
+          "url": "http://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484391&idx=1&sn=f421676926e9a993a592aa32028232ae"}
       ],
       "description": "RxJava Description",
       "name": "RxJava+Retrofit+OkHttp+MVP"
@@ -467,7 +473,7 @@
           "url": "http://www.jianshu.com/p/d6cc8d218900"},
         {
           "name": "Android高级动画（4）",
-          "url": "http://www.jianshu.com/p/91f8363c3a8c"},
+          "url": "http://www.jianshu.com/p/91f8363c3a8c"}
       ],
       "description": "RxJava Description",
       "name": "动画"
@@ -485,7 +491,7 @@
           "url": "http://www.jianshu.com/p/2ad4c2077dfd"},
         {
           "name": "Android百度地图(四):百度地图运动轨迹纠偏、去噪、绑路之百度鹰眼",
-          "url": "http://www.jianshu.com/p/3c3d9e92739d"},
+          "url": "http://www.jianshu.com/p/3c3d9e92739d"}
       ],
       "description": "RxJava Description",
       "name": "LBS"
@@ -494,7 +500,7 @@
       "articles": [
         {
           "name": "有关项目依赖包发生 Manifest Merge 冲突的详细解决方案",
-          "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"},
+          "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"}
       ],
       "description": "RxJava Description",
       "name": "疑难杂症"
@@ -503,9 +509,13 @@
       "articles": [
         {
           "name": "Android 开发进阶: 自定义 View 1-1 绘制基础",
-          "url": "http://hencoder.com/ui-1-1/"},{
+          "url": "http://hencoder.com/ui-1-1/"},
+        {
           "name": "Android 开发进阶: 自定义 View 1-2 Paint 详解",
           "url": "http://hencoder.com/ui-1-2/"},
+        {
+          "name": "HenCoder Android 开发进阶：自定义 View 1-3 文字的绘制",
+          "url": "http://hencoder.com/ui-1-3/"}
       ],
       "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
       "description": "RxJava Description",
@@ -524,7 +534,7 @@
           "url": "http://www.jianshu.com/p/cc98a6b4f52e"},
         {
           "name": "[大餐]加快gradle构建速度",
-          "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"},
+          "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"}
       ],
       "description": "RxJava Description",
       "name": "Gradle"
@@ -533,7 +543,7 @@
       "articles": [
         {
           "name": "Java服务器接口快速开发之Servlet详细教程",
-          "url": "http://blog.csdn.net/qq_35522272/article/details/71435602"},
+          "url": "http://blog.csdn.net/qq_35522272/article/details/71435602"}
       ],
       "description": "RxJava Description",
       "name": "Servlet"
@@ -542,7 +552,7 @@
       "articles": [
         {
           "name": "Android Studio Live Templates使用详解，提高敲代码的速度",
-          "url": "http://blog.csdn.net/qq137722697/article/details/74085789"},
+          "url": "http://blog.csdn.net/qq137722697/article/details/74085789"}
       ],
       "description": "RxJava Description",
       "name": "Android Studio"
@@ -551,7 +561,7 @@
       "articles": [
         {
           "name": "Android 蓝牙开发(BLE)封装",
-          "url": "http://www.androidchina.net/7004.html"},
+          "url": "http://www.androidchina.net/7004.html"}
       ],
       "description": "RxJava Description",
       "name": "蓝牙开发(BLE)"
@@ -560,9 +570,18 @@
       "articles": [
         {
           "name": "微信支付，支付宝支付，银联支付——三大支付总结",
-          "url": "https://juejin.im/post/596d97576fb9a06bb874a812"},
+          "url": "https://juejin.im/post/596d97576fb9a06bb874a812"}
       ],
       "description": "RxJava Description",
       "name": "支付"
+    },
+    {
+      "articles": [
+        {
+          "name": "国内值得关注的API集合",
+          "url": "http://www.jianshu.com/p/ecf037476603"}
+      ],
+      "description": "RxJava Description",
+      "name": "API集合"
     },
 ]

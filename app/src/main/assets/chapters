@@ -584,4 +584,13 @@
       "description": "RxJava Description",
       "name": "API集合"
     },
+    {
+      "articles": [
+        {
+          "name": "Android多网络环境（wifi,mobile）下强制在某个网络(mobile)访问服务端以及适配",
+          "url": "http://blog.csdn.net/u010019468/article/details/72886859"}
+      ],
+      "description": "RxJava Description",
+      "name": "网络"
+    },
 ]

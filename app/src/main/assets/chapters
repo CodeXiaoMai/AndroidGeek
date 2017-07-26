@@ -188,6 +188,9 @@
       {
         "name": "看完你就知道什么是 HTTPS 了",
         "url": "https://juejin.im/post/592d23630ce46300579882b4"}
+      {
+        "name": "一个故事讲完 Https",
+        "url": "http://barryliu1995.studio/2017/07/20/%E4%B8%80%E4%B8%AA%E6%95%85%E4%BA%8B%E8%AE%B2%E5%AE%8Chttps/"}
     ],
     "description": "RxJava Description",
     "name": "HTTP VS HTTPS"
@@ -242,7 +245,7 @@
         "url": "http://www.jianshu.com/p/60c1b9ddd8ab"},
       {
         "name": "客户端模块化解耦实践 - Router",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099&chksm=8fd9e77cb8ae6e6a56444493a1b54974c42b614f123b9a7abb1d4f52945b084fa7cfe51314bf&mpshare=1&scene=23&srcid=05265LN28JWodtP0UH0iW5K2#rd"}
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099"}
     ],
     "description": "RxJava Description",
     "name": "路由架构"
@@ -314,7 +317,7 @@
     "articles": [
       {
         "name": "Android Studio 上传 Library 至 Jcenter 生成依赖的两种方式",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=2650576777&idx=1&sn=16f848047b89b40b7d8e6fc7e28a5d50&chksm=87e061f1b097e8e7ec20df7509b4df90cb79972e572cd75927922aa9b89ed6b508535bc58a2e&mpshare=1&scene=23&srcid=0614vy0Ik0vjhiosniCRZgCt#rd"}
+        "url": "https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=2650576777&idx=1&sn=16f848047b89b40b7d8e6fc7e28a5d50"}
     ],
     "description": "RxJava Description",
     "name": "上传 Library 至 Jcenter"
@@ -323,7 +326,7 @@
     "articles": [
       {
         "name": "2017 上半年最酷，最受欢迎的10 个 Android 库",
-        "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c&chksm=bd5654778a21dd61373c27261a2a5ddc0a899de02c9deb0e8e5d74b7f578570bf601b1a0a5c2#rd"}
+        "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c"}
     ],
     "description": "RxJava Description",
     "name": "热门框架"
@@ -508,6 +511,9 @@
     {
       "articles": [
         {
+          "name": "掘金 AMA - 听 HenCoder 作者扔物线谈移动开发前景",
+          "url": "https://juejin.im/post/5976acf26fb9a06bb54076fa"},
+        {
           "name": "Android 开发进阶: 自定义 View 1-1 绘制基础",
           "url": "http://hencoder.com/ui-1-1/"},
         {
@@ -535,6 +541,9 @@
         {
           "name": "[大餐]加快gradle构建速度",
           "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"}
+        {
+          "name": "Gradle从入门到实战 - Groovy基础",
+          "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492338&idx=1&sn=49cb619fb057720db505b7c3b8f894e8"}
       ],
       "description": "RxJava Description",
       "name": "Gradle"

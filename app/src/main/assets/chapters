@@ -33,7 +33,11 @@
         "url": "http://blog.csdn.net/TellH/article/details/71534704"},
       {
         "name": "重新理解响应式编程",
-        "url": "http://www.jianshu.com/p/c95e29854cb1"}
+        "url": "http://www.jianshu.com/p/c95e29854cb1"},
+      {
+        "name": "这可能是最好的RxJava 2.x 教程（完结版）",
+        "url": "http://www.jianshu.com/p/0cd258eecf60"
+      }
     ],
     "description": "RxJava Description",
     "image": "http://reactivex.io/assets/Rx_Logo_S.png",
@@ -187,7 +191,7 @@
         "url": "http://www.cnblogs.com/alisecurity/p/5939336.html"},
       {
         "name": "看完你就知道什么是 HTTPS 了",
-        "url": "https://juejin.im/post/592d23630ce46300579882b4"}
+        "url": "https://juejin.im/post/592d23630ce46300579882b4"},
       {
         "name": "一个故事讲完 Https",
         "url": "http://barryliu1995.studio/2017/07/20/%E4%B8%80%E4%B8%AA%E6%95%85%E4%BA%8B%E8%AE%B2%E5%AE%8Chttps/"}
@@ -455,151 +459,160 @@
     "name": "高斯模糊"
   },
   {
-      "articles": [
-        {
-          "name": "rxjava+retrofit+okhttp+mvp 简单实践",
-          "url": "http://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484391&idx=1&sn=f421676926e9a993a592aa32028232ae"}
-      ],
-      "description": "RxJava Description",
-      "name": "RxJava+Retrofit+OkHttp+MVP"
-    },
-    {
-      "articles": [
-        {
-          "name": "Android高级动画（1）",
-          "url": "http://www.jianshu.com/p/48554844a2db"},
-        {
-          "name": "Android高级动画（2）",
-          "url": "http://www.jianshu.com/p/89cfd9042b1e"},
-        {
-          "name": "Android高级动画（3）",
-          "url": "http://www.jianshu.com/p/d6cc8d218900"},
-        {
-          "name": "Android高级动画（4）",
-          "url": "http://www.jianshu.com/p/91f8363c3a8c"}
-      ],
-      "description": "RxJava Description",
-      "name": "动画"
-    },
-    {
-      "articles": [
-        {
-          "name": "Android百度地图(一):百度地图定位sdk 类方法参数、定位原理详细介绍",
-          "url": "http://www.jianshu.com/p/29ccac3e1e42"},
-        {
-          "name": "Android百度地图(二):百度定位与地图结合显示位置点",
-          "url": "http://www.jianshu.com/p/fdd1ba783495"},
-        {
-          "name": "Android百度地图(三):百度地图画运动轨迹及图层点击事件处理",
-          "url": "http://www.jianshu.com/p/2ad4c2077dfd"},
-        {
-          "name": "Android百度地图(四):百度地图运动轨迹纠偏、去噪、绑路之百度鹰眼",
-          "url": "http://www.jianshu.com/p/3c3d9e92739d"}
-      ],
-      "description": "RxJava Description",
-      "name": "LBS"
-    },
-    {
-      "articles": [
-        {
-          "name": "有关项目依赖包发生 Manifest Merge 冲突的详细解决方案",
-          "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"}
-      ],
-      "description": "RxJava Description",
-      "name": "疑难杂症"
-    },
-    {
-      "articles": [
-        {
-          "name": "掘金 AMA - 听 HenCoder 作者扔物线谈移动开发前景",
-          "url": "https://juejin.im/post/5976acf26fb9a06bb54076fa"},
-        {
-          "name": "Android 开发进阶: 自定义 View 1-1 绘制基础",
-          "url": "http://hencoder.com/ui-1-1/"},
-        {
-          "name": "Android 开发进阶: 自定义 View 1-2 Paint 详解",
-          "url": "http://hencoder.com/ui-1-2/"},
-        {
-          "name": "HenCoder Android 开发进阶：自定义 View 1-3 文字的绘制",
-          "url": "http://hencoder.com/ui-1-3/"}
-      ],
-      "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
-      "description": "RxJava Description",
-      "name": "HenCoder 专栏"
-    },
-    {
-      "articles": [
-        {
-          "name": "使用 Gradle 实现一套代码开发多个应用",
-          "url": "https://juejin.im/post/59648441f265da6c415f3078"},
-        {
-          "name": "体验飞一般的感觉，将Android 构建速度提升10倍以上",
-          "url": "http://www.jianshu.com/p/fb11b02af8f2"},
-        {
-          "name": "Gradle的高级技巧",
-          "url": "http://www.jianshu.com/p/cc98a6b4f52e"},
-        {
-          "name": "[大餐]加快gradle构建速度",
-          "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"}
-        {
-          "name": "Gradle从入门到实战 - Groovy基础",
-          "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492338&idx=1&sn=49cb619fb057720db505b7c3b8f894e8"}
-      ],
-      "description": "RxJava Description",
-      "name": "Gradle"
-    },
-    {
-      "articles": [
-        {
-          "name": "Java服务器接口快速开发之Servlet详细教程",
-          "url": "http://blog.csdn.net/qq_35522272/article/details/71435602"}
-      ],
-      "description": "RxJava Description",
-      "name": "Servlet"
-    },
-    {
-      "articles": [
-        {
-          "name": "Android Studio Live Templates使用详解，提高敲代码的速度",
-          "url": "http://blog.csdn.net/qq137722697/article/details/74085789"}
-      ],
-      "description": "RxJava Description",
-      "name": "Android Studio"
-    },
-    {
-      "articles": [
-        {
-          "name": "Android 蓝牙开发(BLE)封装",
-          "url": "http://www.androidchina.net/7004.html"}
-      ],
-      "description": "RxJava Description",
-      "name": "蓝牙开发(BLE)"
-    },
-    {
-      "articles": [
-        {
-          "name": "微信支付，支付宝支付，银联支付——三大支付总结",
-          "url": "https://juejin.im/post/596d97576fb9a06bb874a812"}
-      ],
-      "description": "RxJava Description",
-      "name": "支付"
-    },
-    {
-      "articles": [
-        {
-          "name": "国内值得关注的API集合",
-          "url": "http://www.jianshu.com/p/ecf037476603"}
-      ],
-      "description": "RxJava Description",
-      "name": "API集合"
-    },
-    {
-      "articles": [
-        {
-          "name": "Android多网络环境（wifi,mobile）下强制在某个网络(mobile)访问服务端以及适配",
-          "url": "http://blog.csdn.net/u010019468/article/details/72886859"}
-      ],
-      "description": "RxJava Description",
-      "name": "网络"
-    },
+    "articles": [
+      {
+        "name": "rxjava+retrofit+okhttp+mvp 简单实践",
+        "url": "http://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484391&idx=1&sn=f421676926e9a993a592aa32028232ae"}
+    ],
+    "description": "RxJava Description",
+    "name": "RxJava+Retrofit+OkHttp+MVP"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android高级动画（1）",
+        "url": "http://www.jianshu.com/p/48554844a2db"},
+      {
+        "name": "Android高级动画（2）",
+        "url": "http://www.jianshu.com/p/89cfd9042b1e"},
+      {
+        "name": "Android高级动画（3）",
+        "url": "http://www.jianshu.com/p/d6cc8d218900"},
+      {
+        "name": "Android高级动画（4）",
+        "url": "http://www.jianshu.com/p/91f8363c3a8c"}
+    ],
+    "description": "RxJava Description",
+    "name": "动画"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android百度地图(一):百度地图定位sdk 类方法参数、定位原理详细介绍",
+        "url": "http://www.jianshu.com/p/29ccac3e1e42"},
+      {
+        "name": "Android百度地图(二):百度定位与地图结合显示位置点",
+        "url": "http://www.jianshu.com/p/fdd1ba783495"},
+      {
+        "name": "Android百度地图(三):百度地图画运动轨迹及图层点击事件处理",
+        "url": "http://www.jianshu.com/p/2ad4c2077dfd"},
+      {
+        "name": "Android百度地图(四):百度地图运动轨迹纠偏、去噪、绑路之百度鹰眼",
+        "url": "http://www.jianshu.com/p/3c3d9e92739d"}
+    ],
+    "description": "RxJava Description",
+    "name": "LBS"
+  },
+  {
+    "articles": [
+      {
+        "name": "有关项目依赖包发生 Manifest Merge 冲突的详细解决方案",
+        "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"}
+    ],
+    "description": "RxJava Description",
+    "name": "疑难杂症"
+  },
+  {
+    "articles": [
+      {
+        "name": "掘金 AMA - 听 HenCoder 作者扔物线谈移动开发前景",
+        "url": "https://juejin.im/post/5976acf26fb9a06bb54076fa"},
+      {
+        "name": "Android 开发进阶: 自定义 View 1-1 绘制基础",
+        "url": "http://hencoder.com/ui-1-1/"},
+      {
+        "name": "Android 开发进阶: 自定义 View 1-2 Paint 详解",
+        "url": "http://hencoder.com/ui-1-2/"},
+      {
+        "name": "HenCoder Android 开发进阶：自定义 View 1-3 文字的绘制",
+        "url": "http://hencoder.com/ui-1-3/"}
+    ],
+    "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
+    "description": "RxJava Description",
+    "name": "HenCoder 专栏"
+  },
+  {
+    "articles": [
+      {
+        "name": "使用 Gradle 实现一套代码开发多个应用",
+        "url": "https://juejin.im/post/59648441f265da6c415f3078"},
+      {
+        "name": "体验飞一般的感觉，将Android 构建速度提升10倍以上",
+        "url": "http://www.jianshu.com/p/fb11b02af8f2"},
+      {
+        "name": "Gradle的高级技巧",
+        "url": "http://www.jianshu.com/p/cc98a6b4f52e"},
+      {
+        "name": "[大餐]加快gradle构建速度",
+        "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"},
+      {
+        "name": "Gradle从入门到实战 - Groovy基础",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492338&idx=1&sn=49cb619fb057720db505b7c3b8f894e8"}
+    ],
+    "description": "RxJava Description",
+    "name": "Gradle"
+  },
+  {
+    "articles": [
+      {
+        "name": "Java服务器接口快速开发之Servlet详细教程",
+        "url": "http://blog.csdn.net/qq_35522272/article/details/71435602"}
+    ],
+    "description": "RxJava Description",
+    "name": "Servlet"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android Studio Live Templates使用详解，提高敲代码的速度",
+        "url": "http://blog.csdn.net/qq137722697/article/details/74085789"}
+    ],
+    "description": "RxJava Description",
+    "name": "Android Studio"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 蓝牙开发(BLE)封装",
+        "url": "http://www.androidchina.net/7004.html"}
+    ],
+    "description": "RxJava Description",
+    "name": "蓝牙开发(BLE)"
+  },
+  {
+    "articles": [
+      {
+        "name": "微信支付，支付宝支付，银联支付——三大支付总结",
+        "url": "https://juejin.im/post/596d97576fb9a06bb874a812"}
+    ],
+    "description": "RxJava Description",
+    "name": "支付"
+  },
+  {
+    "articles": [
+      {
+        "name": "国内值得关注的API集合",
+        "url": "http://www.jianshu.com/p/ecf037476603"}
+    ],
+    "description": "RxJava Description",
+    "name": "API集合"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android多网络环境（wifi,mobile）下强制在某个网络(mobile)访问服务端以及适配",
+        "url": "http://blog.csdn.net/u010019468/article/details/72886859"}
+    ],
+    "description": "RxJava Description",
+    "name": "网络"
+  },
+  {
+    "articles": [
+      {
+        "name": "解决 Retrofit 多 BaseUrl 及运行时动态改变 BaseUrl ?",
+        "url": "https://juejin.im/post/5978567d51882517921cdcfd"}
+    ],
+    "description": "RxJava Description",
+    "name": "Retrofit"
+  }
 ]

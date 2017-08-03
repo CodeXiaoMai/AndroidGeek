@@ -30,4 +30,16 @@
         <attr name="textColor" />
         <attr name="isCircle" />
     </declare-styleable>
+
+    <declare-styleable name="CircleProgressView">
+        <attr name="cpv_progress_start_color" format="color" />
+        <attr name="cpv_progress_end_color" format="color" />
+        <attr name="cpv_background_start_color" format="color" />
+        <attr name="cpv_background_end_color" format="color" />
+        <attr name="cpv_progress" format="float" />
+        <attr name="cpv_progress_stroke_width" format="dimension" />
+        <attr name="cpv_start_angle" format="float" />
+        <attr name="cpv_sweep_angle" format="float" />
+        <attr name="cpv_show_anim" format="boolean" />
+    </declare-styleable>
 </resources>

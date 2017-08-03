@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/clockBackgroundPrimary">
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <com.xiaomai.geek.ui.widget.CircleProgressView
+            android:id="@+id/circleProgressView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/blue"
+            app:cpv_background_end_color="#00ffffff"
+            app:cpv_background_start_color="#80ffffff"
+            app:cpv_progress="90"
+            app:cpv_progress_end_color="#D9B262"
+            app:cpv_progress_start_color="#ffffff" />
+
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp" />
+            android:background="?attr/clockBackgroundPrimary">
 
-        <include layout="@layout/empty_view" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp" />
 
-        <include layout="@layout/error_view" />
-    </android.support.design.widget.CoordinatorLayout>
+            <include layout="@layout/empty_view" />
+
+            <include layout="@layout/error_view" />
+        </android.support.design.widget.CoordinatorLayout>
+    </LinearLayout>
+
 </android.support.v4.widget.SwipeRefreshLayout>

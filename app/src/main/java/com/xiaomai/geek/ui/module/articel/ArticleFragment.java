@@ -1,5 +1,6 @@
 package com.xiaomai.geek.ui.module.articel;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +17,7 @@ import com.xiaomai.geek.data.module.Chapter;
 import com.xiaomai.geek.di.component.MainComponent;
 import com.xiaomai.geek.presenter.article.ChapterPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
+import com.xiaomai.geek.ui.widget.CircleProgressView;
 import com.xiaomai.mvp.lce.ILceView;
 
 import java.util.List;
@@ -41,6 +43,8 @@ public class ArticleFragment extends BaseFragment implements ILceView<List<Chapt
     RelativeLayout errorRootLayout;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
+    @BindView(R.id.circleProgressView)
+    CircleProgressView circleProgressView;
     Unbinder unbinder;
 
     @Inject
@@ -94,6 +98,12 @@ public class ArticleFragment extends BaseFragment implements ILceView<List<Chapt
                 loadData();
             }
         });
+        ObjectAnimator.ofFloat(circleProgressView, "progress", 0f,
+                circleProgressView.getProgress() * 1.01f,
+                circleProgressView.getProgress() * 0.95f,
+                circleProgressView.getProgress() * 1.005f,
+                circleProgressView.getProgress())
+                .setDuration(2500).start();
     }
 
     @Override

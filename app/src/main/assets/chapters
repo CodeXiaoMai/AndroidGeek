@@ -194,10 +194,13 @@
         "url": "https://juejin.im/post/592d23630ce46300579882b4"},
       {
         "name": "一个故事讲完 Https",
-        "url": "http://barryliu1995.studio/2017/07/20/%E4%B8%80%E4%B8%AA%E6%95%85%E4%BA%8B%E8%AE%B2%E5%AE%8Chttps/"}
+        "url": "http://barryliu1995.studio/2017/07/20/%E4%B8%80%E4%B8%AA%E6%95%85%E4%BA%8B%E8%AE%B2%E5%AE%8Chttps/"},
+      {
+        "name": "关于 TCP/IP，必知必会的十个问题",
+        "url": "https://juejin.im/post/598ba1d06fb9a03c4d6464ab"}
     ],
     "description": "RxJava Description",
-    "name": "HTTP VS HTTPS"
+    "name": "网络协议"
   },
   {
     "articles": [
@@ -227,7 +230,10 @@
     "articles": [
       {
         "name": "Java基础——拿起枪炮，面试复习",
-        "url": "http://m.blog.csdn.net/article/details?id=72550701"}
+        "url": "http://m.blog.csdn.net/article/details?id=72550701"},
+      {
+        "name": "Java的泛型解析",
+        "url": "http://www.jianshu.com/p/2ad33ed2f72a"}
     ],
     "image": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496393667390&di=bccf31e6e686690b9ac6b0470f989ec6&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2F512687%2FIntro%2F1461059814.jpg",
     "description": "RxJava Description",
@@ -294,10 +300,16 @@
     "articles": [
       {
         "name": "知乎和简书的Android客户端夜间模式实现方式",
-        "url": "http://blog.coderclock.com/2016/08/28/android/%E7%9F%A5%E4%B9%8E%E5%92%8C%E7%AE%80%E4%B9%A6%E7%9A%84%E5%A4%9C%E9%97%B4%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%A5%97%E8%B7%AF/"}
+        "url": "http://blog.coderclock.com/2016/08/28/android/%E7%9F%A5%E4%B9%8E%E5%92%8C%E7%AE%80%E4%B9%A6%E7%9A%84%E5%A4%9C%E9%97%B4%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%A5%97%E8%B7%AF/"},
+      {
+        "name": "Android主题换肤 无缝切换",
+        "url": "http://www.jianshu.com/p/af7c0585dd5b"},
+      {
+        "name": "Android-skin-support",
+        "url": "https://github.com/ximsfei/Android-skin-support/blob/master/README.md"}
     ],
     "description": "RxJava Description",
-    "name": "夜间模式"
+    "name": "主题换肤"
   },
   {
     "articles": [
@@ -330,7 +342,13 @@
     "articles": [
       {
         "name": "2017 上半年最酷，最受欢迎的10 个 Android 库",
-        "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c"}
+        "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c"},
+      {
+        "name": "还在为 ViewPager 的改装而烦恼？推荐学习阿里巴巴的这个开源项目",
+        "url": "https://juejin.im/entry/597eabdd6fb9a03c4242f14f"},
+      {
+        "name": "开源整理：三个优秀的Android图表开源控件",
+        "url": "http://blog.coderclock.com/2017/08/01/android/open-source-android-chart-library/"}
     ],
     "description": "RxJava Description",
     "name": "热门框架"
@@ -342,7 +360,10 @@
         "url": "https://juejin.im/post/5949fd0c5c497d006b0a8815"},
       {
         "name": "Android Studio2.3下NDK开发流程",
-        "url": "http://www.jianshu.com/p/b4a4cd12d528"}
+        "url": "http://www.jianshu.com/p/b4a4cd12d528"},
+      {
+        "name": "Android NDK开发扫盲及最新CMake的编译使用",
+        "url": "http://www.jianshu.com/p/6332418b12b1"}
     ],
     "description": "RxJava Description",
     "name": "JNI & NDK"
@@ -399,7 +420,16 @@
         "url": "https://juejin.im/post/585ba544128fe10069c2fdc7"},
       {
         "name": "自定义ViewGroup_给QQ视频加点特效吧",
-        "url": "http://www.jianshu.com/p/619cc65d66a5"}
+        "url": "http://www.jianshu.com/p/619cc65d66a5"},
+      {
+        "name": "用SpannableString打造绚丽多彩的文本显示效果",
+        "url": "http://www.jianshu.com/p/84067ad289d2"},
+      {
+        "name": "Android 自定义View 字母索引条",
+        "url": "http://www.jianshu.com/p/d0d3ae674de8"},
+      {
+        "name": "一步步教你实现完整的复杂列表布局",
+        "url": "http://blog.csdn.net/guanyingcao/article/details/75170921"}
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -524,8 +554,11 @@
         "name": "Android 开发进阶: 自定义 View 1-2 Paint 详解",
         "url": "http://hencoder.com/ui-1-2/"},
       {
-        "name": "HenCoder Android 开发进阶：自定义 View 1-3 文字的绘制",
-        "url": "http://hencoder.com/ui-1-3/"}
+        "name": "Android 开发进阶：自定义 View 1-3 文字的绘制",
+        "url": "http://hencoder.com/ui-1-3/"},
+      {
+        "name": "Android 开发进阶：自定义 View 1-4 Canvas 对绘制的辅助",
+        "url": "http://hencoder.com/ui-1-4/"}
     ],
     "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
     "description": "RxJava Description",
@@ -614,5 +647,50 @@
     ],
     "description": "RxJava Description",
     "name": "Retrofit"
-  }
+  },
+  {
+    "articles": [
+      {
+        "name": "Android的编译打包流程详解",
+        "url": "http://www.jianshu.com/p/019c735050e0"}
+    ],
+    "description": "RxJava Description",
+    "name": "编译打包"
+  },
+  {
+    "articles": [
+      {
+        "name": "Java中的闭包之争",
+        "url": "https://sylvanassun.github.io/2017/07/30/2017-07-30-JavaClosure/"}
+    ],
+    "description": "RxJava Description",
+    "name": "闭包"},
+  {
+    "articles": [
+      {
+        "name": "Android完美适配dimens.xml脚本",
+        "url": "http://blog.csdn.net/github_33304260/article/details/76383298"}
+    ],
+    "description": "RxJava Description",
+    "name": "屏幕适配"},
+  {
+    "articles": [
+      {
+        "name": "android线程间通信之handler",
+        "url": "http://www.androidchina.net/7192.html"}
+    ],
+    "description": "RxJava Description",
+    "name": "Handler"},
+  {
+    "articles": [
+      {
+        "name": "Activity具体是怎么创建的？又是怎么显示出来的？",
+        "url": "http://www.androidchina.net/7175.html"},
+      {
+        "name": "Android系统服务（一）解析ActivityManagerService(AMS)",
+        "url": "https://juejin.im/post/598af5e4f265da3e13576c99"}
+    ],
+    "description": "RxJava Description",
+    "name": "Android 源码解析"}
+
 ]

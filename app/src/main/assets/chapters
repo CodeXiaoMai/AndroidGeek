@@ -291,7 +291,10 @@
     "articles": [
       {
         "name": "Android卡顿检测方案",
-        "url": "https://juejin.im/entry/59341c13b123db00641ee758"}
+        "url": "https://juejin.im/entry/59341c13b123db00641ee758"},
+      {
+        "name": "Android性能优化你了解多少",
+        "url": "https://juejin.im/post/599300596fb9a0247537bc1e"}
     ],
     "description": "RxJava Description",
     "name": "性能优化"
@@ -306,7 +309,10 @@
         "url": "http://www.jianshu.com/p/af7c0585dd5b"},
       {
         "name": "Android-skin-support",
-        "url": "https://github.com/ximsfei/Android-skin-support/blob/master/README.md"}
+        "url": "https://github.com/ximsfei/Android-skin-support/blob/master/README.md"},
+      {
+        "name": "Android主题切换（Theme）实现日夜间功能",
+        "url": "http://www.jianshu.com/u/dbae9ac95c78"}
     ],
     "description": "RxJava Description",
     "name": "主题换肤"
@@ -429,7 +435,10 @@
         "url": "http://www.jianshu.com/p/d0d3ae674de8"},
       {
         "name": "一步步教你实现完整的复杂列表布局",
-        "url": "http://blog.csdn.net/guanyingcao/article/details/75170921"}
+        "url": "http://blog.csdn.net/guanyingcao/article/details/75170921"},
+      {
+        "name": "Android关于沉浸式状态栏总结",
+        "url": "https://juejin.im/post/5989ded56fb9a03c3b6c8bde"}
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -465,7 +474,10 @@
     "articles": [
       {
         "name": "目前最流行的运行时权限请求框架PermissionsDispatcher、RxPermissions和easypermissions的使用和对比",
-        "url": "http://www.jianshu.com/p/07e1a1cff5ad"}
+        "url": "http://www.jianshu.com/p/07e1a1cff5ad"},
+      {
+        "name": "Android 8.0 运行时权限策略变化和适配方案",
+        "url": "https://juejin.im/post/5991476f5188254898192ab9"}
     ],
     "description": "RxJava Description",
     "name": "运行时权限"
@@ -510,7 +522,10 @@
         "url": "http://www.jianshu.com/p/d6cc8d218900"},
       {
         "name": "Android高级动画（4）",
-        "url": "http://www.jianshu.com/p/91f8363c3a8c"}
+        "url": "http://www.jianshu.com/p/91f8363c3a8c"},
+      {
+        "name": "使用 Circular Reveal 动画让页面跳转更炫酷",
+        "url": "https://juejin.im/post/5994dcf9518825242238bd06"}
     ],
     "description": "RxJava Description",
     "name": "动画"
@@ -558,7 +573,11 @@
         "url": "http://hencoder.com/ui-1-3/"},
       {
         "name": "Android 开发进阶：自定义 View 1-4 Canvas 对绘制的辅助",
-        "url": "http://hencoder.com/ui-1-4/"}
+        "url": "http://hencoder.com/ui-1-4/"},
+      {
+        "name": "HenCoder Android 开发进阶：自定义 View 1-5 绘制顺序",
+        "url": "http://hencoder.com/ui-1-5/"}
+
     ],
     "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
     "description": "RxJava Description",
@@ -598,7 +617,10 @@
     "articles": [
       {
         "name": "Android Studio Live Templates使用详解，提高敲代码的速度",
-        "url": "http://blog.csdn.net/qq137722697/article/details/74085789"}
+        "url": "http://blog.csdn.net/qq137722697/article/details/74085789"},
+      {
+        "name": "图解 Android Studio 技巧 | 玩转 TODO 及自定义 TODO",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxOTU1MDg5Ng==&mid=2247484097&idx=1&sn=e893157f24d7f8c5b59c40afb1fef3c8"}
     ],
     "description": "RxJava Description",
     "name": "Android Studio"
@@ -652,7 +674,10 @@
     "articles": [
       {
         "name": "Android的编译打包流程详解",
-        "url": "http://www.jianshu.com/p/019c735050e0"}
+        "url": "http://www.jianshu.com/p/019c735050e0"},
+      {
+        "name": "android多渠道打包最快方案",
+        "url": "https://juejin.im/post/584e53cfa22b9d0058e5467c"}
     ],
     "description": "RxJava Description",
     "name": "编译打包"
@@ -688,9 +713,43 @@
         "url": "http://www.androidchina.net/7175.html"},
       {
         "name": "Android系统服务（一）解析ActivityManagerService(AMS)",
-        "url": "https://juejin.im/post/598af5e4f265da3e13576c99"}
+        "url": "https://juejin.im/post/598af5e4f265da3e13576c99"},
+      {
+        "name": "CardView源码解析-View阴影",
+        "url": "https://juejin.im/post/5991aaa76fb9a03c5e442289"}
     ],
     "description": "RxJava Description",
-    "name": "Android 源码解析"}
-
+    "name": "Android 源码解析"},
+  {
+    "articles": [
+      {
+        "name": "Android 8.0 的这些新特性你都有了解过吗",
+        "url": "https://juejin.im/post/599049316fb9a03c391b93c4"}
+    ],
+    "description": "RxJava Description",
+    "name": "Android 新特性"},
+  {
+    "articles": [
+      {
+        "name": "Android数据库调研以及GreenDao3使用",
+        "url": "http://glanwang.com/2017/08/16/Android/Android%E6%95%B0%E6%8D%AE%E5%BA%93%E8%B0%83%E7%A0%94%E4%BB%A5%E5%8F%8AGreenDao3%E4%BD%BF%E7%94%A8/"}
+    ],
+    "description": "RxJava Description",
+    "name": "数据库"},
+  {
+    "articles": [
+      {
+        "name": "RecyclerView配合DiffUtil，好用到飞",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484612&idx=1&sn=5ab55bbee2d9bb15078f67b0205e1729"}
+    ],
+    "description": "RxJava Description",
+    "name": "工具类"},
+  {
+    "articles": [
+      {
+        "name": "Splash 闪屏页流程与功能分析",
+        "url": "http://www.jianshu.com/p/6e65107d1a5e"}
+    ],
+    "description": "RxJava Description",
+    "name": "功能模块"}
 ]

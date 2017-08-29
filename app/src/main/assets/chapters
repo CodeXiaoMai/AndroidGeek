@@ -113,11 +113,14 @@
         "name": "Android图片加载框架最全解析（二），从源码的角度理解Glide的执行流程",
         "url": "http://m.blog.csdn.net/article/details?id=53939176"},
       {
-        "name": " Android图片加载框架最全解析（三），深入探究Glide的缓存机制",
+        "name": "Android图片加载框架最全解析（三），深入探究Glide的缓存机制",
         "url": "http://m.blog.csdn.net/article/details?id=54895665"},
       {
         "name": "Android图片加载框架最全解析（四），玩转Glide的回调与监听",
         "url": "http://m.blog.csdn.net/article/details?id=70215985"},
+      {
+        "name": "Android图片加载框架最全解析（五），Glide强大的图片变换功能",
+        "url": "http://blog.csdn.net/guolin_blog/article/details/71524668"},
       {
         "name": "Android 基于 glide 4.0 封装图片加载库",
         "url": "http://www.jianshu.com/p/920f36983613"}
@@ -144,6 +147,9 @@
       {
         "name": "Android 相关面试知识点整理",
         "url": "http://www.jianshu.com/p/b87e9f853597"},
+      {
+        "name": "面试复习——Android工程师之Android面试大纲",
+        "url": "http://blog.csdn.net/qq_30379689/article/details/73698192"},
       {
         "name": "Java方向如何准备BAT技术面试答案(汇总版)",
         "url": "http://www.jianshu.com/p/1f1d3193d9e3"},
@@ -438,7 +444,16 @@
         "url": "http://blog.csdn.net/guanyingcao/article/details/75170921"},
       {
         "name": "Android关于沉浸式状态栏总结",
-        "url": "https://juejin.im/post/5989ded56fb9a03c3b6c8bde"}
+        "url": "https://juejin.im/post/5989ded56fb9a03c3b6c8bde"},
+      {
+        "name": "Android实现dialog的3D翻转",
+        "url": "http://www.jianshu.com/p/65f50b6ecaca"},
+      {
+        "name": "Android 带你撸一个好玩的 DoodleView（涂鸦）",
+        "url": "http://www.jianshu.com/p/f05f71446771"},
+      {
+        "name": "自定义View之仿小米MIUI天气24小时预报折线图",
+        "url": "http://blog.csdn.net/ccy0122/article/details/76464825"}
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -448,6 +463,12 @@
       {
         "name": "如何提升你的能力？给年轻程序员的几条建议",
         "url": "http://tech.glowing.com/cn/advices-to-junior-developers/"},
+      {
+        "name": "30 多个短小而又专业的最佳安卓开发者建议",
+        "url": "http://liuqingwen.me/blog/2017/08/14/translation-of-30-bite-sized-pro-tips-to-become-a-better-android-developer/"},
+      {
+        "name": "Android开发进阶知识图谱",
+        "url": "http://appkfz.com/2017/08/27/android-levelup-roadmap/"},
       {
         "name": "老司机告诉你如何在进击的路上成长— 程序员路上学习经验总结",
         "url": "https://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484386&idx=1&sn=f2fccf82a5c75fa943bff9c6521b4d18"}
@@ -599,7 +620,10 @@
         "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"},
       {
         "name": "Gradle从入门到实战 - Groovy基础",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492338&idx=1&sn=49cb619fb057720db505b7c3b8f894e8"}
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492338&idx=1&sn=49cb619fb057720db505b7c3b8f894e8"},
+      {
+        "name": "Android开发中Gradle的高级用法",
+        "url": "http://www.jianshu.com/p/ce50e5c74a48"}
     ],
     "description": "RxJava Description",
     "name": "Gradle"
@@ -629,7 +653,19 @@
     "articles": [
       {
         "name": "Android 蓝牙开发(BLE)封装",
-        "url": "http://www.androidchina.net/7004.html"}
+        "url": "http://www.androidchina.net/7004.html"},
+      {
+        "name": "Android BLE蓝牙详细解读",
+        "url": "http://www.jianshu.com/p/d70e22ce61bc"},
+      {
+        "name": "深入了解Android蓝牙Bluetooth——《基础篇》",
+        "url": "http://blog.csdn.net/androidstarjack/article/details/60468468"},
+      {
+        "name": "Android蓝牙那点事——深入了解Android蓝牙Bluetooth《进阶篇》",
+        "url": "http://blog.csdn.net/androidstarjack/article/details/60595241"},
+      {
+        "name": "深入了解Android蓝牙Bluetooth ——《总结篇》",
+        "url": "http://blog.csdn.net/androidstarjack/article/details/60781892"}
     ],
     "description": "RxJava Description",
     "name": "蓝牙开发(BLE)"
@@ -724,7 +760,13 @@
     "articles": [
       {
         "name": "Android 8.0 的这些新特性你都有了解过吗",
-        "url": "https://juejin.im/post/599049316fb9a03c391b93c4"}
+        "url": "https://juejin.im/post/599049316fb9a03c391b93c4"},
+      {
+        "name": "View.post() 在 7.0 中的差异",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484701&idx=1&sn=982d4bbc1a7b99a3d39f178830f46e1f"},
+      {
+        "name": "Android 7.0脱坑指南",
+        "url": "http://blog.csdn.net/qq_17766199/article/details/77404712"}
     ],
     "description": "RxJava Description",
     "name": "Android 新特性"},
@@ -751,5 +793,13 @@
         "url": "http://www.jianshu.com/p/6e65107d1a5e"}
     ],
     "description": "RxJava Description",
-    "name": "功能模块"}
+    "name": "功能模块"},
+  {
+    "articles": [
+      {
+        "name": "Android中利用AXMLEditor工具不进行反编译就篡改apk文件",
+        "url": "http://www.wjdiankong.cn/android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%8D%E8%BF%9B%E8%A1%8C%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B0%B1%E7%AF%A1%E6%94%B9apk%E6%96%87%E4%BB%B6/"}
+    ],
+    "description": "RxJava Description",
+    "name": "反编译"}
 ]

@@ -40,7 +40,7 @@ public class InputMethodUtils {
     }
 
     public static boolean hideSoftInput(Activity activity) {
-        View view = activity.getCurrentFocus();
+        View view = activity.getWindow().getDecorView();
         if (view != null) {
             return hideSoftInput(view);
         }
@@ -50,5 +50,4 @@ public class InputMethodUtils {
     public static boolean isActive(Context context) {
         return getInputMethodManager(context).isActive();
     }
-
 }

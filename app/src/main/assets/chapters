@@ -99,7 +99,10 @@
         "url": "http://m.blog.csdn.net/article/details?id=37992017"},
       {
         "name": "Android Fragment 你应该知道的一切",
-        "url": "http://m.blog.csdn.net/article/details?id=42628537"}
+        "url": "http://m.blog.csdn.net/article/details?id=42628537"},
+      {
+        "name": "Android 你可能需要的NiceDialog",
+        "url": "http://www.jianshu.com/p/0529433d4522"}
     ],
     "description": "RxJava Description",
     "name": "Fragment"
@@ -300,7 +303,10 @@
         "url": "https://juejin.im/entry/59341c13b123db00641ee758"},
       {
         "name": "Android性能优化你了解多少",
-        "url": "https://juejin.im/post/599300596fb9a0247537bc1e"}
+        "url": "https://juejin.im/post/599300596fb9a0247537bc1e"},
+      {
+        "name": "解决Android应用冷启动时出现的白屏问题",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyOTAwMjE4MQ==&mid=2650881238&idx=1&sn=029d046c4ff0bdc647aedb749565928d"}
     ],
     "description": "RxJava Description",
     "name": "性能优化"
@@ -360,7 +366,10 @@
         "url": "https://juejin.im/entry/597eabdd6fb9a03c4242f14f"},
       {
         "name": "开源整理：三个优秀的Android图表开源控件",
-        "url": "http://blog.coderclock.com/2017/08/01/android/open-source-android-chart-library/"}
+        "url": "http://blog.coderclock.com/2017/08/01/android/open-source-android-chart-library/"},
+      {
+        "name": "基于开源项目搭建属于自己的技术堆栈",
+        "url": "http://www.jianshu.com/p/42d45998117f"}
     ],
     "description": "RxJava Description",
     "name": "热门框架"
@@ -453,7 +462,13 @@
         "url": "http://www.jianshu.com/p/f05f71446771"},
       {
         "name": "自定义View之仿小米MIUI天气24小时预报折线图",
-        "url": "http://blog.csdn.net/ccy0122/article/details/76464825"}
+        "url": "http://blog.csdn.net/ccy0122/article/details/76464825"},
+      {
+        "name": "自定义可折叠按钮",
+        "url": "http://blog.csdn.net/vroymond/article/details/76472551"},
+      {
+        "name": "高仿小米视频加载动画效果",
+        "url": "http://blog.csdn.net/u013094278/article/details/75450534"}
     ],
     "description": "RxJava Description",
     "name": "自定义View"
@@ -596,8 +611,11 @@
         "name": "Android 开发进阶：自定义 View 1-4 Canvas 对绘制的辅助",
         "url": "http://hencoder.com/ui-1-4/"},
       {
-        "name": "HenCoder Android 开发进阶：自定义 View 1-5 绘制顺序",
-        "url": "http://hencoder.com/ui-1-5/"}
+        "name": "Android 开发进阶：自定义 View 1-5 绘制顺序",
+        "url": "http://hencoder.com/ui-1-5/"},
+      {
+        "name": "Android 自定义 View 1-6：属性动画（上手篇）",
+        "url": "http://hencoder.com/ui-1-6/"}
 
     ],
     "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
@@ -683,7 +701,10 @@
     "articles": [
       {
         "name": "国内值得关注的API集合",
-        "url": "http://www.jianshu.com/p/ecf037476603"}
+        "url": "http://www.jianshu.com/p/ecf037476603"},
+      {
+        "name": "想写个App练手，有什么有趣的API接口推荐吗？",
+        "url": "https://juejin.im/entry/59a831f66fb9a024985f20bc"}
     ],
     "description": "RxJava Description",
     "name": "API集合"
@@ -730,7 +751,10 @@
     "articles": [
       {
         "name": "Android完美适配dimens.xml脚本",
-        "url": "http://blog.csdn.net/github_33304260/article/details/76383298"}
+        "url": "http://blog.csdn.net/github_33304260/article/details/76383298"},
+      {
+        "name": "安卓屏幕完美适配方案——独家秘笈",
+        "url": "http://blog.csdn.net/jiashuai94/article/details/77639511"}
     ],
     "description": "RxJava Description",
     "name": "屏幕适配"},
@@ -752,7 +776,10 @@
         "url": "https://juejin.im/post/598af5e4f265da3e13576c99"},
       {
         "name": "CardView源码解析-View阴影",
-        "url": "https://juejin.im/post/5991aaa76fb9a03c5e442289"}
+        "url": "https://juejin.im/post/5991aaa76fb9a03c5e442289"},
+      {
+        "name": "RecyclerView 源码分析",
+        "url": "http://www.jianshu.com/p/5f6151c1b6f8"}
     ],
     "description": "RxJava Description",
     "name": "Android 源码解析"},
@@ -766,7 +793,10 @@
         "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484701&idx=1&sn=982d4bbc1a7b99a3d39f178830f46e1f"},
       {
         "name": "Android 7.0脱坑指南",
-        "url": "http://blog.csdn.net/qq_17766199/article/details/77404712"}
+        "url": "http://blog.csdn.net/qq_17766199/article/details/77404712"},
+      {
+        "name": "Android Support Library v26 新特性",
+        "url": "http://47log.com/2017/08/30/Android-Support-Library-v26-%E6%96%B0%E7%89%B9%E6%80%A7/"}
     ],
     "description": "RxJava Description",
     "name": "Android 新特性"},
@@ -801,5 +831,13 @@
         "url": "http://www.wjdiankong.cn/android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%8D%E8%BF%9B%E8%A1%8C%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B0%B1%E7%AF%A1%E6%94%B9apk%E6%96%87%E4%BB%B6/"}
     ],
     "description": "RxJava Description",
-    "name": "反编译"}
+    "name": "反编译"},
+  {
+    "articles": [
+      {
+        "name": "关于 Markdown 的一些奇技淫巧",
+        "url": "https://github.com/mzlogin/mzlogin.github.io/blob/master/_posts/2017-09-01-markdown-odd-skills.md"}
+    ],
+    "description": "RxJava Description",
+    "name": "MarkDown"}
 ]

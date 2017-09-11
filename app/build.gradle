@@ -20,7 +20,7 @@ android {
 
         ndk {
             // 设置支持的so库架构
-            abiFilters 'armeabi'
+            abiFilters 'armeabi', 'areabi-v7a', 'x86', 'mips'
         }
     }
 
@@ -150,7 +150,7 @@ dependencies {
 
     compile 'com.alibaba:fastjson:1.1.57.android'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     compile 'com.github.zcweng:switch-button:0.0.2@aar'
 

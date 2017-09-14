@@ -306,7 +306,10 @@
         "url": "https://juejin.im/post/599300596fb9a0247537bc1e"},
       {
         "name": "解决Android应用冷启动时出现的白屏问题",
-        "url": "https://mp.weixin.qq.com/s?__biz=MzIyOTAwMjE4MQ==&mid=2650881238&idx=1&sn=029d046c4ff0bdc647aedb749565928d"}
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyOTAwMjE4MQ==&mid=2650881238&idx=1&sn=029d046c4ff0bdc647aedb749565928d"},
+      {
+        "name": "App瘦身最佳实践",
+        "url": "http://www.jianshu.com/p/8f14679809b3#"}
     ],
     "description": "RxJava Description",
     "name": "性能优化"
@@ -369,7 +372,10 @@
         "url": "http://blog.coderclock.com/2017/08/01/android/open-source-android-chart-library/"},
       {
         "name": "基于开源项目搭建属于自己的技术堆栈",
-        "url": "http://www.jianshu.com/p/42d45998117f"}
+        "url": "http://www.jianshu.com/p/42d45998117f"},
+      {
+        "name": "推荐一个好用小巧的Android引导蒙版（浮层）库",
+        "url": "http://www.jianshu.com/p/5e80c7aee1fc"}
     ],
     "description": "RxJava Description",
     "name": "热门框架"
@@ -513,7 +519,10 @@
         "url": "http://www.jianshu.com/p/07e1a1cff5ad"},
       {
         "name": "Android 8.0 运行时权限策略变化和适配方案",
-        "url": "https://juejin.im/post/5991476f5188254898192ab9"}
+        "url": "https://juejin.im/post/5991476f5188254898192ab9"},
+      {
+        "name": "Android权限处理的那些事",
+        "url": "http://lruheng.com/2017/07/29/Android%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/"}
     ],
     "description": "RxJava Description",
     "name": "运行时权限"
@@ -561,7 +570,10 @@
         "url": "http://www.jianshu.com/p/91f8363c3a8c"},
       {
         "name": "使用 Circular Reveal 动画让页面跳转更炫酷",
-        "url": "https://juejin.im/post/5994dcf9518825242238bd06"}
+        "url": "https://juejin.im/post/5994dcf9518825242238bd06"},
+      {
+        "name": "Android动画：这里有一份很详细的 属性动画 使用攻略",
+        "url": "https://juejin.im/post/59adf72d51882524417af376"}
     ],
     "description": "RxJava Description",
     "name": "动画"
@@ -588,7 +600,10 @@
     "articles": [
       {
         "name": "有关项目依赖包发生 Manifest Merge 冲突的详细解决方案",
-        "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"}
+        "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"},
+      {
+        "name": "突破第三方库的 minSdkVersion 限制 | Tips",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484734&idx=1&sn=3a8af1e017db3b4cc56a73cb4984e742"}
     ],
     "description": "RxJava Description",
     "name": "疑难杂症"
@@ -599,23 +614,26 @@
         "name": "掘金 AMA - 听 HenCoder 作者扔物线谈移动开发前景",
         "url": "https://juejin.im/post/5976acf26fb9a06bb54076fa"},
       {
-        "name": "Android 开发进阶: 自定义 View 1-1 绘制基础",
+        "name": "自定义 View 1-1 绘制基础",
         "url": "http://hencoder.com/ui-1-1/"},
       {
-        "name": "Android 开发进阶: 自定义 View 1-2 Paint 详解",
+        "name": "自定义 View 1-2 Paint 详解",
         "url": "http://hencoder.com/ui-1-2/"},
       {
-        "name": "Android 开发进阶：自定义 View 1-3 文字的绘制",
+        "name": "自定义 View 1-3 文字的绘制",
         "url": "http://hencoder.com/ui-1-3/"},
       {
-        "name": "Android 开发进阶：自定义 View 1-4 Canvas 对绘制的辅助",
+        "name": "自定义 View 1-4 Canvas 对绘制的辅助",
         "url": "http://hencoder.com/ui-1-4/"},
       {
-        "name": "Android 开发进阶：自定义 View 1-5 绘制顺序",
+        "name": "自定义 View 1-5 绘制顺序",
         "url": "http://hencoder.com/ui-1-5/"},
       {
-        "name": "Android 自定义 View 1-6：属性动画（上手篇）",
-        "url": "http://hencoder.com/ui-1-6/"}
+        "name": "自定义 View 1-6：属性动画（上手篇）",
+        "url": "http://hencoder.com/ui-1-6/"},
+      {
+        "name": "自定义 View 1-7：属性动画（进阶篇）",
+        "url": "http://hencoder.com/ui-1-7/"}
 
     ],
     "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
@@ -779,7 +797,10 @@
         "url": "https://juejin.im/post/5991aaa76fb9a03c5e442289"},
       {
         "name": "RecyclerView 源码分析",
-        "url": "http://www.jianshu.com/p/5f6151c1b6f8"}
+        "url": "http://www.jianshu.com/p/5f6151c1b6f8"},
+      {
+        "name": "Android 源码，在线阅读更方便！！！",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484741&idx=1&sn=69215d5b524ffb352ad96b8301a91b8f"}
     ],
     "description": "RxJava Description",
     "name": "Android 源码解析"},
@@ -796,7 +817,10 @@
         "url": "http://blog.csdn.net/qq_17766199/article/details/77404712"},
       {
         "name": "Android Support Library v26 新特性",
-        "url": "http://47log.com/2017/08/30/Android-Support-Library-v26-%E6%96%B0%E7%89%B9%E6%80%A7/"}
+        "url": "http://47log.com/2017/08/30/Android-Support-Library-v26-%E6%96%B0%E7%89%B9%E6%80%A7/"},
+      {
+        "name": "Android Support Library的前世今生",
+        "url": "http://www.jianshu.com/p/f5f9a4fd22e8"}
     ],
     "description": "RxJava Description",
     "name": "Android 新特性"},
@@ -828,7 +852,10 @@
     "articles": [
       {
         "name": "Android中利用AXMLEditor工具不进行反编译就篡改apk文件",
-        "url": "http://www.wjdiankong.cn/android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%8D%E8%BF%9B%E8%A1%8C%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B0%B1%E7%AF%A1%E6%94%B9apk%E6%96%87%E4%BB%B6/"}
+        "url": "http://www.wjdiankong.cn/android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%8D%E8%BF%9B%E8%A1%8C%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B0%B1%E7%AF%A1%E6%94%B9apk%E6%96%87%E4%BB%B6/"},
+      {
+        "name": "Android无需权限显示悬浮窗, 兼谈逆向分析app",
+        "url": "http://www.jianshu.com/p/167fd5f47d5c"}
     ],
     "description": "RxJava Description",
     "name": "反编译"},

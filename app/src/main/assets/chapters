@@ -29,6 +29,9 @@
         "name": "给初学者的RxJava2.0教程(九)",
         "url": "http://www.jianshu.com/p/36e0f7f43a51"},
       {
+        "name": "给 Android 开发者的 RxJava 详解",
+        "url": "https://juejin.im/entry/561b2c1860b2b90b56881f83"},
+      {
         "name": "一起来造一个RxJava，揭秘RxJava的实现原理",
         "url": "http://blog.csdn.net/TellH/article/details/71534704"},
       {
@@ -337,6 +340,9 @@
         "name": "爱奇艺Android移动客户端app瘦身经验",
         "url": "https://juejin.im/entry/59cdbbd06fb9a00a59597c4b"},
       {
+        "name": "Android 开发最佳实践",
+        "url": "https://juejin.im/entry/559cbc70e4b0d4d1b1f0ac0f"},
+      {
         "name": "App瘦身最佳实践",
         "url": "http://www.jianshu.com/p/8f14679809b3#"}
     ],
@@ -441,6 +447,9 @@
       {
         "name": "Android Studio 代码混淆",
         "url": "https://juejin.im/post/5947e7e8128fe1006a52d922"},
+      {
+        "name": "写给Android开发者的混淆使用手册",
+        "url": "https://juejin.im/entry/59df172f6fb9a04522067f98"},
       {
         "name": "对ProGuard使用方法的思考",
         "url": "http://www.jianshu.com/p/14af4a474d55"}
@@ -720,6 +729,9 @@
         "name": "Android Studio详细安装流程和配置、主题",
         "url": "https://juejin.im/post/59c879a3f265da064703fbff"},
       {
+        "name": "Android Studio你不知道的调试技巧",
+        "url": "http://www.jianshu.com/p/62663b065594"},
+      {
         "name": "图解 Android Studio 技巧 | 玩转 TODO 及自定义 TODO",
         "url": "https://mp.weixin.qq.com/s?__biz=MzIxOTU1MDg5Ng==&mid=2247484097&idx=1&sn=e893157f24d7f8c5b59c40afb1fef3c8"}
     ],
@@ -849,6 +861,9 @@
         "name": "Android 源码，在线阅读更方便！！！",
         "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484741&idx=1&sn=69215d5b524ffb352ad96b8301a91b8f"},
       {
+        "name": "Android 源码分析之旅1--系统架构与分析方法、工具",
+        "url": "http://www.jianshu.com/p/a4b40a9d1b4f"},
+      {
         "name": "Android 源码编译 for Mac OS",
         "url": "https://ryancgy.github.io/2017/03/08/Android%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/"}
     ],
@@ -922,5 +937,22 @@
         "url": "https://github.com/mzlogin/mzlogin.github.io/blob/master/_posts/2017-09-01-markdown-odd-skills.md"}
     ],
     "description": "RxJava Description",
-    "name": "MarkDown"}
+    "name": "MarkDown"},
+  {
+    "articles": [
+      {
+        "name": "Android_Dagger2篇——从小白最易上手的角度 + 最新dagger.android",
+        "url": "https://juejin.im/entry/59e55646f265da43111f4548"}
+    ],
+    "description": "RxJava Description",
+    "name": "Dagger2"}
+  {
+    "articles": [
+      {
+        "name": " mac 系统下使用 chmod 命令修改文件权限",
+        "url": "http://yifeng.studio/2017/10/18/mac-terminals-chmod-command/"}
+    ],
+    "description": "RxJava Description",
+    "name": "Mac"}
+
 ]

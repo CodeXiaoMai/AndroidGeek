@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 这里配置的两个外部存储路径是升级SDK下载的文件可能存在的路径 -->
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- /storage/emulated/0/Download/${applicationId}/.beta/apk-->
-    <external-path name="beta_external_path" path="Download/"/>
-    <!--/storage/emulated/0/Android/data/${applicationId}/files/apk/-->
-    <external-path name="beta_external_files_path" path="Android/data/"/>
-</paths>

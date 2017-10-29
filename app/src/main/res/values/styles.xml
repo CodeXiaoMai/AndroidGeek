@@ -1,65 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="clockBackground">@android:color/white</item>
-        <item name="clockBackgroundPrimary">@color/colorBackgroundPrimary</item>
-        <item name="clockTextColor">@android:color/black</item>
-        <item name="clockTextColorSecond">@android:color/darker_gray</item>
-        <item name="clockTextColorReverse">@android:color/white</item>
-        <item name="clockStateChecked">@color/colorBackgroundPrimary</item>
-        <item name="clockStateUnChecked">@android:color/white</item>
-        <item name="clockLoginTextColor">@android:color/white</item>
-        <item name="clockUserCardColor">@color/colorAccent</item>
-        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
-    <style name="NightTheme" parent="AppTheme">
-        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="colorPrimary">@color/colorPrimaryNight</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
-        <item name="colorAccent">@color/colorAccentNight</item>
-        <item name="clockBackground">@color/colorBackgroundNight</item>
-        <item name="clockBackgroundPrimary">@color/colorBackgroundPrimaryNight</item>
-        <item name="clockTextColor">@color/textColorNight</item>
-        <item name="android:textColor">@color/textColorNight</item>
-        <item name="clockTextColorSecond">@color/textColorSecondNight</item>
-        <item name="clockTextColorReverse">#8C96B4</item>
-        <item name="clockStateChecked">#13161E</item>
-        <item name="clockStateUnChecked">#1E1E29</item>
-        <item name="clockLoginTextColor">@color/textColorNight</item>
-        <item name="clockUserCardColor">@color/colorBackgroundNight</item>
-        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
-    </style>
-
-    <style name="NightSpotsDialog" parent="android:Theme.DeviceDefault.Dialog">
-        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
-        <item name="DialogTitleText">加载中…</item>
-        <item name="DialogSpotColor">#8C96B4</item>
-        <item name="DialogSpotCount">4</item>
-    </style>
-
-    <style name="TransparentTheme" parent="AppTheme" />
-
-    <style name="EditTextDialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowSoftInputMode">stateAlwaysVisible</item>
-    </style>
-
-    <style name="SplashTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/background_splash</item>
-    </style>
-
-    <style name="MimeTextView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/dimen_60</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:background">@android:color/white</item>
-        <item name="android:padding">@dimen/dimen_10</item>
-        <item name="android:textSize">@dimen/text_size_14</item>
-    </style>
 </resources>

@@ -1,15 +1,14 @@
-
 package com.xiaomai.mvp.lce;
 
 import android.support.annotation.UiThread;
 
-import com.xiaomai.mvp.MvpView;
+import com.xiaomai.mvp.IMvpView;
 
 /**
- * Created by XiaoMai on 2017/3/29 17:19.
+ * Created by xiaomai on 2017/10/25.
  */
 
-public interface ILoadView extends MvpView {
+public interface ILoadView extends IMvpView {
 
     @UiThread
     void showLoading();

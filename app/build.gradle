@@ -1,21 +1,15 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'android-apt'
-
-// 依赖插件脚本,不用热更新时注掉，热更新不支持 instant run
-// 打包时，无论是打普通的 release 包，还是打 base 包，都要开启，否则会因为混淆配置的问题导致crash
-//apply from: 'tinker-support.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.xiaomai.geek"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 8
-        versionName "1.2.2"
+        applicationId "com.xiaomai.geek2"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
@@ -28,16 +22,9 @@ android {
         release {
             storeFile file('../keystore/mykeystore.jks')
             storePassword key_store_password
-            keyAlias "keystore"
+            keyAlias key_alias
             keyPassword key_password
         }
-    }
-
-    lintOptions {
-        checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
-        abortOnError false
     }
 
     buildTypes {
@@ -61,102 +48,26 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     compile project(':mvp')
-    compile project(':ijkplayer')
-    // 上滑时FAB能够正常隐藏，但是下拉列表时，FAB就不出现了。
-    // 最后发现是SDK版本的问题，用25(7.1.1)的时候会有这个问题，调成25.0.1就没问题了
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support:cardview-v7:25.0.1'
-    testCompile 'junit:junit:4.12'
+
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
     // Logger
     // https://github.com/orhanobut/logger
     compile 'com.orhanobut:logger:1.15'
     // Glide for image loader
     // https://github.com/bumptech/glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    // glide-transformations
-    // https://github.com/wasabeef/glide-transformations
-    compile 'jp.wasabeef:glide-transformations:2.0.1'
-    // RxAndroid
-    // https://github.com/ReactiveX/RxAndroid
-    // https://github.com/ReactiveX/RxJava
-    // https://github.com/ReactiveX/RxJavaJoins
-    compile 'io.reactivex:rxandroid:1.2.1'
-    // Because RxAndroid releases are few and far between, it is recommended you also
-    // explicitly depend on RxJava's latest version for bug fixes and new features.
-    compile 'io.reactivex:rxjava:1.1.6'
-    // Dagger2
-    // https://github.com/google/dagger
-    compile 'com.google.dagger:dagger:2.6'
-    apt "com.google.dagger:dagger-compiler:2.6"
-    // circleimageview
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-    // butterknife
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
-    compile 'com.jakewharton:butterknife:8.2.1'
-    // BaseRecyclerViewAdapterHelper 第二步
-    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.8.5'
-    // recycler view divider
-    // https://github.com/yqritc/RecyclerView-FlexibleDivider
-    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
-    // EventBus
-    // https://github.com/greenrobot/EventBus
-    compile 'org.greenrobot:eventbus:3.0.0'
 
-    // https://github.com/facebook/stetho
-    compile 'com.facebook.stetho:stetho:1.4.2'
-    compile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
-
-    // Retrofit for rest client
-    // https://github.com/square/retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    // OkHttp logging interceptor
-    // https://github.com/square/okhttp/wiki/Interceptors
-    // stetho-okhttp 和 logging-interceptor 会产生冲突
-    //compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-
-    // https://github.com/amulyakhare/TextDrawable
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-
+    testCompile 'junit:junit:4.12'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
 
-    // spots-dialog
-    // https://github.com/d-max/spots-dialog
-    compile 'com.github.d-max:spots-dialog:0.4@aar'
-
-    // FlycoLabelView
-    // https://github.com/H07000223/FlycoLabelView
-    compile 'com.flyco.labelview:FlycoLabelView_Lib:1.0.2@aar'
-
-    // Markdown View
-    // https://github.com/mukeshsolanki/MarkdownView-Android
-    compile 'com.mukesh:markdownview:1.0.0'
-
-    // Tinker
-    compile "com.android.support:multidex:1.0.1" // 多dex配置
-    // 注释掉原有bugly的仓库
-    // https://bugly.qq.com/docs/
-    //compile 'com.tencent.bugly:crashreport:2.5.0'
-    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
-    compile 'com.tencent.bugly:nativecrashreport:latest.release'
-
-    compile 'com.alibaba:fastjson:1.1.57.android'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
-    compile 'com.github.zcweng:switch-button:0.0.2@aar'
-
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-    compile 'com.xiaomai.library:xmlibrary:1.0.1'
-}
-repositories {
-    mavenCentral()
 }

@@ -6,46 +6,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xiaomai.geek.contract.password.PasswordsContract;
+import com.xiaomai.geek.contract.password.AddEditPasswordContract;
 import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
-import com.xiaomai.geek.presenter.password.PasswordsPresenter;
+import com.xiaomai.geek.presenter.password.AddEditPasswordPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
 
 import java.util.List;
 
 /**
- * Created by xiaomai on 2017/10/26.
+ * Created by xiaomai on 2017/10/29.
  */
 
-public class PasswordListFragment extends BaseFragment implements PasswordsContract.View{
+public class AddEditPasswordFragment extends BaseFragment implements AddEditPasswordContract.View{
 
-    private PasswordsContract.Presenter mPresenter;
+    private AddEditPasswordContract.Presenter mPresenter;
 
-    public static PasswordListFragment newInstance() {
-        return new PasswordListFragment();
+    public static AddEditPasswordFragment newInstance() {
+        return new AddEditPasswordFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new PasswordsPresenter(PasswordRepository.getInstance(mContext));
-        mPresenter.attachView(this);
+        mPresenter = new AddEditPasswordPresenter(PasswordRepository.getInstance(mContext));
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mPresenter.loadPasswords("i");
-        mPresenter.loadPasswords("1");
-        mPresenter.loadPasswords("3");
+        mPresenter.savePassword("xiaomai", "username", "password", "note");
+        mPresenter.savePassword("baidu", "username", "password", "note");
+        mPresenter.savePassword("qq", "username", "password", "note");
+        mPresenter.savePassword("xiaomai1", "username", "password", "note");
+        mPresenter.savePassword("baidu2", "username", "password", "note");
+        mPresenter.savePassword("qq3", "username", "password", "note");
         return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mPresenter.detachView();
     }
 
     @Override

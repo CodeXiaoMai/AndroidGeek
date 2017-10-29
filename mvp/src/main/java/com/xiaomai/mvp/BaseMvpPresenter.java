@@ -1,11 +1,12 @@
-
 package com.xiaomai.mvp;
 
 /**
- * Created by XiaoMai on 2017/3/29 17:14.
+ * Created by xiaomai on 2017/10/25.
  */
 
-public class BaseMvpPresenter<V extends MvpView> implements IMvpPresenter<V> {
+public class BaseMvpPresenter<V extends IMvpView> implements IMvpPresenter<V> {
+
+    protected final String TAG = getClass().getSimpleName();
 
     private V mMvpView;
 

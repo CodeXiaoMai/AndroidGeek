@@ -1,13 +1,12 @@
-
 package com.xiaomai.mvp;
 
 import android.support.annotation.UiThread;
 
 /**
- * Created by XiaoMai on 2017/3/29 17:14.
+ * Created by xiaomai on 2017/10/25.
  */
 
-public interface IMvpPresenter<V extends MvpView> {
+public interface IMvpPresenter<V extends IMvpView> {
 
     @UiThread
     void attachView(V view);

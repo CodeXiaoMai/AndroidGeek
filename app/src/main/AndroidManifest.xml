@@ -2,111 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xiaomai.geek">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-
     <application
         android:name=".GeekApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.SplashActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/SplashTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/TransparentTheme" />
-        <activity
-            android:name=".ui.module.password.EditAccountActivity"
-            android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity
-            android:name=".ui.module.password.PasswordDetailActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/TransparentTheme" />
-        <activity
-            android:name=".ui.module.password.FileExploreActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.github.RepoDetailActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.github.UserActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.LoginActivity"
-            android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.module.github.RepoListActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.github.UserListActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.github.ReadmeActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.github.SearchActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.password.SearchActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.articel.ArticleDetailActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.articel.ChapterActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/TransparentTheme" />
-        <activity
-            android:name=".ui.module.articel.WebViewActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name="com.tencent.bugly.beta.ui.BetaActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@android:style/Theme.Translucent" />
-        <activity
-            android:name=".ui.module.ReportActivity"
-            android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateHidden|adjustNothing" />
-        <activity
-            android:name=".ui.SettingActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.AboutUsActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".ui.module.video.VideoDetailActivity"
-            android:configChanges="orientation|screenSize" />
-
-        <service android:name=".service.InitializeService" />
-        <service android:name=".service.NotificationService" />
-
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.xiaomai.geek.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
-        </provider>
-
     </application>
 
 </manifest>

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+
+    <!-- DayThemeColor -->
+    <color name="blue">#2196F3</color>
+    <color name="light_blue">#03A9F4</color>
+
+    <color name="colorPrimary">@color/blue</color>
+    <color name="colorPrimaryDark">@color/blue</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorBackgroundPrimary">#EEEEEE</color>
+
+    <!-- NightThemeColor -->
+    <color name="colorPrimaryNight">#1E1E29</color>
+    <color name="colorPrimaryDarkNight">#1E1E29</color>
+    <color name="colorAccentNight">#FF4081</color>
+    <color name="colorBackgroundNight">#1E1E29</color>
+    <color name="colorBackgroundPrimaryNight">#13161E</color>
+
+    <color name="textColorNight">#8C96B4</color>
+    <color name="textColorSecondNight">#5F6375</color>
+
 </resources>

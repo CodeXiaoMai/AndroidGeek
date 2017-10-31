@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="clockBackground" format="color" />
+    <attr name="clockBackgroundPrimary" format="color" />
+    <attr name="clockTextColor" format="color" />
+    <attr name="clockTextColorSecond" format="color" />
+    <attr name="clockTextColorReverse" format="color" />
+    <attr name="clockStateChecked" format="color" />
+    <attr name="clockStateUnChecked" format="color" />
+    <attr name="clockLoginTextColor" format="color" />
+
+</resources>

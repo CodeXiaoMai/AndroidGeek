@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:fitsSystemWindows="true">
 
@@ -40,6 +41,7 @@
             android:orientation="vertical">
 
             <com.xiaomai.geek.ui.widget.MenuItemView
+                app:iconDrawable="@mipmap/ic_launcher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

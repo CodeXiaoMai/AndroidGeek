@@ -10,4 +10,7 @@
     <attr name="clockStateUnChecked" format="color" />
     <attr name="clockLoginTextColor" format="color" />
 
+    <declare-styleable name="MenuItemView">
+        <attr name="iconDrawable" format="reference" />
+    </declare-styleable>
 </resources>

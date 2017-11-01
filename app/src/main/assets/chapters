@@ -1,0 +1,958 @@
+[
+  {
+    "articles": [
+      {
+        "name": "给初学者的RxJava2.0教程(一)",
+        "url": "http://www.jianshu.com/p/464fa025229e"},
+      {
+        "name": "给初学者的RxJava2.0教程(二)",
+        "url": "http://www.jianshu.com/p/8818b98c44e2"},
+      {
+        "name": "给初学者的RxJava2.0教程(三)",
+        "url": "http://www.jianshu.com/p/128e662906af"},
+      {
+        "name": "给初学者的RxJava2.0教程(四)",
+        "url": "http://www.jianshu.com/p/bb58571cdb64"},
+      {
+        "name": "给初学者的RxJava2.0教程(五)",
+        "url": "http://www.jianshu.com/p/0f2d6c2387c9"},
+      {
+        "name": "给初学者的RxJava2.0教程(六)",
+        "url": "http://www.jianshu.com/p/e4c6d7989356"},
+      {
+        "name": "给初学者的RxJava2.0教程(七)",
+        "url": "http://www.jianshu.com/p/9b1304435564"},
+      {
+        "name": "给初学者的RxJava2.0教程(八)",
+        "url": "http://www.jianshu.com/p/a75ecf461e02"},
+      {
+        "name": "给初学者的RxJava2.0教程(九)",
+        "url": "http://www.jianshu.com/p/36e0f7f43a51"},
+      {
+        "name": "给 Android 开发者的 RxJava 详解",
+        "url": "https://juejin.im/entry/561b2c1860b2b90b56881f83"},
+      {
+        "name": "一起来造一个RxJava，揭秘RxJava的实现原理",
+        "url": "http://blog.csdn.net/TellH/article/details/71534704"},
+      {
+        "name": "重新理解响应式编程",
+        "url": "http://www.jianshu.com/p/c95e29854cb1"},
+      {
+        "name": "BackPressure",
+        "url": "https://www.zhihu.com/question/49618581/answer/237078934?utm_medium=social&utm_source=qq"}
+    ],
+    "description": "RxJava Description",
+    "image": "http://reactivex.io/assets/Rx_Logo_S.png",
+    "name": "RxJava",
+    "url": "https://github.com/ReactiveX/RxJava",
+    "owner": "ReactiveX",
+    "repoName": "RxJava"
+  },
+  {
+    "articles": [
+      {
+        "name": "Kotlin 资源大全",
+        "url": "https://juejin.im/post/591dd9f544d904006c9fbb96"},
+      {
+        "name": "使用Kotlin开发Android",
+        "url": "https://kymjs.com/code/2015/07/22/01/"},
+      {
+        "name": "kotlin基础语法",
+        "url": "https://kymjs.com/code/2015/08/02/01/"},
+      {
+        "name": "kotlin简单项目",
+        "url": "https://kymjs.com/code/2015/08/03/01/"},
+      {
+        "name": "Kotlin Primer·第一章·启程",
+        "url": "https://kymjs.com/code/2017/02/03/01/"},
+      {
+        "name": "Kotlin Primer·第二章·基本语法",
+        "url": "https://kymjs.com/code/2017/02/04/01/"},
+      {
+        "name": "Kotlin Primer·第三章·Kotlin 与 Java 混编",
+        "url": "https://kymjs.com/code/2017/02/07/01/"},
+      {
+        "name": "Kotlin Primer·第四章·Kotlin 的类特性(上)",
+        "url": "https://kymjs.com/code/2017/02/12/01/"},
+      {
+        "name": "Kotlin Primer·第四章·Kotlin 的类特性(下)",
+        "url": "https://kymjs.com/code/2017/02/26/01/"},
+      {
+        "name": "Kotlin Primer·第五章·函数与闭包",
+        "url": "https://kymjs.com/code/2017/04/09/01/"},
+      {
+        "name": "Kotlin Primer·第六章·集合泛型与操作符",
+        "url": "https://kymjs.com/code/2017/06/06/01/"}
+    ],
+    "description": "Kotlin Description",
+    "image": "https://imgsa.baidu.com/baike/w%3D268/sign=818bbcabfcf2b211e42e8248f2826511/9a504fc2d5628535746e08f997ef76c6a6ef6358.jpg",
+    "name": "Kotlin",
+    "url": "https://github.com/JetBrains/kotlin",
+    "owner": "JetBrains",
+    "repoName": "kotlin"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android Fragment 真正的完全解析（上）",
+        "url": "http://m.blog.csdn.net/article/details?id=37970961"},
+      {
+        "name": "Android Fragment 真正的完全解析（下）",
+        "url": "http://m.blog.csdn.net/article/details?id=37992017"},
+      {
+        "name": "Android Fragment 你应该知道的一切",
+        "url": "http://m.blog.csdn.net/article/details?id=42628537"},
+      {
+        "name": "Android 你可能需要的NiceDialog",
+        "url": "http://www.jianshu.com/p/0529433d4522"},
+      {
+        "name": "Dialog最佳实践",
+        "url": "http://www.jianshu.com/p/526fcf3e8db3"}
+    ],
+    "description": "RxJava Description",
+    "name": "Fragment"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android图片加载框架最全解析（一），Glide的基本用法",
+        "url": "http://m.blog.csdn.net/article/details?id=53759439"},
+      {
+        "name": "Android图片加载框架最全解析（二），从源码的角度理解Glide的执行流程",
+        "url": "http://m.blog.csdn.net/article/details?id=53939176"},
+      {
+        "name": "Android图片加载框架最全解析（三），深入探究Glide的缓存机制",
+        "url": "http://m.blog.csdn.net/article/details?id=54895665"},
+      {
+        "name": "Android图片加载框架最全解析（四），玩转Glide的回调与监听",
+        "url": "http://m.blog.csdn.net/article/details?id=70215985"},
+      {
+        "name": "Android图片加载框架最全解析（五），Glide强大的图片变换功能",
+        "url": "http://blog.csdn.net/guolin_blog/article/details/71524668"},
+      {
+        "name": " Android图片加载框架最全解析（六），探究Glide的自定义模块功能",
+        "url": "http://blog.csdn.net/guolin_blog/article/details/78179422"},
+      {
+        "name": "Android 基于 glide 4.0 封装图片加载库",
+        "url": "http://www.jianshu.com/p/920f36983613"}
+    ],
+    "image": "https://github.com/bumptech/glide/raw/master/static/glide_logo.png",
+    "description": "RxJava Description",
+    "name": "Glide"
+  },
+  {
+    "articles": [
+      {
+        "name": "这是一份全面&详细的WebView使用攻略",
+        "url": "https://juejin.im/post/5924dbf58d6d810058fdde43"},
+      {
+        "name": "WebView性能、体验分析与优化",
+        "url": "http://tech.meituan.com/WebViewPerf.html"}
+    ],
+    "image": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496394845783&di=e29d3cc0eb00aba0c38e066d048c6589&imgtype=0&src=http%3A%2F%2Fwww.liulanqi.net%2Fuploads%2Fallimg%2F141107%2F1-14110F951354M.jpg",
+    "description": "RxJava Description",
+    "name": "WebView"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 相关面试知识点整理",
+        "url": "http://www.jianshu.com/p/b87e9f853597"},
+      {
+        "name": "面试复习——Android工程师之Android面试大纲",
+        "url": "http://blog.csdn.net/qq_30379689/article/details/73698192"},
+      {
+        "name": "Java方向如何准备BAT技术面试答案(汇总版)",
+        "url": "http://www.jianshu.com/p/1f1d3193d9e3"},
+      {
+        "name": "较新的Android面试题",
+        "url": "http://www.jianshu.com/p/1eaab1e43681"},
+      {
+        "name": "一年Android工作经验，一举拿下百度、网易、美团、小米、快手等Offer面经",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzI2OTQxMTM4OQ==&mid=2247485000&idx=1&sn=2d74c597c62c9c4229f79cce9587b6bf"},
+      {
+        "name": "Android 茫茫9个月求职路 已拿满意offer",
+        "url": "https://mp.weixin.qq.com/s/sN_i_IaLUpFBbX9UHIX4NA"},
+      {
+        "name": "面试总结 | 记一次Android 面试",
+        "url": "http://www.jianshu.com/p/97be3137741c"}
+    ],
+    "description": "RxJava Description",
+    "name": "面试"
+  },
+  {
+    "articles": [
+      {
+        "name": "支持多种屏幕",
+        "url": "https://developer.android.com/guide/practices/screens_support.html"}
+    ],
+    "description": "RxJava Description",
+    "name": "Android Developer"
+  },
+  {
+    "articles": [
+      {
+        "name": "一文读懂Android View事件分发机制",
+        "url": "http://www.jianshu.com/p/238d1b753e64"},
+      {
+        "name": "一文解决Android View滑动冲突",
+        "url": "http://www.jianshu.com/p/982a83271327"},
+      {
+        "name": "Android滑动冲突解决方法（一）",
+        "url": "http://www.jianshu.com/p/8bc0765dffc9"}
+    ],
+    "description": "RxJava Description",
+    "name": "事件分发机制"
+  },
+  {
+    "articles": [
+      {
+        "name": "20个帮助提高开发技巧的开源Android App",
+        "url": "http://www.androidchina.net/6941.html"}
+    ],
+    "description": "RxJava Description",
+    "name": "开源Android App"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android安全开发之安全使用HTTPS",
+        "url": "http://www.cnblogs.com/alisecurity/p/5939336.html"},
+      {
+        "name": "看完你就知道什么是 HTTPS 了",
+        "url": "https://juejin.im/post/592d23630ce46300579882b4"},
+      {
+        "name": "一个故事讲完 Https",
+        "url": "http://barryliu1995.studio/2017/07/20/%E4%B8%80%E4%B8%AA%E6%95%85%E4%BA%8B%E8%AE%B2%E5%AE%8Chttps/"},
+      {
+        "name": "关于 TCP/IP，必知必会的十个问题",
+        "url": "https://juejin.im/post/598ba1d06fb9a03c4d6464ab"}
+    ],
+    "description": "RxJava Description",
+    "name": "网络协议"
+  },
+  {
+    "articles": [
+      {
+        "name": "MVVM，RxJava 和 Retrofit 的一次实践",
+        "url": "http://haohaochang.cn/2017/02/12/MVVM%EF%BC%8CRxJava%E5%92%8CRetrofit%E7%9A%84%E4%B8%80%E6%AC%A1%E5%AE%9E%E8%B7%B5/"}
+    ],
+    "description": "RxJava Description",
+    "name": "MVVM"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android单元测试之JUnit4",
+        "url": "http://www.jianshu.com/p/dba1290f9dc8"},
+      {
+        "name": "Android单元测试框架Robolectric3.0介绍(一)",
+        "url": "http://www.jianshu.com/p/9d988a2f8ff7"},
+      {
+        "name": "Android单元测试框架Robolectric3.0介绍(二)",
+        "url": "http://www.jianshu.com/p/3aa0e4efcfd3"},
+      {
+        "name": "Android自动化测试工具 UiAutomator使用详解",
+        "url": "http://www.jianshu.com/p/5b84dd220a92"},
+      {
+        "name": "Android UI测试之Espresso使用",
+        "url": "http://www.androidchina.net/7538.html"},
+      {
+        "name": "安卓单元测试全攻略，让代码测试一劳永逸",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzI3MTEzMDI2MA==&mid=2654088953&idx=1&sn=c38282401a076d55fb833cae38d5b7e3"}
+    ],
+    "description": "RxJava Description",
+    "name": "单元测试"
+  },
+  {
+    "articles": [
+      {
+        "name": "Java基础——拿起枪炮，面试复习",
+        "url": "http://m.blog.csdn.net/article/details?id=72550701"},
+      {
+        "name": "Java的泛型解析",
+        "url": "http://www.jianshu.com/p/2ad33ed2f72a"}
+    ],
+    "image": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496393667390&di=bccf31e6e686690b9ac6b0470f989ec6&imgtype=0&src=http%3A%2F%2Fpx.thea.cn%2FPublic%2FUpload%2F512687%2FIntro%2F1461059814.jpg",
+    "description": "RxJava Description",
+    "name": "Java基础"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android架构思考(模块化、多进程)",
+        "url": "http://blog.spinytech.com/2016/12/28/android_modularization/"},
+      {
+        "name": "Android 组件化 —— 路由设计最佳实践",
+        "url": "http://www.jianshu.com/p/8a3eeeaf01e8"},
+      {
+        "name": "谈谈App的统一跳转和ARouter",
+        "url": "http://www.jianshu.com/p/c0eecbbf1481"},
+      {
+        "name": "App组件化与业务拆分那些事",
+        "url": "http://www.jianshu.com/p/60c1b9ddd8ab"},
+      {
+        "name": "客户端模块化解耦实践 - Router",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMDAzMzA5Mg==&mid=2650766935&idx=1&sn=aa4d501ee63bb72158d3c5790fdb9099"}
+    ],
+    "description": "RxJava Description",
+    "name": "路由架构"
+  },
+  {
+    "articles": [
+      {
+        "name": "ConstraintLayout基础系列之约束（constraints）",
+        "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-constraints-1/#more"},
+      {
+        "name": "ConstraintLayout基础系列之Chains链",
+        "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-chains-2/"},
+      {
+        "name": "ConstraintLayout基础系列之参照线guidelines",
+        "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-guidelines-3/"},
+      {
+        "name": "ConstraintLayout基础系列之尺寸横纵比 dimensions",
+        "url": "https://biaomingzhong.github.io/2017/constraintlayout-basics-dimensions-4/"},
+      {
+        "name": "ConstraintLayout深入系列之代替常见布局",
+        "url": "https://biaomingzhong.github.io/2017/constraintlayout-layouts-common/"},
+      {
+        "name": "ConstraintLayout深入系列之中心点对齐",
+        "url": "https://biaomingzhong.github.io/2017/constraintlayout-tricks-centring/"},
+      {
+        "name": "ConstraintLayout 属性详解 和Chain的使用",
+        "url": "http://blog.csdn.net/zxt0601/article/details/72683379"}
+    ],
+    "description": "RxJava Description",
+    "name": "ConstraintLayout"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android卡顿检测方案",
+        "url": "https://juejin.im/entry/59341c13b123db00641ee758"},
+      {
+        "name": "Android性能优化你了解多少",
+        "url": "https://juejin.im/post/599300596fb9a0247537bc1e"},
+      {
+        "name": "解决Android应用冷启动时出现的白屏问题",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyOTAwMjE4MQ==&mid=2650881238&idx=1&sn=029d046c4ff0bdc647aedb749565928d"},
+      {
+        "name": "爱奇艺Android移动客户端app瘦身经验",
+        "url": "https://juejin.im/entry/59cdbbd06fb9a00a59597c4b"},
+      {
+        "name": "Android 开发最佳实践",
+        "url": "https://juejin.im/entry/559cbc70e4b0d4d1b1f0ac0f"},
+      {
+        "name": "App瘦身最佳实践",
+        "url": "http://www.jianshu.com/p/8f14679809b3#"}
+    ],
+    "description": "RxJava Description",
+    "name": "性能优化"
+  },
+  {
+    "articles": [
+      {
+        "name": "知乎和简书的Android客户端夜间模式实现方式",
+        "url": "http://blog.coderclock.com/2016/08/28/android/%E7%9F%A5%E4%B9%8E%E5%92%8C%E7%AE%80%E4%B9%A6%E7%9A%84%E5%A4%9C%E9%97%B4%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%A5%97%E8%B7%AF/"},
+      {
+        "name": "Android主题换肤 无缝切换",
+        "url": "http://www.jianshu.com/p/af7c0585dd5b"},
+      {
+        "name": "Android-skin-support",
+        "url": "https://github.com/ximsfei/Android-skin-support/blob/master/README.md"},
+      {
+        "name": "Android主题切换（Theme）实现日夜间功能",
+        "url": "http://www.jianshu.com/u/dbae9ac95c78"},
+      {
+        "name": "Debug 7.1.1源码一步步写Android换肤框架",
+        "url": "http://www.jianshu.com/p/c8748fbf6f60"}
+    ],
+    "description": "RxJava Description",
+    "name": "主题换肤"
+  },
+  {
+    "articles": [
+      {
+        "name": "如何优雅地从浏览器打开本地应用",
+        "url": "http://blog.zhuimengfb.com/2017/04/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0%E5%BA%94%E7%94%A8/"}
+    ],
+    "description": "RxJava Description",
+    "name": "浏览器调App"
+  },
+  {
+    "articles": [
+      {
+        "name": "帮助中国开发者和设计师提高英语水平的学习方法",
+        "url": "https://github.com/byoungd/english-level-up-tips-for-Chinese"}
+    ],
+    "description": "RxJava Description",
+    "name": "提高英语水平"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android Studio 上传 Library 至 Jcenter 生成依赖的两种方式",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=2650576777&idx=1&sn=16f848047b89b40b7d8e6fc7e28a5d50"}
+    ],
+    "description": "RxJava Description",
+    "name": "上传 Library 至 Jcenter"
+  },
+  {
+    "articles": [
+      {
+        "name": "2017 上半年最酷，最受欢迎的10 个 Android 库",
+        "url": "https://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&mid=2653058891&idx=1&sn=d752ad9c791bb2dfaaf5232b2307783c"},
+      {
+        "name": "还在为 ViewPager 的改装而烦恼？推荐学习阿里巴巴的这个开源项目",
+        "url": "https://juejin.im/entry/597eabdd6fb9a03c4242f14f"},
+      {
+        "name": "开源整理：三个优秀的Android图表开源控件",
+        "url": "http://blog.coderclock.com/2017/08/01/android/open-source-android-chart-library/"},
+      {
+        "name": "基于开源项目搭建属于自己的技术堆栈",
+        "url": "http://www.jianshu.com/p/42d45998117f"},
+      {
+        "name": "推荐一个好用小巧的Android引导蒙版（浮层）库",
+        "url": "http://www.jianshu.com/p/5e80c7aee1fc"}
+    ],
+    "description": "RxJava Description",
+    "name": "热门框架"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 深入理解 JNI（一）JNI 原理与静态、动态注册",
+        "url": "https://juejin.im/post/5949fd0c5c497d006b0a8815"},
+      {
+        "name": "Android Studio2.3下NDK开发流程",
+        "url": "http://www.jianshu.com/p/b4a4cd12d528"},
+      {
+        "name": "Android NDK开发扫盲及最新CMake的编译使用",
+        "url": "http://www.jianshu.com/p/6332418b12b1"}
+    ],
+    "description": "RxJava Description",
+    "name": "JNI & NDK"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 加密算法",
+        "url": "http://www.jianshu.com/p/c7ec2b8d103b"}
+    ],
+    "description": "RxJava Description",
+    "name": "加密算法"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android Studio 代码混淆",
+        "url": "https://juejin.im/post/5947e7e8128fe1006a52d922"},
+      {
+        "name": "写给Android开发者的混淆使用手册",
+        "url": "https://juejin.im/entry/59df172f6fb9a04522067f98"},
+      {
+        "name": "对ProGuard使用方法的思考",
+        "url": "http://www.jianshu.com/p/14af4a474d55"}
+    ],
+    "description": "RxJava Description",
+    "name": "代码混淆"
+  },
+  {
+    "articles": [
+      {
+        "name": "必备技 |一文看懂Java垃圾回收机制",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIyMjQ0MTU0NA==&mid=2247484077&idx=1&sn=1b17a10fc52264bdb0bee7038a36fe3b"}
+    ],
+    "description": "RxJava Description",
+    "name": "Java垃圾回收"
+  },
+  {
+    "articles": [
+      {
+        "name": "自定义进度条PictureProgressBar——从开发到开源发布全过程",
+        "url": "http://blog.csdn.net/totond/article/details/72359888"},
+      {
+        "name": "自定义LayoutManager 实现弧形以及滑动放大效果RecyclerView",
+        "url": "http://www.jianshu.com/p/7bb7556bbe10"},
+      {
+        "name": "实现一个清新美观的加载按钮",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzA5MzI3NjE2MA==&mid=2650240209&idx=1&sn=fdfdc869cb8b5dd587f3c51519ec723b"},
+      {
+        "name": "自定义View_手把手教你撸出一个圆形加载进度条",
+        "url": "http://www.jianshu.com/p/be71f6ffe512"},
+      {
+        "name": "自定义实现MIUI的拖动视差效果",
+        "url": "http://www.jianshu.com/p/f089efa081eb"},
+      {
+        "name": "自定义View之渐变圆环进度条",
+        "url": "http://www.jianshu.com/p/20f399dc7bde"},
+      {
+        "name": "从零开始的堆叠卡片控件",
+        "url": "https://juejin.im/post/585ba544128fe10069c2fdc7"},
+      {
+        "name": "自定义ViewGroup_给QQ视频加点特效吧",
+        "url": "http://www.jianshu.com/p/619cc65d66a5"},
+      {
+        "name": "用SpannableString打造绚丽多彩的文本显示效果",
+        "url": "http://www.jianshu.com/p/84067ad289d2"},
+      {
+        "name": "Android 自定义View 字母索引条",
+        "url": "http://www.jianshu.com/p/d0d3ae674de8"},
+      {
+        "name": "一步步教你实现完整的复杂列表布局",
+        "url": "http://blog.csdn.net/guanyingcao/article/details/75170921"},
+      {
+        "name": "Android关于沉浸式状态栏总结",
+        "url": "https://juejin.im/post/5989ded56fb9a03c3b6c8bde"},
+      {
+        "name": "Android实现dialog的3D翻转",
+        "url": "http://www.jianshu.com/p/65f50b6ecaca"},
+      {
+        "name": "Android 带你撸一个好玩的 DoodleView（涂鸦）",
+        "url": "http://www.jianshu.com/p/f05f71446771"},
+      {
+        "name": "自定义View之仿小米MIUI天气24小时预报折线图",
+        "url": "http://blog.csdn.net/ccy0122/article/details/76464825"},
+      {
+        "name": "自定义可折叠按钮",
+        "url": "http://blog.csdn.net/vroymond/article/details/76472551"},
+      {
+        "name": "高仿小米视频加载动画效果",
+        "url": "http://blog.csdn.net/u013094278/article/details/75450534"}
+    ],
+    "description": "RxJava Description",
+    "name": "自定义View"
+  },
+  {
+    "articles": [
+      {
+        "name": "如何提升你的能力？给年轻程序员的几条建议",
+        "url": "http://tech.glowing.com/cn/advices-to-junior-developers/"},
+      {
+        "name": "30 多个短小而又专业的最佳安卓开发者建议",
+        "url": "http://liuqingwen.me/blog/2017/08/14/translation-of-30-bite-sized-pro-tips-to-become-a-better-android-developer/"},
+      {
+        "name": "Android开发进阶知识图谱",
+        "url": "http://appkfz.com/2017/08/27/android-levelup-roadmap/"},
+      {
+        "name": "老司机告诉你如何在进击的路上成长— 程序员路上学习经验总结",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484386&idx=1&sn=f2fccf82a5c75fa943bff9c6521b4d18"}
+    ],
+    "description": "RxJava Description",
+    "name": "能力提升"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 开发，跳不过的内存管理",
+        "url": "https://juejin.im/post/5952641bf265da6c21533f15"},
+      {
+        "name": "带你学开源项目：LeakCanary- 如何检测 Activity 是否泄漏",
+        "url": "http://wingjay.com/2017/05/14/dig_into_leakcanary/"},
+      {
+        "name": "Android之Handler内存泄漏分析及解决",
+        "url": "http://www.jianshu.com/p/cb9b4b71a820"},
+      {
+        "name": "Android内存泄漏学习笔记",
+        "url": "https://zhuanlan.zhihu.com/p/28169456?group_id=874607398092935168"}
+    ],
+    "description": "RxJava Description",
+    "name": "内存优化"
+  },
+  {
+    "articles": [
+      {
+        "name": "目前最流行的运行时权限请求框架PermissionsDispatcher、RxPermissions和easypermissions的使用和对比",
+        "url": "http://www.jianshu.com/p/07e1a1cff5ad"},
+      {
+        "name": "Android 8.0 运行时权限策略变化和适配方案",
+        "url": "https://juejin.im/post/5991476f5188254898192ab9"},
+      {
+        "name": "Android权限处理的那些事",
+        "url": "http://lruheng.com/2017/07/29/Android%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/"}
+    ],
+    "description": "RxJava Description",
+    "name": "运行时权限"
+  },
+  {
+    "articles": [
+      {
+        "name": "【Android】热修复——Tinker（入门）",
+        "url": "http://www.jianshu.com/p/db504b33bca5"}
+    ],
+    "description": "RxJava Description",
+    "name": "热更新"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 图片高斯模糊解决方案",
+        "url": "http://www.jianshu.com/p/02da487a2f43"}
+    ],
+    "description": "RxJava Description",
+    "name": "高斯模糊"
+  },
+  {
+    "articles": [
+      {
+        "name": "rxjava+retrofit+okhttp+mvp 简单实践",
+        "url": "http://mp.weixin.qq.com/s?__biz=MzI3OTU0MzI4MQ==&mid=2247484391&idx=1&sn=f421676926e9a993a592aa32028232ae"}
+    ],
+    "description": "RxJava Description",
+    "name": "RxJava+Retrofit+OkHttp+MVP"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android高级动画（1）",
+        "url": "http://www.jianshu.com/p/48554844a2db"},
+      {
+        "name": "Android高级动画（2）",
+        "url": "http://www.jianshu.com/p/89cfd9042b1e"},
+      {
+        "name": "Android高级动画（3）",
+        "url": "http://www.jianshu.com/p/d6cc8d218900"},
+      {
+        "name": "Android高级动画（4）",
+        "url": "http://www.jianshu.com/p/91f8363c3a8c"},
+      {
+        "name": "使用 Circular Reveal 动画让页面跳转更炫酷",
+        "url": "https://juejin.im/post/5994dcf9518825242238bd06"},
+      {
+        "name": "Android动画：这里有一份很详细的 属性动画 使用攻略",
+        "url": "https://juejin.im/post/59adf72d51882524417af376"}
+    ],
+    "description": "RxJava Description",
+    "name": "动画"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android百度地图(一):百度地图定位sdk 类方法参数、定位原理详细介绍",
+        "url": "http://www.jianshu.com/p/29ccac3e1e42"},
+      {
+        "name": "Android百度地图(二):百度定位与地图结合显示位置点",
+        "url": "http://www.jianshu.com/p/fdd1ba783495"},
+      {
+        "name": "Android百度地图(三):百度地图画运动轨迹及图层点击事件处理",
+        "url": "http://www.jianshu.com/p/2ad4c2077dfd"},
+      {
+        "name": "Android百度地图(四):百度地图运动轨迹纠偏、去噪、绑路之百度鹰眼",
+        "url": "http://www.jianshu.com/p/3c3d9e92739d"}
+    ],
+    "description": "RxJava Description",
+    "name": "LBS"
+  },
+  {
+    "articles": [
+      {
+        "name": "有关项目依赖包发生 Manifest Merge 冲突的详细解决方案",
+        "url": "http://yifeng.studio/2017/07/09/android-manifest-merge-conflict/"},
+      {
+        "name": "突破第三方库的 minSdkVersion 限制 | Tips",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484734&idx=1&sn=3a8af1e017db3b4cc56a73cb4984e742"}
+    ],
+    "description": "RxJava Description",
+    "name": "疑难杂症"
+  },
+  {
+    "articles": [
+      {
+        "name": "掘金 AMA - 听 HenCoder 作者扔物线谈移动开发前景",
+        "url": "https://juejin.im/post/5976acf26fb9a06bb54076fa"},
+      {
+        "name": "自定义 View 1-1 绘制基础",
+        "url": "http://hencoder.com/ui-1-1/"},
+      {
+        "name": "自定义 View 1-2 Paint 详解",
+        "url": "http://hencoder.com/ui-1-2/"},
+      {
+        "name": "自定义 View 1-3 文字的绘制",
+        "url": "http://hencoder.com/ui-1-3/"},
+      {
+        "name": "自定义 View 1-4 Canvas 对绘制的辅助",
+        "url": "http://hencoder.com/ui-1-4/"},
+      {
+        "name": "自定义 View 1-5 绘制顺序",
+        "url": "http://hencoder.com/ui-1-5/"},
+      {
+        "name": "自定义 View 1-6：属性动画（上手篇）",
+        "url": "http://hencoder.com/ui-1-6/"},
+      {
+        "name": "自定义 View 1-7：属性动画（进阶篇）",
+        "url": "http://hencoder.com/ui-1-7/"}
+
+    ],
+    "image": "http://7xn2zf.com1.z0.glb.clouddn.com/2017-07-03-14990461682373.jpg",
+    "description": "RxJava Description",
+    "name": "HenCoder 专栏"
+  },
+  {
+    "articles": [
+      {
+        "name": "使用 Gradle 实现一套代码开发多个应用",
+        "url": "https://juejin.im/post/59648441f265da6c415f3078"},
+      {
+        "name": "体验飞一般的感觉，将Android 构建速度提升10倍以上",
+        "url": "http://www.jianshu.com/p/fb11b02af8f2"},
+      {
+        "name": "Gradle的高级技巧",
+        "url": "http://www.jianshu.com/p/cc98a6b4f52e"},
+      {
+        "name": "[大餐]加快gradle构建速度",
+        "url": "http://halohoop.com/2017/06/13/meals-speedup_gradle_build/"},
+      {
+        "name": "Gradle从入门到实战 - Groovy基础",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492338&idx=1&sn=49cb619fb057720db505b7c3b8f894e8"},
+      {
+        "name": "Android开发中Gradle的高级用法",
+        "url": "http://www.jianshu.com/p/ce50e5c74a48"}
+    ],
+    "description": "RxJava Description",
+    "name": "Gradle"
+  },
+  {
+    "articles": [
+      {
+        "name": "Java服务器接口快速开发之Servlet详细教程",
+        "url": "http://blog.csdn.net/qq_35522272/article/details/71435602"}
+    ],
+    "description": "RxJava Description",
+    "name": "Servlet"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android Studio Live Templates使用详解，提高敲代码的速度",
+        "url": "http://blog.csdn.net/qq137722697/article/details/74085789"},
+      {
+        "name": "Android Studio详细安装流程和配置、主题",
+        "url": "https://juejin.im/post/59c879a3f265da064703fbff"},
+      {
+        "name": "Android Studio你不知道的调试技巧",
+        "url": "http://www.jianshu.com/p/62663b065594"},
+      {
+        "name": "图解 Android Studio 技巧 | 玩转 TODO 及自定义 TODO",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxOTU1MDg5Ng==&mid=2247484097&idx=1&sn=e893157f24d7f8c5b59c40afb1fef3c8"}
+    ],
+    "description": "RxJava Description",
+    "name": "Android Studio"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android 蓝牙开发(BLE)封装",
+        "url": "http://www.androidchina.net/7004.html"},
+      {
+        "name": "Android BLE蓝牙详细解读",
+        "url": "http://www.jianshu.com/p/d70e22ce61bc"},
+      {
+        "name": "深入了解Android蓝牙Bluetooth——《基础篇》",
+        "url": "http://blog.csdn.net/androidstarjack/article/details/60468468"},
+      {
+        "name": "Android蓝牙那点事——深入了解Android蓝牙Bluetooth《进阶篇》",
+        "url": "http://blog.csdn.net/androidstarjack/article/details/60595241"},
+      {
+        "name": "深入了解Android蓝牙Bluetooth ——《总结篇》",
+        "url": "http://blog.csdn.net/androidstarjack/article/details/60781892"}
+    ],
+    "description": "RxJava Description",
+    "name": "蓝牙开发(BLE)"
+  },
+  {
+    "articles": [
+      {
+        "name": "微信支付，支付宝支付，银联支付——三大支付总结",
+        "url": "https://juejin.im/post/596d97576fb9a06bb874a812"}
+    ],
+    "description": "RxJava Description",
+    "name": "支付"
+  },
+  {
+    "articles": [
+      {
+        "name": "国内值得关注的API集合",
+        "url": "http://www.jianshu.com/p/ecf037476603"},
+      {
+        "name": "想写个App练手，有什么有趣的API接口推荐吗？",
+        "url": "https://juejin.im/entry/59a831f66fb9a024985f20bc"}
+    ],
+    "description": "RxJava Description",
+    "name": "API集合"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android多网络环境（wifi,mobile）下强制在某个网络(mobile)访问服务端以及适配",
+        "url": "http://blog.csdn.net/u010019468/article/details/72886859"}
+    ],
+    "description": "RxJava Description",
+    "name": "网络"
+  },
+  {
+    "articles": [
+      {
+        "name": "解决 Retrofit 多 BaseUrl 及运行时动态改变 BaseUrl ?",
+        "url": "https://juejin.im/post/5978567d51882517921cdcfd"}
+    ],
+    "description": "RxJava Description",
+    "name": "Retrofit"
+  },
+  {
+    "articles": [
+      {
+        "name": "Android的编译打包流程详解",
+        "url": "http://www.jianshu.com/p/019c735050e0"},
+      {
+        "name": "android多渠道打包最快方案",
+        "url": "https://juejin.im/post/584e53cfa22b9d0058e5467c"}
+    ],
+    "description": "RxJava Description",
+    "name": "编译打包"
+  },
+  {
+    "articles": [
+      {
+        "name": "Java中的闭包之争",
+        "url": "https://sylvanassun.github.io/2017/07/30/2017-07-30-JavaClosure/"}
+    ],
+    "description": "RxJava Description",
+    "name": "闭包"},
+  {
+    "articles": [
+      {
+        "name": "Android完美适配dimens.xml脚本",
+        "url": "http://blog.csdn.net/github_33304260/article/details/76383298"},
+      {
+        "name": "安卓屏幕完美适配方案——独家秘笈",
+        "url": "http://blog.csdn.net/jiashuai94/article/details/77639511"}
+    ],
+    "description": "RxJava Description",
+    "name": "屏幕适配"},
+  {
+    "articles": [
+      {
+        "name": "android线程间通信之handler",
+        "url": "http://www.androidchina.net/7192.html"}
+    ],
+    "description": "RxJava Description",
+    "name": "Handler"},
+  {
+    "articles": [
+      {
+        "name": "Activity具体是怎么创建的？又是怎么显示出来的？",
+        "url": "http://www.androidchina.net/7175.html"},
+      {
+        "name": "Android系统服务（一）解析ActivityManagerService(AMS)",
+        "url": "https://juejin.im/post/598af5e4f265da3e13576c99"},
+      {
+        "name": "[干货]如何阅读Android系统源码－收藏必备",
+        "url": "http://www.jianshu.com/p/b3580904d298"},
+      {
+        "name": "Android 7 源码分析系列导读",
+        "url": "https://juejin.im/post/59dad2fb6fb9a00a5143c622"},
+      {
+        "name": "CardView源码解析-View阴影",
+        "url": "https://juejin.im/post/5991aaa76fb9a03c5e442289"},
+      {
+        "name": "RecyclerView 源码分析",
+        "url": "http://www.jianshu.com/p/5f6151c1b6f8"},
+      {
+        "name": "Android 源码，在线阅读更方便！！！",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484741&idx=1&sn=69215d5b524ffb352ad96b8301a91b8f"},
+      {
+        "name": "Android 源码分析之旅1--系统架构与分析方法、工具",
+        "url": "http://www.jianshu.com/p/a4b40a9d1b4f"},
+      {
+        "name": "Android 源码编译 for Mac OS",
+        "url": "https://ryancgy.github.io/2017/03/08/Android%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/"}
+    ],
+    "description": "RxJava Description",
+    "name": "Android 源码解析"},
+  {
+    "articles": [
+      {
+        "name": "Android 8.0 的这些新特性你都有了解过吗",
+        "url": "https://juejin.im/post/599049316fb9a03c391b93c4"},
+      {
+        "name": "Android 8.0 功能和 API",
+        "url": "https://developer.android.google.cn/about/versions/oreo/android-8.0.html"},
+      {
+        "name": "View.post() 在 7.0 中的差异",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484701&idx=1&sn=982d4bbc1a7b99a3d39f178830f46e1f"},
+      {
+        "name": "Android 7.0脱坑指南",
+        "url": "http://blog.csdn.net/qq_17766199/article/details/77404712"},
+      {
+        "name": "Android Support Library v26 新特性",
+        "url": "http://47log.com/2017/08/30/Android-Support-Library-v26-%E6%96%B0%E7%89%B9%E6%80%A7/"},
+      {
+        "name": "Android Support Library的前世今生",
+        "url": "http://www.jianshu.com/p/f5f9a4fd22e8"}
+    ],
+    "description": "RxJava Description",
+    "name": "Android 新特性"},
+  {
+    "articles": [
+      {
+        "name": "Android数据库调研以及GreenDao3使用",
+        "url": "http://glanwang.com/2017/08/16/Android/Android%E6%95%B0%E6%8D%AE%E5%BA%93%E8%B0%83%E7%A0%94%E4%BB%A5%E5%8F%8AGreenDao3%E4%BD%BF%E7%94%A8/"}
+    ],
+    "description": "RxJava Description",
+    "name": "数据库"},
+  {
+    "articles": [
+      {
+        "name": "RecyclerView配合DiffUtil，好用到飞",
+        "url": "https://mp.weixin.qq.com/s?__biz=MzIxNjc0ODExMA==&mid=2247484612&idx=1&sn=5ab55bbee2d9bb15078f67b0205e1729"},
+      {
+        "name": "Android 中注解的使用",
+        "url": "https://juejin.im/post/59bf5e1c518825397176d126"}
+    ],
+    "description": "RxJava Description",
+    "name": "工具类"},
+  {
+    "articles": [
+      {
+        "name": "Splash 闪屏页流程与功能分析",
+        "url": "http://www.jianshu.com/p/6e65107d1a5e"}
+    ],
+    "description": "RxJava Description",
+    "name": "功能模块"},
+  {
+    "articles": [
+      {
+        "name": "Android中利用AXMLEditor工具不进行反编译就篡改apk文件",
+        "url": "http://www.wjdiankong.cn/android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%8D%E8%BF%9B%E8%A1%8C%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B0%B1%E7%AF%A1%E6%94%B9apk%E6%96%87%E4%BB%B6/"},
+      {
+        "name": "Android无需权限显示悬浮窗, 兼谈逆向分析app",
+        "url": "http://www.jianshu.com/p/167fd5f47d5c"}
+    ],
+    "description": "RxJava Description",
+    "name": "反编译"},
+  {
+    "articles": [
+      {
+        "name": "关于 Markdown 的一些奇技淫巧",
+        "url": "https://github.com/mzlogin/mzlogin.github.io/blob/master/_posts/2017-09-01-markdown-odd-skills.md"}
+    ],
+    "description": "RxJava Description",
+    "name": "MarkDown"},
+  {
+    "articles": [
+      {
+        "name": "Android_Dagger2篇——从小白最易上手的角度 + 最新dagger.android",
+        "url": "https://juejin.im/entry/59e55646f265da43111f4548"}
+    ],
+    "description": "RxJava Description",
+    "name": "Dagger2"}
+  {
+    "articles": [
+      {
+        "name": " mac 系统下使用 chmod 命令修改文件权限",
+        "url": "http://yifeng.studio/2017/10/18/mac-terminals-chmod-command/"}
+    ],
+    "description": "RxJava Description",
+    "name": "Mac"}
+
+]

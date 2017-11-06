@@ -12,5 +12,6 @@
 
     <declare-styleable name="MenuItemView">
         <attr name="iconDrawable" format="reference" />
+        <attr name="menuTitle" format="reference|string" />
     </declare-styleable>
 </resources>

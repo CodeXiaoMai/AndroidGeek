@@ -7,7 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="clockLoginTextColor">@android:color/white</item>
-
+        <item name="clockStateChecked">@color/colorBackgroundPrimary</item>
+        <item name="clockStateUnChecked">@android:color/white</item>
     </style>
 
 </resources>

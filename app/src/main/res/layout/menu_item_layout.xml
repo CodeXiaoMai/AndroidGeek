@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:background="@drawable/common_background_selector"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/margin_normal">
 
     <ImageView
         android:id="@+id/icon"
@@ -13,7 +15,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:padding="5dp"
-        tools:src="@drawable/ic_article" />
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/title"
@@ -22,5 +24,5 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:text="@string/please_set_title" />
+        tools:text="@string/please_set_title" />
 </LinearLayout>

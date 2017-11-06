@@ -5,7 +5,6 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
@@ -45,15 +44,23 @@ public class WidgetUtils {
     }
 
     public static Drawable createStateListDrawable(@NonNull Context context, @NonNull Drawable drawable,
-                                                   @ColorRes int normal, @ColorRes int selected) {
-        int[] colors = new int[]{ContextCompat.getColor(context, selected), ContextCompat.getColor(context, normal)};
-        int[][] states = new int[2][];
-        states[0] = new int[]{android.R.attr.state_pressed};
-        states[1] = new int[]{};
+                                                   @ColorRes int normalColor, @ColorRes int selectedColor) {
+        int[] colors = new int[]{
+                ContextCompat.getColor(context, selectedColor),
+                ContextCompat.getColor(context, selectedColor),
+                ContextCompat.getColor(context, normalColor)
+        };
+        int[][] states = new int[3][];
+        int i = 0;
+        states[i++] = new int[]{android.R.attr.state_pressed};
+        states[i++] = new int[]{android.R.attr.state_selected};
+        states[i] = new int[]{};
         ColorStateList colorList = new ColorStateList(states, colors);
         StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(states[0], drawable);//注意顺序
-        stateListDrawable.addState(states[1], drawable);
+        i = 0;
+        stateListDrawable.addState(states[i++], drawable);//注意顺序
+        stateListDrawable.addState(states[i++], drawable);//注意顺序
+        stateListDrawable.addState(states[i], drawable);
         Drawable.ConstantState state = stateListDrawable.getConstantState();
         drawable = DrawableCompat.wrap(state == null ? stateListDrawable : state.newDrawable()).mutate();
         DrawableCompat.setTintList(drawable, colorList);

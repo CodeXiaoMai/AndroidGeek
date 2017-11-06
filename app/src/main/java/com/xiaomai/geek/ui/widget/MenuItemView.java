@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,15 +22,11 @@ import com.xiaomai.geek.common.utils.WidgetUtils;
 
 public class MenuItemView extends FrameLayout {
 
-    private Context mContext;
     private ImageView mIconView;
     private TextView mTitleView;
 
-    @NonNull
     private String mTitle;
-    @NonNull
     private Drawable mIconDrawable;
-    private boolean mSelected;
 
     public MenuItemView(Context context) {
         this(context, null);
@@ -42,34 +39,28 @@ public class MenuItemView extends FrameLayout {
     public MenuItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mContext = context;
-
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MenuItemView);
-        mIconDrawable = typedArray.getDrawable(R.styleable.MenuItemView_iconDrawable);
+        Drawable drawable = typedArray.getDrawable(R.styleable.MenuItemView_iconDrawable);
+        mTitle = typedArray.getString(R.styleable.MenuItemView_menuTitle);
         typedArray.recycle();
 
         View rootView = LayoutInflater.from(context).inflate(R.layout.menu_item_layout, this, true);
-        mIconView = rootView.findViewById(R.id.icon);
 
-        mIconView.setImageDrawable(WidgetUtils.createStateListDrawable(mContext, mIconDrawable,
-                android.R.color.darker_gray, R.color.blue));
+        mIconView = (ImageView) rootView.findViewById(R.id.icon);
+        mTitleView = (TextView) rootView.findViewById(R.id.title);
 
-        mTitleView = rootView.findViewById(R.id.title);
+        if (drawable != null) {
+            setIconDrawable(drawable);
+        }
+        if (!TextUtils.isEmpty(mTitle)) {
+            mTitleView.setText(mTitle);
+        }
 
         mTitleView.setTextColor(WidgetUtils.createColorStateList(
-                mContext,
+                context,
                 android.R.color.black,
                 R.color.blue,
                 android.R.color.darker_gray));
-
-        rootView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-//        setSelected(true);
     }
 
     public void setTitle(@NonNull String title) {
@@ -83,7 +74,9 @@ public class MenuItemView extends FrameLayout {
 
     public void setIconDrawable(@NonNull Drawable iconDrawable) {
         mIconDrawable = iconDrawable;
-        mIconView.setImageDrawable(mIconDrawable);
+
+        mIconView.setImageDrawable(WidgetUtils.createStateListDrawable(getContext(), mIconDrawable,
+                android.R.color.darker_gray, R.color.blue));
     }
 
     @Override
@@ -91,11 +84,14 @@ public class MenuItemView extends FrameLayout {
         if (isSelected() == selected) {
             return;
         }
+        super.setSelected(selected);
 
-        mSelected = selected;
-        if (mSelected) {
+        if (selected) {
             mTitleView.setSelected(true);
+            mIconView.setSelected(true);
+        } else {
+            mTitleView.setSelected(false);
+            mIconView.setSelected(false);
         }
-
     }
 }

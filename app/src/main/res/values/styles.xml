@@ -9,6 +9,9 @@
         <item name="clockLoginTextColor">@android:color/white</item>
         <item name="clockStateChecked">@color/colorBackgroundPrimary</item>
         <item name="clockStateUnChecked">@android:color/white</item>
+        <item name="clockBackgroundPrimary">@color/colorBackgroundPrimary</item>
+        <item name="clockTextColor">@android:color/black</item>
+        <item name="clockTextColorSecond">@android:color/darker_gray</item>
     </style>
 
 </resources>

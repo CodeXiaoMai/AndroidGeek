@@ -13,6 +13,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -49,6 +50,18 @@ public class PasswordsPresenter extends PasswordsContract.Presenter {
         mPasswordRepository.getPasswords(keyword)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        getMvpView().showLoading();
+                    }
+                })
+                .doOnTerminate(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        getMvpView().dismissLoading();
+                    }
+                })
                 .subscribe(new Observer<List<Password>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
@@ -58,7 +71,11 @@ public class PasswordsPresenter extends PasswordsContract.Presenter {
                     @Override
                     public void onNext(@NonNull List<Password> passwords) {
                         AppLog.i(TAG, TextUtils.join(";\n", passwords));
-                        getMvpView().showContent(passwords);
+                        if (passwords.size() <= 0) {
+                            getMvpView().showEmpty();
+                        } else {
+                            getMvpView().showContent(passwords);
+                        }
                     }
 
                     @Override

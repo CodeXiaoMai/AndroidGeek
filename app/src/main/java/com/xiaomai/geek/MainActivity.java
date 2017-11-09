@@ -1,35 +1,48 @@
 package com.xiaomai.geek;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.xiaomai.geek.ui.module.password.PasswordListFragment;
+import com.xiaomai.geek.ui.base.BaseActivity;
+import com.xiaomai.geek.ui.module.password.PasswordActivity;
 import com.xiaomai.geek.ui.widget.MenuItemView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
-    private View mMenuItemArticle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+    }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initViews() {
+        super.initViews();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        View headerView = mNavigationView.getHeaderView(0);
-        mMenuItemArticle = headerView.findViewById(R.id.menu_item_article);
-        mMenuItemArticle.setSelected(true);
-        mMenuItemArticle.setOnClickListener(new View.OnClickListener() {
+        initHeadViews();
+    }
+
+    private void initHeadViews() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        MenuItemView menuItemArticle = headerView.findViewById(R.id.menu_item_article);
+        menuItemArticle.setSelected(true);
+        menuItemArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -40,15 +53,17 @@ public class MainActivity extends AppCompatActivity {
         menuItemPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(mContext, PasswordActivity.class));
             }
         });
 
-        PasswordListFragment passwordListFragment = PasswordListFragment.newInstance();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fl_container, passwordListFragment);
-        transaction.commit();
+        MenuItemView menuItemSettings = headerView.findViewById(R.id.menu_item_settings);
+        menuItemSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public void openDrawer() {

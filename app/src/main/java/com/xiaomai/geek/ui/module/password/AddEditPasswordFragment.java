@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.xiaomai.geek.contract.password.AddEditPasswordContract;
 import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
+import com.xiaomai.geek.presenter.BasePresenter;
 import com.xiaomai.geek.presenter.password.AddEditPasswordPresenter;
 import com.xiaomai.geek.ui.base.BaseFragment;
 
@@ -27,9 +28,9 @@ public class AddEditPasswordFragment extends BaseFragment implements AddEditPass
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected BasePresenter getPresenter() {
         mPresenter = new AddEditPasswordPresenter(PasswordRepository.getInstance(mContext));
+        return mPresenter;
     }
 
     @Nullable

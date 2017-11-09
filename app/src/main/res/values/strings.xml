@@ -6,4 +6,6 @@
     <string name="setting">设置</string>
     <string name="login">登录</string>
     <string name="please_set_title">请设置标题</string>
+    <string name="load_fail">加载失败！</string>
+    <string name="please_retry">请重试！</string>
 </resources>

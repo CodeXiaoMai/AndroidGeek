@@ -17,6 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.module.password.PasswordActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

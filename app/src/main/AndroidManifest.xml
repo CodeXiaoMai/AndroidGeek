@@ -18,7 +18,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.module.password.PasswordActivity"
+            android:name=".ui.module.password.PasswordListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.module.password.PasswordDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.module.password.AddEditPasswordActivity"
             android:screenOrientation="portrait" />
     </application>
 

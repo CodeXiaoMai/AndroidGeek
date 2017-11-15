@@ -7,6 +7,8 @@ import com.xiaomai.geek.contract.password.PasswordsContract;
 import com.xiaomai.geek.data.IPasswordDataSource;
 import com.xiaomai.geek.data.module.Password;
 
+import org.reactivestreams.Subscription;
+
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -35,6 +37,18 @@ public class PasswordsPresenter extends PasswordsContract.Presenter {
         Disposable disposable = mPasswordRepository.getPasswords()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(new Consumer<Subscription>() {
+                    @Override
+                    public void accept(Subscription subscription) throws Exception {
+                        getMvpView().showLoading();
+                    }
+                })
+                .doOnTerminate(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        getMvpView().dismissLoading();
+                    }
+                })
                 .subscribe(new Consumer<List<Password>>() {
                     @Override
                     public void accept(List<Password> passwords) throws Exception {

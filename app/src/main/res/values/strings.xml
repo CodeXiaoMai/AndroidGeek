@@ -8,4 +8,5 @@
     <string name="please_set_title">请设置标题</string>
     <string name="load_fail">加载失败！</string>
     <string name="please_retry">请重试！</string>
+    <string name="save">保存</string>
 </resources>

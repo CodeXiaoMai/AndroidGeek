@@ -6,15 +6,13 @@ import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.presenter.BasePresenter;
 import com.xiaomai.mvp.lce.ILceView;
 
-import java.util.List;
-
 /**
  * Created by xiaomai on 2017/10/26.
  */
 
 public interface AddEditPasswordContract {
 
-    interface View extends ILceView<List<Password>>{
+    interface View extends ILceView<Password> {
 
     }
 

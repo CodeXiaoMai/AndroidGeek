@@ -25,6 +25,11 @@ public class AddEditPasswordPresenter extends AddEditPasswordContract.Presenter 
     public void savePassword(@Nullable String platform, @Nullable String userName, @Nullable String pwd,
                              @Nullable String note) {
         Password password = new Password(platform, userName, pwd, note);
-        mPasswordRepository.savePassword(password);
+        if (password.isEmpty()) {
+            getMvpView().showError(new Throwable("至少一项不为空"));
+        } else {
+            mPasswordRepository.savePassword(password);
+            getMvpView().showError(new Throwable("保存成功"));
+        }
     }
 }

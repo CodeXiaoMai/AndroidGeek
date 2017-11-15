@@ -49,7 +49,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:padding="10dp"
-            android:src="@drawable/ic_more_vert_black_24dp"
+            android:src="@drawable/ic_more_vert_24dp"
             android:visibility="invisible" />
     </LinearLayout>
 

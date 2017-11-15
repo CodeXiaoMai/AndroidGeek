@@ -8,7 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
 import com.xiaomai.geek.ui.base.BaseActivity;
-import com.xiaomai.geek.ui.module.password.PasswordActivity;
+import com.xiaomai.geek.ui.module.password.PasswordListActivity;
 import com.xiaomai.geek.ui.widget.MenuItemView;
 
 public class MainActivity extends BaseActivity {
@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
         menuItemPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, PasswordActivity.class));
+                startActivity(new Intent(mContext, PasswordListActivity.class));
             }
         });
 

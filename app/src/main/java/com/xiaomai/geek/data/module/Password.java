@@ -2,6 +2,7 @@ package com.xiaomai.geek.data.module;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import java.util.UUID;
 
@@ -76,6 +77,13 @@ public class Password {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public boolean isEmpty() {
+        return TextUtils.isEmpty(platform)
+                && TextUtils.isEmpty(userName)
+                && TextUtils.isEmpty(password)
+                && TextUtils.isEmpty(note);
     }
 
     @Override

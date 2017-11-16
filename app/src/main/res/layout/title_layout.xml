@@ -38,11 +38,10 @@
             android:layout_weight="1"
             android:ellipsize="marquee"
             android:gravity="center"
-            android:maxLines="1"
             android:singleLine="true"
-            android:text="ALSFKJSD;LFDKSJDSFsdfasdfsdfsfsasdfsdfsdf"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_size_xx_large" />
+            android:textSize="@dimen/text_size_xx_large"
+            tools:text="@string/please_set_title" />
 
         <ImageView
             android:id="@+id/iv_more"

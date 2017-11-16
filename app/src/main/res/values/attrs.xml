@@ -15,4 +15,8 @@
         <attr name="iconDrawable" format="reference" />
         <attr name="menuTitle" format="reference|string" />
     </declare-styleable>
+
+    <declare-styleable name="TitleView">
+        <attr name="title" />
+    </declare-styleable>
 </resources>

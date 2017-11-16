@@ -9,4 +9,17 @@
     <string name="load_fail">加载失败！</string>
     <string name="please_retry">请重试！</string>
     <string name="save">保存</string>
+    <string name="password_list">密码列表</string>
+    <string name="edit">编辑</string>
+    <string name="generate_random_password">生成随机密码</string>
+    <string name="password_length_six">密码长度：6</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+
+    <string-array name="password_types">
+        <item>全部随机</item>
+        <item>数字字母组合</item>
+        <item>仅数字</item>
+        <item>仅字母</item>
+    </string-array>
 </resources>

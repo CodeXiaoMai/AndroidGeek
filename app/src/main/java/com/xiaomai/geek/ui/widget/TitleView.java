@@ -2,8 +2,10 @@ package com.xiaomai.geek.ui.widget;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,8 @@ public class TitleView extends FrameLayout {
     private ImageView mBackView;
     private ImageView mMenuView;
     private ImageView mMoreView;
+
+    private String mTitle;
 
     public TitleView(Context context) {
         this(context, null);
@@ -51,6 +55,14 @@ public class TitleView extends FrameLayout {
                 }
             }
         });
+
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleView);
+        mTitle = typedArray.getString(R.styleable.TitleView_title);
+        typedArray.recycle();
+
+        if (!TextUtils.isEmpty(mTitle)) {
+            mTitleView.setText(mTitle);
+        }
     }
 
     public void setTitle(@NonNull String title) {

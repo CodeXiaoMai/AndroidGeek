@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.xiaomai.geek.common.wrapper.AppLog;
 import com.xiaomai.geek.contract.password.PasswordsContract;
 import com.xiaomai.geek.data.IPasswordDataSource;
+import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
 
 import org.reactivestreams.Subscription;
@@ -102,5 +103,11 @@ public class PasswordsPresenter extends PasswordsContract.Presenter {
 
                     }
                 });
+    }
+
+    @Override
+    public void detachView() {
+        super.detachView();
+        PasswordRepository.destroyInstance();
     }
 }

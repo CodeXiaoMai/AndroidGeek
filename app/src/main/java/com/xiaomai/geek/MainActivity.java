@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity {
 
         View headerView = navigationView.getHeaderView(0);
 
-        MenuItemView menuItemArticle = headerView.findViewById(R.id.menu_item_article);
+        MenuItemView menuItemArticle = (MenuItemView) headerView.findViewById(R.id.menu_item_article);
         menuItemArticle.setSelected(true);
         menuItemArticle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        MenuItemView menuItemSettings = headerView.findViewById(R.id.menu_item_settings);
+        MenuItemView menuItemSettings = (MenuItemView) headerView.findViewById(R.id.menu_item_settings);
         menuItemSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -13,7 +13,7 @@ import com.xiaomai.mvp.lce.ILceView;
 public interface AddEditPasswordContract {
 
     interface View extends ILceView<Password> {
-
+        void onSaveSuccess();
     }
 
     abstract class Presenter extends BasePresenter<View>{

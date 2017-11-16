@@ -3,6 +3,7 @@ package com.xiaomai.geek.ui.module.password;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,10 +20,14 @@ import com.xiaomai.geek.R;
 import com.xiaomai.geek.contract.password.PasswordsContract;
 import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
+import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.password.PasswordsPresenter;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.widget.ErrorView;
 import com.xiaomai.geek.ui.widget.TitleView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -38,7 +43,6 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
     private RecyclerView mRecyclerView;
     private ErrorView mErrorView;
     private ErrorView mEmptyView;
-    private ImageView mAddView;
 
     private Adapter mAdapter;
 
@@ -47,6 +51,8 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         super.onCreate(savedInstanceState);
         mPresenter = new PasswordsPresenter(PasswordRepository.getInstance(mContext));
         mPresenter.attachView(this);
+
+        EventBus.getDefault().register(this);
 
         loadData();
     }
@@ -60,7 +66,7 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
     public void initViews() {
         super.initViews();
 
-        TitleView titleView = findViewById(R.id.title_view);
+        TitleView titleView = (TitleView) findViewById(R.id.title_view);
         titleView.setOnBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +74,7 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
             }
         });
 
-        mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_view);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_view);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -76,7 +82,7 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
             }
         });
 
-        mRecyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mAdapter = new Adapter();
         mAdapter.setCallback(new Callback() {
@@ -93,11 +99,10 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         });
         mRecyclerView.setAdapter(mAdapter);
 
-        mErrorView = findViewById(R.id.error_view);
-        mEmptyView = findViewById(R.id.empty_view);
+        mErrorView = (ErrorView) findViewById(R.id.error_view);
+        mEmptyView = (ErrorView) findViewById(R.id.empty_view);
 
-        mAddView = findViewById(R.id.flb_add);
-        mAddView.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.flb_add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, AddEditPasswordActivity.class));
@@ -140,6 +145,26 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         mEmptyView.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.GONE);
         mErrorView.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
+    }
+
+    @Subscribe
+    public void onHandlePasswordEvent(PasswordEvent passwordEvent) {
+        switch (passwordEvent.getType()) {
+            case PasswordEvent.TYPE_ADD:
+                Snackbar.make(mSwipeRefreshLayout, "密码保存成功", Snackbar.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
     }
 
     class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -228,10 +253,10 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         private Holder(View itemView) {
             super(itemView);
 
-            iconView = itemView.findViewById(R.id.circle_view_icon);
-            platformView = itemView.findViewById(R.id.tv_platform);
-            userNameView = itemView.findViewById(R.id.tv_userName);
-            passwordView = itemView.findViewById(R.id.tv_password);
+            iconView = (ImageView) itemView.findViewById(R.id.circle_view_icon);
+            platformView = (TextView) itemView.findViewById(R.id.tv_platform);
+            userNameView = (TextView) itemView.findViewById(R.id.tv_userName);
+            passwordView = (TextView) itemView.findViewById(R.id.tv_password);
             publishView = itemView.findViewById(R.id.iv_publish);
             eyeView = itemView.findViewById(R.id.iv_eye);
         }

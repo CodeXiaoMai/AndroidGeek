@@ -9,6 +9,7 @@
     <attr name="clockStateChecked" format="color" />
     <attr name="clockStateUnChecked" format="color" />
     <attr name="clockLoginTextColor" format="color" />
+    <attr name="clockSelector" format="reference" />
 
     <declare-styleable name="MenuItemView">
         <attr name="iconDrawable" format="reference" />

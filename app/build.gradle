@@ -75,7 +75,11 @@ dependencies {
     // https://github.com/amulyakhare/TextDrawable
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
+    // EventBus
+    // https://github.com/greenrobot/EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
+
     testCompile 'junit:junit:4.12'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
-
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
 }

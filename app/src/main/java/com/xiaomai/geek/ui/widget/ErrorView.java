@@ -33,8 +33,8 @@ public class ErrorView extends FrameLayout {
 
         View rootView = LayoutInflater.from(context).inflate(R.layout.error_view, this, true);
 
-        mTitleView = rootView.findViewById(R.id.error_title);
-        mDescView = rootView.findViewById(R.id.error_desc);
+        mTitleView = (TextView) rootView.findViewById(R.id.error_title);
+        mDescView = (TextView) rootView.findViewById(R.id.error_desc);
 
         setVisibility(GONE);
     }

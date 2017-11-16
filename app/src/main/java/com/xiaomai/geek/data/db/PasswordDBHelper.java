@@ -42,6 +42,10 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
         return INSTANCE;
     }
 
+    public static void destroyInstance() {
+        INSTANCE = null;
+    }
+
     private PasswordDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

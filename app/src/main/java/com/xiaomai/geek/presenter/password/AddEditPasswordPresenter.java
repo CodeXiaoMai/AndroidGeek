@@ -29,7 +29,7 @@ public class AddEditPasswordPresenter extends AddEditPasswordContract.Presenter 
             getMvpView().showError(new Throwable("至少一项不为空"));
         } else {
             mPasswordRepository.savePassword(password);
-            getMvpView().showError(new Throwable("保存成功"));
+            getMvpView().onSaveSuccess();
         }
     }
 }

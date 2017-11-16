@@ -12,8 +12,11 @@ import com.xiaomai.geek.R;
 import com.xiaomai.geek.contract.password.AddEditPasswordContract;
 import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
+import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.password.AddEditPasswordPresenter;
 import com.xiaomai.geek.ui.base.BaseActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by xiaomai on 2017/10/29.
@@ -58,10 +61,10 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
     public void initViews() {
         super.initViews();
 
-        mEditPlatformView = findViewById(R.id.edit_platform);
-        mEditUserNameView = findViewById(R.id.edit_userName);
-        mEditPasswordView = findViewById(R.id.edit_password);
-        mEditNoteView = findViewById(R.id.edit_note);
+        mEditPlatformView = (EditText) findViewById(R.id.edit_platform);
+        mEditUserNameView = (EditText) findViewById(R.id.edit_userName);
+        mEditPasswordView = (EditText) findViewById(R.id.edit_password);
+        mEditNoteView = (EditText) findViewById(R.id.edit_note);
         findViewById(R.id.bt_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +79,12 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
         mPassword = mEditPasswordView.getText().toString().trim();
         mNote = mEditNoteView.getText().toString().trim();
         mPresenter.savePassword(mPlatform, mUserName, mPassword, mNote);
+    }
+
+    @Override
+    public void onSaveSuccess() {
+        EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_ADD));
+        finish();
     }
 
     @Override

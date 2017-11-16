@@ -25,11 +25,10 @@ import io.reactivex.ObservableOnSubscribe;
 
 public class PasswordRepository implements IPasswordDataSource {
 
-    @NonNull
     private static PasswordRepository INSTANCE;
 
     public static PasswordRepository getInstance(@NonNull Context context) {
-        if (null == INSTANCE) {
+        if (INSTANCE == null) {
             synchronized (PasswordRepository.class) {
                 if (null == INSTANCE) {
                     INSTANCE = new PasswordRepository(context);
@@ -37,6 +36,11 @@ public class PasswordRepository implements IPasswordDataSource {
             }
         }
         return INSTANCE;
+    }
+
+    public static void destroyInstance() {
+        PasswordDBHelper.destroyInstance();
+        INSTANCE = null;
     }
 
     @NonNull

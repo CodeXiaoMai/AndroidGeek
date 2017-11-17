@@ -1,7 +1,10 @@
 package com.xiaomai.geek.ui.module.password;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -29,6 +32,9 @@ import org.greenrobot.eventbus.EventBus;
  */
 
 public class AddEditPasswordActivity extends BaseActivity implements AddEditPasswordContract.View {
+    private static final String EXTRA_PASSWORD = "EXTRA_PASSWORD";
+    public static final int MODE_CREATE = 1;
+    public static final int MODE_UPDATE = 2;
 
     private EditText mEditPlatformView;
     private EditText mEditUserNameView;
@@ -38,6 +44,10 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
     private TextInputLayout mLayoutUserNameView;
     private TextInputLayout mLayoutPasswordView;
     private ImageView circleViewIcon;
+
+    private AlertDialog mDialog;
+
+    private String mPasswordId;
 
     private String mPlatform;
 
@@ -49,7 +59,15 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
 
     private final ColorGenerator mGenerator = ColorGenerator.MATERIAL;
 
+    private int mCurrentMode = MODE_CREATE;
+
     private AddEditPasswordContract.Presenter mPresenter;
+
+    public static void launch(@NonNull Context context, @NonNull Password password) {
+        Intent intent = new Intent(context, AddEditPasswordActivity.class);
+        intent.putExtra(EXTRA_PASSWORD, password);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +75,24 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
 
         mPresenter = new AddEditPasswordPresenter(PasswordRepository.getInstance(mContext));
         mPresenter.attachView(this);
+
+        loadData();
+    }
+
+    private void loadData() {
+        Password password = (Password) getParcelableFromIntent(EXTRA_PASSWORD);
+        if (password == null) {
+            return;
+        }
+
+        mCurrentMode = MODE_UPDATE;
+
+        mPasswordId = password.getId();
+
+        mEditPlatformView.setText(password.getPlatform());
+        mEditUserNameView.setText(password.getUserName());
+        mEditPasswordView.setText(password.getPassword());
+        mEditNoteView.setText(password.getNote());
     }
 
     @Override
@@ -68,6 +104,7 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
     public void initViews() {
         super.initViews();
 
+        circleViewIcon = findViewById(R.id.circle_view_icon);
         mEditPlatformView = (EditText) findViewById(R.id.edit_platform);
         mEditPlatformView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -105,25 +142,25 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
                 generatePasswordView.setCallback(new GeneratePasswordView.Callback() {
                     @Override
                     public void onCancel() {
-                        if (dialog != null) {
-                            dialog.dismiss();
+                        if (mDialog != null) {
+                            mDialog.dismiss();
                         }
                     }
 
                     @Override
                     public void onConfirm(String content) {
-                        if (dialog != null) {
-                            dialog.dismiss();
+                        if (mDialog != null) {
+                            mDialog.dismiss();
                             mEditPasswordView.setText(content);
                         }
                     }
                 });
 
-                dialog = new AlertDialog.Builder(mContext)
+                mDialog = new AlertDialog.Builder(mContext)
                         .setView(generatePasswordView)
                         .create();
 
-                dialog.show();
+                mDialog.show();
             }
         });
         findViewById(R.id.bt_save).setOnClickListener(new View.OnClickListener() {
@@ -134,19 +171,30 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
         });
     }
 
-    AlertDialog dialog;
-
     private void savePassword() {
         mPlatform = mEditPlatformView.getText().toString().trim();
         mUserName = mEditUserNameView.getText().toString().trim();
         mPassword = mEditPasswordView.getText().toString().trim();
         mNote = mEditNoteView.getText().toString().trim();
-        mPresenter.savePassword(mPlatform, mUserName, mPassword, mNote);
+
+        Password password = new Password(mPlatform, mUserName, mPassword, mNote);
+        if (mCurrentMode == MODE_CREATE) {
+            mPresenter.savePassword(password);
+        } else {
+            password.setId(mPasswordId);
+            mPresenter.updatePassword(password);
+        }
     }
 
     @Override
     public void onSaveSuccess() {
         EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_ADD));
+        finish();
+    }
+
+    @Override
+    public void onUpdateSuccess(@NonNull Password password) {
+        EventBus.getDefault().post(new PasswordEvent(PasswordEvent.TYPE_UPDATE, password));
         finish();
     }
 

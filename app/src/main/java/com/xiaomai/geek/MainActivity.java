@@ -69,4 +69,14 @@ public class MainActivity extends BaseActivity {
     public void openDrawer() {
         mDrawerLayout.openDrawer(GravityCompat.START);
     }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+            return;
+        }
+
+        super.onBackPressed();
+    }
 }

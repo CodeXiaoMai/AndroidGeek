@@ -1,7 +1,9 @@
 package com.xiaomai.geek.ui.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -43,5 +45,21 @@ public abstract class BaseActivity extends AppCompatActivity implements IMvpView
     protected void onDestroy() {
         super.onDestroy();
         AppLog.d(TAG, "=========================== " + TAG + " Finish ==============================");
+    }
+
+    protected String getStringFromIntent(String key) {
+        Intent intent = getIntent();
+        if (intent == null) {
+            return null;
+        }
+        return intent.getStringExtra(key);
+    }
+
+    protected Parcelable getParcelableFromIntent(String key) {
+        Intent intent = getIntent();
+        if (intent == null) {
+            return null;
+        }
+        return intent.getParcelableExtra(key);
     }
 }

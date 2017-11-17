@@ -34,6 +34,39 @@ public class PasswordsPresenter extends PasswordsContract.Presenter {
     }
 
     @Override
+    public void savePassword(Password password) {
+        mPasswordRepository.savePassword(password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mCompositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(Boolean aBoolean) {
+                        if(aBoolean) {
+                            getMvpView().showError(new Throwable("撤销成功"));
+                        } else {
+                            getMvpView().showError(new Throwable("撤销失败"));
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().showError(new Throwable("撤销失败"));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
+    @Override
     public void loadPasswords() {
         Disposable disposable = mPasswordRepository.getPasswords()
                 .subscribeOn(Schedulers.io())

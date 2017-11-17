@@ -2,6 +2,7 @@ package com.xiaomai.geek.ui.module.password;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -88,8 +89,7 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         mAdapter.setCallback(new Callback() {
             @Override
             public void onItemClick(Password password) {
-                Intent intent = new Intent(mContext, PasswordDetailActivity.class);
-                startActivity(intent);
+                PasswordDetailActivity.launch(mContext, password);
             }
 
             @Override
@@ -161,7 +161,22 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         switch (passwordEvent.getType()) {
             case PasswordEvent.TYPE_ADD:
                 Snackbar.make(mSwipeRefreshLayout, "密码保存成功", Snackbar.LENGTH_SHORT).show();
+                mPresenter.loadPasswords();
                 break;
+            case PasswordEvent.TYPE_DELETE:
+                final Password password = passwordEvent.getPassword();
+                Snackbar.make(mSwipeRefreshLayout, "密码删除成功", Snackbar.LENGTH_LONG)
+                        .setAction("撤销", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mPresenter.savePassword(password);
+                                mPresenter.loadPasswords();
+                            }
+                        }).show();
+                mPresenter.loadPasswords();
+                break;
+            case PasswordEvent.TYPE_UPDATE:
+                mPresenter.loadPasswords();
             default:
                 break;
         }
@@ -237,6 +252,7 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
             return passwords == null ? 0 : passwords.size();
         }
 
+        @Nullable
         Password getItem(int position) {
             return passwords == null ? null : passwords.get(position);
         }
@@ -263,8 +279,8 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
     }
 
     public interface Callback {
-        void onItemClick(Password password);
+        void onItemClick(@NonNull Password password);
 
-        void onPublishClick(Password password);
+        void onPublishClick(@NonNull Password password);
     }
 }

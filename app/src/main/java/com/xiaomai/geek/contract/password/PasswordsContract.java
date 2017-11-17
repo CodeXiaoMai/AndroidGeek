@@ -20,6 +20,8 @@ public interface PasswordsContract {
 
     abstract class Presenter extends BasePresenter<View> {
 
+        public abstract void savePassword(Password password);
+
         public abstract void loadPasswords();
 
         public abstract void loadPasswords(@NonNull String keyword);

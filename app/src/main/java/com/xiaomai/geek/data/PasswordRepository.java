@@ -53,7 +53,7 @@ public class PasswordRepository implements IPasswordDataSource {
     @Override
     public Flowable<List<Password>> getPasswords() {
         Cursor cursor = mPasswordDBHelper.getWritableDatabase().query(
-                PasswordDBHelper.PasswordEntry.TABLE_NAME, null, null, null, null, null, null);
+                PasswordDBHelper.PasswordEntry.TABLE_NAME, null, null, null, null, null, PasswordDBHelper.PasswordEntry.COLUMN_NAME_PLATFORM);
         final List<Password> passwordList = getPasswords(cursor);
         cursor.close();
 
@@ -111,18 +111,35 @@ public class PasswordRepository implements IPasswordDataSource {
     }
 
     @Override
-    public void savePassword(@NonNull Password password) {
+    public Observable<Boolean> savePassword(@NonNull Password password) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(PasswordDBHelper.PasswordEntry._ID, password.getId());
         contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_PLATFORM, password.getPlatform());
         contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_USERNAME, password.getUserName());
         contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_PASSWORD, password.getPassword());
         contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_NOTE, password.getNote());
-        mPasswordDBHelper.getWritableDatabase().insert(PasswordDBHelper.PasswordEntry.TABLE_NAME, null, contentValues);
+        long insert = mPasswordDBHelper.getWritableDatabase().insert(PasswordDBHelper.PasswordEntry.TABLE_NAME, null, contentValues);
+        return Observable.just(insert > 0);
     }
 
     @Override
-    public void deletePassword(@NonNull int passwordId) {
+    public Observable<Boolean> updatePassword(@NonNull Password password) {
+        String whereClause = String.format("%s = ?", PasswordDBHelper.PasswordEntry._ID);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_PLATFORM, password.getPlatform());
+        contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_USERNAME, password.getUserName());
+        contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_PASSWORD, password.getPassword());
+        contentValues.put(PasswordDBHelper.PasswordEntry.COLUMN_NAME_NOTE, password.getNote());
+        String[] whereArgs = {password.getId()};
+        long update = mPasswordDBHelper.getWritableDatabase().update(PasswordDBHelper.PasswordEntry.TABLE_NAME, contentValues, whereClause, whereArgs);
+        return Observable.just(update > 0);
+    }
 
+    @Override
+    public Observable<Boolean> deletePassword(@NonNull String passwordId) {
+        String whereClause = String.format("%s = ?", PasswordDBHelper.PasswordEntry._ID);
+        String[] whereArgs = {passwordId};
+        int delete = mPasswordDBHelper.getWritableDatabase().delete(PasswordDBHelper.PasswordEntry.TABLE_NAME, whereClause, whereArgs);
+        return Observable.just(delete > 0);
     }
 }

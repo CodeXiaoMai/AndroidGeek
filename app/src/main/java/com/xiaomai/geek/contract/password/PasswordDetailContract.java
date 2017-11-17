@@ -7,20 +7,16 @@ import com.xiaomai.geek.presenter.BasePresenter;
 import com.xiaomai.mvp.lce.ILceView;
 
 /**
- * Created by xiaomai on 2017/10/26.
+ * Created by XiaoMai on 2017/11/17.
  */
 
-public interface AddEditPasswordContract {
+public interface PasswordDetailContract {
 
     interface View extends ILceView<Password> {
-        void onSaveSuccess();
-        void onUpdateSuccess(@NonNull Password password);
+        void deleteSuccess(@NonNull Password password);
     }
 
     abstract class Presenter extends BasePresenter<View> {
-
-        public abstract void savePassword(@NonNull Password password);
-
-        public abstract void updatePassword(@NonNull Password password);
     }
+
 }

@@ -15,6 +15,15 @@
     <string name="password_length_six">密码长度：6</string>
     <string name="cancel">取消</string>
     <string name="confirm">确定</string>
+    <string name="password">密码</string>
+    <string name="note">备注</string>
+    <string name="platform">平台</string>
+    <string name="account">账号</string>
+    <string name="basic_information">基本信息</string>
+    <string name="empty">无</string>
+    <string name="send_to_notification">发送到通知栏</string>
+    <string name="delete">删除</string>
+    <string name="share">分享</string>
 
     <string-array name="password_types">
         <item>全部随机</item>

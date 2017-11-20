@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.common.utils.ShareUtils;
 import com.xiaomai.geek.contract.password.PasswordDetailContract;
 import com.xiaomai.geek.data.PasswordRepository;
@@ -147,7 +148,9 @@ public class PasswordDetailActivity extends BaseActivity implements PasswordDeta
                 onBackPressed();
                 return true;
             case R.id.menu_publish:
-
+                // TODO: 2017/11/20 检查通知权限
+                NotificationUtils.showNotification(mContext, mPassword);
+                Snackbar.make(mNoteView, "账号密码已发送到通知栏", Snackbar.LENGTH_LONG).show();
                 return true;
             case R.id.menu_delete:
                 deletePassword();

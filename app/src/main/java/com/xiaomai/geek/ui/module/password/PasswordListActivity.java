@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.contract.password.PasswordsContract;
 import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
@@ -88,13 +89,14 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         mAdapter = new Adapter();
         mAdapter.setCallback(new Callback() {
             @Override
-            public void onItemClick(Password password) {
+            public void onItemClick(@NonNull Password password) {
                 PasswordDetailActivity.launch(mContext, password);
             }
 
             @Override
-            public void onPublishClick(Password password) {
-
+            public void onPublishClick(@NonNull Password password) {
+                NotificationUtils.showNotification(mContext, password);
+                Snackbar.make(mRecyclerView, "账号密码已发送到通知栏", Snackbar.LENGTH_LONG).show();
             }
         });
         mRecyclerView.setAdapter(mAdapter);

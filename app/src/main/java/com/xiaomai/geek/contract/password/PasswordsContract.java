@@ -25,5 +25,7 @@ public interface PasswordsContract {
         public abstract void loadPasswords();
 
         public abstract void loadPasswords(@NonNull String keyword);
+
+        public abstract void deleteAllPasswords();
     }
 }

@@ -51,4 +51,6 @@ public interface IPasswordDataSource {
      * @param passwordId
      */
     Observable<Boolean> deletePassword(@NonNull String passwordId);
+
+    Observable<Integer> deleteAllPasswords();
 }

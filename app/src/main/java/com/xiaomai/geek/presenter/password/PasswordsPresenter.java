@@ -11,6 +11,7 @@ import com.xiaomai.geek.data.module.Password;
 import org.reactivestreams.Subscription;
 
 import java.util.List;
+import java.util.Locale;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -46,7 +47,7 @@ public class PasswordsPresenter extends PasswordsContract.Presenter {
 
                     @Override
                     public void onNext(Boolean aBoolean) {
-                        if(aBoolean) {
+                        if (aBoolean) {
                             getMvpView().showError(new Throwable("撤销成功"));
                         } else {
                             getMvpView().showError(new Throwable("撤销失败"));
@@ -129,6 +130,34 @@ public class PasswordsPresenter extends PasswordsContract.Presenter {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         getMvpView().showError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void deleteAllPasswords() {
+        mPasswordRepository.deleteAllPasswords()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mCompositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        AppLog.i(TAG, String.format(Locale.CHINA, "success delete %d items", integer));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
                     }
 
                     @Override

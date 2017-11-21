@@ -142,4 +142,9 @@ public class PasswordRepository implements IPasswordDataSource {
         int delete = mPasswordDBHelper.getWritableDatabase().delete(PasswordDBHelper.PasswordEntry.TABLE_NAME, whereClause, whereArgs);
         return Observable.just(delete > 0);
     }
+
+    @Override
+    public Observable<Integer> deleteAllPasswords() {
+        return Observable.just(mPasswordDBHelper.getWritableDatabase().delete(PasswordDBHelper.PasswordEntry.TABLE_NAME, null, null));
+    }
 }

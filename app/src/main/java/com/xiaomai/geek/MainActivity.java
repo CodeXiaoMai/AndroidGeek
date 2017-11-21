@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
 import com.xiaomai.geek.ui.base.BaseActivity;
+import com.xiaomai.geek.ui.module.effects.EffectListActivity;
 import com.xiaomai.geek.ui.module.password.PasswordListActivity;
 import com.xiaomai.geek.ui.widget.MenuItemView;
 
@@ -54,6 +55,14 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, PasswordListActivity.class));
+            }
+        });
+
+        MenuItemView menuItemEffect = headerView.findViewById(R.id.menu_item_effect);
+        menuItemEffect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, EffectListActivity.class));
             }
         });
 

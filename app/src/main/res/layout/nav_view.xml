@@ -53,6 +53,13 @@
                 app:menuTitle="@string/password_manage" />
 
             <com.xiaomai.geek.ui.widget.MenuItemView
+                android:id="@+id/menu_item_effect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconDrawable="@drawable/ic_what_shot_white_24dp"
+                app:menuTitle="@string/effects" />
+
+            <com.xiaomai.geek.ui.widget.MenuItemView
                 android:id="@+id/menu_item_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

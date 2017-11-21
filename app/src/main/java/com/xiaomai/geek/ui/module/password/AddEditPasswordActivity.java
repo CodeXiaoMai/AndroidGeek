@@ -3,9 +3,7 @@ package com.xiaomai.geek.ui.module.password;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
@@ -70,32 +68,6 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        mPresenter = new AddEditPasswordPresenter(PasswordRepository.getInstance(mContext));
-        mPresenter.attachView(this);
-
-        loadData();
-    }
-
-    private void loadData() {
-        Password password = (Password) getParcelableFromIntent(EXTRA_PASSWORD);
-        if (password == null) {
-            return;
-        }
-
-        mCurrentMode = MODE_UPDATE;
-
-        mPasswordId = password.getId();
-
-        mEditPlatformView.setText(password.getPlatform());
-        mEditUserNameView.setText(password.getUserName());
-        mEditPasswordView.setText(password.getPassword());
-        mEditNoteView.setText(password.getNote());
-    }
-
-    @Override
     protected int getLayoutResource() {
         return R.layout.activity_password_edit;
     }
@@ -127,7 +99,6 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
 
             @Override
             public void afterTextChanged(Editable s) {
-//                layoutPlatform.setErrorEnabled(false);
             }
         });
 
@@ -169,6 +140,30 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
                 savePassword();
             }
         });
+    }
+
+    @Override
+    protected void afterInitViews() {
+        super.afterInitViews();
+        mPresenter = new AddEditPasswordPresenter(PasswordRepository.getInstance(mContext));
+        mPresenter.attachView(this);
+    }
+
+    @Override
+    protected void loadData() {
+        Password password = (Password) getParcelableFromIntent(EXTRA_PASSWORD);
+        if (password == null) {
+            return;
+        }
+
+        mCurrentMode = MODE_UPDATE;
+
+        mPasswordId = password.getId();
+
+        mEditPlatformView.setText(password.getPlatform());
+        mEditUserNameView.setText(password.getUserName());
+        mEditPasswordView.setText(password.getPassword());
+        mEditNoteView.setText(password.getNote());
     }
 
     private void savePassword() {

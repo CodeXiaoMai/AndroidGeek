@@ -6,9 +6,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -48,30 +46,10 @@ public class PasswordDetailActivity extends BaseActivity implements PasswordDeta
 
     private PasswordDetailPresenter mPresenter;
 
-
     public static void launch(@NonNull Context context, @NonNull Password password) {
         Intent intent = new Intent(context, PasswordDetailActivity.class);
         intent.putExtra(EXTRA_PASSWORD, password);
         context.startActivity(intent);
-    }
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        EventBus.getDefault().register(this);
-        mPresenter = new PasswordDetailPresenter(PasswordRepository.getInstance(this));
-        mPresenter.attachView(this);
-        loadData();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-        if (mPresenter != null) {
-            mPresenter.detachView();
-        }
     }
 
     @Override
@@ -131,8 +109,26 @@ public class PasswordDetailActivity extends BaseActivity implements PasswordDeta
         Snackbar.make(mNoteView, snack, Snackbar.LENGTH_LONG).show();
     }
 
-    private void loadData() {
+    @Override
+    protected void afterInitViews() {
+        super.afterInitViews();
+        EventBus.getDefault().register(this);
+        mPresenter = new PasswordDetailPresenter(PasswordRepository.getInstance(this));
+        mPresenter.attachView(this);
+    }
+
+    @Override
+    protected void loadData() {
         showContent((Password) getParcelableFromIntent(EXTRA_PASSWORD));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
     }
 
     @Override

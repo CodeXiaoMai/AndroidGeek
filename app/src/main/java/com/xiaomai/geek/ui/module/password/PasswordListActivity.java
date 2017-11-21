@@ -1,7 +1,6 @@
 package com.xiaomai.geek.ui.module.password;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -47,17 +46,6 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
     private ErrorView mEmptyView;
 
     private Adapter mAdapter;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mPresenter = new PasswordsPresenter(PasswordRepository.getInstance(mContext));
-        mPresenter.attachView(this);
-
-        EventBus.getDefault().register(this);
-
-        loadData();
-    }
 
     @Override
     protected int getLayoutResource() {
@@ -112,7 +100,17 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         });
     }
 
-    private void loadData() {
+    @Override
+    protected void afterInitViews() {
+        super.afterInitViews();
+        mPresenter = new PasswordsPresenter(PasswordRepository.getInstance(mContext));
+        mPresenter.attachView(this);
+
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void loadData() {
         mPresenter.loadPasswords();
     }
 

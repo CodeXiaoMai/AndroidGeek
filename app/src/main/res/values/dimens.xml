@@ -3,7 +3,13 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="margin_normal">5dp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_middle">6dp</dimen>
+    <dimen name="margin_normal">8dp</dimen>
+    <dimen name="margin_large">10dp</dimen>
+    <dimen name="margin_x_large">12dp</dimen>
+    <dimen name="margin_xx_large">14dp</dimen>
 
     <dimen name="text_size_small">12sp</dimen>
     <dimen name="text_size_middle">14sp</dimen>

@@ -10,13 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/DayTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.module.password.DoorActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.module.password.PasswordListActivity"
             android:screenOrientation="portrait" />
@@ -26,6 +29,9 @@
             android:theme="@style/TransparentTheme" />
         <activity
             android:name=".ui.module.password.AddEditPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.module.effects.EffectListActivity"

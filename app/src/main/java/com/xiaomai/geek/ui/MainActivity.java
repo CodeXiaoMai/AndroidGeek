@@ -1,4 +1,4 @@
-package com.xiaomai.geek;
+package com.xiaomai.geek.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
+import com.xiaomai.geek.R;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.module.effects.EffectListActivity;
-import com.xiaomai.geek.ui.module.password.PasswordListActivity;
+import com.xiaomai.geek.ui.module.password.DoorActivity;
 import com.xiaomai.geek.ui.widget.MenuItemView;
 
 public class MainActivity extends BaseActivity {
@@ -54,7 +55,7 @@ public class MainActivity extends BaseActivity {
         menuItemPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, PasswordListActivity.class));
+                startActivity(new Intent(mContext, DoorActivity.class));
             }
         });
 
@@ -70,7 +71,7 @@ public class MainActivity extends BaseActivity {
         menuItemSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(mContext, SettingActivity.class));
             }
         });
     }

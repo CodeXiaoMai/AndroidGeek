@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.xiaomai.geek.contract.password.AddEditPasswordContract;
 import com.xiaomai.geek.data.IPasswordDataSource;
+import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
 
 import io.reactivex.Observer;
@@ -65,5 +66,11 @@ public class AddEditPasswordPresenter extends AddEditPasswordContract.Presenter 
 
                     }
                 });
+    }
+
+    @Override
+    public void detachView() {
+        super.detachView();
+        PasswordRepository.destroyInstance();
     }
 }

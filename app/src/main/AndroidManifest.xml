@@ -39,6 +39,9 @@
         <activity
             android:name=".ui.module.effects.EffectDetailActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.module.effects.FlowLayoutActivity"
+            android:screenOrientation="portrait" />
 
         <!--Service-->
         <service android:name=".service.InitializeService" />

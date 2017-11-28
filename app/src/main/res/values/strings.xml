@@ -31,6 +31,7 @@
     <string name="import_data">导入数据</string>
     <string name="modify_password">修改密码</string>
     <string name="please_input_password">请输入密码</string>
+    <string name="flow_layout">流式布局</string>
 
     <string-array name="password_types">
         <item>全部随机</item>

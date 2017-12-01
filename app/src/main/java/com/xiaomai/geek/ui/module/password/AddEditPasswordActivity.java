@@ -3,6 +3,7 @@ package com.xiaomai.geek.ui.module.password;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -15,11 +16,13 @@ import android.widget.ImageView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.ActivityStacks;
 import com.xiaomai.geek.contract.password.AddEditPasswordContract;
 import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.password.AddEditPasswordPresenter;
+import com.xiaomai.geek.receiver.HomePressReceiver;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.widget.GeneratePasswordView;
 
@@ -61,6 +64,8 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
 
     private AddEditPasswordContract.Presenter mPresenter;
 
+    private HomePressReceiver mReceiver = new HomePressReceiver();
+
     public static void launch(@NonNull Context context, @NonNull Password password) {
         Intent intent = new Intent(context, AddEditPasswordActivity.class);
         intent.putExtra(EXTRA_PASSWORD, password);
@@ -70,6 +75,12 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
     @Override
     protected int getLayoutResource() {
         return R.layout.activity_password_edit;
+    }
+
+    @Override
+    protected void beforeInitViews() {
+        super.beforeInitViews();
+        ActivityStacks.add(this);
     }
 
     @Override
@@ -147,6 +158,27 @@ public class AddEditPasswordActivity extends BaseActivity implements AddEditPass
         super.afterInitViews();
         mPresenter = new AddEditPasswordPresenter(PasswordRepository.getInstance(mContext));
         mPresenter.attachView(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mReceiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
+        ActivityStacks.remove(this);
     }
 
     @Override

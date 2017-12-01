@@ -6,6 +6,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.ActivityStacks;
 import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.common.utils.ShareUtils;
 import com.xiaomai.geek.contract.password.PasswordDetailContract;
@@ -25,6 +27,7 @@ import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.password.PasswordDetailPresenter;
+import com.xiaomai.geek.receiver.HomePressReceiver;
 import com.xiaomai.geek.ui.base.BaseActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -46,6 +49,8 @@ public class PasswordDetailActivity extends BaseActivity implements PasswordDeta
 
     private PasswordDetailPresenter mPresenter;
 
+    private HomePressReceiver mReceiver = new HomePressReceiver();
+
     public static void launch(@NonNull Context context, @NonNull Password password) {
         Intent intent = new Intent(context, PasswordDetailActivity.class);
         intent.putExtra(EXTRA_PASSWORD, password);
@@ -55,6 +60,12 @@ public class PasswordDetailActivity extends BaseActivity implements PasswordDeta
     @Override
     protected int getLayoutResource() {
         return R.layout.activity_password_detail;
+    }
+
+    @Override
+    protected void beforeInitViews() {
+        super.beforeInitViews();
+        ActivityStacks.add(this);
     }
 
     @Override
@@ -123,12 +134,25 @@ public class PasswordDetailActivity extends BaseActivity implements PasswordDeta
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mReceiver);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         if (mPresenter != null) {
             mPresenter.detachView();
         }
+        ActivityStacks.remove(this);
     }
 
     @Override

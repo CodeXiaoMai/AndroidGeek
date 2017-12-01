@@ -32,6 +32,9 @@
     <string name="modify_password">修改密码</string>
     <string name="please_input_password">请输入密码</string>
     <string name="flow_layout">流式布局</string>
+    <string name="please_set_password">请先设置密码</string>
+    <string name="password_error">密码错误</string>
+    <string name="password_length_must_more_than_six">密码长度至少为6位</string>
 
     <string-array name="password_types">
         <item>全部随机</item>

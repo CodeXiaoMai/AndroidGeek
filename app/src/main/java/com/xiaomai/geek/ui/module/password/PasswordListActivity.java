@@ -1,6 +1,7 @@
 package com.xiaomai.geek.ui.module.password;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -17,12 +18,14 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.xiaomai.geek.R;
+import com.xiaomai.geek.common.utils.ActivityStacks;
 import com.xiaomai.geek.common.utils.NotificationUtils;
 import com.xiaomai.geek.contract.password.PasswordsContract;
 import com.xiaomai.geek.data.PasswordRepository;
 import com.xiaomai.geek.data.module.Password;
 import com.xiaomai.geek.event.PasswordEvent;
 import com.xiaomai.geek.presenter.password.PasswordsPresenter;
+import com.xiaomai.geek.receiver.HomePressReceiver;
 import com.xiaomai.geek.ui.base.BaseActivity;
 import com.xiaomai.geek.ui.widget.ErrorView;
 import com.xiaomai.geek.ui.widget.TitleView;
@@ -39,17 +42,24 @@ import java.util.List;
 public class PasswordListActivity extends BaseActivity implements PasswordsContract.View {
 
     private PasswordsContract.Presenter mPresenter;
-
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private ErrorView mErrorView;
     private ErrorView mEmptyView;
+
+    private HomePressReceiver mReceiver = new HomePressReceiver();
 
     private Adapter mAdapter;
 
     @Override
     protected int getLayoutResource() {
         return R.layout.activity_password_list;
+    }
+
+    @Override
+    protected void beforeInitViews() {
+        super.beforeInitViews();
+        ActivityStacks.add(this);
     }
 
     @Override
@@ -154,6 +164,19 @@ public class PasswordListActivity extends BaseActivity implements PasswordsContr
         if (mPresenter != null) {
             mPresenter.detachView();
         }
+        ActivityStacks.remove(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mReceiver);
     }
 
     @Subscribe

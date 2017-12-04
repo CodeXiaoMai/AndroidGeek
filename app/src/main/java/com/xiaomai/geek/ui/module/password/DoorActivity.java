@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.xiaomai.geek.BuildConfig;
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.common.utils.ActivityStacks;
 import com.xiaomai.geek.contract.password.DoorContract;
@@ -54,6 +55,10 @@ public class DoorActivity extends BaseActivity implements DoorContract.View {
         mCancelView = findViewById(R.id.bt_cancel);
         mConfirmView = findViewById(R.id.bt_ok);
 
+        if (BuildConfig.DEBUG) {
+            mPasswordView.setText("123456");
+        }
+
         mPasswordView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -77,10 +82,7 @@ public class DoorActivity extends BaseActivity implements DoorContract.View {
         mCancelView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getIntent().getBooleanExtra(EXTRA_CLEAR, false)) {
-                    ActivityStacks.clear();
-                }
-                finish();
+                onBackPressed();
             }
         });
     }
@@ -143,8 +145,19 @@ public class DoorActivity extends BaseActivity implements DoorContract.View {
                 startActivity(new Intent(mContext, PasswordListActivity.class));
             }
             finish();
+            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
         } else {
             mPasswordLayout.setError(getString(R.string.password_error));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (getIntent().getBooleanExtra(EXTRA_CLEAR, false)) {
+            ActivityStacks.clear();
+        }
+        finish();
     }
 }

@@ -3,6 +3,7 @@ package com.xiaomai.geek.ui.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -23,9 +24,9 @@ public class TitleView extends FrameLayout {
 
     private TextView mTitleView;
     private ImageView mBackView;
-    private ImageView mMenuView;
     private ImageView mMoreView;
 
+    private Drawable mMenuDrawable;
     private String mTitle;
 
     public TitleView(Context context) {
@@ -44,7 +45,6 @@ public class TitleView extends FrameLayout {
         mTitleView.setSelected(true);
 
         mBackView = (ImageView) rootView.findViewById(R.id.iv_back);
-        mMenuView = (ImageView) rootView.findViewById(R.id.iv_menu);
         mMoreView = (ImageView) rootView.findViewById(R.id.iv_more);
 
         mBackView.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +58,12 @@ public class TitleView extends FrameLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleView);
         mTitle = typedArray.getString(R.styleable.TitleView_title);
+        mMenuDrawable = typedArray.getDrawable(R.styleable.TitleView_menuIcon);
         typedArray.recycle();
 
+        if (null != mMenuDrawable) {
+            mBackView.setImageDrawable(mMenuDrawable);
+        }
         if (!TextUtils.isEmpty(mTitle)) {
             mTitleView.setText(mTitle);
         }
@@ -75,16 +79,6 @@ public class TitleView extends FrameLayout {
         } else {
             mBackView.setVisibility(View.VISIBLE);
             mBackView.setOnClickListener(listener);
-        }
-    }
-
-    public void setOnMenuClickListener(View.OnClickListener listener) {
-        if (listener == null) {
-            mMenuView.setVisibility(View.GONE);
-        } else {
-            mBackView.setVisibility(View.GONE);
-            mMenuView.setVisibility(View.VISIBLE);
-            mMenuView.setOnClickListener(listener);
         }
     }
 

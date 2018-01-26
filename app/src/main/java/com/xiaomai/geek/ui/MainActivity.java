@@ -3,12 +3,15 @@ package com.xiaomai.geek.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
 import com.xiaomai.geek.R;
 import com.xiaomai.geek.ui.base.BaseActivity;
+import com.xiaomai.geek.ui.module.article.ArticleListFragment;
 import com.xiaomai.geek.ui.module.effects.EffectListActivity;
 import com.xiaomai.geek.ui.module.password.DoorActivity;
 import com.xiaomai.geek.ui.widget.MenuItemView;
@@ -31,6 +34,11 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initViews() {
         super.initViews();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.fl_container, ArticleListFragment.newInstance(), ArticleListFragment.class.getSimpleName());
+        transaction.commit();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 

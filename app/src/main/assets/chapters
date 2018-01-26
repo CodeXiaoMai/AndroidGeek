@@ -484,6 +484,42 @@
   {
     "articles": [
       {
+        "name": "Android LayoutInflater原理分析，带你一步步深入了解View(一)",
+        "url": "http://blog.csdn.net/guolin_blog/article/details/12921889"},
+      {
+        "name": "Android视图绘制流程完全解析，带你一步步深入了解View(二)",
+        "url": "http://blog.csdn.net/guolin_blog/article/details/16330267"},
+      {
+        "name": "Android视图状态及重绘流程分析，带你一步步深入了解View(三)",
+        "url": "http://blog.csdn.net/guolin_blog/article/details/17045157"},
+      {
+        "name": "Android自定义View的实现方法，带你一步步深入了解View(四)",
+        "url": "http://blog.csdn.net/guolin_blog/article/details/17357967"},
+      {
+        "name": "Android 自定义View (一)",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/24252901"},
+      {
+        "name": "Android 自定义View (二) 进阶",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/24300125"},
+      {
+        "name": "Android 自定义View (三) 圆环交替 等待效果",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/24500107"},
+      {
+        "name": "Android 自定义View (四) 视频音量调控",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/24529807"},
+      {
+        "name": "Android 手把手教您自定义ViewGroup（一）",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/38339817"},
+      {
+        "name": "Android 自定义ViewGroup 实战篇 -> 实现FlowLayout",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/38352503"},
+      {
+        "name": "Android 深入理解Android中的自定义属性",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/45022631"},
+      {
+        "name": "Android ViewDragHelper完全解析 自定义ViewGroup神器",
+        "url": "http://blog.csdn.net/lmj623565791/article/details/46858663"},
+      {
         "name": "自定义进度条PictureProgressBar——从开发到开源发布全过程",
         "url": "http://blog.csdn.net/totond/article/details/72359888"},
       {

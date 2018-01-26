@@ -17,7 +17,7 @@
         <item name="clockBackgroundPrimary">@color/colorBackgroundPrimary</item>
         <item name="clockTextColor">@android:color/black</item>
         <item name="clockTextColorSecond">@android:color/darker_gray</item>
-        <item name="clockSelector">@drawable/common_background_selector_day</item>
+        <!--<item name="clockSelector">@drawable/common_background_selector_day</item>-->
     </style>
 
     <style name="TransparentTheme" parent="AppTheme" />

@@ -10,44 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/DayTheme">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.module.password.DoorActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.module.password.PasswordListActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.module.password.PasswordDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TransparentTheme" />
-        <activity
-            android:name=".ui.module.password.AddEditPasswordActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.SettingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.module.effects.EffectListActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.module.effects.EffectDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.module.effects.FlowLayoutActivity"
-            android:screenOrientation="portrait" />
-
-        <!--Service-->
-        <service android:name=".service.InitializeService" />
-        <service android:name=".service.NotificationService" />
     </application>
 
 </manifest>

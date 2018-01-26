@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -19,22 +21,22 @@ android {
     }
 
     signingConfigs {
-        release {
-            storeFile file('../keystore/mykeystore.jks')
-            storePassword key_store_password
-            keyAlias key_alias
-            keyPassword key_password
-        }
+//        release {
+//            storeFile file('../keystore/mykeystore.jks')
+//            storePassword key_store_password
+//            keyAlias key_alias
+//            keyPassword key_password
+//        }
     }
 
     buildTypes {
         debug {
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -46,6 +48,9 @@ android {
             assets.srcDirs = ['src/main/assets']
         }
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 dependencies {
@@ -53,8 +58,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
-    compile project(':mvp')
 
     compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -79,7 +82,24 @@ dependencies {
     // https://github.com/greenrobot/EventBus
     compile 'org.greenrobot:eventbus:3.0.0'
 
+    // Retrofit for rest client
+    // https://github.com/square/retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    // https://github.com/facebook/stetho
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+
+    // 使用 fastjson data class 的字段都要赋初始值
+    compile 'com.alibaba:fastjson:1.1.67.android'
+
     testCompile 'junit:junit:4.12'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

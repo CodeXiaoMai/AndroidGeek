@@ -18,5 +18,6 @@
 
     <declare-styleable name="TitleView">
         <attr name="title" />
+        <attr name="menuIcon" format="reference" />
     </declare-styleable>
 </resources>

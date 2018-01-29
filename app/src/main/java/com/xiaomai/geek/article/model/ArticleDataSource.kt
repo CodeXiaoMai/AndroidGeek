@@ -1,6 +1,6 @@
 package com.xiaomai.geek.article.model
 
-import rx.Observable
+import io.reactivex.Observable
 
 /**
  * Created by wangce on 2018/1/26.

@@ -1,5 +1,6 @@
 package com.xiaomai.geek.common.wrapper
 
+import android.util.Log
 import com.orhanobut.logger.Logger
 import com.xiaomai.geek.BuildConfig
 
@@ -13,6 +14,12 @@ class GeeKLog {
 
         fun init() {
             Logger.init(TAG)
+        }
+
+        fun d(tag: String, msg: String) {
+            if (BuildConfig.DEBUG) {
+                Log.d(tag, msg)
+            }
         }
 
         fun e(msg: String) {

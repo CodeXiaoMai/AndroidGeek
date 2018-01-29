@@ -1,8 +1,9 @@
 package com.xiaomai.geek.article.model
 
-import android.util.Log
-import com.alibaba.fastjson.JSON
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.xiaomai.geek.common.utils.StringUtil
+import com.xiaomai.geek.common.wrapper.GeeKLog
 import com.xiaomai.geek.network.GeekApiService
 import com.xiaomai.geek.network.GeekRetrofit
 import rx.Observable
@@ -16,9 +17,13 @@ class ArticleRemoteDataSource : ArticleDataSource {
         return GeekRetrofit.getInstance().create(GeekApiService::class.java)
                 .getArticles()
                 .map {
-//                    Log.e("TAG", StringUtil.base64Decode(it.content))
                     it?.content?.let {
-                        JSON.parseArray(StringUtil.base64Decode(it), ArticleResponse::class.java)
+                        val collectionType = object : TypeToken<List<ArticleResponse>>() {
+
+                        }.type
+                        val json = StringUtil.base64Decode(it)
+                        GeeKLog.json(json)
+                        Gson().fromJson<List<ArticleResponse>>(json, collectionType)
                     }
                 }
     }

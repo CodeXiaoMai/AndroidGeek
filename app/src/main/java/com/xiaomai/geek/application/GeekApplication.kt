@@ -1,4 +1,4 @@
-package com.xiaomai.geek
+package com.xiaomai.geek.application
 
 import android.app.Application
 import com.facebook.stetho.Stetho
@@ -10,6 +10,6 @@ class GeekApplication : Application(){
     override fun onCreate() {
         super.onCreate()
 
-        Stetho.initializeWithDefaults(this)
+        InitializeService.start(this)
     }
 }

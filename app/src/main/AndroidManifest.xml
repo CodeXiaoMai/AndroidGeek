@@ -12,13 +12,18 @@
         android:theme="@style/DayTheme">
 
         <!--Activity Start-->
-        <activity android:name=".main.MainActivity">
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".article.view.ArticleListActivity"
+            android:screenOrientation="portrait" />
         <!--Activity End-->
 
         <!--Service Start-->

@@ -2,6 +2,8 @@ package com.xiaomai.geek.article.viewmodel
 
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
+import com.xiaomai.geek.application.InitializeService
+import com.xiaomai.geek.article.db.Article
 import com.xiaomai.geek.article.model.ArticleRemoteDataSource
 import com.xiaomai.geek.article.model.ArticleRepository
 import com.xiaomai.geek.article.model.ArticleResponse
@@ -33,6 +35,11 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : BaseObserver<List<ArticleResponse>>(this@ArticleViewModel) {
                         override fun onNext(t: List<ArticleResponse>) {
+                            t.forEach {
+                                val article = Article(null, it.name, it.url)
+                                InitializeService.getArticleDaoSession()?.articleDao?.insert(article)
+                            }
+
                             articles.value = t
                             pageStatus.value = if (t.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
                         }

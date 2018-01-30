@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -45,6 +46,8 @@ android {
 
     sourceSets {
         main {
+            // 在 Kotlin 文件中调用 GreenDao 要配置 或 在 greendao 中指定 targetGenDir
+//            java.srcDirs += 'build/generated/source/greendao'
             jniLibs.srcDirs = ['libs']
             assets.srcDirs = ['src/main/assets']
         }
@@ -54,6 +57,11 @@ android {
         // Kotlin 要开启 kapt
         enabled = true
     }
+}
+
+greendao {
+    schemaVersion 1
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -103,6 +111,8 @@ dependencies {
     // 使用 fastjson data class 的字段都要赋初始值
 //    compile 'com.alibaba:fastjson:1.1.67.android'
     compile 'com.google.code.gson:gson:2.8.2'
+
+    compile 'org.greenrobot:greendao:3.2.2'
 
     testCompile 'junit:junit:4.12'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'

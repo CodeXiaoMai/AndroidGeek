@@ -15,7 +15,7 @@ import com.xiaomai.geek.databinding.GeekTitleViewBinding
  */
 class GeekTitleView : FrameLayout {
 
-    private lateinit var binding: GeekTitleViewBinding
+    private var binding: GeekTitleViewBinding
 
     constructor(context: Context) : this(context, null)
 

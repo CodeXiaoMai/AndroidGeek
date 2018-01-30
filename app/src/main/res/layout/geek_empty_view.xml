@@ -9,7 +9,7 @@
         android:background="?attr/clockBackgroundPrimary"
         android:orientation="vertical"
         android:visibility="gone"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <LinearLayout
             android:id="@+id/empty_view"

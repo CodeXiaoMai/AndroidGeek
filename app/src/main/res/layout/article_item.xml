@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="article"
+            name="value"
             type="com.xiaomai.geek.article.model.ArticleResponse" />
     </data>
 
@@ -25,7 +25,7 @@
                 android:background="@color/colorAccent"
                 android:gravity="center"
                 android:minHeight="80dp"
-                android:text="@{article.name}"
+                android:text="@{value.name}"
                 android:textColor="@android:color/white"
                 tools:text="RxJava" />
         </LinearLayout>

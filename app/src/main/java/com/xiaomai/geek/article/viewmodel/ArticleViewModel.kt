@@ -5,15 +5,16 @@ import android.arch.lifecycle.MutableLiveData
 import com.xiaomai.geek.article.model.ArticleRemoteDataSource
 import com.xiaomai.geek.article.model.ArticleRepository
 import com.xiaomai.geek.article.model.ArticleResponse
-import com.xiaomai.geek.base.BaseAndroidViewModel
 import com.xiaomai.geek.base.BaseObserver
+import com.xiaomai.geek.base.BaseViewModel
+import com.xiaomai.geek.common.PageStatus
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by wangce on 2018/1/29.
  */
-class ArticleViewModel(context: Application) : BaseAndroidViewModel(context) {
+class ArticleViewModel(context: Application) : BaseViewModel(context) {
 
     private var articleRepository: ArticleRepository? = null
 
@@ -22,6 +23,7 @@ class ArticleViewModel(context: Application) : BaseAndroidViewModel(context) {
     fun getArticles() = articles
 
     fun loadArticles() {
+        pageStatus.value = PageStatus.LOADING
         if (articleRepository == null) {
             articleRepository = ArticleRepository(ArticleRemoteDataSource())
         }
@@ -29,9 +31,10 @@ class ArticleViewModel(context: Application) : BaseAndroidViewModel(context) {
             it.getArticles()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(object : BaseObserver<List<ArticleResponse>>(compositeDisposable) {
+                    .subscribe(object : BaseObserver<List<ArticleResponse>>(this@ArticleViewModel) {
                         override fun onNext(t: List<ArticleResponse>) {
                             articles.value = t
+                            pageStatus.value = if (t.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
                         }
                     })
         }

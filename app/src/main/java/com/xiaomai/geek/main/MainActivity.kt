@@ -13,8 +13,9 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
 
         startActivity(Intent(this@MainActivity, ArticleListActivity::class.java))
     }
+
+    override fun getLayoutId(): Int = R.layout.main_activity
 }

@@ -1,4 +1,4 @@
-package com.xiaomai.geek.article.db;
+package com.xiaomai.geek.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,11 +22,15 @@ public class DaoMaster extends AbstractDaoMaster {
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
         ArticleDao.createTable(db, ifNotExists);
+        ArticleCategoryDao.createTable(db, ifNotExists);
+        ConfigDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
         ArticleDao.dropTable(db, ifExists);
+        ArticleCategoryDao.dropTable(db, ifExists);
+        ConfigDao.dropTable(db, ifExists);
     }
 
     /**
@@ -46,6 +50,8 @@ public class DaoMaster extends AbstractDaoMaster {
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
         registerDaoClass(ArticleDao.class);
+        registerDaoClass(ArticleCategoryDao.class);
+        registerDaoClass(ConfigDao.class);
     }
 
     public DaoSession newSession() {

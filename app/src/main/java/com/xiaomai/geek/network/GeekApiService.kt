@@ -9,7 +9,6 @@ import retrofit2.http.GET
  */
 interface GeekApiService {
 
-//    @Headers("Cache-Control: public, max-age=600")
     @GET("contents/app/src/main/assets/chapters?ref=master")
-    fun getArticles(): Observable<ContentResponse>
+    fun getArticleResponse(): Observable<ContentResponse>
 }

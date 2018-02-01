@@ -2,12 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
 
         <variable
             name="value"
-            type="com.xiaomai.geek.article.model.ArticleResponse" />
+            type="com.xiaomai.geek.db.ArticleCategory" />
     </data>
 
     <android.support.v7.widget.CardView

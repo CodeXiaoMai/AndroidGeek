@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xiaomai.geek">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".application.GeekApplication"
         android:allowBackup="true"
@@ -22,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".article.view.ArticleListActivity"
+            android:name=".article.view.ArticleCategoryListActivity"
             android:screenOrientation="portrait" />
         <!--Activity End-->
 

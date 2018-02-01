@@ -10,6 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
  * Created by wangce on 2018/1/29.
  */
 open class BaseViewModel(context: Application) : AndroidViewModel(context) {
+    val TAG = javaClass.simpleName
 
     var pageStatus: MutableLiveData<PageStatus> = MutableLiveData()
 

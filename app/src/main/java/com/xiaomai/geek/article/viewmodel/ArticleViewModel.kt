@@ -2,14 +2,14 @@ package com.xiaomai.geek.article.viewmodel
 
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
-import com.xiaomai.geek.application.InitializeService
-import com.xiaomai.geek.article.db.Article
+import com.xiaomai.geek.article.model.ArticleLocalDataSource
 import com.xiaomai.geek.article.model.ArticleRemoteDataSource
 import com.xiaomai.geek.article.model.ArticleRepository
-import com.xiaomai.geek.article.model.ArticleResponse
-import com.xiaomai.geek.base.BaseObserver
+import com.xiaomai.geek.article.model.CategoryResponse
 import com.xiaomai.geek.base.BaseViewModel
+import com.xiaomai.geek.base.BaseViewModelObserver
 import com.xiaomai.geek.common.PageStatus
+import com.xiaomai.geek.db.ArticleCategory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -18,32 +18,31 @@ import io.reactivex.schedulers.Schedulers
  */
 class ArticleViewModel(context: Application) : BaseViewModel(context) {
 
-    private var articleRepository: ArticleRepository? = null
+    private var articleRepository: ArticleRepository = ArticleRepository(ArticleLocalDataSource(getApplication()), ArticleRemoteDataSource())
 
-    private var articles: MutableLiveData<List<ArticleResponse>> = MutableLiveData()
+    private var articleResponse: MutableLiveData<List<ArticleCategory>> = MutableLiveData()
 
-    fun getArticles() = articles
+    fun getArticles() = articleResponse
 
     fun loadArticles() {
         pageStatus.value = PageStatus.LOADING
-        if (articleRepository == null) {
-            articleRepository = ArticleRepository(ArticleRemoteDataSource())
-        }
-        articleRepository?.let {
-            it.getArticles()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(object : BaseObserver<List<ArticleResponse>>(this@ArticleViewModel) {
-                        override fun onNext(t: List<ArticleResponse>) {
-                            t.forEach {
-                                val article = Article(null, it.name, it.url)
-                                InitializeService.getArticleDaoSession()?.articleDao?.insert(article)
-                            }
+        articleRepository.getArticleCategories()
+                .subscribeOn(Schedulers.io())
+                .doOnNext { value ->
+//                    articleRepository.saveArticleCategories(value)
+                    TODO("只保存阅读过的文章")
+                }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : BaseViewModelObserver<CategoryResponse>(this@ArticleViewModel) {
+                    override fun onSuccess(value: CategoryResponse) {
+                        articleResponse.value = value.list
+                        pageStatus.value = if (value.list.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
+                    }
+                })
+    }
 
-                            articles.value = t
-                            pageStatus.value = if (t.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
-                        }
-                    })
-        }
+    override fun onCleared() {
+        super.onCleared()
+        articleRepository.onDestroy()
     }
 }

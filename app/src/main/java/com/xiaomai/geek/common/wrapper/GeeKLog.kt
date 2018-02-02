@@ -30,7 +30,7 @@ class GeeKLog {
 
         fun e(e: Throwable) {
             if (BuildConfig.DEBUG) {
-                Logger.e(e, "")
+                Logger.e(e, "${e.message}")
             }
         }
 

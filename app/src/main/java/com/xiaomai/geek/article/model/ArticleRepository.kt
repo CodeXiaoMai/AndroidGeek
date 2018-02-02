@@ -12,11 +12,8 @@ class ArticleRepository(private val articleLocalDataSource: ArticleLocalDataSour
                         private val articleRemoteDataSource: ArticleRemoteDataSource
 ) : ArticleDataSource, BaseDataSource() {
 
-    override fun getArticleCategories(): Observable<CategoryResponse> {
-        return articleLocalDataSource.getCategoryResponseFromAssets()
+    override fun getArticleResponse(): Observable<ArticleResponse> {
+        return articleLocalDataSource.getArticleResponseFromAssets()
     }
 
-    override fun saveArticleCategories(categories: CategoryResponse) {
-        articleLocalDataSource.saveArticles(categories)
-    }
 }

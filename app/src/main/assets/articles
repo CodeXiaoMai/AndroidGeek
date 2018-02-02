@@ -1,12 +1,18 @@
 {
-  "version": 1,
-  "list": [
+  "category": [
     {
-      "categoryId": "1",
-      "name": "给初学者的RxJava2.0教程(一)",
-      "url": "http://www.jianshu.com/p/464fa025229e",
-      "author": "",
-      "keywords": ""
+      "name": "RxJava",
+      "description": "RxJava Description",
+      "image": "http://reactivex.io/assets/Rx_Logo_S.png",
+      "url": "https://github.com/ReactiveX/RxJava",
+      "articles": [
+        {
+          "name": "给初学者的RxJava2.0教程(一)",
+          "url": "http://www.jianshu.com/p/464fa025229e",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        }
+      ]
     }
   ]
 }

@@ -2,7 +2,6 @@ package com.xiaomai.geek.article.model
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.xiaomai.geek.db.ArticleCategory
 import com.xiaomai.geek.common.utils.StringUtil
 import com.xiaomai.geek.common.wrapper.GeeKLog
 import com.xiaomai.geek.network.GeekApiService
@@ -14,15 +13,15 @@ import io.reactivex.Observable
  */
 class ArticleRemoteDataSource {
 
-    fun getArticleResponse(): Observable<List<ArticleCategory>> {
+    fun getCategories(): Observable<List<Category>> {
         return GeekRetrofit.getInstance().create(GeekApiService::class.java)
                 .getArticleResponse()
                 .map { contentResponse ->
                     contentResponse.content?.let {
                         val json = StringUtil.base64Decode(it)
                         GeeKLog.json(json)
-                        val type = object : TypeToken<List<ArticleCategory>>() {}.type
-                        Gson().fromJson<List<ArticleCategory>>(json, type)
+                        val type = object : TypeToken<List<Category>>() {}.type
+                        Gson().fromJson<List<Category>>(json, type)
                     }
                 }
     }

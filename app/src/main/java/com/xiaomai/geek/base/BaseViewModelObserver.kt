@@ -15,6 +15,7 @@ abstract class BaseViewModelObserver<T>(private val viewModel: BaseViewModel) : 
     }
 
     override fun onError(e: Throwable) {
+        super.onError(e)
         viewModel.pageStatus.postValue(PageStatus.ERROR)
     }
 }

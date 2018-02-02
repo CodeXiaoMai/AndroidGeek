@@ -4,16 +4,16 @@ import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import com.xiaomai.geek.article.model.Category
 import com.xiaomai.geek.article.viewmodel.ArticleViewModel
 import com.xiaomai.geek.base.BaseAdapter
 import com.xiaomai.geek.base.BaseListActivity
 import com.xiaomai.geek.databinding.ArticleCategoryItemBinding
-import com.xiaomai.geek.db.ArticleCategory
 
 /**
  * Created by wangce on 2018/1/29.
  */
-class ArticleCategoryListActivity : BaseListActivity<ArticleCategory, ArticleCategoryItemBinding, ArticleViewModel>() {
+class ArticleCategoryListActivity : BaseListActivity<Category, ArticleCategoryItemBinding, ArticleViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class ArticleCategoryListActivity : BaseListActivity<ArticleCategory, ArticleCat
 
     override fun getLayoutManager(): RecyclerView.LayoutManager = GridLayoutManager(this@ArticleCategoryListActivity, 2)
 
-    override fun getAdapter(): BaseAdapter<ArticleCategory, ArticleCategoryItemBinding> = CategoryAdapter()
+    override fun getAdapter(): BaseAdapter<Category, ArticleCategoryItemBinding> = CategoryAdapter()
 
     override fun loadList() {
         viewModel.loadArticles()

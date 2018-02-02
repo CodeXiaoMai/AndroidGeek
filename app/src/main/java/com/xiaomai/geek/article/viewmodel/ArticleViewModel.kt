@@ -2,14 +2,10 @@ package com.xiaomai.geek.article.viewmodel
 
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
-import com.xiaomai.geek.article.model.ArticleLocalDataSource
-import com.xiaomai.geek.article.model.ArticleRemoteDataSource
-import com.xiaomai.geek.article.model.ArticleRepository
-import com.xiaomai.geek.article.model.CategoryResponse
+import com.xiaomai.geek.article.model.*
 import com.xiaomai.geek.base.BaseViewModel
 import com.xiaomai.geek.base.BaseViewModelObserver
 import com.xiaomai.geek.common.PageStatus
-import com.xiaomai.geek.db.ArticleCategory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -20,23 +16,19 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
 
     private var articleRepository: ArticleRepository = ArticleRepository(ArticleLocalDataSource(getApplication()), ArticleRemoteDataSource())
 
-    private var articleResponse: MutableLiveData<List<ArticleCategory>> = MutableLiveData()
+    private var articleResponse: MutableLiveData<List<Category>> = MutableLiveData()
 
     fun getArticles() = articleResponse
 
     fun loadArticles() {
         pageStatus.value = PageStatus.LOADING
-        articleRepository.getArticleCategories()
+        articleRepository.getArticleResponse()
                 .subscribeOn(Schedulers.io())
-                .doOnNext { value ->
-//                    articleRepository.saveArticleCategories(value)
-                    TODO("只保存阅读过的文章")
-                }
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : BaseViewModelObserver<CategoryResponse>(this@ArticleViewModel) {
-                    override fun onSuccess(value: CategoryResponse) {
-                        articleResponse.value = value.list
-                        pageStatus.value = if (value.list.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
+                .subscribe(object : BaseViewModelObserver<ArticleResponse>(this@ArticleViewModel) {
+                    override fun onSuccess(value: ArticleResponse) {
+                        articleResponse.value = value.category
+                        pageStatus.value = if (value.category.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
                     }
                 })
     }

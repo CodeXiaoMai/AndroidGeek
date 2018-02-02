@@ -7,7 +7,6 @@ import io.reactivex.Observable
  */
 interface ArticleDataSource {
 
-    fun getArticleCategories(): Observable<CategoryResponse>
+    fun getArticleResponse(): Observable<ArticleResponse>
 
-    fun saveArticleCategories(categories: CategoryResponse)
 }

@@ -34,6 +34,8 @@ abstract class BaseAdapter<V, B : ViewDataBinding>(@LayoutRes private val layout
         }
     }
 
+    fun getItem(position: Int) = values?.get(position)
+
     companion object {
         class Holder<B : ViewDataBinding>(private val binding: B) : RecyclerView.ViewHolder(binding.root) {
             fun <V> binding(value: V?) {

@@ -26,6 +26,9 @@
         <activity
             android:name=".article.view.ArticleCategoryListActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".article.view.ArticleListActivity"
+            android:screenOrientation="portrait" />
         <!--Activity End-->
 
         <!--Service Start-->

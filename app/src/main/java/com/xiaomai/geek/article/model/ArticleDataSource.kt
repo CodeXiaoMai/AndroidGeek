@@ -1,5 +1,6 @@
 package com.xiaomai.geek.article.model
 
+import com.xiaomai.geek.db.ArticleRecord
 import io.reactivex.Observable
 
 /**
@@ -9,4 +10,5 @@ interface ArticleDataSource {
 
     fun getArticleResponse(): Observable<ArticleResponse>
 
+    fun saveArticleRecord(articleRecord: ArticleRecord)
 }

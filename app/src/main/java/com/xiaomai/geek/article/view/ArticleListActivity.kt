@@ -7,7 +7,7 @@ import com.xiaomai.geek.base.BaseAdapter
 import com.xiaomai.geek.base.BaseListActivity
 import com.xiaomai.geek.common.NullViewModel
 import com.xiaomai.geek.databinding.ArticleItemBinding
-import kotlinx.android.synthetic.main.article_list_activity.*
+import kotlinx.android.synthetic.main.geek_base_activity.*
 
 /**
  * Created by xiaomai on 2018/2/2.
@@ -20,12 +20,15 @@ class ArticleListActivity : BaseListActivity<Article, ArticleItemBinding, NullVi
     var category: Category? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        category = intent.getSerializableExtra(DATA) as Category
+
         super.onCreate(savedInstanceState)
         swipe_refresh_layout.isEnabled = false
+
+        title_view.setTitle(category?.name ?: "文章列表")
     }
 
     override fun loadList() {
-        category = intent.getSerializableExtra(DATA) as Category
         if (category == null || category?.articles == null) {
             showEmpty()
         }

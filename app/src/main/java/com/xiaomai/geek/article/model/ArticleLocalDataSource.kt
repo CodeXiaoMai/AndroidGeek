@@ -2,7 +2,9 @@ package com.xiaomai.geek.article.model
 
 import android.app.Application
 import com.google.gson.Gson
+import com.xiaomai.geek.application.GeekApplication
 import com.xiaomai.geek.common.wrapper.GeeKLog
+import com.xiaomai.geek.db.ArticleRecord
 import io.reactivex.Observable
 import io.reactivex.Observable.create
 import java.io.BufferedReader
@@ -39,6 +41,29 @@ class ArticleLocalDataSource(private val context: Application) {
                 it.onComplete()
             } catch (e: Throwable) {
                 it.onError(e)
+            }
+        }
+    }
+
+    fun saveArticleRecord(articleRecord: ArticleRecord) {
+        GeekApplication.DAO_SESSION.articleRecordDao.apply {
+            val resultList = queryRaw("where url = ?", articleRecord.url)
+            if (resultList.isEmpty()) {
+                // 如果数据库中没有保存此 url，插入数据库
+                articleRecord.times = 1
+                insert(articleRecord)
+            } else {
+                // 如果数据库中有此 url，更新数据库
+                resultList[0].apply {
+                    url = articleRecord.url
+                    name = articleRecord.name
+                    author = articleRecord.author
+                    keywords = articleRecord.keywords
+                    progress = articleRecord.progress
+                    readTime = articleRecord.readTime
+                    times++
+                    update(this@apply)
+                }
             }
         }
     }

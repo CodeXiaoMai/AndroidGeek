@@ -1,6 +1,7 @@
 package com.xiaomai.geek.article.model
 
 import com.xiaomai.geek.base.BaseDataSource
+import com.xiaomai.geek.db.ArticleRecord
 import io.reactivex.Observable
 
 /**
@@ -16,4 +17,7 @@ class ArticleRepository(private val articleLocalDataSource: ArticleLocalDataSour
         return articleLocalDataSource.getArticleResponseFromAssets()
     }
 
+    override fun saveArticleRecord(articleRecord: ArticleRecord) {
+        articleLocalDataSource.saveArticleRecord(articleRecord)
+    }
 }

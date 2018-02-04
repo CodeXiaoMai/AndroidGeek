@@ -6,6 +6,7 @@ import com.xiaomai.geek.article.model.*
 import com.xiaomai.geek.base.BaseViewModel
 import com.xiaomai.geek.base.BaseViewModelObserver
 import com.xiaomai.geek.common.PageStatus
+import com.xiaomai.geek.db.ArticleRecord
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -31,6 +32,17 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
                         pageStatus.value = if (value.category.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
                     }
                 })
+    }
+
+    fun saveArticleRecord(article: Article, readTime: Long, progress: Float) {
+        val articleRecord = ArticleRecord()
+        articleRecord.url = article.url
+        articleRecord.keywords = article.keyword
+        articleRecord.name = article.name
+        articleRecord.progress = progress
+        articleRecord.readTime = readTime
+        articleRecord.author = article.author
+        articleRepository.saveArticleRecord(articleRecord)
     }
 
     override fun onCleared() {

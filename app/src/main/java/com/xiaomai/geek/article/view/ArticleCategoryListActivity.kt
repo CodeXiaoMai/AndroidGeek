@@ -9,6 +9,7 @@ import com.xiaomai.geek.article.viewmodel.ArticleViewModel
 import com.xiaomai.geek.base.BaseAdapter
 import com.xiaomai.geek.base.BaseListActivity
 import com.xiaomai.geek.databinding.ArticleCategoryItemBinding
+import kotlinx.android.synthetic.main.geek_base_activity.*
 
 /**
  * Created by wangce on 2018/1/29.
@@ -17,6 +18,7 @@ class ArticleCategoryListActivity : BaseListActivity<Category, ArticleCategoryIt
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title_view.setTitle("分类")
 
         viewModel.getArticles().observe(this@ArticleCategoryListActivity, Observer {
             mAdapter?.values = it

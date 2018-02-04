@@ -9,7 +9,7 @@ import com.xiaomai.geek.db.DaoSession
 class GeekApplication : Application() {
 
     companion object {
-        lateinit var ARTICLE_DAO_SESSION: DaoSession
+        lateinit var DAO_SESSION: DaoSession
     }
 
     override fun onCreate() {

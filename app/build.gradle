@@ -114,6 +114,8 @@ dependencies {
 
     compile 'org.greenrobot:greendao:3.2.2'
 
+    compile 'com.just.agentweb:agentweb:3.1.0'
+
     testCompile 'junit:junit:4.12'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
     debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"

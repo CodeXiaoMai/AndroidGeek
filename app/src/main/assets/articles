@@ -11,6 +11,78 @@
           "url": "http://www.jianshu.com/p/464fa025229e",
           "author": "佚名",
           "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(二)",
+          "url": "http://www.jianshu.com/p/8818b98c44e2",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(三)",
+          "url": "http://www.jianshu.com/p/128e662906af",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(四)",
+          "url": "http://www.jianshu.com/p/bb58571cdb64",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(五)",
+          "url": "http://www.jianshu.com/p/0f2d6c2387c9",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(六)",
+          "url": "http://www.jianshu.com/p/e4c6d7989356",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(七)",
+          "url": "http://www.jianshu.com/p/9b1304435564",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(八)",
+          "url": "http://www.jianshu.com/p/a75ecf461e02",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给初学者的RxJava2.0教程(九)",
+          "url": "http://www.jianshu.com/p/36e0f7f43a51",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "给 Android 开发者的 RxJava 详解",
+          "url": "https://juejin.im/entry/561b2c1860b2b90b56881f83",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "一起来造一个RxJava，揭秘RxJava的实现原理",
+          "url": "http://blog.csdn.net/TellH/article/details/71534704",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "重新理解响应式编程",
+          "url": "http://www.jianshu.com/p/c95e29854cb1",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
+        },
+        {
+          "name": "BackPressure",
+          "url": "https://www.zhihu.com/question/49618581/answer/237078934?utm_medium=social&utm_source=qq",
+          "author": "佚名",
+          "keyword": "rxjava/初学者"
         }
       ]
     }

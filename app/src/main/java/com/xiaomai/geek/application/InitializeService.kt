@@ -44,7 +44,7 @@ class InitializeService(name: String = "InitializeService") : IntentService(name
         // 初始化数据库
         val devOpenHelper = DaoMaster.DevOpenHelper(this@InitializeService, DB_ARTICLE_NAME)
         val daoMaster = DaoMaster(devOpenHelper.writableDb)
-        GeekApplication.ARTICLE_DAO_SESSION = daoMaster.newSession()
+        GeekApplication.DAO_SESSION = daoMaster.newSession()
     }
 
 }

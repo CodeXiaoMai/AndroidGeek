@@ -3,10 +3,11 @@ package com.xiaomai.geek.article.viewmodel
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
 import com.xiaomai.geek.article.model.*
+import com.xiaomai.geek.base.BaseObserver
 import com.xiaomai.geek.base.BaseViewModel
-import com.xiaomai.geek.base.BaseViewModelObserver
 import com.xiaomai.geek.common.PageStatus
 import com.xiaomai.geek.db.ArticleRecord
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -17,24 +18,20 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
 
     private var articleRepository: ArticleRepository = ArticleRepository(ArticleLocalDataSource(getApplication()), ArticleRemoteDataSource())
 
-    private var articleResponse: MutableLiveData<List<Category>> = MutableLiveData()
+    var snackbarMessage: MutableLiveData<String> = MutableLiveData()
 
-    fun getArticles() = articleResponse
-
-    fun loadArticles() {
-        pageStatus.value = PageStatus.LOADING
-        articleRepository.getArticleResponse()
-                .subscribeOn(Schedulers.io())
+    fun loadArticles(): Observable<ArticleResponse> {
+        return articleRepository.getArticleResponse()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : BaseViewModelObserver<ArticleResponse>(this@ArticleViewModel) {
-                    override fun onSuccess(value: ArticleResponse) {
-                        articleResponse.value = value.category
-                        pageStatus.value = if (value.category.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
-                    }
-                })
+                .doOnNext { value ->
+                    pageStatus.value = if (value.category.isEmpty()) PageStatus.EMPTY else PageStatus.NORMAL
+                }
     }
 
     fun saveArticleRecord(article: Article, readTime: Long, progress: Float) {
+        if (progress <= 0) {
+            return
+        }
         val articleRecord = ArticleRecord()
         articleRecord.url = article.url
         articleRecord.keywords = article.keyword
@@ -43,6 +40,27 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
         articleRecord.readTime = readTime
         articleRecord.author = article.author
         articleRepository.saveArticleRecord(articleRecord)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : BaseObserver<Boolean>() {
+                    override fun onSuccess(value: Boolean) {
+
+                    }
+                })
+    }
+
+    fun loadArticleRecord(article: Article): Observable<ArticleRecord> {
+        return articleRepository.loadArticleRecord(article)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext {
+                    if (it.progress > 0) {
+                        showSnackBar()
+                    }
+                }
+    }
+
+    private fun showSnackBar() {
+        snackbarMessage.value = "已自动跳转到上次阅读的位置"
     }
 
     override fun onCleared() {

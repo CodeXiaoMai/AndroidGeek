@@ -17,7 +17,11 @@ class ArticleRepository(private val articleLocalDataSource: ArticleLocalDataSour
         return articleLocalDataSource.getArticleResponseFromAssets()
     }
 
-    override fun saveArticleRecord(articleRecord: ArticleRecord) {
-        articleLocalDataSource.saveArticleRecord(articleRecord)
+    override fun saveArticleRecord(articleRecord: ArticleRecord): Observable<Boolean> {
+        return articleLocalDataSource.saveArticleRecord(articleRecord)
+    }
+
+    override fun loadArticleRecord(article: Article): Observable<ArticleRecord> {
+        return articleLocalDataSource.readArticleRecord(article)
     }
 }

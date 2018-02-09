@@ -10,5 +10,7 @@ interface ArticleDataSource {
 
     fun getArticleResponse(): Observable<ArticleResponse>
 
-    fun saveArticleRecord(articleRecord: ArticleRecord)
+    fun saveArticleRecord(articleRecord: ArticleRecord): Observable<Boolean>
+
+    fun loadArticleRecord(article: Article): Observable<ArticleRecord>
 }

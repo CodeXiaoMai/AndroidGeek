@@ -46,10 +46,18 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.geek_base_activity)
-        LayoutInflater.from(this@BaseActivity).inflate(getLayoutId(), content_view, true)
+        if (useBaseLayout()) {
+            setContentView(R.layout.geek_base_activity)
+            if (getLayoutId() > 0) {
+                LayoutInflater.from(this@BaseActivity).inflate(getLayoutId(), content_view, true)
+            }
+        } else {
+            setContentView(getLayoutId())
+        }
     }
 
     @LayoutRes
     abstract fun getLayoutId(): Int
+
+    open fun useBaseLayout() = true
 }

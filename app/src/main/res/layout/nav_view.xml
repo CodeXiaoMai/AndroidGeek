@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="?attr/colorPrimary"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:text="@string/login" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <com.xiaomai.geek.common.MenuItemView
+                android:id="@+id/menu_item_article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconDrawable="@drawable/menu_article"
+                app:menuTitle="@string/article" />
+
+            <com.xiaomai.geek.common.MenuItemView
+                android:id="@+id/menu_item_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconDrawable="@drawable/menu_password"
+                app:menuTitle="@string/password_manage" />
+
+            <com.xiaomai.geek.common.MenuItemView
+                android:id="@+id/menu_item_effect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconDrawable="@drawable/menu_hot"
+                app:menuTitle="@string/effects" />
+
+            <com.xiaomai.geek.common.MenuItemView
+                android:id="@+id/menu_item_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconDrawable="@drawable/menu_settings"
+                app:menuTitle="@string/setting" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -36,7 +36,7 @@ abstract class BaseActivity : AppCompatActivity() {
         resetPage(error_root_layout)
     }
 
-    private fun resetPage(view: View) {
+    fun resetPage(view: View) {
         swipe_refresh_layout.visibility = View.GONE
         empty_root_layout.visibility = View.GONE
         error_root_layout.visibility = View.GONE

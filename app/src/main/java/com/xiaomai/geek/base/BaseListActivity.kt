@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.xiaomai.geek.R
 import kotlinx.android.synthetic.main.geek_base_activity.*
-import kotlinx.android.synthetic.main.geek_base_list_activity.*
+import kotlinx.android.synthetic.main.geek_base_list_layout.*
 
 /**
  * Created by wangce on 2018/1/30.
@@ -15,7 +15,7 @@ abstract class BaseListActivity<V, B : ViewDataBinding, M : BaseViewModel> : Bas
 
     var mAdapter: BaseAdapter<V, B>? = null
 
-    override fun getLayoutId(): Int = R.layout.geek_base_list_activity
+    override fun getLayoutId(): Int = R.layout.geek_base_list_layout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

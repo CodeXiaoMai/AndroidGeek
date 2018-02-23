@@ -65,7 +65,7 @@ class ArticleLocalDataSource(private val context: Application) {
                         progress = articleRecord.progress
                         readTime = articleRecord.readTime
                         times++
-                        update(this@apply)
+                        update(this)
                         it.onNext(true)
                         it.onComplete()
                     }

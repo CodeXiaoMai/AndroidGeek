@@ -1,34 +1,34 @@
 package com.xiaomai.geek.article.view
 
-import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.xiaomai.geek.article.model.ArticleResponse
 import com.xiaomai.geek.article.model.Category
 import com.xiaomai.geek.article.viewmodel.ArticleViewModel
 import com.xiaomai.geek.base.BaseAdapter
-import com.xiaomai.geek.base.BaseListActivity
+import com.xiaomai.geek.base.BaseListFragment
 import com.xiaomai.geek.base.BaseViewModelObserver
 import com.xiaomai.geek.databinding.ArticleCategoryItemBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.geek_base_activity.*
 
 /**
  * Created by wangce on 2018/1/29.
  */
-class ArticleCategoryListActivity : BaseListActivity<Category, ArticleCategoryItemBinding, ArticleViewModel>() {
+class ArticleCategoryListFragment : BaseListFragment<Category, ArticleCategoryItemBinding, ArticleViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        title_view.setTitle("分类")
+    companion object {
+        fun newInstance() : ArticleCategoryListFragment{
+            val fragment = ArticleCategoryListFragment()
+            return fragment
+        }
     }
 
     override fun getViewModelClazz(): Class<ArticleViewModel> {
         return ArticleViewModel::class.java
     }
 
-    override fun getLayoutManager(): RecyclerView.LayoutManager = GridLayoutManager(this@ArticleCategoryListActivity, 2)
+    override fun getLayoutManager(): RecyclerView.LayoutManager = GridLayoutManager(context, 2)
 
     override fun getAdapter(): BaseAdapter<Category, ArticleCategoryItemBinding> = CategoryAdapter()
 
@@ -36,7 +36,7 @@ class ArticleCategoryListActivity : BaseListActivity<Category, ArticleCategoryIt
         viewModel.loadArticles()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe{
+                .doOnSubscribe {
                     showLoading()
                 }
                 .subscribe(object : BaseViewModelObserver<ArticleResponse>(viewModel) {

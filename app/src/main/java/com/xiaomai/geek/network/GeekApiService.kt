@@ -9,6 +9,6 @@ import retrofit2.http.GET
  */
 interface GeekApiService {
 
-    @GET("contents/app/src/main/assets/chapters?ref=master")
+    @GET("contents/app/src/main/assets/articles?ref=master")
     fun getArticleResponse(): Observable<ContentResponse>
 }

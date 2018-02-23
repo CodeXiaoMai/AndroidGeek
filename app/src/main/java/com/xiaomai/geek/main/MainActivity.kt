@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
 
         title_view.setTitle(getString(R.string.article))
 
-        title_view.setOnBackClickListener(View.OnClickListener {
+        title_view.setBackView(R.drawable.menu_nav, View.OnClickListener {
             drawer_layout.openDrawer(GravityCompat.START)
         })
 

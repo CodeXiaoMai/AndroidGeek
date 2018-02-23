@@ -1,8 +1,11 @@
 package com.xiaomai.geek.article.view
 
 import android.arch.lifecycle.Observer
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.view.View
 import android.webkit.WebView
 import android.widget.LinearLayout
 import com.just.agentweb.AgentWeb
@@ -12,6 +15,7 @@ import com.xiaomai.geek.article.viewmodel.ArticleViewModel
 import com.xiaomai.geek.base.BaseObserver
 import com.xiaomai.geek.base.BaseViewModelActivity
 import com.xiaomai.geek.common.Const
+import com.xiaomai.geek.common.utils.ShareUtils
 import com.xiaomai.geek.db.ArticleRecord
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -37,7 +41,16 @@ class ArticleDetailActivity : BaseViewModelActivity<ArticleViewModel>() {
 
         swipe_refresh_layout.isEnabled = false
         article = intent.getSerializableExtra(Const.ARTICLE) as Article
+
         title_view.setTitle(article.name)
+        title_view.addMenu(menu = "分享", iconRes = R.drawable.menu_share, listener = View.OnClickListener {
+            ShareUtils.share(this@ArticleDetailActivity, article.name, article.url)
+        })
+        title_view.addMenu("浏览器打开", R.drawable.menu_open_in_browser, View.OnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(article.url)
+            startActivity(intent)
+        })
 
         agentWeb = AgentWeb.with(this@ArticleDetailActivity)
                 .setAgentWebParent(content_view, LinearLayout.LayoutParams(

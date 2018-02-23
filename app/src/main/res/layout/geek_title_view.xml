@@ -13,6 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -42,7 +43,23 @@
                 android:layout_height="45dp"
                 android:padding="10dp"
                 android:src="@drawable/common_title_ic_more_vert"
-                android:visibility="invisible"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:background="@drawable/rectangle_border"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                tools:text="@string/more"
                 tools:visibility="visible" />
         </LinearLayout>
 

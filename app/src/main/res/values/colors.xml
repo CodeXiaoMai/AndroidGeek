@@ -9,7 +9,7 @@
     <color name="colorPrimaryDark">@color/blue</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">@android:color/white</color>
-    <color name="colorBackgroundPrimary">#EEEEEE</color>
+    <color name="colorBackgroundPrimary">#DDDDDD</color>
 
     <!-- NightThemeColor -->
     <color name="colorPrimaryNight">#1E1E29</color>

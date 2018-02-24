@@ -14,7 +14,13 @@ open class BaseViewModel(context: Application) : AndroidViewModel(context) {
 
     var pageStatus: MutableLiveData<PageStatus> = MutableLiveData()
 
+    var snackMessage: MutableLiveData<String> = MutableLiveData()
+
     var compositeDisposable: CompositeDisposable? = CompositeDisposable()
+
+    fun showSnackBar(message: String) {
+        snackMessage.value = message
+    }
 
     override fun onCleared() {
         super.onCleared()

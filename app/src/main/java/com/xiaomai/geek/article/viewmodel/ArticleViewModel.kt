@@ -1,7 +1,6 @@
 package com.xiaomai.geek.article.viewmodel
 
 import android.app.Application
-import android.arch.lifecycle.MutableLiveData
 import com.xiaomai.geek.article.model.*
 import com.xiaomai.geek.base.BaseObserver
 import com.xiaomai.geek.base.BaseViewModel
@@ -16,9 +15,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class ArticleViewModel(context: Application) : BaseViewModel(context) {
 
-    private var articleRepository: ArticleRepository = ArticleRepository(ArticleLocalDataSource(getApplication()), ArticleRemoteDataSource())
-
-    var snackbarMessage: MutableLiveData<String> = MutableLiveData()
+    private val articleRepository: ArticleRepository = ArticleRepository(ArticleLocalDataSource(getApplication()), ArticleRemoteDataSource())
 
     fun loadArticles(): Observable<ArticleResponse> {
         return articleRepository.getArticleResponse()
@@ -54,13 +51,9 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext {
                     if (it.progress > 0) {
-                        showSnackBar()
+                        showSnackBar("已自动跳转到上次阅读的位置")
                     }
                 }
-    }
-
-    private fun showSnackBar() {
-        snackbarMessage.value = "已自动跳转到上次阅读的位置"
     }
 
     override fun onCleared() {

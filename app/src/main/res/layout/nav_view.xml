@@ -48,6 +48,13 @@
                     app:menuTitle="@string/article" />
 
                 <com.xiaomai.geek.common.MenuItemView
+                    android:id="@+id/menu_item_to_do"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconDrawable="@drawable/menu_to_do"
+                    app:menuTitle="@string/to_do" />
+
+                <com.xiaomai.geek.common.MenuItemView
                     android:id="@+id/menu_item_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

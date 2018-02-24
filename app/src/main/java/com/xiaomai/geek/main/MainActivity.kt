@@ -1,5 +1,6 @@
 package com.xiaomai.geek.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.view.View
@@ -7,6 +8,7 @@ import com.xiaomai.geek.R
 import com.xiaomai.geek.article.view.ArticleCategoryListFragment
 import com.xiaomai.geek.base.BaseActivity
 import com.xiaomai.geek.common.MenuItemView
+import com.xiaomai.geek.todo.view.TasksListActivity
 import kotlinx.android.synthetic.main.main_activity.*
 
 /**
@@ -33,10 +35,15 @@ class MainActivity : BaseActivity() {
     private fun initDrawerView() {
         val headerView = navigation_view.getHeaderView(0)
         val menuArticle = headerView.findViewById<MenuItemView>(R.id.menu_item_article)
+        val menuToDo = headerView.findViewById<MenuItemView>(R.id.menu_item_to_do)
 
         menuArticle.isSelected = true
         menuArticle.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
+        }
+
+        menuToDo.setOnClickListener {
+            startActivity(Intent(this@MainActivity, TasksListActivity::class.java))
         }
     }
 

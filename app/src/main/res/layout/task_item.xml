@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="value"
+            type="com.xiaomai.geek.db.Task" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/clockSelector"
+            android:orientation="vertical"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{value.title}"
+                android:visibility="@{TextUtils.isEmpty(value.title) ? View.GONE : View.VISIBLE }"
+                tools:text="@string/to_do" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@android:color/darker_gray"
+                android:visibility="@{(!TextUtils.isEmpty(value.content) &amp;&amp; !TextUtils.isEmpty(value.content)) ? View.VISIBLE : View.GONE }" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{value.content}"
+                android:visibility="@{TextUtils.isEmpty(value.content) ? View.GONE : View.VISIBLE }"
+                tools:text="计划明天去购物" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

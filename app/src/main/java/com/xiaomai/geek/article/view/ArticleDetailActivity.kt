@@ -1,6 +1,5 @@
 package com.xiaomai.geek.article.view
 
-import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -72,15 +71,15 @@ class ArticleDetailActivity : BaseViewModelActivity<ArticleViewModel>() {
                         webView.scrollY = value.progress.toInt()
                     }
                 })
+    }
 
-        viewModel.snackbarMessage.observe(this@ArticleDetailActivity, Observer {
-            it?.apply {
-                Snackbar.make(content_view, this, Snackbar.LENGTH_INDEFINITE)
-                        .setAction("返回顶部", {
-                            webView.scrollY = 0
-                        }).show()
-            }
-        })
+    override fun showSnackBar(it: String?) {
+        it?.apply {
+            Snackbar.make(content_view, this, Snackbar.LENGTH_INDEFINITE)
+                    .setAction("返回顶部", {
+                        webView.scrollY = 0
+                    }).show()
+        }
     }
 
     override fun onResume() {

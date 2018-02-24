@@ -1,5 +1,7 @@
 package com.xiaomai.geek.base
 
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +17,8 @@ import kotlinx.android.synthetic.main.geek_error_view.*
  */
 abstract class BaseActivity : AppCompatActivity() {
     val TAG = javaClass.simpleName
+
+    lateinit var dataBinding: ViewDataBinding
 
     open fun showLoading() {
         swipe_refresh_layout.isRefreshing = true
@@ -37,6 +41,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun resetPage(view: View) {
+        swipe_refresh_layout.isRefreshing = false
         swipe_refresh_layout.visibility = View.GONE
         empty_root_layout.visibility = View.GONE
         error_root_layout.visibility = View.GONE
@@ -47,12 +52,14 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (useBaseLayout()) {
-            setContentView(R.layout.geek_base_activity)
+            DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.geek_base_activity)
             if (getLayoutId() > 0) {
-                LayoutInflater.from(this@BaseActivity).inflate(getLayoutId(), content_view, true)
+                dataBinding = DataBindingUtil.inflate<ViewDataBinding>(LayoutInflater.from(this@BaseActivity), getLayoutId(), content_view, true)
+//                LayoutInflater.from(this@BaseActivity).inflate(getLayoutId(), content_view, true)
             }
         } else {
-            setContentView(getLayoutId())
+            dataBinding = DataBindingUtil.setContentView<ViewDataBinding>(this, getLayoutId())
+//            setContentView(getLayoutId())
         }
     }
 

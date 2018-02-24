@@ -29,6 +29,12 @@
         <activity
             android:name=".article.view.ArticleDetailActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".todo.view.TasksListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".todo.view.AddEditTaskActivity"
+            android:screenOrientation="portrait" />
         <!--Activity End-->
 
         <!--Service Start-->

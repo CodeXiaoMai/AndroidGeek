@@ -3,8 +3,9 @@ package com.xiaomai.geek.db;
 import android.text.TextUtils;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Transient;
 
 import java.io.Serializable;
 
@@ -23,17 +24,22 @@ public class Task implements Serializable {
     private String title;
     // 内容
     private String content;
+    // 优先级
+    private int priority;
     // 是否完成
     private boolean complete;
     // 创建时间
     private Long createTime;
+    @Transient
+    private boolean checked;
 
-    @Generated(hash = 2137500652)
-    public Task(Long id, String title, String content, boolean complete,
-                Long createTime) {
+    @Generated(hash = 290594060)
+    public Task(Long id, String title, String content, int priority,
+            boolean complete, Long createTime) {
         this.id = id;
         this.title = title;
         this.content = content;
+        this.priority = priority;
         this.complete = complete;
         this.createTime = createTime;
     }
@@ -82,7 +88,23 @@ public class Task implements Serializable {
         this.createTime = createTime;
     }
 
-    public boolean isEmtpy() {
+    public int getPriority() {
+        return this.priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public boolean isEmpty() {
         return TextUtils.isEmpty(content)
                 && TextUtils.isEmpty(title);
     }

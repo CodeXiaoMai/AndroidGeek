@@ -10,13 +10,15 @@ import io.reactivex.Single
  */
 interface TaskDataSource {
 
-    fun getTasks(): Single<List<Task>>
+    fun getTasks(): Single<MutableList<Task>>
 
     fun getTask(taskId: Long): Single<Task>
 
     fun saveTask(task: Task): Completable
 
     fun deleteTask(taskId: Long): Completable
+
+    fun deleteTasks(tasks: MutableList<Task>): Completable
 
     fun deleteAllTasks(): Completable
 }

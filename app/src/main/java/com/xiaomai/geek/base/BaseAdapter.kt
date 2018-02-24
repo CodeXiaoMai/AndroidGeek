@@ -14,7 +14,7 @@ import com.xiaomai.geek.BR
 abstract class BaseAdapter<V, B : ViewDataBinding>(@LayoutRes private val layoutId: Int)
     : RecyclerView.Adapter<BaseAdapter.Companion.Holder<B>>() {
 
-    var values: List<V>? = null
+    var values: MutableList<V> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -26,15 +26,13 @@ abstract class BaseAdapter<V, B : ViewDataBinding>(@LayoutRes private val layout
         return Holder(binding)
     }
 
-    override fun getItemCount(): Int = values?.size ?: 0
+    override fun getItemCount(): Int = values.size
 
     override fun onBindViewHolder(holder: Holder<B>, position: Int) {
-        values?.let {
-            holder.binding(values?.get(position))
-        }
+        holder.binding(values.get(position))
     }
 
-    fun getItem(position: Int) = values?.get(position)
+    fun getItem(position: Int) = values.get(position)
 
     companion object {
         class Holder<B : ViewDataBinding>(private val binding: B) : RecyclerView.ViewHolder(binding.root) {

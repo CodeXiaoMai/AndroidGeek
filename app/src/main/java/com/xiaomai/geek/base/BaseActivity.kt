@@ -29,7 +29,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     open fun showContent() {
-        resetPage(swipe_refresh_layout)
+        resetPage(content_view)
     }
 
     open fun showEmpty() {
@@ -42,7 +42,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun resetPage(view: View) {
         swipe_refresh_layout.isRefreshing = false
-        swipe_refresh_layout.visibility = View.GONE
+        content_view.visibility = View.GONE
         empty_root_layout.visibility = View.GONE
         error_root_layout.visibility = View.GONE
 

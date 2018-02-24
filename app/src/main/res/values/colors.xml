@@ -21,4 +21,6 @@
     <color name="textColorNight">#8C96B4</color>
     <color name="textColorSecondNight">#5F6375</color>
 
+    <color name="border">#FFEEEEEE</color>
+
 </resources>

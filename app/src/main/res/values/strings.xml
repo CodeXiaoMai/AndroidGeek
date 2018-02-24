@@ -45,4 +45,10 @@
         <item>仅数字</item>
         <item>仅字母</item>
     </string-array>
+
+    <string-array name="task_list_types">
+        <item>所有</item>
+        <item>已完成</item>
+        <item>未完成</item>
+    </string-array>
 </resources>

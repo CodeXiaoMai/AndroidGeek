@@ -15,12 +15,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <FrameLayout
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <android.support.v4.widget.SwipeRefreshLayout
-                    android:id="@+id/swipe_refresh_layout"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -28,12 +28,14 @@
                         android:id="@+id/content_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
-                </android.support.v4.widget.SwipeRefreshLayout>
 
-                <include layout="@layout/geek_empty_view" />
+                    <include layout="@layout/geek_empty_view" />
 
-                <include layout="@layout/geek_error_view" />
-            </FrameLayout>
+                    <include layout="@layout/geek_error_view" />
+
+                </FrameLayout>
+
+            </android.support.v4.widget.SwipeRefreshLayout>
 
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>

@@ -33,7 +33,7 @@ class ArticleListActivity : BaseListActivity<Article, ArticleItemBinding, NullVi
             showEmpty()
         }
         category?.articles?.let {
-            mAdapter?.values = it
+            mAdapter.values = it
             if (it.isEmpty()) showEmpty() else showContent()
         }
     }

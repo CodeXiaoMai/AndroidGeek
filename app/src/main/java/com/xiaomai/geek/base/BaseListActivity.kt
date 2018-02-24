@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.geek_base_list_layout.*
  */
 abstract class BaseListActivity<V, B : ViewDataBinding, M : BaseViewModel> : BaseViewModelActivity<M>() {
 
-    var mAdapter: BaseAdapter<V, B>? = null
+    lateinit var mAdapter: BaseAdapter<V, B>
 
     override fun getLayoutId(): Int = R.layout.geek_base_list_layout
 

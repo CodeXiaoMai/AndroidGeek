@@ -10,7 +10,7 @@ import io.reactivex.Single
  */
 class TasksLocalDataSource : TaskDataSource {
 
-    override fun getTasks(): Single<List<Task>> {
+    override fun getTasks(): Single<MutableList<Task>> {
         return Single.create {
             val list = GeekApplication.DAO_SESSION.taskDao.loadAll()
             if (list != null) {
@@ -41,6 +41,12 @@ class TasksLocalDataSource : TaskDataSource {
     override fun deleteTask(taskId: Long): Completable {
         return Completable.fromAction {
             GeekApplication.DAO_SESSION.taskDao.deleteByKey(taskId)
+        }
+    }
+
+    override fun deleteTasks(tasks: MutableList<Task>): Completable {
+        return Completable.fromAction {
+            GeekApplication.DAO_SESSION.taskDao.deleteInTx(tasks)
         }
     }
 

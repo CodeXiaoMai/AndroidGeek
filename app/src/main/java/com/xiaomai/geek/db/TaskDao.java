@@ -25,8 +25,9 @@ public class TaskDao extends AbstractDao<Task, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Title = new Property(1, String.class, "title", false, "TITLE");
         public final static Property Content = new Property(2, String.class, "content", false, "CONTENT");
-        public final static Property Complete = new Property(3, boolean.class, "complete", false, "COMPLETE");
-        public final static Property CreateTime = new Property(4, Long.class, "createTime", false, "CREATE_TIME");
+        public final static Property Priority = new Property(3, int.class, "priority", false, "PRIORITY");
+        public final static Property Complete = new Property(4, boolean.class, "complete", false, "COMPLETE");
+        public final static Property CreateTime = new Property(5, Long.class, "createTime", false, "CREATE_TIME");
     }
 
 
@@ -45,8 +46,9 @@ public class TaskDao extends AbstractDao<Task, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"TITLE\" TEXT," + // 1: title
                 "\"CONTENT\" TEXT," + // 2: content
-                "\"COMPLETE\" INTEGER NOT NULL ," + // 3: complete
-                "\"CREATE_TIME\" INTEGER);"); // 4: createTime
+                "\"PRIORITY\" INTEGER NOT NULL ," + // 3: priority
+                "\"COMPLETE\" INTEGER NOT NULL ," + // 4: complete
+                "\"CREATE_TIME\" INTEGER);"); // 5: createTime
     }
 
     /** Drops the underlying database table. */
@@ -73,11 +75,12 @@ public class TaskDao extends AbstractDao<Task, Long> {
         if (content != null) {
             stmt.bindString(3, content);
         }
-        stmt.bindLong(4, entity.getComplete() ? 1L: 0L);
+        stmt.bindLong(4, entity.getPriority());
+        stmt.bindLong(5, entity.getComplete() ? 1L: 0L);
  
         Long createTime = entity.getCreateTime();
         if (createTime != null) {
-            stmt.bindLong(5, createTime);
+            stmt.bindLong(6, createTime);
         }
     }
 
@@ -99,11 +102,12 @@ public class TaskDao extends AbstractDao<Task, Long> {
         if (content != null) {
             stmt.bindString(3, content);
         }
-        stmt.bindLong(4, entity.getComplete() ? 1L: 0L);
+        stmt.bindLong(4, entity.getPriority());
+        stmt.bindLong(5, entity.getComplete() ? 1L: 0L);
  
         Long createTime = entity.getCreateTime();
         if (createTime != null) {
-            stmt.bindLong(5, createTime);
+            stmt.bindLong(6, createTime);
         }
     }
 
@@ -118,8 +122,9 @@ public class TaskDao extends AbstractDao<Task, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // title
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // content
-            cursor.getShort(offset + 3) != 0, // complete
-            cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4) // createTime
+            cursor.getInt(offset + 3), // priority
+            cursor.getShort(offset + 4) != 0, // complete
+            cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5) // createTime
         );
         return entity;
     }
@@ -129,8 +134,9 @@ public class TaskDao extends AbstractDao<Task, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setContent(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setComplete(cursor.getShort(offset + 3) != 0);
-        entity.setCreateTime(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
+        entity.setPriority(cursor.getInt(offset + 3));
+        entity.setComplete(cursor.getShort(offset + 4) != 0);
+        entity.setCreateTime(cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5));
      }
     
     @Override

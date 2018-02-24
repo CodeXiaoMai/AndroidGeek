@@ -9,13 +9,15 @@ import io.reactivex.Single
  */
 class TasksRepository(private val taskDataSource: TaskDataSource) : TaskDataSource {
 
-    override fun getTasks(): Single<List<Task>> = taskDataSource.getTasks()
+    override fun getTasks(): Single<MutableList<Task>> = taskDataSource.getTasks()
 
     override fun getTask(taskId: Long): Single<Task> = taskDataSource.getTask(taskId)
 
     override fun saveTask(task: Task): Completable = taskDataSource.saveTask(task)
 
     override fun deleteTask(taskId: Long): Completable = taskDataSource.deleteTask(taskId)
+
+    override fun deleteTasks(tasks: MutableList<Task>): Completable = taskDataSource.deleteTasks(tasks)
 
     override fun deleteAllTasks(): Completable = taskDataSource.deleteAllTasks()
 }

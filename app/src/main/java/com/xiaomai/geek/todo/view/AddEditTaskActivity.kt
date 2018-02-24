@@ -11,6 +11,7 @@ import com.xiaomai.geek.db.Task
 import com.xiaomai.geek.todo.viewmodel.TaskViewModel
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.add_edit_task_activity.*
 import kotlinx.android.synthetic.main.geek_base_activity.*
 
 /**
@@ -45,6 +46,8 @@ class AddEditTaskActivity : BaseViewModelActivity<TaskViewModel>() {
             title_view.setTitle("编辑")
             viewModel.title.set(title)
             viewModel.content.set(content)
+            viewModel.completed.set(complete)
+            viewModel.priority.set(priority)
         }
 
         (dataBinding as AddEditTaskActivityBinding).value = viewModel
@@ -62,5 +65,26 @@ class AddEditTaskActivity : BaseViewModelActivity<TaskViewModel>() {
                 }
             })
         })
+
+        radio_group.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rb_low -> {
+                    viewModel.priority.set(1)
+                }
+                R.id.rb_middle -> {
+                    viewModel.priority.set(2)
+                }
+                R.id.rb_high -> {
+                    viewModel.priority.set(3)
+                }
+                R.id.rb_highest -> {
+                    viewModel.priority.set(4)
+                }
+            }
+        }
+
+        checkbox.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.completed.set(isChecked)
+        }
     }
 }

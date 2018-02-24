@@ -6,7 +6,7 @@ import java.io.Serializable
  * Created by wangce on 2018/2/2.
  */
 data class ArticleResponse(
-        val category: List<Category>
+        val category: MutableList<Category>
 ) : Serializable
 
 data class Category(
@@ -14,7 +14,7 @@ data class Category(
         val description: String, //RxJava Description
         val image: String, //http://reactivex.io/assets/Rx_Logo_S.png
         val url: String, //https://github.com/ReactiveX/RxJava
-        val articles: List<Article>
+        val articles: MutableList<Article>
 ) : Serializable
 
 data class Article(

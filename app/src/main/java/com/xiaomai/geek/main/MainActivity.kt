@@ -8,6 +8,7 @@ import com.xiaomai.geek.R
 import com.xiaomai.geek.article.view.ArticleCategoryListFragment
 import com.xiaomai.geek.base.BaseActivity
 import com.xiaomai.geek.common.MenuItemView
+import com.xiaomai.geek.setting.view.SettingActivity
 import com.xiaomai.geek.todo.view.TasksListActivity
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -36,6 +37,7 @@ class MainActivity : BaseActivity() {
         val headerView = navigation_view.getHeaderView(0)
         val menuArticle = headerView.findViewById<MenuItemView>(R.id.menu_item_article)
         val menuToDo = headerView.findViewById<MenuItemView>(R.id.menu_item_to_do)
+        val menuSetting = headerView.findViewById<MenuItemView>(R.id.menu_item_settings)
 
         menuArticle.isSelected = true
         menuArticle.setOnClickListener {
@@ -44,6 +46,10 @@ class MainActivity : BaseActivity() {
 
         menuToDo.setOnClickListener {
             startActivity(Intent(this@MainActivity, TasksListActivity::class.java))
+        }
+
+        menuSetting.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SettingActivity::class.java))
         }
     }
 

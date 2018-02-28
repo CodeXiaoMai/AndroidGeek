@@ -29,13 +29,13 @@ public class Task implements Serializable {
     // 是否完成
     private boolean complete;
     // 创建时间
-    private Long createTime;
+    private long createTime;
     @Transient
     private boolean checked;
 
-    @Generated(hash = 290594060)
+    @Generated(hash = 930472377)
     public Task(Long id, String title, String content, int priority,
-            boolean complete, Long createTime) {
+            boolean complete, long createTime) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -80,11 +80,11 @@ public class Task implements Serializable {
         this.complete = complete;
     }
 
-    public Long getCreateTime() {
+    public long getCreateTime() {
         return this.createTime;
     }
 
-    public void setCreateTime(Long createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 

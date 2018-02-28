@@ -27,7 +27,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         public final static Property Content = new Property(2, String.class, "content", false, "CONTENT");
         public final static Property Priority = new Property(3, int.class, "priority", false, "PRIORITY");
         public final static Property Complete = new Property(4, boolean.class, "complete", false, "COMPLETE");
-        public final static Property CreateTime = new Property(5, Long.class, "createTime", false, "CREATE_TIME");
+        public final static Property CreateTime = new Property(5, long.class, "createTime", false, "CREATE_TIME");
     }
 
 
@@ -48,7 +48,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
                 "\"CONTENT\" TEXT," + // 2: content
                 "\"PRIORITY\" INTEGER NOT NULL ," + // 3: priority
                 "\"COMPLETE\" INTEGER NOT NULL ," + // 4: complete
-                "\"CREATE_TIME\" INTEGER);"); // 5: createTime
+                "\"CREATE_TIME\" INTEGER NOT NULL );"); // 5: createTime
     }
 
     /** Drops the underlying database table. */
@@ -77,11 +77,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         }
         stmt.bindLong(4, entity.getPriority());
         stmt.bindLong(5, entity.getComplete() ? 1L: 0L);
- 
-        Long createTime = entity.getCreateTime();
-        if (createTime != null) {
-            stmt.bindLong(6, createTime);
-        }
+        stmt.bindLong(6, entity.getCreateTime());
     }
 
     @Override
@@ -104,11 +100,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         }
         stmt.bindLong(4, entity.getPriority());
         stmt.bindLong(5, entity.getComplete() ? 1L: 0L);
- 
-        Long createTime = entity.getCreateTime();
-        if (createTime != null) {
-            stmt.bindLong(6, createTime);
-        }
+        stmt.bindLong(6, entity.getCreateTime());
     }
 
     @Override
@@ -124,7 +116,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // content
             cursor.getInt(offset + 3), // priority
             cursor.getShort(offset + 4) != 0, // complete
-            cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5) // createTime
+            cursor.getLong(offset + 5) // createTime
         );
         return entity;
     }
@@ -136,7 +128,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         entity.setContent(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setPriority(cursor.getInt(offset + 3));
         entity.setComplete(cursor.getShort(offset + 4) != 0);
-        entity.setCreateTime(cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5));
+        entity.setCreateTime(cursor.getLong(offset + 5));
      }
     
     @Override

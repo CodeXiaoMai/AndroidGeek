@@ -36,6 +36,9 @@
             android:name=".todo.view.AddEditTaskActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".setting.view.SettingActivity"
+            android:screenOrientation="portrait" />
         <!--Activity End-->
 
         <!--Service Start-->

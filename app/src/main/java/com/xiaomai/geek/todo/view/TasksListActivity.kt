@@ -1,6 +1,5 @@
 package com.xiaomai.geek.todo.view
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -10,13 +9,12 @@ import android.view.View
 import android.widget.AdapterView
 import com.xiaomai.geek.R
 import com.xiaomai.geek.base.BaseAdapter
+import com.xiaomai.geek.base.BaseCompletableObserver
 import com.xiaomai.geek.base.BaseListActivity
+import com.xiaomai.geek.base.BaseSingleObserver
 import com.xiaomai.geek.databinding.TaskItemBinding
 import com.xiaomai.geek.db.Task
 import com.xiaomai.geek.todo.viewmodel.*
-import io.reactivex.CompletableObserver
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.tasks_list_activity.*
 
@@ -26,15 +24,9 @@ import kotlinx.android.synthetic.main.tasks_list_activity.*
 class TasksListActivity : BaseListActivity<Task, TaskItemBinding, TaskViewModel>() {
 
     override fun loadList() {
-        viewModel.getTasks(object : SingleObserver<MutableList<Task>> {
+        viewModel.getTasks(object : BaseSingleObserver<MutableList<Task>>() {
             override fun onSuccess(t: MutableList<Task>) {
                 mAdapter.values = t
-            }
-
-            override fun onSubscribe(d: Disposable) {
-            }
-
-            override fun onError(e: Throwable) {
             }
         })
     }
@@ -76,9 +68,9 @@ class TasksListActivity : BaseListActivity<Task, TaskItemBinding, TaskViewModel>
         }
 
         delete.setOnClickListener {
-            AlertDialog.Builder(this)
+            AlertDialog.Builder(this@TasksListActivity)
                     .setMessage("确认删除？")
-                    .setPositiveButton("确认", DialogInterface.OnClickListener { dialog, which ->
+                    .setPositiveButton("确认", { _, _ ->
                         deletTasks()
                     })
                     .setNegativeButton("取消", null)
@@ -128,16 +120,10 @@ class TasksListActivity : BaseListActivity<Task, TaskItemBinding, TaskViewModel>
                 deleteList.add(it)
             }
         }
-        viewModel.deleteTasks(deleteList, object : CompletableObserver {
+        viewModel.deleteTasks(deleteList, object : BaseCompletableObserver() {
             override fun onComplete() {
                 onBackPressed()
                 loadList()
-            }
-
-            override fun onSubscribe(d: Disposable) {
-            }
-
-            override fun onError(e: Throwable) {
             }
         })
     }

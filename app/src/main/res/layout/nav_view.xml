@@ -74,7 +74,6 @@
                     android:id="@+id/menu_item_settings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     app:iconDrawable="@drawable/menu_settings"
                     app:menuTitle="@string/setting" />
             </LinearLayout>

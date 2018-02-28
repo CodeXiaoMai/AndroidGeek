@@ -20,4 +20,8 @@ class TasksRepository(private val taskDataSource: TaskDataSource) : TaskDataSour
     override fun deleteTasks(tasks: MutableList<Task>): Completable = taskDataSource.deleteTasks(tasks)
 
     override fun deleteAllTasks(): Completable = taskDataSource.deleteAllTasks()
+
+    override fun backup(): Completable = taskDataSource.backup()
+
+    override fun import(path: String): Completable = taskDataSource.import(path)
 }

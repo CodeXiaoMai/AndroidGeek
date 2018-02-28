@@ -5,12 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.xiaomai.geek.R
+import com.xiaomai.geek.base.BaseCompletableObserver
 import com.xiaomai.geek.base.BaseViewModelActivity
 import com.xiaomai.geek.databinding.AddEditTaskActivityBinding
 import com.xiaomai.geek.db.Task
 import com.xiaomai.geek.todo.viewmodel.TaskViewModel
-import io.reactivex.CompletableObserver
-import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.add_edit_task_activity.*
 import kotlinx.android.synthetic.main.geek_base_activity.*
 
@@ -53,15 +52,9 @@ class AddEditTaskActivity : BaseViewModelActivity<TaskViewModel>() {
         (dataBinding as AddEditTaskActivityBinding).value = viewModel
 
         title_view.setMenu("保存", listener = View.OnClickListener {
-            viewModel.saveTask(task?.id, object : CompletableObserver {
+            viewModel.saveTask(task?.id, object : BaseCompletableObserver() {
                 override fun onComplete() {
                     finish()
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
                 }
             })
         })

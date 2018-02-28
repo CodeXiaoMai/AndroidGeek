@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.support.annotation.DrawableRes
+import android.support.annotation.StringRes
 import android.support.v7.widget.CardView
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -58,6 +59,10 @@ class GeekTitleView : FrameLayout {
 
     fun setTitle(title: String) {
         binding.tvTitle.text = title
+    }
+
+    fun setTitle(@StringRes title: Int) {
+        binding.tvTitle.text = context.getString(title)
     }
 
     fun setBackView(@DrawableRes backRes: Int = R.drawable.common_title_ic_back, listener: OnClickListener?) {

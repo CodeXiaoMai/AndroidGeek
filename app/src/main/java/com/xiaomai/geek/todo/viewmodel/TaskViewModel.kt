@@ -40,6 +40,7 @@ class TaskViewModel(context: Application) : BaseViewModel(context) {
             content = this@TaskViewModel.content.get()
             priority = this@TaskViewModel.priority.get()
             complete = this@TaskViewModel.completed.get()
+            createTime = System.currentTimeMillis()
         }
 
         if (task.isEmpty) {

@@ -21,4 +21,8 @@ interface TaskDataSource {
     fun deleteTasks(tasks: MutableList<Task>): Completable
 
     fun deleteAllTasks(): Completable
+
+    fun backup(): Completable
+
+    fun import(path: String): Completable
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="value"
-            type="com.xiaomai.geek.todo.viewmodel.TaskViewModel" />
+            type="com.xiaomai.geek.model.todo.viewmodel.TaskViewModel" />
     </data>
 
     <ScrollView

@@ -6,7 +6,7 @@
 
         <variable
             name="value"
-            type="com.xiaomai.geek.article.model.Category" />
+            type="com.xiaomai.geek.model.article.model.Category" />
     </data>
 
     <android.support.v7.widget.CardView

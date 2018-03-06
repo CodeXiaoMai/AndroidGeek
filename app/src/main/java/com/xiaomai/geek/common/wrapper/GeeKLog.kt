@@ -16,9 +16,13 @@ class GeeKLog {
             Logger.init(TAG)
         }
 
-        fun d(tag: String, msg: String) {
+        fun d(tag: String? = null, msg: String) {
             if (BuildConfig.DEBUG) {
-                Log.d(tag, msg)
+                if (!tag.isNullOrEmpty()) {
+                    Log.d(tag, msg)
+                } else {
+                    Logger.d(msg)
+                }
             }
         }
 

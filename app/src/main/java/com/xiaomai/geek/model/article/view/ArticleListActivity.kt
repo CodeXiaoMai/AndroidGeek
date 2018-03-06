@@ -6,7 +6,7 @@ import com.xiaomai.geek.base.BaseListActivity
 import com.xiaomai.geek.common.Const
 import com.xiaomai.geek.common.NullViewModel
 import com.xiaomai.geek.databinding.ArticleItemBinding
-import com.xiaomai.geek.model.article.model.Article
+import com.xiaomai.geek.db.Article
 import com.xiaomai.geek.model.article.model.Category
 import kotlinx.android.synthetic.main.geek_base_activity.*
 

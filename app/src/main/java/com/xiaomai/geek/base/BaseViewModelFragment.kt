@@ -18,6 +18,7 @@ abstract class BaseViewModelFragment<T : BaseViewModel> : BaseFragment() {
         viewModel.pageStatus.observe(this@BaseViewModelFragment, Observer {
             when (it) {
                 PageStatus.LOADING -> showLoading()
+                PageStatus.DIS_MISS_LOADING -> dismissLoading()
                 PageStatus.NORMAL -> {
                     showContent()
                     dismissLoading()

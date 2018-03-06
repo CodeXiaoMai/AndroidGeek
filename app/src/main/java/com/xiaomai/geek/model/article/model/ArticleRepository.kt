@@ -1,8 +1,10 @@
 package com.xiaomai.geek.model.article.model
 
-import com.xiaomai.geek.base.BaseDataSource
+import com.xiaomai.geek.db.Article
 import com.xiaomai.geek.db.ArticleRecord
+import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 
 /**
  * Created by wangce on 2018/1/26.
@@ -11,10 +13,14 @@ import io.reactivex.Observable
  */
 class ArticleRepository(private val articleLocalDataSource: ArticleLocalDataSource,
                         private val articleRemoteDataSource: ArticleRemoteDataSource
-) : ArticleDataSource, BaseDataSource() {
+) : ArticleDataSource {
 
     override fun getArticleResponse(): Observable<ArticleResponse> {
-        return articleLocalDataSource.getArticleResponseFromAssets()
+        return articleLocalDataSource.getArticleResponse()
+    }
+
+    override fun saveArticles(articleResponse: ArticleResponse): Completable {
+        return articleLocalDataSource.saveArticles(articleResponse)
     }
 
     override fun saveArticleRecord(articleRecord: ArticleRecord): Observable<Boolean> {
@@ -22,6 +28,9 @@ class ArticleRepository(private val articleLocalDataSource: ArticleLocalDataSour
     }
 
     override fun loadArticleRecord(article: Article): Observable<ArticleRecord> {
-        return articleLocalDataSource.readArticleRecord(article)
+        return articleLocalDataSource.loadArticleRecord(article)
     }
+
+    override fun searchArticle(keyword: String): Single<List<Article>> =
+            articleLocalDataSource.searchArticle(keyword)
 }

@@ -1,13 +1,14 @@
-package com.xiaomai.geek.model.main
+package com.xiaomai.geek.model.main.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.view.View
 import com.xiaomai.geek.R
-import com.xiaomai.geek.model.article.view.ArticleCategoryListFragment
-import com.xiaomai.geek.base.BaseActivity
+import com.xiaomai.geek.base.BaseViewModelActivity
 import com.xiaomai.geek.common.MenuItemView
+import com.xiaomai.geek.model.article.view.ArticleCategoryListFragment
+import com.xiaomai.geek.model.main.viewmodel.MainViewModel
 import com.xiaomai.geek.model.setting.view.SettingActivity
 import com.xiaomai.geek.model.todo.view.TasksListActivity
 import kotlinx.android.synthetic.main.main_activity.*
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.main_activity.*
 /**
  * Created by wangce on 2018/1/26.
  */
-class MainActivity : BaseActivity() {
+class MainActivity : BaseViewModelActivity<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,14 @@ class MainActivity : BaseActivity() {
         transaction.commit()
 
         initDrawerView()
+    }
+
+    override fun getViewModelClazz(): Class<MainViewModel> = MainViewModel::class.java
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getConfig()
     }
 
     private fun initDrawerView() {

@@ -9,13 +9,13 @@ import android.webkit.WebView
 import android.widget.LinearLayout
 import com.just.agentweb.AgentWeb
 import com.xiaomai.geek.R
-import com.xiaomai.geek.model.article.model.Article
-import com.xiaomai.geek.model.article.viewmodel.ArticleViewModel
-import com.xiaomai.geek.base.observer.BaseObserver
 import com.xiaomai.geek.base.BaseViewModelActivity
+import com.xiaomai.geek.base.observer.BaseObserver
 import com.xiaomai.geek.common.Const
 import com.xiaomai.geek.common.utils.ShareUtils
+import com.xiaomai.geek.db.Article
 import com.xiaomai.geek.db.ArticleRecord
+import com.xiaomai.geek.model.article.viewmodel.ArticleViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.geek_base_activity.*

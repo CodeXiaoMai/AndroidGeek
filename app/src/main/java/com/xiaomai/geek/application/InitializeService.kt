@@ -7,7 +7,6 @@ import android.text.TextUtils
 import com.facebook.stetho.Stetho
 import com.xiaomai.geek.BuildConfig
 import com.xiaomai.geek.common.wrapper.GeeKLog
-import com.xiaomai.geek.db.DaoMaster
 
 /**
  * Created by wangce on 2018/1/29.
@@ -16,7 +15,6 @@ class InitializeService(name: String = "InitializeService") : IntentService(name
 
     companion object {
         private const val ACTION_INIT_WHEN_APP_CREATE = "com.xiaomai.geek.service.action.INIT"
-        private const val DB_ARTICLE_NAME = "article"
 
         fun start(context: Context) {
             val intent = Intent(context, InitializeService::class.java)
@@ -40,11 +38,5 @@ class InitializeService(name: String = "InitializeService") : IntentService(name
             Stetho.initializeWithDefaults(this)
             GeeKLog.init()
         }
-
-        // 初始化数据库
-        val devOpenHelper = DaoMaster.DevOpenHelper(this@InitializeService, DB_ARTICLE_NAME)
-        val daoMaster = DaoMaster(devOpenHelper.writableDb)
-        GeekApplication.DAO_SESSION = daoMaster.newSession()
     }
-
 }

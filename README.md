@@ -2,6 +2,27 @@
 
 > "Android极客"一个专门为Android程序猿打造的极客应用，你们的支持是我最大的动力！！！！
 
+## 分支 1.x 
+- MVP架构
+- Retrofit + Okhttp
+- RxJava + RxAndroid
+- EventBus
+- Glide
+- Dagger2
+- Material Design
+- Logger
+- Butterknife
+- BaseRecyclerViewAdapterHelper
+
+## 分支 master
+- Kotlin
+- MVVM 架构
+- databinding + livedata
+- Retrofit + Okhttp
+- RxJava2.0 + RxAndroid
+- Glide
+- Logger
+
 ## 本周更新推荐 ##
 
 - 本周重磅更新内容，添加夜间模式支持，白天夜晚上“极客”，不用担心伤眼睛

@@ -8,6 +8,7 @@ import com.xiaomai.geek.R
 import com.xiaomai.geek.base.BaseViewModelActivity
 import com.xiaomai.geek.common.MenuItemView
 import com.xiaomai.geek.model.article.view.ArticleCategoryListFragment
+import com.xiaomai.geek.model.article.view.ArticleSearchActivity
 import com.xiaomai.geek.model.main.viewmodel.MainViewModel
 import com.xiaomai.geek.model.setting.view.SettingActivity
 import com.xiaomai.geek.model.todo.view.TasksListActivity
@@ -25,6 +26,10 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
 
         title_view.setBackView(R.drawable.menu_nav, View.OnClickListener {
             drawer_layout.openDrawer(GravityCompat.START)
+        })
+
+        title_view.setMenu(iconRes = R.drawable.menu_search, listener = View.OnClickListener {
+            startActivity(Intent(this@MainActivity, ArticleSearchActivity::class.java))
         })
 
         val transaction = supportFragmentManager.beginTransaction()

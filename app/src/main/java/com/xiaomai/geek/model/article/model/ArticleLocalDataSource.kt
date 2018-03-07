@@ -106,10 +106,11 @@ class ArticleLocalDataSource(private val context: Application
 
     override fun searchArticle(keyword: String): Single<List<Article>> {
         return Single.create {
+            val value = "%${(keyword.trim().replace(" ", "%"))}%"
             GeekApplication.DAO_SESSION.articleDao.apply {
-                val nameLike = ArticleDao.Properties.Name.like("%$keyword%")
-                val authorLike = ArticleDao.Properties.Author.like("%$keyword%")
-                val keywordLike = ArticleDao.Properties.Keyword.like("%$keyword%")
+                val nameLike = ArticleDao.Properties.Name.like(value)
+                val authorLike = ArticleDao.Properties.Author.like(value)
+                val keywordLike = ArticleDao.Properties.Keyword.like(value)
 
                 val list = queryBuilder().whereOr(nameLike, authorLike, keywordLike).build()
                         .list().toList()

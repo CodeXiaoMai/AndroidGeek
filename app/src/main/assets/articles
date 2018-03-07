@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "category": [
     {
       "name": "RxJava",
@@ -10,86 +10,132 @@
         {
           "name": "给初学者的RxJava2.0教程(一)",
           "url": "http://www.jianshu.com/p/464fa025229e",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(二)",
           "url": "http://www.jianshu.com/p/8818b98c44e2",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(三)",
           "url": "http://www.jianshu.com/p/128e662906af",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(四)",
           "url": "http://www.jianshu.com/p/bb58571cdb64",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(五)",
           "url": "http://www.jianshu.com/p/0f2d6c2387c9",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(六)",
           "url": "http://www.jianshu.com/p/e4c6d7989356",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(七)",
           "url": "http://www.jianshu.com/p/9b1304435564",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(八)",
           "url": "http://www.jianshu.com/p/a75ecf461e02",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给初学者的RxJava2.0教程(九)",
           "url": "http://www.jianshu.com/p/36e0f7f43a51",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "Season_zlc",
+          "keyword": "rxjava"
         },
         {
           "name": "给 Android 开发者的 RxJava 详解",
           "url": "https://juejin.im/entry/561b2c1860b2b90b56881f83",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "朱凯",
+          "keyword": "rxjava"
         },
         {
           "name": "一起来造一个RxJava，揭秘RxJava的实现原理",
           "url": "http://blog.csdn.net/TellH/article/details/71534704",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "",
+          "keyword": "rxjava"
         },
         {
           "name": "重新理解响应式编程",
           "url": "http://www.jianshu.com/p/c95e29854cb1",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "",
+          "keyword": "rxjava"
         },
         {
           "name": "BackPressure",
           "url": "https://www.zhihu.com/question/49618581/answer/237078934?utm_medium=social&utm_source=qq",
-          "author": "佚名",
-          "keyword": "rxjava/初学者"
+          "author": "朱凯",
+          "keyword": "rxjava/backpressure/背压/扔物线/hencoder"
         }
       ]
     },
     {
-      "description": "RxJava Description",
+      "name": "Glide",
+      "description": "Glide Description",
+      "articles": [
+        {
+          "name": "Android图片加载框架最全解析（一），Glide的基本用法",
+          "url": "http://m.blog.csdn.net/article/details?id=53759439",
+          "author": "郭霖",
+          "keyword": "glide/图片加载"
+        },
+        {
+          "name": "Android图片加载框架最全解析（二），从源码的角度理解Glide的执行流程",
+          "url": "http://m.blog.csdn.net/article/details?id=53939176",
+          "author": "郭霖",
+          "keyword": "glide/图片加载/"
+        },
+        {
+          "name": "Android图片加载框架最全解析（三），深入探究Glide的缓存机制",
+          "url": "http://m.blog.csdn.net/article/details?id=54895665",
+          "author": "郭霖",
+          "keyword": "glide/图片加载"
+        },
+        {
+          "name": "Android图片加载框架最全解析（四），玩转Glide的回调与监听",
+          "url": "http://m.blog.csdn.net/article/details?id=70215985",
+          "author": "郭霖",
+          "keyword": "glide/图片加载"
+        },
+        {
+          "name": "Android图片加载框架最全解析（五），Glide强大的图片变换功能",
+          "url": "http://blog.csdn.net/guolin_blog/article/details/71524668",
+          "author": "郭霖",
+          "keyword": "glide/图片加载"
+        },
+        {
+          "name": " Android图片加载框架最全解析（六），探究Glide的自定义模块功能",
+          "url": "http://blog.csdn.net/guolin_blog/article/details/78179422",
+          "author": "郭霖",
+          "keyword": "glide/图片加载"
+        },
+        {
+          "name": "Android 基于 glide 4.0 封装图片加载库",
+          "url": "http://www.jianshu.com/p/920f36983613"
+        }
+      ]
+    },
+    {
       "name": "Git",
+      "description": "Git Description",
       "articles": [
         {
           "name": "漫画：Git 二分 Debug，火速定位出错代码！",

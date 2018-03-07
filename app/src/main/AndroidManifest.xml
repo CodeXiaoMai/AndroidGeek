@@ -30,6 +30,9 @@
             android:name=".model.article.view.ArticleDetailActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".model.article.view.ArticleSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".model.todo.view.TasksListActivity"
             android:screenOrientation="portrait" />
         <activity

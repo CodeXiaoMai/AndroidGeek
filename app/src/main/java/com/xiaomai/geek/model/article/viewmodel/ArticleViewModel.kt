@@ -1,6 +1,7 @@
 package com.xiaomai.geek.model.article.viewmodel
 
 import android.app.Application
+import android.arch.lifecycle.MutableLiveData
 import com.xiaomai.geek.base.BaseViewModel
 import com.xiaomai.geek.base.observer.BaseCompletableObserver
 import com.xiaomai.geek.base.observer.BaseObserver
@@ -28,6 +29,8 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
             ArticleRepository(ArticleLocalDataSource(getApplication()), ArticleRemoteDataSource())
 
     private val configRepository = ConfigRepository(getApplication())
+
+    var searchResult: MutableLiveData<List<Article>> = MutableLiveData()
 
     fun loadArticles(): Observable<ArticleResponse> {
         return articleRepository.getArticleResponse()
@@ -97,6 +100,13 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
                 .subscribe(object : BaseSingleObserver<List<Article>>() {
                     override fun onSuccess(t: List<Article>) {
                         GeeKLog.d(msg = "搜索结果：$t")
+                        searchResult.value = t
+                        pageStatus.value = PageStatus.NORMAL
+                    }
+
+                    override fun onError(e: Throwable) {
+                        super.onError(e)
+                        pageStatus.value = PageStatus.EMPTY
                     }
                 })
     }

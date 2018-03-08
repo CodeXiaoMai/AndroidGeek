@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 1,
   "category": [
     {
       "name": "RxJava",
@@ -130,6 +130,17 @@
         {
           "name": "Android 基于 glide 4.0 封装图片加载库",
           "url": "http://www.jianshu.com/p/920f36983613"
+        }
+      ]
+    },
+    {
+      "name": "约束布局 ConstraintLayout",
+      "description": "Git Description",
+      "articles": [
+        {
+          "name": "ConstraintLayout 完全解析 快来优化你的布局吧",
+          "url": "http://blog.csdn.net/lmj623565791/article/details/78011599",
+          "author": "张鸿洋"
         }
       ]
     },

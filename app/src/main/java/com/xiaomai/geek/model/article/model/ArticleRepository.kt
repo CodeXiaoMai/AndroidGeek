@@ -1,5 +1,6 @@
 package com.xiaomai.geek.model.article.model
 
+import com.xiaomai.geek.BuildConfig
 import com.xiaomai.geek.db.Article
 import com.xiaomai.geek.db.ArticleRecord
 import io.reactivex.Completable
@@ -16,7 +17,11 @@ class ArticleRepository(private val articleLocalDataSource: ArticleLocalDataSour
 ) : ArticleDataSource {
 
     override fun getArticleResponse(): Observable<ArticleResponse> {
-        return articleLocalDataSource.getArticleResponse()
+        return if (BuildConfig.DEBUG) {
+            articleLocalDataSource.getArticleResponse()
+        } else {
+            articleRemoteDataSource.getArticleResponse()
+        }
     }
 
     override fun saveArticles(articleResponse: ArticleResponse): Completable {

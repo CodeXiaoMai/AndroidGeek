@@ -20,6 +20,7 @@ abstract class BaseViewModelActivity<T : BaseViewModel> : BaseActivity() {
         viewModel.pageStatus.observe(this@BaseViewModelActivity, Observer {
             when (it) {
                 PageStatus.LOADING -> showLoading()
+                PageStatus.DIS_MISS_LOADING -> dismissLoading()
                 PageStatus.NORMAL -> {
                     showContent()
                     dismissLoading()

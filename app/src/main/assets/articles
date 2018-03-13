@@ -138,9 +138,22 @@
       "description": "Git Description",
       "articles": [
         {
+          "name": " Android新特性介绍，ConstraintLayout完全解析",
+          "url": "http://blog.csdn.net/guolin_blog/article/details/53122387",
+          "author": "郭霖",
+          "keyword": "约束布局"
+        },
+        {
           "name": "ConstraintLayout 完全解析 快来优化你的布局吧",
           "url": "http://blog.csdn.net/lmj623565791/article/details/78011599",
-          "author": "张鸿洋"
+          "author": "张鸿洋",
+          "keyword": "约束布局"
+        },
+        {
+          "name": "ConstraintLayout API",
+          "url": "https://developer.android.google.cn/reference/android/support/constraint/ConstraintLayout.html",
+          "author": "Android Developer",
+          "keyword": "约束布局"
         }
       ]
     },

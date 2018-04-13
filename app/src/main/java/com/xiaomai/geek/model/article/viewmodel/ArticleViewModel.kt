@@ -45,7 +45,7 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
                 .subscribeOn(Schedulers.io())
                 .subscribe(object : BaseCompletableObserver() {
                     override fun onComplete() {
-                        GeeKLog.d(TAG, "articles成功保存到数据库")
+                        GeeKLog.d(tag, "articles成功保存到数据库")
                         saveConfig(articleResponse)
                     }
                 })
@@ -57,7 +57,7 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
         }).subscribeOn(Schedulers.io())
                 .subscribe(object : BaseCompletableObserver() {
                     override fun onComplete() {
-                        GeeKLog.d(TAG, "config成功保存到数据库")
+                        GeeKLog.d(tag, "config成功保存到数据库")
                     }
                 })
     }
@@ -78,7 +78,7 @@ class ArticleViewModel(context: Application) : BaseViewModel(context) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : BaseObserver<Boolean>() {
                     override fun onSuccess(value: Boolean) {
-                        GeeKLog.d(TAG, "阅读记录成功保存到数据库")
+                        GeeKLog.d(tag, "阅读记录成功保存到数据库")
                     }
                 })
     }

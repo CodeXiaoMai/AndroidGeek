@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.geek_error_view.*
  * Created by wangce on 2018/1/30.
  */
 abstract class BaseActivity : AppCompatActivity() {
-    val TAG = javaClass.simpleName
+    val tag: String = javaClass.simpleName
 
     lateinit var dataBinding: ViewDataBinding
 

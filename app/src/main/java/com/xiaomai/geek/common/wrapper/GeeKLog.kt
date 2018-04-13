@@ -7,41 +7,39 @@ import com.xiaomai.geek.BuildConfig
 /**
  * Created by wangce on 2018/1/29.
  */
-class GeeKLog {
+object GeeKLog {
 
-    companion object {
-        private const val TAG = "AndroidGeek"
+    private const val TAG = "AndroidGeek"
 
-        fun init() {
-            Logger.init(TAG)
-        }
+    fun init() {
+        Logger.init(TAG)
+    }
 
-        fun d(tag: String? = null, msg: String) {
-            if (BuildConfig.DEBUG) {
-                if (!tag.isNullOrEmpty()) {
-                    Log.d(tag, msg)
-                } else {
-                    Logger.d(msg)
-                }
+    fun d(tag: String? = null, msg: String) {
+        if (BuildConfig.DEBUG) {
+            if (!tag.isNullOrEmpty()) {
+                Log.d(tag, msg)
+            } else {
+                Logger.d(msg)
             }
         }
+    }
 
-        fun e(msg: String) {
-            if (BuildConfig.DEBUG) {
-                Logger.e(msg)
-            }
+    fun e(msg: String) {
+        if (BuildConfig.DEBUG) {
+            Logger.e(msg)
         }
+    }
 
-        fun e(e: Throwable) {
-            if (BuildConfig.DEBUG) {
-                Logger.e(e, "${e.message}")
-            }
+    fun e(e: Throwable) {
+        if (BuildConfig.DEBUG) {
+            Logger.e(e, "${e.message}")
         }
+    }
 
-        fun json(json: String) {
-            if (BuildConfig.DEBUG) {
-                Logger.json(json)
-            }
+    fun json(json: String) {
+        if (BuildConfig.DEBUG) {
+            Logger.json(json)
         }
     }
 }

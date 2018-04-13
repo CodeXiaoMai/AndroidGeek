@@ -28,7 +28,7 @@ class ArticleCategoryListFragment : BaseListFragment<Category, ArticleCategoryIt
         return ArticleViewModel::class.java
     }
 
-    override fun getLayoutManager(): RecyclerView.LayoutManager = GridLayoutManager(context, 2)
+    override fun getLayoutManager(): RecyclerView.LayoutManager = GridLayoutManager(context, 3)
 
     override fun getAdapter(): BaseAdapter<Category, ArticleCategoryItemBinding> = CategoryAdapter()
 

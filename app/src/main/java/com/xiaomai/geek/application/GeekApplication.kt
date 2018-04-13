@@ -8,9 +8,10 @@ import com.xiaomai.geek.db.DaoSession
  * Created by wangce on 2018/1/26.
  */
 class GeekApplication : Application() {
-    private val DB_NAME = "geek"
 
     companion object {
+        private const val DB_NAME = "geek"
+
         lateinit var DAO_SESSION: DaoSession
     }
 

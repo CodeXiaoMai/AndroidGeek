@@ -3,7 +3,6 @@
   "category": [
     {
       "name": "RxJava",
-      "description": "RxJava Description",
       "image": "http://reactivex.io/assets/Rx_Logo_S.png",
       "url": "https://github.com/ReactiveX/RxJava",
       "articles": [
@@ -135,7 +134,6 @@
     },
     {
       "name": "约束布局 ConstraintLayout",
-      "description": "Git Description",
       "articles": [
         {
           "name": " Android新特性介绍，ConstraintLayout完全解析",
@@ -159,11 +157,32 @@
     },
     {
       "name": "Git",
-      "description": "Git Description",
       "articles": [
         {
           "name": "漫画：Git 二分 Debug，火速定位出错代码！",
           "url": "https://mp.weixin.qq.com/s/YhDsAHUuyKuRg-AfqvqUBw"
+        }
+      ]
+    },
+    {
+      "name": "性能分析",
+      "articles": [
+        {
+          "name": "手把手教你使用Systrace（一）",
+          "url": "https://zhuanlan.zhihu.com/p/27331842"
+        },
+        {
+          "name": "手把手教你使用Systrace（二）",
+          "url": "https://zhuanlan.zhihu.com/p/27535205"
+        }
+      ]
+    },
+    {
+      "name": "性能优化",
+      "articles": [
+        {
+          "name": "[译]Android UI 性能优化",
+          "url": "https://zhuanlan.zhihu.com/p/27065828"
         }
       ]
     }

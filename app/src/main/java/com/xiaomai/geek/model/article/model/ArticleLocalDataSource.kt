@@ -15,8 +15,10 @@ import io.reactivex.Single
  */
 class ArticleLocalDataSource(private val context: Application
 ) : ArticleDataSource {
-    private val TAG = this::class.java.simpleName
-    private val FILE_NAME = "articles"
+
+    companion object {
+        private const val FILE_NAME = "articles"
+    }
 
     override fun getArticleResponse(): Observable<ArticleResponse> {
         return Observable.create {

@@ -17,7 +17,7 @@ abstract class BaseFragment : Fragment() {
 
     private lateinit var rootView: View
 
-    val TAG = javaClass.simpleName
+    val logTag: String = javaClass.simpleName
 
     open fun showLoading() {
         rootView.swipe_refresh_layout.isRefreshing = true

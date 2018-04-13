@@ -16,7 +16,9 @@ import io.reactivex.Single
  * Created by wangce on 2018/3/5.
  */
 class ConfigRepository(private val context: Application) {
-    private val FILE_NAME = "config"
+    companion object {
+        private const val FILE_NAME = "config"
+    }
 
     fun getConfigFromAsset(): Single<Config> {
         return Single.create {

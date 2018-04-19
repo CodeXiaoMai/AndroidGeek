@@ -20,8 +20,8 @@ abstract class BaseAdapter<V, B : ViewDataBinding>(@LayoutRes private val layout
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): Holder<B> {
-        val layoutInflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder<B> {
+        val layoutInflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<B>(layoutInflater, layoutId, parent, false)
         return Holder(binding)
     }

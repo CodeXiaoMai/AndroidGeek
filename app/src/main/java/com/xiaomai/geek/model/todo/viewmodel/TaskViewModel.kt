@@ -38,8 +38,8 @@ class TaskViewModel(context: Application) : BaseViewModel(context) {
             id = taskId
             title = this@TaskViewModel.title.get()
             content = this@TaskViewModel.content.get()
-            priority = this@TaskViewModel.priority.get()
-            complete = this@TaskViewModel.completed.get()
+            priority = this@TaskViewModel.priority.get() ?: 0
+            complete = this@TaskViewModel.completed.get() ?: false
             createTime = System.currentTimeMillis()
         }
 

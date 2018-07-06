@@ -3,6 +3,11 @@
     package="com.xiaomai.geek">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
 
     <application
         android:name=".application.GeekApplication"
@@ -50,11 +55,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".model.musicPlayer.MusicPlayerActivity"
+            android:screenOrientation="portrait" />
         <!--Activity End-->
 
         <!--Service Start-->
         <service android:name=".application.InitializeService" />
+        <service android:name=".model.musicPlayer.MusicPlayService" />
         <!--Service End-->
+
+        <receiver android:name=".model.musicPlayer.MediaManager$MediaButtonReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".model.musicPlayer.PhoneStateBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -63,6 +63,13 @@
                     app:menuTitle="@string/password_manage" />
 
                 <com.xiaomai.geek.common.MenuItemView
+                    android:id="@+id/menu_item_music"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconDrawable="@drawable/menu_music_play"
+                    app:menuTitle="@string/music_play" />
+
+                <com.xiaomai.geek.common.MenuItemView
                     android:id="@+id/menu_item_effect"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

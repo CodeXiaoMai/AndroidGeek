@@ -10,6 +10,7 @@ import com.xiaomai.geek.common.MenuItemView
 import com.xiaomai.geek.model.article.view.ArticleCategoryListFragment
 import com.xiaomai.geek.model.article.view.ArticleSearchActivity
 import com.xiaomai.geek.model.main.viewmodel.MainViewModel
+import com.xiaomai.geek.model.musicPlayer.MusicPlayerActivity
 import com.xiaomai.geek.model.setting.view.SettingActivity
 import com.xiaomai.geek.model.todo.view.TasksListActivity
 import kotlinx.android.synthetic.main.main_activity.*
@@ -51,6 +52,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
         val headerView = navigation_view.getHeaderView(0)
         val menuArticle = headerView.findViewById<MenuItemView>(R.id.menu_item_article)
         val menuToDo = headerView.findViewById<MenuItemView>(R.id.menu_item_to_do)
+        val musicPlay = headerView.findViewById<MenuItemView>(R.id.menu_item_music)
         val menuSetting = headerView.findViewById<MenuItemView>(R.id.menu_item_settings)
 
         menuArticle.isSelected = true
@@ -60,6 +62,10 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
 
         menuToDo.setOnClickListener {
             startActivity(Intent(this@MainActivity, TasksListActivity::class.java))
+        }
+
+        musicPlay.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MusicPlayerActivity::class.java))
         }
 
         menuSetting.setOnClickListener {

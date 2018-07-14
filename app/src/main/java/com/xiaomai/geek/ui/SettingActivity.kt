@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import com.suke.widget.SwitchButton
-import com.tencent.bugly.beta.Beta
 import com.xiaomai.geek.R
 import com.xiaomai.geek.data.pref.ThemePref
 import com.xiaomai.geek.event.ThemeEvent
@@ -64,7 +63,7 @@ class SettingActivity : BaseActivity() {
         llUpgrade = findViewById(R.id.ll_upGrade)
         llUpgrade?.setOnClickListener { view ->
             // 第一个参数:是否为用户手动点击，第二个参数：是否提示用户正在检查更新
-            Beta.checkUpgrade(true, false)
+//            Beta.checkUpgrade(true, false)
         }
         llAboutUs = findViewById(R.id.ll_about)
         llAboutUs?.setOnClickListener { view ->
